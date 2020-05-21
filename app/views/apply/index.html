@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prototype: Report a change to Carer's Allowance
+{% endblock %}
+
+{% block header %}
+
+  <div class="prototype-remove-blue-border-from-header">
+
+    {{ super() }}
+
+    <div class="prototype-home-top">
+
+      <div class="govuk-width-container">
+
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Carer’s Allowance</h1>
+
+            <h1 class="govuk-heading-l govuk-!-font-weight-regular  govuk-!-margin-bottom-2">'Apply' prototype</h1>
+
+          </div>
+
+        </div>
+      
+      </div>
+
+    </div>
+  
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+    text: 'Back to prototype home',
+    href: '/'
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <div class="prototype-version-card">
+        <h3 class="govuk-heading-m">
+          <a href="ACA-202/index.html" class="govuk-link--no-visited-state">
+            ACA-202
+          </a>
+        </h3>
+        {{ govukTag({
+            text: 'Experimental', 
+            classes: 'govuk-tag--red govuk-!-margin-bottom-3'
+        }) }}
+        <p>
+          Link to changes service removed from confirmation page. 
+        </p>
+        <h4 class="govuk-heading-s">Research notes</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Link to changes service was used by only 0.4% of users, based on a sample from June 2019 to November 2019</li>
+          <li>UR happy to remove this link, hypothesised to be in wrong place in the journey</li>
+          <li>Thematic analysis of feedback showed no evidence of users need for link</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

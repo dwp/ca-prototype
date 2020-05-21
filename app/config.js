@@ -3,32 +3,34 @@
 // Note: prototype config can be overridden using environment variables (eg on heroku)
 
 module.exports = {
-  // Service name used in header. Eg: 'Renew your passport'
-  serviceName: 'Report a change to Carer’s Allowance',
+	// Service name used in header. Eg: 'Renew your passport'
+	serviceName: 'Carer’s Allowance',
+	applyServiceName: 'Apply for Carer’s Allowance',
+	changesServiceName: 'Report a change to Carer’s Allowance',
 
-  // Default port that prototype runs on
-  port: '3000',
+	// Default port that prototype runs on
+	port: '3000',
 
-  // Enable or disable password protection on production
-  useAuth: 'true',
+	// Enable or disable password protection on production
+	useAuth: 'true',
 
-  // Automatically stores form data, and send to all views
-  useAutoStoreData: 'true',
+	// Automatically stores form data, and send to all views
+	useAutoStoreData: 'true',
 
-  // Enable cookie-based session store (persists on restart)
-  // Please note 4KB cookie limit per domain, cookies too large will silently be ignored
-  useCookieSessionStore: 'false',
+	// Enable cookie-based session store (persists on restart)
+	// Please note 4KB cookie limit per domain, cookies too large will silently be ignored
+	useCookieSessionStore: 'false',
 
-  // Enable or disable built-in docs and examples.
-  useDocumentation: 'true',
+	// Enable or disable built-in docs and examples.
+	useDocumentation: 'true',
 
-  // Force HTTP to redirect to HTTPS on production
-  useHttps: 'true',
+	// Force HTTP to redirect to HTTPS on production
+	useHttps: 'true',
 
-  // Cookie warning - update link to service's cookie page.
-  cookieText: 'GOV.UK uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>',
+	// Cookie warning - update link to service's cookie page.
+	cookieText:
+		'GOV.UK uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>',
 
-  // Enable or disable Browser Sync
-  useBrowserSync: 'true'
-
+	// Enable or disable Browser Sync
+	useBrowserSync: 'true',
 }

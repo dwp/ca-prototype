@@ -1,0 +1,39 @@
+.prototype-home-top {
+	background-color: #005ea5;
+	box-sizing: border-box;
+	color: #fff;
+	width: 100%;
+	padding-top: govuk-spacing(6);
+	padding-bottom: govuk-spacing(6);
+
+	* {
+		color: white !important;
+	}
+}
+
+.prototype-remove-blue-border-from-header {
+	.govuk-header__container,
+	.govuk-header {
+		border-bottom: none;
+	}
+	.govuk-header__container {
+		padding-bottom: govuk-spacing(2);
+	}
+}
+
+@media (min-width: 641px) {
+	.prototype-version-card {
+		padding-bottom: govuk-spacing(6);
+		padding-left: govuk-spacing(6);
+		padding-right: govuk-spacing(6);
+		padding-top: govuk-spacing(7);
+	}
+}
+
+.prototype-version-card {
+	border: 1px solid $govuk-border-colour;
+	margin-bottom: govuk-spacing(3);
+	margin-top: govuk-spacing(3);
+	overflow: hidden;
+	position: relative;
+}

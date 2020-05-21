@@ -5,39 +5,53 @@
   Prototype: Report a change to Carer's Allowance
 {% endblock %}
 
+{% block header %}
+
+  <div class="prototype-remove-blue-border-from-header">
+
+    {{ super() }}
+
+    <div class="prototype-home-top">
+
+      <div class="govuk-width-container">
+
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Carer’s Allowance</h1>
+
+            <h1 class="govuk-heading-l govuk-!-font-weight-regular  govuk-!-margin-bottom-2">Prototypes</h1>
+
+          </div>
+
+        </div>
+      
+      </div>
+
+    </div>
+  
+  </div>
+
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        <span class="govuk-caption-xl">Carer's Allowance</span>
-        Report a change prototype 
-      </h1>
+    <div class="govuk-grid-column-one-half">
       <h2 class="govuk-heading-m">
-       About this prototype
-
+        <a href="apply/index.html" class="govuk-link--no-visited-state">
+          Apply for Carer’s Allowance
+        </a>
       </h2>
-
-      <p>
-        This is the change of circumstances prototype. There is a separate <a href="https://carers-allowance-apply.herokuapp.com/">prototype for the apply service</a>.
-      </p>
-
-
-      <h3 class="govuk-heading-m">Prototypes by ticket</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/ACA-180/index.html">Ticket ACA-180: 22 April to 5 May 2020</a>
-        </li>
-        <li>
-          ACA...
-        </li>
-        <li>
-          ACA...
-        </li>
-
-      </ul>
+      <p>Service to accept applications for new Carer’s Allowance claims.</p>
+      <h2 class="govuk-heading-m">
+        <a href="changes/index.html" class="govuk-link--no-visited-state">
+          Report a change to Carer’s Allowance
+        </a>
+      </h2>
+      <p>Service to make changes to existing Carer’s Allowance claims.</p>
     </div>
-</div>
+  </div>
 
 {% endblock %}
