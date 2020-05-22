@@ -42,7 +42,7 @@
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: data.headerTitle,
+    serviceName: serviceName if resetServiceName else data.headerTitle,
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
