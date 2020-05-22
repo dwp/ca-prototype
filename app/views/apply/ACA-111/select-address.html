@@ -4,16 +4,19 @@
     Select your address
 {% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
-
-            {{ govukBackLink({
-                text: 'Back',
-                href: 'javascript:history.back()'
-            }) }}
 
             {% if data.error %}
                 {{ govukErrorSummary({
