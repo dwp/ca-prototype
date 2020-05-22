@@ -27,3 +27,7 @@ $govuk-assets-path: '/govuk/assets/';
 	padding: govuk-spacing(6);
 	border: 1px solid $govuk-border-colour;
 }
+
+.app-bold-label {
+	font-weight: bold;
+}

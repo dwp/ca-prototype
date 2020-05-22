@@ -1,13 +1,35 @@
 module.exports = function (env) {
-  /**
-   * Instantiate object used to store the methods registered as a
-   * 'filter' (of the same name) within nunjucks. You can override
-   * gov.uk core filters by creating filter methods of the same name.
-   * @type {Object}
-   */
-  var filters = {}
+	/**
+	 * Instantiate object used to store the methods registered as a
+	 * 'filter' (of the same name) within nunjucks. You can override
+	 * gov.uk core filters by creating filter methods of the same name.
+	 * @type {Object}
+	 */
+	var filters = {}
 
-  /* ------------------------------------------------------------------
+	filters.addressOptions = (addressOptionArray, currentSelection) => {
+		currentSelection = currentSelection ? currentSelection : ''
+		if (Array.isArray(addressOptionArray)) {
+			const processedAddressOptionArray = addressOptionArray.map(
+				(addressOption) => {
+					return {
+						text: addressOption.text,
+						value: addressOption.value,
+						selected: addressOption.value == currentSelection ? true : false,
+					}
+				}
+			)
+			return processedAddressOptionArray
+		} else {
+			return []
+		}
+	}
+
+	filters.debug = (obj) => {
+		return JSON.stringify(obj)
+	}
+
+	/* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
 
@@ -38,8 +60,8 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-  /* ------------------------------------------------------------------
+	/* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
-  return filters
+	return filters
 }

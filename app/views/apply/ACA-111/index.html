@@ -10,30 +10,75 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        ACA-202 
-        <span class="govuk-caption-xl">6 to 19 May 2020</span>
+        ACA-111 
       </h1>
-      
-
-
-
-
-     
 
       <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
 
-      <ul class="govuk-list govuk-list--bullet">
+      <ul class="govuk-list">
 
         <li>
-          <a href="confirmation-no-docs.html">confirmation page – no docs needed</a> – removed change of circs link from current content (Sprint 6)
+          <a href="postcode.html">Enter postcode screen</a>
         </li>
 
         <li>
-          <a href="confirmation-docs.html">confirmation page – docs needed example</a> – removed change of circs link from current content (Sprint 6)
+          <a href="postcode.html?error=true">Enter postcode screen (with 'not found' error)</a>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              if API returns no results for the postcode (as example)
+              <br>
+              <b class="govuk-error-message">We could not find this postcode, enter your address manually or try again</b> 
+            </li>
+            <li>
+              if postcode is blank
+              <br>
+              <b class="govuk-error-message">Enter a postcode</b> 
+            </li>
+            <li>
+              if postcode is not in the correct format
+              <br>
+              <b class="govuk-error-message">Enter a real postcode</b> 
+            </li>
+          </ul>
         </li>
 
+        <li>
+          <a href="select-address.html">Select address screen</a>
+        </li>
+
+        <li>
+          <a href="select-address.html?error=true">Select address screen (with 'no selection' error)</a>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              if user does not choose an address (as example)
+              <br>
+              <b class="govuk-error-message">Select an address</b> 
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="manual-address.html">Manual address screen</a>
+        </li>
+
+        <li>
+          <a href="manual-address.html?error=true">Manual address screen (with errors)</a>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              if 'building and street address' field is blank
+              <br>
+              <b class="govuk-error-message">Enter your building and street</b> 
+            </li>
+            <li>
+              if town or city field is blank
+              <br>
+              <b class="govuk-error-message">Enter your town or city</b> 
+            </li>
+          </ul>
+        </li>
 
       </ul>
+
     </div>
 </div>
 

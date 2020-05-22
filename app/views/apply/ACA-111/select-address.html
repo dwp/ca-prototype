@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Select your address
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ govukBackLink({
+                text: 'Back',
+                href: 'javascript:history.back()'
+            }) }}
+
+            {% if data.error %}
+                {{ govukErrorSummary({
+                    'titleText': 'There is a problem',
+                    'errorList': [
+                        {
+                            'text': 'Select an address',
+                            'href': '#applicant-address-selected'
+                        }
+                    ]
+                }) }}
+            {% endif %}
+
+            <form action="index">
+
+                <h1 class="govuk-heading-xl">Select your address</h1>
+
+                <p class="govuk-!-margin-bottom-8">
+                    <b>Postcode:</b> {{ data['applicant-find-postcode'] | default('AB12 3CD')}}
+                    <br> <a href="postcode">Change</a>
+                </p>
+
+                {{ govukSelect({
+                    id: 'applicant-address-selected',
+                    name: 'applicant-address-selected',
+                    items: data.dummyAddresses | addressOptions(data['applicant-address-selected']),
+                    label: {
+                        text: 'Select an address'
+                    },
+                    errorMessage: {
+                        text: 'Select an address'
+                    } if data.error
+                }) }}
+
+                {# Change the dummy addresses in app/data/session-data-defaults.js if needed #}
+
+                <p>
+                    <a href="manual-address">Enter your address manually</a>
+                </p>
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
