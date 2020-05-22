@@ -1,0 +1,29 @@
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+{% macro prototypeVersionCard(props) %}
+
+<div class="prototype-version-card">
+    <h3 class="govuk-heading-m">
+        <a href="{{ props.ticket }}/index.html" class="govuk-link--no-visited-state">
+        {{ props.ticket }}
+        </a>
+    </h3>
+    {% if props.statusTag %}
+        <div class="govuk-!-margin-bottom-3">
+            {{ govukTag(props.statusTag) }}
+        </div>
+    {% endif %}
+    <p>
+        {{ props.description }}
+    </p>
+    {% if props.researchNotes %}
+        <h4 class="govuk-heading-s">Research notes</h4>
+        <ul class="govuk-list govuk-list--bullet">
+            {% for note in props.researchNotes %}
+                <li>{{ note }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+{% endmacro %}

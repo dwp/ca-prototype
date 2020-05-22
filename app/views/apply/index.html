@@ -44,26 +44,32 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <div class="prototype-version-card">
-        <h3 class="govuk-heading-m">
-          <a href="ACA-202/index.html" class="govuk-link--no-visited-state">
-            ACA-202
-          </a>
-        </h3>
-        {{ govukTag({
+      {{ prototypeVersionCard({
+        ticket: 'ACA-202',
+        description: 'Link to changes service removed from confirmation page.',
+        statusTag: {
             text: 'Experimental', 
-            classes: 'govuk-tag--red govuk-!-margin-bottom-3'
-        }) }}
-        <p>
-          Link to changes service removed from confirmation page. 
-        </p>
-        <h4 class="govuk-heading-s">Research notes</h4>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Link to changes service was used by only 0.4% of users, based on a sample from June 2019 to November 2019</li>
-          <li>UR happy to remove this link, hypothesised to be in wrong place in the journey</li>
-          <li>Thematic analysis of feedback showed no evidence of users need for link</li>
-        </ul>
-      </div>
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Link to changes service was used by only 0.4% of users, based on a sample from June 2019 to November 2019',
+          'UR happy to remove this link, hypothesised to be in wrong place in the journey',
+          'Thematic analysis of feedback showed no evidence of users need for link'
+        ]
+      }) }}
+      {{ prototypeVersionCard({
+        ticket: 'ACA-111',
+        description: 'Changes to address lookup journey.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          '...',
+          '...',
+          '...'
+        ]
+      }) }}
     </div>
   </div>
 

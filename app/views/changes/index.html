@@ -44,25 +44,18 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <div class="prototype-version-card">
-        <h3 class="govuk-heading-m">
-          <a href="ACA-180/index.html" class="govuk-link--no-visited-state">
-            ACA-180
-          </a>
-        </h3>
-        {{ govukTag({
-            text: 'Experimental',
-            classes: 'govuk-tag--red govuk-!-margin-bottom-3'
-        }) }}
-        <p>
-          Updated end claim journey, including DP died.
-        </p>
-        <h4 class="govuk-heading-s">Research notes</h4>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Need identified by UR</li>
-          <li>No research has been carried out on the proposed designs as of 21 May 2020</li>
-        </ul>
-      </div>
+      {{ prototypeVersionCard({
+        ticket: 'ACA-180',
+        description: 'Updated end claim journey, including DP died.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Need identified by UR',
+          'No research has been carried out on the proposed designs as of 21 May 2020'
+        ]
+      }) }}
     </div>
   </div>
 
