@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Claim end date
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="about-you">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">      Report a change in your circumstances</h1>
+
+      <h2 class="govuk-heading-m">      End your Carer's Allowance claim</h1>
+
+    
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-label govuk-!-font-weight-bold">
+              <h1 class="govuk-fieldset__heading">
+                What is the last date of your claim?
+              </h1>
+            </legend>
+            <span id="passport-issued-hint" class="govuk-hint">
+              This could be the date you permanently stopped providing care, or the date you want your claim to end.
+            </span>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="3000">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-!-font-weight-bold" for="more-details">
+              Tell us more about your changes (optional)
+            </label>
+            <span id="more-details-hint" class="govuk-hint">
+              If you did not tell us about any of your changes as soon as they happened, we need you to tell us why.
+            </span>
+            <textarea class="govuk-textarea govuk-js-character-count" id="more-details" name="more-info" rows="5" aria-describedby="more-details-info more-details-hint"></textarea>
+          </div>
+        
+          <span id="more-details-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 3,000 characters
+          </span>
+        
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </div>
+  </div>
+
+{% endblock %}
