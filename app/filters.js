@@ -38,6 +38,28 @@ module.exports = function (env) {
 		return JSON.stringify(obj)
 	}
 
+	filters.lowerCase = str => (str ? str.toLowerCase() : '')
+
+	filters.upperCase = str => (str ? str.toUpperCase() : '')
+
+	filters.titleCase = str => {
+		if (str) {
+			return str.replace(/\w\S*/g, txt => {
+				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+			})
+		} else {
+			return ''
+		}
+	}
+
+	filters.sentenceCase = str => {
+		if (str) {
+			return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase()
+		} else {
+			return ''
+		}
+	}
+
 	/* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

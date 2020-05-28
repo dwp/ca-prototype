@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="index">
+            <form action="legacy-pages/nationality">
 
                 {% if data.error %}
                     {{ govukErrorSummary({
@@ -48,7 +48,7 @@
 
                     {{ govukInput({
                         label: {
-                        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+                            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
                         },
                         id: 'address-line-1',
                         name: 'applicant-manual-address[address-line-1]',
@@ -61,7 +61,7 @@
 
                     {{ govukInput({
                         label: {
-                        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                            html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
                         },
                         id: 'address-line-2',
                         name: 'applicant-manual-address[address-line-2]',
@@ -71,7 +71,7 @@
 
                     {{ govukInput({
                         label: {
-                        text: 'Town or city'
+                            text: 'Town or city'
                         },
                         classes: 'govuk-!-width-two-thirds',
                         id: 'address-town',
@@ -85,7 +85,7 @@
 
                     {{ govukInput({
                         label: {
-                        text: 'County'
+                            text: 'County'
                         },
                         classes: 'govuk-!-width-two-thirds',
                         id: 'address-county',
@@ -95,7 +95,7 @@
 
                     {{ govukInput({
                         label: {
-                        text: 'Postcode'
+                            text: 'Postcode'
                         },
                         classes: 'govuk-input--width-10',
                         id: 'address-postcode',
