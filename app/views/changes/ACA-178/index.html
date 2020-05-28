@@ -1,0 +1,104 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-180 prototypes: Report a change to Carer's Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        ACA-178
+      </h1>
+      
+      
+     
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+    
+
+     <p class="govuk-body">Individual pages:</p>
+     
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="confirmation-no-docs.html">confirmation page – no docs – backloged cases</a> updated page MVP
+        </li>
+
+         <li>
+          <a href="confirmation-no-docs-priority.html">confirmation page – no docs – bank or address change journey</a> current page
+        </li>
+        
+        <li>
+          <a href="confirmation-docs.html">confirmation page – docs needed – backloged cases</a> updated page MVP
+        </li>
+
+        <li>
+          <a href="confirmation-docs-priority.html">confirmation page – docs needed – bank or address change journey</a> current page
+        </li>
+
+        
+        </li>
+
+      </ul>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Description of changes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+
+           
+            <li>
+              green panel content updated from changes to change (as journey only allows one change type at a time) 
+            </li>
+
+             <li>
+              content added to body to confirm we have received the change
+            </li>
+
+             <li>
+              content on sending another change updated to be clearer 
+            </li>
+           
+            <li>
+              content on when email will be sent updated to be clearer (content and location changed to match design system)
+            </li>
+
+            <li>
+              content on sending another change updated to be clearer 
+            </li>
+            
+            <li>
+              basic reassurance content change for backlog cases
+            </li>
+
+
+            <li>
+              bank and address page journeys do not have reassurance message around change taking longer to process
+            </li>         
+    
+          </ul>
+        </div>
+      </details>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
