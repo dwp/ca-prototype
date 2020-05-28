@@ -14,7 +14,7 @@ Why do you need to end your claim? – Report a change to Carer's Allowance – 
     <div class="govuk-grid-column-two-thirds">
       <form action="/form-handler" method="post" novalidate>
       <div class="govuk-form-group">
-        {# <fieldset class="govuk-fieldset">
+        <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
               Why do you need to end your claim?
@@ -57,43 +57,8 @@ Why do you need to end your claim? – Report a change to Carer's Allowance – 
             
           </div>
 
-        </fieldset> #}
+        </fieldset>
     
-
-        {{ govukRadios ({
-          idPrefix: 'end-claim-reason',
-          name: 'end-claim-reason',
-          fieldset: {
-            legend: {
-              text: 'Why do you need to end your claim?',
-              isPageHeading: true,
-              classes: 'govuk-fieldset__legend--l'
-            }
-          },
-          items: [
-            {
-              text: 'The person I care for has died',
-              value: 'dp-died~/changes/ACA-180/person-you-care-for-has-died',
-              conditional:{
-                text:'This is a test'
-              }
-            },
-            {
-              text: 'The person I care for has died',
-              value: 'dp-died~/changes/ACA-180/person-you-care-for-has-died'
-            },
-            {
-              text: 'The person I care for has died',
-              value: 'dp-/changes/ACA-180/died~person-you-care-for-has-died'
-            },
-            {
-              text: 'The person I care for has died',
-              value: 'dp-/changes/ACA-180/died~person-you-care-for-has-died'
-            }
-          ]
-        }) }}
-
-
       </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
