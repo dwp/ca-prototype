@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your status - About you - the carer
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../postcode">
+
+                <h1 class="govuk-heading-l">About you - the carer</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-status',
+                    name: 'applicant-status',
+                    fieldset: {
+                        legend: {
+                            text: 'Your status',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Married or civil partner',
+                            value: 'Married or civil partner'
+                        },
+                        {
+                            text: 'Single',
+                            value: 'Single'
+                        },
+                        {
+                            text: 'Divorced or civil partnership dissolved',
+                            value: 'Divorced or civil partnership dissolved'
+                        },
+                        {
+                            text: 'Widowed or surviving civil partner',
+                            value: 'Widowed or surviving civil partner'
+                        },
+                        {
+                            text: 'Separated',
+                            value: 'Separated'
+                        },
+                        {
+                            text: 'Living with partner',
+                            value: 'Living with partner'
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

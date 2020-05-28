@@ -11,7 +11,7 @@ module.exports = function (env) {
 		currentSelection = currentSelection ? currentSelection : ''
 		if (Array.isArray(addressOptionArray)) {
 			const processedAddressOptionArray = addressOptionArray.map(
-				(addressOption) => {
+				addressOption => {
 					return {
 						text: addressOption.text,
 						value: addressOption.value,
@@ -25,7 +25,16 @@ module.exports = function (env) {
 		}
 	}
 
-	filters.debug = (obj) => {
+	filters.includes = (arrayOfStrings, testString) => {
+		if (Array.isArray(arrayOfStrings)) {
+			if (arrayOfStrings.indexOf(testString) != -1) {
+				return true
+			}
+		}
+		return false
+	}
+
+	filters.debug = obj => {
 		return JSON.stringify(obj)
 	}
 
