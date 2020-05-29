@@ -37,3 +37,42 @@
 	overflow: hidden;
 	position: relative;
 }
+
+.prototype-full-height {
+	min-height: 100vh;
+}
+
+.prototype-email-table {
+	@include govuk-font($size: 19);
+	@include govuk-text-colour;
+	.prototype-email-table-row {
+		@include govuk-responsive-padding(4, 'top');
+		@include govuk-responsive-padding(2, 'right');
+		@include govuk-responsive-padding(4, 'bottom');
+		@include govuk-responsive-padding(2, 'left');
+		border: $govuk-border-colour 1px solid;
+		border-bottom: none;
+		&:last-of-type {
+			border-bottom: $govuk-border-colour 1px solid;
+		}
+	}
+	.prototype-email-table-descriptor {
+		color: $govuk-secondary-text-colour;
+		display: inline-block;
+		width: 7em;
+		text-align: right;
+		@include govuk-responsive-margin(2, 'right');
+	}
+	.prototype-email-content {
+		@include govuk-responsive-margin(4);
+		@include govuk-responsive-padding(2, 'top');
+	}
+	.govuk-header__container {
+		background-color: black;
+		@include govuk-responsive-padding(4, 'left');
+		@include govuk-responsive-padding(4, 'right');
+		.govuk-header__link {
+			color: white;
+		}
+	}
+}

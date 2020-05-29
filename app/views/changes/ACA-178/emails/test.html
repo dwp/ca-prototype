@@ -1,0 +1,59 @@
+{% extends 'layout_email.html' %}
+
+{% block pageTitle %}
+    Email test
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% set emailContentHTML %}
+
+                <h1 class="govuk-heading-l">This is a test</h1>
+
+                <p>This is test content</p>
+
+            {% endset %}
+
+
+            {{ prototypeEmailPreview({
+                headers: [
+                    {
+                        key: {
+                            text: 'From'
+                        },
+                        value: {
+                            text: 'Apply and Maintain Carers Allowance'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'To'
+                        },
+                        value: {
+                            text: 'jane.doe@mail.server'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Subject'
+                        },
+                        value: {
+                            text: 'Carer’s Allowance application: next steps'
+                        }
+                    }
+                ],
+                content: {
+                    html: emailContentHTML
+                }
+            }) }}
+            
+
+        </div>
+
+</div>
+
+{% endblock %}
