@@ -66,6 +66,8 @@
 	.prototype-email-content {
 		@include govuk-responsive-margin(4);
 		@include govuk-responsive-padding(2, 'top');
+		font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+			sans-serif, Apple Color Emoji, Segoe UI Emoji !important;
 	}
 	.govuk-header__container {
 		background-color: black;
