@@ -1,0 +1,197 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your details - About you - the carer
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">About the person you provide care for</h1>
+
+                {{ govukInput ({
+                    id: 'dp-name-title',
+                    name: 'dp-name-title',
+                    value: data['dp-name-title'] if data['dp-name-title'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Title',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-first',
+                    name: 'dp-name-first',
+                    value: data['dp-name-first'] if data['dp-name-first'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'First name',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-middle',
+                    name: 'dp-name-middle',
+                    value: data['dp-name-middle'] if data['dp-name-middle'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Middle name(s)',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-last',
+                    name: 'dp-name-last',
+                    value: data['dp-name-last'] if data['dp-name-last'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Last name',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {% set niHTML %}
+
+                    {{ govukInput ({
+                        id: 'dp-ni',
+                        name: 'dp-ni',
+                        value: data['dp-ni'] if data['dp-ni'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'National Insurance number',
+                            classes: 'govuk-input--width-20'
+                        },
+                        hint: {
+                            text: 'If the person you provide care for is under 16 this is their Disability Living Allowance reference number, eg QQ123456C.'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'dp-ni-bool',
+                    name: 'dp-ni-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Do they have a National Insurance number?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['dp-ni-bool'] == 'Yes',
+                            conditional: {
+                                html: niHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['dp-ni-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukDateInput ({
+                    id: 'dp-dob',
+                    name: 'dp-dob',
+                    fieldset: {
+                        legend: {
+                            text: 'Date of birth',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'dp-dob-day',
+                            label: 'Day',
+                            value: data['dp-dob-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'dp-dob-month',
+                            label: 'Month',
+                            value: data['dp-dob-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'dp-dob-year',
+                            label: 'Year',
+                            value: data['dp-dob-year']
+                        }
+                    ],
+                    hint: {
+                        text: 'For example, 1 6 1980'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-relationship',
+                    name: 'dp-relationship',
+                    value: data['dp-relationship'] if data['dp-relationship'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'What’s their relationship to you?',
+                        classes: 'govuk-input--width-20  app-bold-label'
+                    },
+                    hint: {
+                        text: 'For example, father, daughter, neighbour, friend'
+                    }
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'dp-address-bool',
+                    name: 'dp-address-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Do they live at the same address as you?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~/apply/ACA-118/legacy-pages/care-time',
+                            checked: true if data['dp-address-bool'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~/apply/ACA-118/postcode',
+                            checked: true if data['dp-address-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

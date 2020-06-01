@@ -1,3 +1,5 @@
+const generate = require('./generate')
+
 /*
 
 Provide default values for user session data. These are automatically added
@@ -106,4 +108,5 @@ module.exports = {
 			value: 'FLAT 4, 40 PARK ROAD, LONDON, N4 4EB',
 		},
 	],
+	'dummy-dp-name': generate.fullName(),
 }

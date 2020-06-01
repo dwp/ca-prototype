@@ -64,7 +64,19 @@
 
       {{ prototypeVersionCard({
         ticket: 'ACA-111',
-        description: 'Changes to address lookup journey.',
+        description: 'Changes to address lookup journey for applicant.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'New journey added to follow GDS design pattern'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-118',
+        description: 'Changes to address lookup journey for DP.',
         statusTag: {
             text: 'Experimental', 
             classes: 'govuk-tag--red'

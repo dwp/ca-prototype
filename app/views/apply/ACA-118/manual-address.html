@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="legacy-pages/nationality">
+            <form action="legacy-pages/care-time">
 
                 {% if data.error %}
                     {{ govukErrorSummary({
@@ -38,8 +38,8 @@
 
                 {% call govukFieldset({
                 legend: {
-                    text: 'What is your address?',
-                    classes: 'govuk-fieldset__legend--l govuk-!-margin-bottom-8',
+                    text: 'What is ' + data['dummy-dp-name'] + '’s address?',
+                    classes: 'govuk-fieldset__legend--xl govuk-!-margin-bottom-8',
                     isPageHeading: true
                 }
                 }) %}

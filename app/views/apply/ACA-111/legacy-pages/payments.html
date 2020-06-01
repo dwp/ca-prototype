@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Payments from abroad
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../telephone">
+
+                <h1 class="govuk-heading-l">Payments from abroad</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-payments-from-abroad',
+                    name: 'applicant-payments-from-abroad',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you or any of your close family worked abroad or been paid benefits from outside the United Kingdom since your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This means your partner, parents or children and includes state pensions.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: '<p>These conditional fields have not been added to this version of the protoype.</p>'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
