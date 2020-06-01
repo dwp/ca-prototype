@@ -90,6 +90,26 @@
                             classes: 'govuk-fieldset__legend--s'
                         }
                     },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'applicant-dob-day',
+                            label: 'Day',
+                            value: data['applicant-dob-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'applicant-dob-month',
+                            label: 'Month',
+                            value: data['applicant-dob-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'applicant-dob-year',
+                            label: 'Year',
+                            value: data['applicant-dob-year']
+                        }
+                    ],
                     hint: {
                         text: 'For example, 27 5 1980'
                     }

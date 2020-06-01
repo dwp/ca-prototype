@@ -35,31 +35,36 @@
                     items: [
                         {
                             text: 'Married or civil partner',
-                            value: 'Married or civil partner'
+                            value: 'Married or civil partner',
+                            checked: true if data['applicant-status'] == 'Married or civil partner'
                         },
                         {
                             text: 'Single',
-                            value: 'Single'
+                            value: 'Single',
+                            checked: true if data['applicant-status'] == 'Single'
                         },
                         {
                             text: 'Divorced or civil partnership dissolved',
-                            value: 'Divorced or civil partnership dissolved'
+                            value: 'Divorced or civil partnership dissolved',
+                            checked: true if data['applicant-status'] == 'Divorced or civil partnership dissolved'
                         },
                         {
                             text: 'Widowed or surviving civil partner',
-                            value: 'Widowed or surviving civil partner'
+                            value: 'Widowed or surviving civil partner',
+                            checked: true if data['applicant-status'] == 'Widowed or surviving civil partner'
                         },
                         {
                             text: 'Separated',
-                            value: 'Separated'
+                            value: 'Separated',
+                            checked: true if data['applicant-status'] == 'Separated'
                         },
                         {
                             text: 'Living with partner',
-                            value: 'Living with partner'
+                            value: 'Living with partner',
+                            checked: true if data['applicant-status'] == 'Living with partner'
                         }
                     ]
                 }) }}
-
 
                 {{ govukButton({
                     html: 'Continue'

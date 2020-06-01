@@ -82,11 +82,13 @@
                                 value: 'Less than 3 years ago',
                                 conditional: {
                                     html: arrivalHTML
-                                }
+                                },
+                                checked: true if data['applicant-arrival-in-esw'] == 'Less than 3 years ago'
                             },
                             {
                                 text: 'More than 3 years ago',
-                                value: 'More than 3 years ago'
+                                value: 'More than 3 years ago',
+                                checked: true if data['applicant-arrival-in-esw'] == 'More than 3 years ago'
                             }
                         ]
                     }) }}
@@ -106,14 +108,16 @@
                     items: [
                         {
                             text: 'British',
-                            value: 'British'
+                            value: 'British',
+                                checked: true if data['applicant-nationality'] == 'British'
                         },
                         {
                             text: 'Another nationality',
                             value: 'Another nationality',
                             conditional: {
                                 html: nationalityHTML
-                            }
+                            },
+                            checked: true if data['applicant-nationality'] == 'Another nationality'
                         }
                     ]
                 }) }}
@@ -136,11 +140,13 @@
                                 value: 'Yes',
                                 conditional: {
                                     html: arrivalInESWHTML
-                                }
+                                },
+                                checked: true if data['applicant-live-in-esw'] == 'Yes'
                             },
                             {
                                 text: 'No',
-                                value: 'No'
+                                value: 'No',
+                                checked: true if data['applicant-live-in-esw'] == 'No'
                             }
                         ]
                     }) }}
@@ -160,14 +166,16 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes',
+                            checked: true if data['applicant-always-lived-esw'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
                             conditional: {
                                 html: liveInESWNowHTML
-                            }
+                            },
+                            checked: true if data['applicant-always-lived-esw'] == 'No'
                         }
                     ]
                 }) }}
@@ -205,14 +213,16 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'yes',
+                            value: 'Yes',
                             conditional: {
                                 html: whereYouveBeenHTML
-                            }
+                            },
+                            checked: true if data['applicant-been-away'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'no'
+                            value: 'No',
+                            checked: true if data['applicant-been-away'] == 'No'
                         }
                     ]
                 }) }}
