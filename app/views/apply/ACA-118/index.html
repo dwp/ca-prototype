@@ -23,7 +23,7 @@
       </h1>
 
       {{ govukInsetText ({
-        html: '<a href="legacy-pages/about-dp">Joined-up journey beginning with ’About you - the carer’</a>'
+        html: '<a href="legacy-pages/about-dp">Joined-up journey beginning with ’About the person you provide care for’</a>'
       }) }}
 
       <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
@@ -91,6 +91,20 @@
         </li>
 
       </ul>
+
+      {% set detailsContentHTML %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Added postcode lookup screens to follow GDS pattern</li>
+          <li>Separated contact details questions on to single pages</li>
+          <li>Changed flow of questions to accommodate new pages (see flow in Jira ticket)</li>
+          <li>Amended content on contact detail pages</li>
+        </ul>
+      {% endset %}
+      
+      {{ govukDetails({
+        summaryText: 'Description of changes',
+        html: detailsContentHTML
+      }) }}
 
     </div>
 </div>

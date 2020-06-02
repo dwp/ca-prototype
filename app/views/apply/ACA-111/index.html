@@ -121,6 +121,20 @@
       </ul>
         
 
+      {% set detailsContentHTML %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Added postcode lookup screens to follow GDS pattern</li>
+          <li>Separated contact details questions on to single pages</li>
+          <li>Changed flow of questions to accommodate new pages (see flow in Jira ticket)</li>
+          <li>Amended content on contact detail pages</li>
+        </ul>
+      {% endset %}
+      
+      {{ govukDetails({
+        summaryText: 'Description of changes',
+        html: detailsContentHTML
+      }) }}
+
     </div>
 </div>
 
