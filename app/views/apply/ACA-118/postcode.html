@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Page title
+    What is the address of the person you care for? – Apply for Carer’s Allowance – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,7 +25,7 @@
                         'titleText': 'There is a problem',
                         'errorList': [
                             {
-                                'text': 'We could not find this postcode, enter your address manually or try again',
+                                'text': 'We could not find this postcode, enter the address manually or try again',
                                 'href': '#applicant-find-postcode'
                             }
                         ]
@@ -35,7 +35,7 @@
                 <h1 class="govuk-heading-xl">What is {{ data['dummy-dp-name'] }}’s address?</h1>
 
                 <p>
-                    We will use this to send you any letters about your Carer’s Allowance claim.
+                    We will use this to let them know about your Carer’s Allowance claim.
                 </p>
 
                 {{ govukInput({
@@ -48,12 +48,12 @@
                         classes: 'govuk-input--width-10 app-bold-label'
                     },
                     errorMessage: {
-                        text: 'We could not find this postcode, enter your address manually or try again'
+                        text: 'We could not find this postcode, enter the address manually or try again'
                     } if data.error
                 }) }}
 
                 <p>
-                    <a href="manual-address">Enter your address manually</a>
+                    <a href="manual-address">Enter address manually</a>
                 </p>
 
                 {{ govukButton({
