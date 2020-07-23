@@ -1,0 +1,327 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Payment details
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Report a change in your circumstances</h1>
+                
+                <h2 class="govuk-heading-m">Your bank details</h2>
+
+                <p>
+                    Carer's Allowance can be paid into a UK bank account, either your own or someone else's, or your own Post Office card account. <br>
+                    You're responsible for repaying any overpayments, even if the money is paid into someone else's account.
+                </p>
+
+                <p>
+                    You can use someone else’s account if:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>their account allows it</li>
+                    <li>they agree to let you use it</li>
+                    <li>they will use your money how you tell them to</li>
+                </ul>
+
+                {{ govukRadios ({
+                    idPrefix: 'change-pay-details--change',
+                    name: 'change-pay-details--change',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want to change your bank or building society details or how often you’re paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Bank or building society account',
+                            value: 'Bank or building society account'
+                        },
+                        {
+                            text: 'How often',
+                            value: 'How often'
+                        },
+                        {
+                            text: 'Both',
+                            value: 'Both'
+                        }
+                    ]
+                }) }}
+
+                <div id="bank-details">
+
+                    <h2 class="govuk-heading-m">Existing payment details</h2>
+
+                    {{ govukRadios ({
+                        classes: 'govuk-radios--inline',
+                        idPrefix: 'change-pay-details--existing-bank-bool',
+                        name: 'change-pay-details--existing-bank-bool',
+                        fieldset: {
+                            legend: {
+                                text: 'Are you currently paid into a bank or building society?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'yes'
+                            },
+                            {
+                                text: 'No',
+                                value: 'no'
+                            }
+                        ]
+                    }) }}
+
+                    <div id="existing-bank-name">
+
+                        {% set existingBankNameHTML %}
+                        
+                            {{ govukInput ({
+                                id: 'change-pay-details--existing-bank-name',
+                                name: 'change-pay-details--existing-bank-name',
+                                value: data['change-pay-details--existing-bank-name'] if data['change-pay-details--existing-bank-name'] else '',
+                                classes: 'govuk-input--width-20',
+                                label: {
+                                    text: 'Name of current bank or building society',
+                                    classes: 'app-bold-label'
+                                }
+                            }) }}
+
+                        {% endset %}
+
+                        {{ govukInsetText ({
+                            html: existingBankNameHTML
+                        }) }}
+                    
+                    </div>
+
+                    <div id="existing-payment-method">
+
+                        {% set existingPaymentMethodHTML %}
+                        
+                            {{ govukInput ({
+                                id: 'change-pay-details--existing-payment-method',
+                                name: 'change-pay-details--existing-payment-method',
+                                value: data['change-pay-details--existing-payment-method'] if data['change-pay-details--existing-payment-method'] else '',
+                                classes: 'govuk-input--width-20',
+                                label: {
+                                    text: 'Confirm your method of payment',
+                                    classes: 'app-bold-label'
+                                }
+                            }) }}
+
+                        {% endset %}
+
+                        {{ govukInsetText ({
+                            html: existingPaymentMethodHTML
+                        }) }}
+                    
+                    </div>
+
+                    <h2 class="govuk-heading-m">New Payment Details</h2>
+
+                    {{ govukInput ({
+                        id: 'change-pay-details--account-holder-name',
+                        name: 'change-pay-details--account-holder-name',
+                        value: data['change-pay-details--account-holder-name'] if data['change-pay-details--account-holder-name'] else '',
+                        label: {
+                            text: 'Account holder name',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'change-pay-details--name-of-bank',
+                        name: 'change-pay-details--name-of-bank',
+                        value: data['change-pay-details--name-of-bank'] if data['change-pay-details--name-of-bank'] else '',
+                        label: {
+                            text: 'Name of bank or building society',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'change-pay-details--sort-code',
+                        name: 'change-pay-details--sort-code',
+                        value: data['change-pay-details--sort-code'] if data['change-pay-details--sort-code'] else '',
+                        classes: 'govuk-input--width-5',
+                        label: {
+                            text: 'Sort code',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Must be 6 digits long'
+                        },
+                        pattern: "[0-9]*",
+                        attributes: {
+                            spellcheck: "false"
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'change-pay-details--account-number',
+                        name: 'change-pay-details--account-number',
+                        value: data['change-pay-details--account-number'] if data['change-pay-details--account-number'] else '',
+                        classes: 'govuk-input--width-10',
+                        label: {
+                            text: 'Account number',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Must be between 6 and 8 digits long'
+                        },
+                        pattern: "[0-9]*",
+                        attributes: {
+                            spellcheck: "false"
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'change-pay-details--roll-ref',
+                        name: 'change-pay-details--roll-ref',
+                        value: data['change-pay-details--roll-ref'] if data['change-pay-details--roll-ref'] else '',
+                        label: {
+                            text: 'Building society roll or reference number (optional)',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'You can find it on your card, statement or passbook'
+                        }
+                    }) }}
+
+                </div>
+
+                <div id="frequency-details">
+
+                    <h2 class="govuk-heading-m">New Payment Frequency</h2>
+
+                    {{ govukRadios ({
+                        idPrefix: 'change-pay-details--frequency',
+                        name: 'change-pay-details--frequency',
+                        fieldset: {
+                            legend: {
+                                text: 'How often do you want to be paid Carer’s Allowance?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Every week',
+                                value: 'Every week'
+                            },
+                            {
+                                text: 'Every 4 weeks',
+                                value: 'Every 4 weeks'
+                            }
+                        ]
+                    }) }}
+
+                </div>
+
+                {{ govukCharacterCount ({
+                    name: 'change-pay-details--info',
+                    id: 'change-pay-details--info',
+                    maxlength: '3000',
+                    label: {
+                        text: 'Tell us more about your changes (optional)',
+                        classes: 'app-bold-label'
+                    },
+                    hint: {
+                        text: 'If you did not tell us about any of your changes as soon as they happened, we need you to tell us why.'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+    <script>
+
+        var shouldShowBankDetails = false;
+        var shouldShowPaymentFrequency = false;
+
+        var shouldShowCurrentBank = false;
+        var shouldShowPaymentMethod = false;
+
+        var $bankDetails = $('#bank-details')
+        var $frequencyDetails = $('#frequency-details')
+
+        var $existingBankName = $('#existing-bank-name')
+        var $existingPaymentMethod = $('#existing-payment-method')
+
+        function processUIState() {
+
+            $bankDetails.hide()
+            $frequencyDetails.hide()
+
+            $existingBankName.hide()
+            $existingPaymentMethod.hide()
+
+            if (shouldShowBankDetails) {
+                $bankDetails.show()
+
+                if (shouldShowCurrentBank) {
+                    $existingBankName.show()
+                }
+
+                if (shouldShowPaymentMethod) {
+                    $existingPaymentMethod.show()
+                }
+
+            }
+
+            if (shouldShowPaymentFrequency) {
+                $frequencyDetails.show()
+            }
+        }
+
+        function refreshUIState() {
+            shouldShowBankDetails = $('#change-pay-details--change').is(':checked') || $('#change-pay-details--change-3').is(':checked')
+            shouldShowPaymentFrequency = $('#change-pay-details--change-2').is(':checked') || $('#change-pay-details--change-3').is(':checked')
+            shouldShowCurrentBank = shouldShowBankDetails && $('#change-pay-details--existing-bank-bool').is(':checked')
+            shouldShowPaymentMethod = shouldShowBankDetails && $('#change-pay-details--existing-bank-bool-2').is(':checked')
+
+            processUIState()
+        }
+
+        refreshUIState()
+
+        $('input').on('change', refreshUIState)
+
+    </script>
+
+{% endblock %}

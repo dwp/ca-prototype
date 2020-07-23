@@ -49,6 +49,18 @@
     <div class="govuk-grid-column-one-half">
 
       {{ prototypeVersionCard({
+        ticket: 'ACA-380',
+        description: 'Changes to pay details page to address accessibility issues with sort code fields.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Fields changed to follow GDS design pattern'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
         ticket: 'ACA-202',
         description: 'Link to changes service removed from confirmation page.',
         statusTag: {
@@ -66,8 +78,8 @@
         ticket: 'ACA-111',
         description: 'Changes to address lookup journey for applicant.',
         statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
+            text: 'In service', 
+            classes: 'govuk-tag--green'
         },
         researchNotes: [
           'New journey added to follow GDS design pattern'

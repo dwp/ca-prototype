@@ -47,6 +47,21 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
+
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-380',
+        description: 'Changes to pay details page to address accessibility issues with sort code fields.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Fields changed to follow GDS design pattern'
+        ]
+      }) }}
+
+      
       {{ prototypeVersionCard({
         ticket: 'ACA-180',
         description: 'Updated end claim journey, including DP died.',
