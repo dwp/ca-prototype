@@ -33,11 +33,14 @@
                     Your claim date cannot be more than 3 months in the future.
                 </p>
 
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>their account allows it</li>
-                    <li>they agree to let you use it</li>
-                    <li>they will use your money how you tell them to</li>
-                </ul>
+                {% set detailsContentHTML %}
+                    <p>CONTENT HERE</p>
+                {% endset %}
+                
+                {{ govukDetails({
+                    summaryText: 'Link content here',
+                    html: detailsContentHTML
+                }) }}
 
                 {{ govukDateInput ({
                     id: 'claim-date',
