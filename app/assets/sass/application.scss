@@ -29,5 +29,9 @@ $govuk-assets-path: '/govuk/assets/';
 }
 
 .app-bold-label {
-	font-weight: bold;
+	font-weight: bold !important;
+}
+
+.app-normal-label {
+	font-weight: normal !important;
 }

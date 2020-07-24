@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Claim date
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">When do you want Carer's Allowance to start?</h1>
+
+                <p>
+                    Most claims can be backdated 3 months. You may be able to backdate it further if the person you provide care for was awarded their qualifying benefit in the last 3 months.
+                </p>
+
+                <p>
+                    Your claim date cannot be more than 3 months in the future.
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>their account allows it</li>
+                    <li>they agree to let you use it</li>
+                    <li>they will use your money how you tell them to</li>
+                </ul>
+
+                {{ govukDateInput ({
+                    id: 'claim-date',
+                    name: 'claim-date',
+                    fieldset: {
+                        legend: {
+                            text: 'Claim date',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This is when you want to claim Carer’s Allowance from, for example 23 4 2020'
+                    }
+                }) }}
+
+                {% set careStartDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you start providing care?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 23 7 2019'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'care-early-start',
+                    name: 'care-early-start',
+                    fieldset: {
+                        legend: {
+                            text: 'Were you providing care for the person for more than 35 hours a week before this date?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                            conditional : {
+                                html: careStartDateHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'no'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

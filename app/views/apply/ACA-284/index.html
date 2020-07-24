@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-284
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-284
+      </h1>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="claim-date.html">Claim date page</a>
+        </li>
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}
