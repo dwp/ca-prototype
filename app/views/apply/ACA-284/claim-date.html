@@ -26,21 +26,23 @@
                 <h1 class="govuk-heading-xl">When do you want Carer's Allowance to start?</h1>
 
                 <p>
-                    Most claims can be backdated 3 months. You may be able to backdate it further if the person you provide care for was awarded their qualifying benefit in the last 3 months.
+                    You can backdate your claim for up to 3 months. You may be able claim from an earlier date if the person you care for was awarded their disability benefit in the last 3 months.
                 </p>
+
+                 {% set detailsContentHTML %}
+                    <p>If the person you care for was awarded their disability benefit in the last 3 months, and their start date is more than 3 months in the past, you can claim from the date their benefit started.</p>
+                {% endset %}
+                
+                {{ govukDetails({
+                    summaryText: 'Claims that can be backdated for more than 3 months',
+                    html: detailsContentHTML
+                }) }}
 
                 <p>
                     Your claim date cannot be more than 3 months in the future.
                 </p>
 
-                {% set detailsContentHTML %}
-                    <p>CONTENT HERE</p>
-                {% endset %}
-                
-                {{ govukDetails({
-                    summaryText: 'Link content here',
-                    html: detailsContentHTML
-                }) }}
+               
 
                 {{ govukDateInput ({
                     id: 'claim-date',
