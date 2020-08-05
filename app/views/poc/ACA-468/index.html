@@ -1,0 +1,88 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-468
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-468 
+      </h1>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="pay-frequency.html">Pay frequency page</a>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              If nothing is selected
+              <br>
+              <b class="govuk-error-message">Select if you would like to be paid Carer’s Allowance every week or every 4 weeks</b>
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="account-type.html">Account type page</a>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              User decision on this page will determine content on next page (Post Office or bank details), if user answers that they don’t have an account they will be served the 'no account' page.
+            </li>
+            <li>
+              If nothing is selected
+              <br>
+              <b class="govuk-error-message">Select where we should send your Carer’s Allowance</b>
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="account-details.html">Bank details page</a>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              Error messages should follow the <a href="https://design-system.service.gov.uk/patterns/bank-details/">bank details pattern in the GOV.UK Design System</a>.
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="account-details.html">Post Office card details page</a>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              Error messages should follow the <a href="https://design-system.service.gov.uk/patterns/bank-details/">bank details pattern in the GOV.UK Design System</a>.
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="no-account.html">No bank account page</a>
+        </li>
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}
