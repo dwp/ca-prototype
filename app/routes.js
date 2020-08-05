@@ -35,6 +35,11 @@ router.get('/apply/*', (req, _, next) => {
 	next()
 })
 
+router.get('/poc/*', (req, _, next) => {
+	req.session.data.headerTitle = config.applyServiceName
+	next()
+})
+
 router.get('/changes/*', (req, _, next) => {
 	req.session.data.headerTitle = config.changesServiceName
 	next()
