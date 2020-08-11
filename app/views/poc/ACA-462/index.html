@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  ACA-468
+  ACA-462
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        ACA-468 
+        ACA-462
       </h1>
 
       <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
@@ -27,29 +27,32 @@
       <ul class="govuk-list govuk-list--bullet">
 
         <li>
-          <a href="pay-frequency.html">Pay frequency page</a>
+          <a href="lived-with-partner.html">Have you lived with a partner page</a>
 
           <ul class="govuk-list govuk-list--bullet">
             <li>
+              If user chooses no the user should proceed with other sections
+            </li>
+            <li>
               If nothing is selected
               <br>
-              <b class="govuk-error-message">Select if you would like to be paid Carer’s Allowance every week or every 4 weeks</b>
+              <b class="govuk-error-message">Select yes if you have lived with a partner since [claim date]</b>
             </li>
           </ul>
 
         </li>
 
         <li>
-          <a href="account-type.html">Account type page</a>
+          <a href="partner-still-live-with.html">Still live with partner page</a>
 
           <ul class="govuk-list govuk-list--bullet">
             <li>
-              User decision on this page will determine content on next page (Post Office or bank details), if user answers that they don’t have an account they will be served the 'no account' page.
+              User decision on this page will determine content in questions for rest of the section, content will be written in the past tense if user selects no to this question
             </li>
             <li>
               If nothing is selected
               <br>
-              <b class="govuk-error-message">Select where we should send your Carer’s Allowance</b>
+              <b class="govuk-error-message">Select yes if you still live with your partner</b>
             </li>
           </ul>
 

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What {{ 'is' if data['partner--still-bool'] == 'Yes' else 'was' }} your partner’s date of birth?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-care">
+
+                {{ govukDateInput({
+                    id: 'partner--dob',
+                    name: 'partner--dob',
+                    hint: {
+                        text: 'For example, 5 8 1980'
+                    },
+                    fieldset: {
+                        legend: {
+                            text: 'What ' + ( 'is' if data['partner--still-bool'] == 'Yes' else 'was' ) + ' ' + ( data['partner--name'] | default('your partner') ) + '’s date of birth?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--xl'
+                        }
+                    }
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    {{ 'Does' if data['partner--still-bool'] == 'Yes' else 'Did' }} your partner have a National Insurance number?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-dob">
+
+                {% set partnerNiHTML %}
+
+                    {{ govukInput({
+                        id: 'partner--ni',
+                        name: 'partner--ni',
+                        value: data['partner--ni'] if data['partner--ni'] else '',
+                        classes: 'govuk-input--width-20',
+                        hint: {
+                            text: 'For example, ‘QQ 12 34 56 C’.'
+                        },
+                        label: {
+                            text: 'What is their National Insurance number?',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'partner--ni-bool',
+                    name: 'partner--ni-bool',
+                    fieldset: {
+                        legend: {
+                            text: ( 'Does' if data['partner--still-bool'] == 'Yes' else 'Did' ) + ' ' + ( data['partner--name'] | default('your partner') ) + ' have a National Insurance number?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--xl'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: partnerNiHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-ni">
+
+                {% set hintHTML %}
+
+                    <p>
+                        By partner we mean:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a person you are married to or live with as if you are married</li>
+                        <li>a civil partner or a person you live with as if you are civil partners</li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'partner--bool',
+                    name: 'partner--bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you lived with a partner at any time since 14 July 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--xl'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~partner-still-live-with'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~index'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

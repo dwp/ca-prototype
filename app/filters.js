@@ -11,7 +11,7 @@ module.exports = function (env) {
 		currentSelection = currentSelection ? currentSelection : ''
 		if (Array.isArray(addressOptionArray)) {
 			const processedAddressOptionArray = addressOptionArray.map(
-				addressOption => {
+				(addressOption) => {
 					return {
 						text: addressOption.text,
 						value: addressOption.value,
@@ -34,17 +34,17 @@ module.exports = function (env) {
 		return false
 	}
 
-	filters.debug = obj => {
+	filters.debug = (obj) => {
 		return JSON.stringify(obj)
 	}
 
-	filters.lowerCase = str => (str ? str.toLowerCase() : '')
+	filters.lowerCase = (str) => (str ? str.toLowerCase() : '')
 
-	filters.upperCase = str => (str ? str.toUpperCase() : '')
+	filters.upperCase = (str) => (str ? str.toUpperCase() : '')
 
-	filters.titleCase = str => {
+	filters.titleCase = (str) => {
 		if (str) {
-			return str.replace(/\w\S*/g, txt => {
+			return str.replace(/\w\S*/g, (txt) => {
 				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
 			})
 		} else {
@@ -52,12 +52,19 @@ module.exports = function (env) {
 		}
 	}
 
-	filters.sentenceCase = str => {
+	filters.sentenceCase = (str) => {
 		if (str) {
 			return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase()
 		} else {
 			return ''
 		}
+	}
+
+	filters.default = (dataItem, fallbackString) => {
+		if (!dataItem || dataItem.trim() == '') {
+			return fallbackString
+		}
+		return dataItem
 	}
 
 	/* ------------------------------------------------------------------
