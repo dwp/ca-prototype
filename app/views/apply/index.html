@@ -49,6 +49,15 @@
     <div class="govuk-grid-column-one-half">
 
       {{ prototypeVersionCard({
+        ticket: 'ACA-408',
+        description: 'Accessibility statement',
+        statusTag: {
+            text: 'Draft', 
+            classes: 'govuk-tag--grey'
+        }
+      }) }}
+
+      {{ prototypeVersionCard({
         ticket: 'ACA-380',
         description: 'Changes to pay details page to address accessibility issues with sort code fields.',
         statusTag: {
