@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Does anyone else claim a benefit for caring for the person you care for? 
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios({
+                    idPrefix: 'dp--other-carer',
+                    name: 'dp--other-carer',
+                    fieldset: {
+                        legend: {
+                            text: 'Does anyone else claim a benefit for caring for ' + data['dp--name'] | default('the person you care for') + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This includes Carer’s Allowance or the carer element of Universal Credit'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~other-carers-non-elig'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
