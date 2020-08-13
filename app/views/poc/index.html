@@ -49,6 +49,15 @@
     <div class="govuk-grid-column-one-half">
 
       {{ prototypeVersionCard({
+        ticket: 'E2E',
+        description: 'End-to-end journey for POC.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        }
+      }) }}
+
+      {{ prototypeVersionCard({
         ticket: 'ACA-468',
         description: 'Bank details flat data capture.',
         statusTag: {

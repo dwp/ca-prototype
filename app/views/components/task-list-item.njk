@@ -1,0 +1,27 @@
+
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+{% macro taskListItem(props) %}
+
+{% set isActive = props.isActive == 'complete' or props.isActive == 'true' %}
+
+<li class="app-task-list__item">
+    <span class="app-task-list__task-name">
+        {% if isActive %} 
+        <a href="{{ props.url }}">
+            {{ props.name }}
+        </a>
+        {% else %}
+            {{ props.name }}
+        {% endif %}
+    </span>
+    
+    {% if props.tag %}
+        {{ govukTag({
+            classes: 'app-task-list__tag govuk-tag--' + props.tag.color,
+            text: props.tag.text
+        }) }}
+    {% endif %}
+</li>
+
+{% endmacro %}

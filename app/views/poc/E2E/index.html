@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    POC end-to-end journey
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">POC end-to-end journey</h1>
+
+                <ol class="app-task-list">
+                    <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">1. </span> Pre-ID&V eligibility
+                    </h2>
+                    <ul class="app-task-list__items">
+                        {{ taskListItem({
+                            name: 'Qualifying benefit',
+                            url: 'eligibility/qb',
+                            isActive: 'true',
+                            tag: {
+                                text: 'Draft',
+                                color: 'grey'
+                            }
+                        })}}
+                        {{ taskListItem({
+                            name: 'Qualifying benefit',
+                            url: 'eligibility/qb',
+                            isActive: 'true',
+                            tag: {
+                                text: 'Draft',
+                                color: 'grey'
+                            }
+                        })}}
+                    </ul>
+                    </li>
+                </ol>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
