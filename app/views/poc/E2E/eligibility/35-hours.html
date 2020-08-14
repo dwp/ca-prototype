@@ -48,11 +48,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes',
+                            checked: true if data['elig--35-hours'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~35-hours-non-elig'
+                            value: 'No~35-hours-non-elig',
+                            checked: true if data['elig--35-hours'] == 'No'
                         }
                     ]
                 }) }}

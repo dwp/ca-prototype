@@ -18,11 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="../index">
 
                 {{ govukRadios({
-                    idPrefix: 'dp--other-carer',
-                    name: 'dp--other-carer',
+                    idPrefix: 'dp--other-carers',
+                    name: 'dp--other-carers',
                     fieldset: {
                         legend: {
                             text: 'Does anyone else claim a benefit for caring for ' + data['dp--name'] | default('the person you care for') + '?',
@@ -36,11 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~other-carers-non-elig'
+                            value: 'Yes~other-carers-non-elig',
+                            checked: true if data['dp--other-carers'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No',
+                            checked: true if data['dp--other-carers'] == 'No'
                         }
                     ]
                 }) }}

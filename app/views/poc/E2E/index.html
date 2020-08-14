@@ -24,29 +24,106 @@
 
                 <ol class="app-task-list">
                     <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">1. </span> Pre-ID&V eligibility
-                    </h2>
-                    <ul class="app-task-list__items">
-                        {{ taskListItem({
-                            name: 'Qualifying benefit',
-                            url: 'eligibility/qb',
-                            isActive: 'true',
-                            tag: {
-                                text: 'Draft',
-                                color: 'grey'
-                            }
-                        })}}
-                        {{ taskListItem({
-                            name: 'Qualifying benefit',
-                            url: 'eligibility/qb',
-                            isActive: 'true',
-                            tag: {
-                                text: 'Draft',
-                                color: 'grey'
-                            }
-                        })}}
-                    </ul>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">1. </span> Pre-ID&V eligibility
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Qualifying benefit',
+                                url: 'eligibility/qb',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Caring 35 hours',
+                                url: 'eligibility/35-hours',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Over 16',
+                                url: 'eligibility/age',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'UK resident',
+                                url: 'eligibility/resident',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2. </span> Dependant person
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Name',
+                                url: 'dp/name',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'National Insurance number',
+                                url: 'dp/ni',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Date of birth',
+                                url: 'dp/dob',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Same address as applicant',
+                                url: 'dp/same-address',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2. </span> Claim date
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'QB award date',
+                                url: 'claim-date/qb-date',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
                     </li>
                 </ol>
 

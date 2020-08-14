@@ -21,8 +21,8 @@
             <form action="resident">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--35-hours',
-                    name: 'elig--35-hours',
+                    idPrefix: 'elig--age',
+                    name: 'elig--age',
                     fieldset: {
                         legend: {
                             text: 'Are you aged 16 or over?',
@@ -33,11 +33,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes',
+                            checked: true if data['elig--age'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~age-non-elig'
+                            value: 'No~age-non-elig',
+                            checked: true if data['elig--age'] == 'No'
                         }
                     ]
                 }) }}

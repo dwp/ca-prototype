@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Does the person you care for live at the same address as you?
+    Your start date for Carer’s Allowance 
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,28 +18,35 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-carers">
+            <form action="../index">
+
+                <h1 class="govuk-heading-l">Your start date for Carer’s Allowance</h1>
+
+                {% set careStartDate = data['claim-date--care-start-day'] |isWithinThreeMonths(
+                    data['claim-date--care-start-month'],
+                    data['claim-date--qb-date-year']
+                ) %}
+
+                <p>Based on what you have told us your start date for Carer’s Allowance is 23 August 2020.</p>
 
                 {{ govukRadios({
-                    idPrefix: 'dp--same-address',
-                    name: 'dp--same-address',
+                    idPrefix: 'claim-date--use-auto',
+                    name: 'claim-date--use-auto',
                     fieldset: {
                         legend: {
-                            text: 'Does ' + data['dp--name'] + ' live at the same address as you?',
+                            text: 'Do you want to use 23 August 2020 as the start date?',
                             isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
+                            classes: 'govuk-fieldset__legend--xl'
                         }
                     },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['dp--same-address'] == 'Yes'
+                            value: 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~postcode',
-                            checked: true if data['dp--same-address'] == 'No'
+                            value: 'No~claim-date-manual'
                         }
                     ]
                 }) }}

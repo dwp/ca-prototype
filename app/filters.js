@@ -1,3 +1,7 @@
+const isValidDate = (d) => {
+	return d instanceof Date && !isNaN(d)
+}
+
 module.exports = function (env) {
 	/**
 	 * Instantiate object used to store the methods registered as a
@@ -6,6 +10,26 @@ module.exports = function (env) {
 	 * @type {Object}
 	 */
 	var filters = {}
+
+	const numberToMonthString = (input) => {
+		const months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December',
+		]
+		return months[Number(input)]
+	}
+
+	filters.month = (number) => numberToMonthString(number - 1)
 
 	filters.addressOptions = (addressOptionArray, currentSelection) => {
 		currentSelection = currentSelection ? currentSelection : ''
@@ -61,10 +85,40 @@ module.exports = function (env) {
 	}
 
 	filters.default = (dataItem, fallbackString) => {
-		if (!dataItem || dataItem.trim() == '') {
+		if (!dataItem || dataItem.trim() == '' || dataItem.trim() == 'undefined') {
 			return fallbackString
 		}
 		return dataItem
+	}
+
+	filters.dateAsNumeric = (dayInput, monthInput, yearInput) => {
+		let queryDate = Date.parse(
+			`${dayInput} ${filters.month(monthInput)} ${yearInput} 12:00:00 GMT`
+		)
+		queryDate = new Date(queryDate)
+		if (isValidDate(queryDate)) {
+			return queryDate.getTime()
+		} else {
+			return false
+		}
+	}
+
+	filters.isWithinThreeMonths = (nowInput, dayInput, monthInput, yearInput) => {
+		let nowDate = new Date(nowInput)
+		let threeMonthsAgo = nowDate.setMonth(nowDate.getMonth() - 3)
+		let queryDate = Date.parse(
+			`${dayInput} ${filters.month(monthInput)} ${yearInput} 12:00:00 GMT`
+		)
+		queryDate = new Date(queryDate)
+		if (isValidDate(nowDate) && isValidDate(queryDate)) {
+			return queryDate > threeMonthsAgo
+		} else {
+			return false
+		}
+	}
+
+	filters.redirect = (location) => {
+		return `<script>window.location.href = '${location}';</script>`
 	}
 
 	/* ------------------------------------------------------------------

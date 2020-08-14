@@ -18,11 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="index">
+            <form action="../index">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--35-hours',
-                    name: 'elig--35-hours',
+                    idPrefix: 'elig--resident',
+                    name: 'elig--resident',
                     fieldset: {
                         legend: {
                             text: 'Do you live in the United Kingdom?',
@@ -33,11 +33,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes',
+                            checked: true if data['elig--resident'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~resident-non-elig'
+                            value: 'No~resident-non-elig',
+                            checked: true if data['elig--resident'] == 'No'
                         }
                     ]
                 }) }}
