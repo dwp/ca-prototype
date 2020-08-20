@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Since [claim date] have there been any times you have not provided care for [DP name] form 35 hours a week?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
+                    fieldset: {
+                        legend: {
+                            text: 'Since [claim date] have there been any times you have not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

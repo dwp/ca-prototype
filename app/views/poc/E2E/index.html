@@ -64,11 +64,70 @@
                                     color: 'grey'
                                 }
                             })}}
+                            {{ taskListItem({
+                                name: 'Employment',
+                                url: 'eligibility/employment',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'State Pension',
+                                url: 'eligibility/state-pension',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
                         </ul>
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">2. </span> Dependant person
+                            <span class="app-task-list__section-number">2. </span> ID&V
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Login',
+                                url: 'idv/login',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3. </span> Employment
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Confirm employment information',
+                                url: 'employment/confirm-employment',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Earnings limit',
+                                url: 'employment/earnings-limit',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">4. </span> Dependant person
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -111,12 +170,28 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">2. </span> Claim date
+                            <span class="app-task-list__section-number">5. </span> Claim date
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
                                 name: 'QB award date',
                                 url: 'claim-date/qb-date',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">6. </span> Breaks in care
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Any breaks?',
+                                url: 'breaks/any',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
