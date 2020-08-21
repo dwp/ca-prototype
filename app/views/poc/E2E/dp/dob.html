@@ -22,7 +22,7 @@
 
                 {{ govukDateInput({
                     id: 'partner--dob',
-                    name: 'partner--dob',
+                    namePrefix: 'partner--dob',
                     hint: {
                         text: 'For example, 5 8 1980'
                     },
@@ -32,7 +32,24 @@
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
-                    }
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['partner--dob-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['partner--dob-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['partner--dob-year']
+                        }
+                    ]
                 }) }}
 
                 {{ govukButton({

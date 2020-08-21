@@ -1,5 +1,11 @@
+const { v4: uuid } = require('uuid')
+
 const isValidDate = (d) => {
 	return d instanceof Date && !isNaN(d)
+}
+
+const isNotThere = (input) => {
+	return !input || input.trim() == '' || input.trim() == 'undefined'
 }
 
 module.exports = function (env) {
@@ -85,7 +91,7 @@ module.exports = function (env) {
 	}
 
 	filters.default = (dataItem, fallbackString) => {
-		if (!dataItem || dataItem.trim() == '' || dataItem.trim() == 'undefined') {
+		if (isNotThere(dataItem)) {
 			return fallbackString
 		}
 		return dataItem
@@ -119,6 +125,13 @@ module.exports = function (env) {
 
 	filters.redirect = (location) => {
 		return `<script>window.location.href = '${location}';</script>`
+	}
+
+	filters.uuid = (selectedUUID) => {
+		if (isNotThere(selectedUUID)) {
+			return uuid()
+		}
+		return selectedUUID
 	}
 
 	/* ------------------------------------------------------------------

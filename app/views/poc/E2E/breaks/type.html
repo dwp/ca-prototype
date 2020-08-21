@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
+{% block pageTitle %}
+    What was the reason you were not providing care during this time?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="details">
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--reason',
+                    name: breakLoc + '[reason]',
+                    fieldset: {
+                        legend: {
+                            text: 'What was the reason you were not providing care during this time?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Tell us about the times you were not providing care one at a time. You can tell us about other times you were not providing care in a later question.'
+                    },
+                    items: [
+                        {
+                            text: 'I was in hospital',
+                            value: 'applicant-hospital',
+                            checked: true if break.reason == 'applicant-hospital'
+                        },
+                        {
+                            text: data['dp--name'] | default('The person I care for') + ' was in hospital',
+                            value: 'dp-hospital',
+                            checked: true if break.reason == 'dp-hospital'
+                        },
+                        {
+                            text: 'I was in respite or a care home',
+                            value: 'applicant-respite',
+                            checked: true if break.reason == 'applicant-respite'
+                        },
+                        {
+                            text: data['dp--name'] | default('The person I care for') + ' was in respite or a care home',
+                            value: 'dp-respite',
+                            checked: true if break.reason == 'dp-respite'
+                        },
+                        {
+                            text: 'I was on holiday',
+                            value: 'applicant-holiday',
+                            checked: true if break.reason == 'applicant-holiday'
+                        },
+                        {
+                            text: data['dp--name'] | default('The person I care for') + ' was on holiday',
+                            value: 'dp-holiday',
+                            checked: true if break.reason == 'dp-holiday'
+                        },
+                        {
+                            text: 'Another reason',
+                            value: 'other',
+                            checked: true if break.reason == 'other'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

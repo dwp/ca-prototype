@@ -1,0 +1,146 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Times you have not provided care for 35 hours a week
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Times you have not provided care for 35 hours a week</h1>
+
+                {% set breakCount = 0 %}
+
+                {% for id, break in data.breaksStore %}
+
+                    {% if break != '' %}
+
+                        {% set breakCount = breakCount + 1 %}
+
+                        {% if break.reason == 'applicant-hospital' %}
+                            {% set reasonText = 'I was in hospital' %}
+                        {% elseif break.reason == 'dp-hospital' %}
+                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in hospital' %}
+                        {% elseif break.reason == 'applicant-respite' %}
+                            {% set reasonText = 'I was in respite or a care home' %}
+                        {% elseif break.reason == 'dp-respite' %}
+                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in respite or a care home' %}
+                        {% elseif break.reason == 'applicant-holiday' %}
+                            {% set reasonText = 'I was on holiday' %}
+                        {% elseif break.reason == 'dp-holiday' %}
+                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was on holiday' %}
+                        {% else %}
+                            {% set reasonText = 'Other' %}
+                        {% endif %}
+
+                        {{ govukSummaryList ({
+                            classes: 'govuk-!-margin-bottom-8',
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Reason'
+                                    },
+                                    value: {
+                                        text: reasonText
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Start date'
+                                    },
+                                    value: {
+                                        text: break['start-date-day'] + ' ' + 
+                                        break['start-date-month'] | month + ' ' + 
+                                        break['start-date-year']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'End date'
+                                    },
+                                    value: {
+                                        text: (break['end-date-day'] + ' ' + 
+                                        break['end-date-month'] | month + ' ' + 
+                                        break['end-date-year']) if break['did-end'] == 'Yes' else 'Ongoing'
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Received care from medical professional'
+                                    },
+                                    value: {
+                                        text: break['medical-care']
+                                    }
+                                } if break.reason == 'applicant-respite' or break.reason == 'dp-respite',
+                                {
+                                    key: {
+                                        text: 'Actions'
+                                    },
+                                    value: {
+                                        html: '<a href="type?selectedBreak=' + id + '">Edit</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    }
+                                }
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if breakCount == 0 %}
+
+                    {{ 'any' | redirect | safe }}
+
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--add',
+                    name: 'breaks--add',
+                    fieldset: {
+                        legend: {
+                            text: 'Were there any more times you have not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week since 23 June 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~type?selectedBreak=',
+                            checked: true if data['breaks--any'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../index',
+                            checked: true if data['breaks--any'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

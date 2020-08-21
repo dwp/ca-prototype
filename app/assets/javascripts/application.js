@@ -7,6 +7,11 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
 	window.GOVUKFrontend.initAll()
+	$('label').each(function () {
+		var inputLabel = $(this).text()
+		var outputLabel = inputLabel.replace(/[\]}[{]/g, '')
+		$(this).text(outputLabel)
+	})
 })
 
 // Reload page when user goes back so data can be refreshed

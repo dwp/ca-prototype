@@ -35,3 +35,10 @@ $govuk-assets-path: '/govuk/assets/';
 .app-normal-label {
 	font-weight: normal !important;
 }
+
+.app-destructive-label {
+	color: $govuk-error-colour !important;
+	&:visited {
+		color: $govuk-error-colour !important;
+	}
+}
