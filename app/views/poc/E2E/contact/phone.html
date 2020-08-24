@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is your telephone number?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="email">
+
+                {% set phoneHTML %}
+
+                    {{ govukInput ({
+                        id: 'contact--telephone',
+                        name: 'contact--telephone',
+                        value: data['contact--telephone'],
+                        classes: 'govuk-input--width-20',
+                        type: 'tel',
+                        label: {
+                            text: 'Telephone number',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'contact--phone-bool',
+                    name: 'contact--phone-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want us to contact you by telephone about your claim?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~textphone',
+                            conditional: {
+                                html: phoneHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

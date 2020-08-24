@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    When do you want Carer's Allowance to start?
+    When do you want Carer’s Allowance to start?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,11 +18,63 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="../index">
 
-                <h1 class="govuk-heading-xl">When do you want Carer's Allowance to start?</h1>
+                {% set hintHTML %}
 
-                
+                    <p>
+                        You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week. The person you care for must also get their disability benefit before your claim can start.
+                    </p>
+
+                    {% set detailsContentHTML %}
+                        <p>If the person you care for was awarded their disability benefit in the last 3 months, and the start date was more than 3 months in the past, you can claim from the date their benefit started.</p>
+                    {% endset %}    
+                    
+                    {{ govukDetails({
+                        summaryText: 'Claims that can be backdated for more than 3 months',
+                        html: detailsContentHTML
+                    }) }}
+
+                    <p>
+                        Your claim date cannot be more than 3 months in the future.
+                    </p>
+
+                {% endset %}
+
+                {{ govukDateInput({
+                    id: 'claim-date--claim-date',
+                    namePrefix: 'claim-date--claim-date',
+                    hint: {
+                        text: 'For example, 18 8 2020'
+                    },
+                    fieldset: {
+                        legend: {
+                            text: 'When do you want Carer’s Allowance to start?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--claim-date-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--claim-date-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['claim-date--claim-date-year']
+                        }
+                    ]
+                }) }}
 
                 {{ govukButton({
                     html: 'Continue'

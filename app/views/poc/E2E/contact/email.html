@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you want a confirmation email when you send your application?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="index">
+
+                {% set emailAddressHTML %}
+
+                    {{ govukInput ({
+                        id: 'applicant-email-address',
+                        name: 'applicant-email-address',
+                        value: data['applicant-email-address'],
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Email address'
+                        },
+                        type: 'email',
+                        hint: {
+                            text: 'We will only use this to send you a confirmation email'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'applicant-confirmation-email',
+                    name: 'applicant-confirmation-email',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want an email to confirm we have received your application?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'If we need more information about your application, we will contact you by phone or post.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: emailAddressHTML
+                            },
+                            checked: true if data['applicant-confirmation-email'] | includes('yes')
+                        },
+                        {
+                            text: 'No',
+                            value: 'no',
+                            checked: true if data['applicant-confirmation-email'] | includes('No')
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
