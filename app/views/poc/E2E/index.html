@@ -80,6 +80,15 @@
                                     color: 'grey'
                                 }
                             })}}
+                            {{ taskListItem({
+                                name: 'Check your information',
+                                url: 'idv/check',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
                         </ul>
                     </li>
                     <li>
@@ -97,17 +106,8 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'UK resident',
-                                url: 'eligibility/resident',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
                                 name: 'Earnings limit',
-                                url: 'employment/earnings-limit',
+                                url: 'eligibility/earnings-limit',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
