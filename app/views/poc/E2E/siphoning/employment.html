@@ -21,11 +21,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="state-pension">
+            <form action="education">
 
                 {{ govukRadios ({
-                    idPrefix: 'elig--employment',
-                    name: 'elig--employment',
+                    idPrefix: 'siphoning--employment',
+                    name: 'siphoning--employment',
                     fieldset: {
                         legend: {
                             text: 'Do you get any income from employment or self-employment?',
@@ -37,12 +37,12 @@
                         {
                             text: 'Yes',
                             value: 'Yes~legacy.html',
-                            checked: true if data['elig--employment'] == 'Yes'
+                            checked: true if data['siphoning--employment'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['elig--employment'] == 'No'
+                            checked: true if data['siphoning--employment'] == 'No'
                         }
                     ]
                 }) }}

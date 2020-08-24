@@ -1,18 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get State Pension?
+    Are you aged 16 or over?
 {% endblock %}
 
 {% block beforeContent %}
-
     {{ super() }}
-
-    {{ govukBackLink ({
+    {{ govukBackLink({
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -23,12 +20,12 @@
 
             <form action="../index">
 
-                {{ govukRadios ({
-                    idPrefix: 'elig--state-pension',
-                    name: 'elig--state-pension',
+                {{ govukRadios({
+                    idPrefix: 'siphoning--resident',
+                    name: 'siphoning--resident',
                     fieldset: {
                         legend: {
-                            text: 'Do you get State Pension?',
+                            text: 'Do you live in the United Kingdom?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,18 +33,18 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html',
-                            checked: true if data['elig--state-pension'] == 'Yes'
+                            value: 'Yes',
+                            checked: true if data['siphoning--resident'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['elig--state-pension'] == 'No'
+                            value: 'No~siphoning/legacy.html',
+                            checked: true if data['siphoning--resident'] == 'No'
                         }
                     ]
                 }) }}
 
-                {{ govukButton ({
+                {{ govukButton({
                     html: 'Continue'
                 }) }}
 

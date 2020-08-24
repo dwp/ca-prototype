@@ -25,39 +25,12 @@
                 <ol class="app-task-list">
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">1. </span> Pre-ID&V eligibility
+                            <span class="app-task-list__section-number">1. </span> Siphoning
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
-                                name: 'Qualifying benefit',
-                                url: 'eligibility/qb',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Caring 35 hours',
-                                url: 'eligibility/35-hours',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Over 16',
-                                url: 'eligibility/age',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'UK resident',
-                                url: 'eligibility/resident',
+                                name: 'State pension',
+                                url: 'siphoning/state-pension',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
@@ -66,7 +39,7 @@
                             })}}
                             {{ taskListItem({
                                 name: 'Employment',
-                                url: 'eligibility/employment',
+                                url: 'siphoning/employment',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
@@ -74,8 +47,17 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'State Pension',
-                                url: 'eligibility/state-pension',
+                                name: 'Education',
+                                url: 'siphoning/education',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Live in UK',
+                                url: 'siphoning/resident',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
@@ -102,12 +84,21 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">3. </span> Employment
+                            <span class="app-task-list__section-number">3. </span> Eligibility for simple disallow
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
-                                name: 'Confirm employment information',
-                                url: 'employment/confirm-employment',
+                                name: 'Caring 35 hours',
+                                url: 'eligibility/35-hours',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'UK resident',
+                                url: 'eligibility/resident',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
@@ -202,31 +193,6 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">7. </span> Education
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'In university',
-                                url: 'education/university',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Full time education',
-                                url: 'education/full-time',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">8. </span> Contact details
                         </h2>
                         <ul class="app-task-list__items">
@@ -252,6 +218,13 @@
                         </ul>
                     </li>
                 </ol>
+
+                <h2 class="govuk-heading-m">Possible questions for before sign in to improve usability</h2>
+
+                <ul class="govuk-list">
+                    <li><a href="siphoning/possible/qb">DP qualifying benefit</a></li>
+                    <li><a href="siphoning/possible/age">Under 16</a></li>
+                </ul>
 
             </form>
 
