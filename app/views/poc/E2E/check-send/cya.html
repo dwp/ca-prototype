@@ -179,6 +179,40 @@
                                     }
                                 ]
                             }
+                        } if data['dp--same-address'] == 'No',
+                        {
+                            key: {
+                                text: 'Does anyone else claim a benefit for caring for them?'
+                            },
+                            value: {
+                                text: data['dp--other-carers'] | default('No')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/other-carers',
+                                        visuallyHiddenText: 'whether someone else claims benefits for caring for the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Claim date'
+                            },
+                            value: {
+                                text: '23 June 2020'
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../claim-date/claim-date-manual',
+                                        visuallyHiddenText: 'whether someone else claims benefits for caring for the person you care for'
+                                    }
+                                ]
+                            }
                         }
                     }
                 }) }}
