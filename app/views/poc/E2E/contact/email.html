@@ -23,9 +23,9 @@
                 {% set emailAddressHTML %}
 
                     {{ govukInput ({
-                        id: 'applicant-email-address',
-                        name: 'applicant-email-address',
-                        value: data['applicant-email-address'],
+                        id: 'contact--email',
+                        name: 'contact--email',
+                        value: data['contact--email'],
                         classes: 'govuk-input--width-20',
                         label: {
                             text: 'Email address'
@@ -40,8 +40,8 @@
 
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
-                    idPrefix: 'applicant-confirmation-email',
-                    name: 'applicant-confirmation-email',
+                    idPrefix: 'contact--email-bool',
+                    name: 'contact--email-bool',
                     fieldset: {
                         legend: {
                             text: 'Do you want an email to confirm we have received your application?',
@@ -59,12 +59,12 @@
                             conditional: {
                                 html: emailAddressHTML
                             },
-                            checked: true if data['applicant-confirmation-email'] | includes('yes')
+                            checked: true if data['contact--email-bool'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'no',
-                            checked: true if data['applicant-confirmation-email'] | includes('No')
+                            checked: true if data['contact--email-bool'] == 'No'
                         }
                     ]
                 }) }}

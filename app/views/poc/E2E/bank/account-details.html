@@ -31,18 +31,7 @@
                     name: 'pay-details--account-holder-name',
                     value: data['pay-details--account-holder-name'] if data['pay-details--account-holder-name'] else '',
                     label: {
-                        text: 'Account holder name',
-                        classes: 'app-bold-label'
-                    }
-                }) }}
-
-                {{ govukInput ({
-                    id: 'pay-details--name-of-bank',
-                    name: 'pay-details--name-of-bank',
-                    value: data['pay-details--name-of-bank'] if data['pay-details--name-of-bank'] else '',
-                    label: {
-                        text: 'Name of bank or building society',
-                        classes: 'app-bold-label'
+                        text: 'Account holder name'
                     }
                 }) }}
 
@@ -52,8 +41,7 @@
                     value: data['pay-details--sort-code'] if data['pay-details--sort-code'] else '',
                     classes: 'govuk-input--width-5',
                     label: {
-                        text: 'Sort code',
-                        classes: 'app-bold-label'
+                        text: 'Sort code'
                     },
                     hint: {
                         text: 'Must be 6 digits long'
@@ -70,11 +58,27 @@
                     value: data['pay-details--account-number'] if data['pay-details--account-number'] else '',
                     classes: 'govuk-input--width-10',
                     label: {
-                        text: 'Account number',
-                        classes: 'app-bold-label'
+                        text: 'Account number'
                     },
                     hint: {
                         text: 'Must be between 6 and 8 digits long' 
+                    },
+                    pattern: "[0-9]*",
+                    attributes: {
+                        spellcheck: "false"
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'pay-details--roll-number',
+                    name: 'pay-details--roll-number',
+                    value: data['pay-details--roll-number'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Building society roll number (if you have one)'
+                    },
+                    hint: {
+                        text: 'You can find it on your card, statement or passbook' 
                     },
                     pattern: "[0-9]*",
                     attributes: {
