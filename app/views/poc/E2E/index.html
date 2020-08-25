@@ -81,6 +81,15 @@
                                 }
                             })}}
                             {{ taskListItem({
+                                name: 'Confirm siphoning',
+                                url: 'idv/confirm-siphoning',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
                                 name: 'Check your information',
                                 url: 'idv/check',
                                 isActive: 'true',
@@ -157,6 +166,15 @@
                                     color: 'grey'
                                 }
                             })}}
+                            {{ taskListItem({
+                                name: 'Other carers',
+                                url: 'dp/other-carers',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
                         </ul>
                     </li>
                     <li>
@@ -173,6 +191,42 @@
                                     color: 'grey'
                                 }
                             })}}
+                            {{ taskListItem({
+                                name: 'QB backdating',
+                                url: 'claim-date/qb-backdate',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Date started caring',
+                                url: 'claim-date/care-start-date',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Automatic claim date',
+                                url: 'claim-date/claim-date-auto',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Manual (legacy) claim date',
+                                url: 'claim-date/claim-date-manual',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
                         </ul>
                     </li>
                     <li>
@@ -183,6 +237,24 @@
                             {{ taskListItem({
                                 name: 'Any breaks?',
                                 url: 'breaks/any',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Break type',
+                                url: 'breaks/type',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Break details',
+                                url: 'breaks/details',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
@@ -215,6 +287,65 @@
                                 }
                             })}}
                             
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">9. </span> Bank details
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Pay frequency',
+                                url: 'bank/pay-frequency',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Account type',
+                                url: 'bank/account-type',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">10. </span> Check and send
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Check your answers',
+                                url: 'check-send/cya',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Declaration',
+                                url: 'check-send/declaration',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Confirmation',
+                                url: 'check-send/confirmation',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
                         </ul>
                     </li>
                 </ol>

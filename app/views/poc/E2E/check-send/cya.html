@@ -1,0 +1,196 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="declaration">
+
+                <h1 class="govuk-heading-l">Check your answers</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Your address'
+                            },
+                            value: {
+                                text: data.dummyAddresses[4].value
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../idv/check',
+                                        visuallyHiddenText: 'your address'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?'
+                            },
+                            value: {
+                                text: data['elig--35-hours'] | default('Yes')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/35-hours',
+                                        visuallyHiddenText: 'whether you spend 35 hours or more each week providing care for the person receiving this benefit'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do you earn more than £128 a week on average?'
+                            },
+                            value: {
+                                text: data['employment--earnings-limit'] | default('Yes')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/earnings-limit',
+                                        visuallyHiddenText: 'whether you earn more than £128 a week on average'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Name of the person you care for'
+                            },
+                            value: {
+                                text: data['dp--name'] | default(data['dummy-dp-name'])
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/name',
+                                        visuallyHiddenText: 'the name of the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do they have a National Insurance number?'
+                            },
+                            value: {
+                                text: data['dp--ni-bool'] | default('No')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/ni',
+                                        visuallyHiddenText: 'the person you care for has a National Insurance number'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Their National Insurance number'
+                            },
+                            value: {
+                                text: data['dp--ni'] | default('KM 83 44 23 C')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/ni',
+                                        visuallyHiddenText: 'the name of the person you care for'
+                                    }
+                                ]
+                            }
+                        } if data['dp--ni-bool'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Their date of birth'
+                            },
+                            value: {
+                                text: data['dp--dob-day'] | default('14') + ' ' + data['dp--dob-month'] | default('4') | month + ' ' + data['dp--dob-year'] | default('1971')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/dob',
+                                        visuallyHiddenText: 'the date of birth of the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do they live at the same address?'
+                            },
+                            value: {
+                                text: data['dp--same-address'] | default('Yes')
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/same-address',
+                                        visuallyHiddenText: 'whether the person you care for lives at the same address'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Their address'
+                            },
+                            value: {
+                                text: data.dummyAddresses[8].value
+                            },
+                            action: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/postcode',
+                                        visuallyHiddenText: 'the address of the person you care for'
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

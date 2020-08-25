@@ -21,8 +21,8 @@
             <form action="same-address">
 
                 {{ govukDateInput({
-                    id: 'partner--dob',
-                    namePrefix: 'partner--dob',
+                    id: 'dp--dob',
+                    namePrefix: 'dp--dob',
                     hint: {
                         text: 'For example, 5 8 1980'
                     },
@@ -37,17 +37,17 @@
                         {
                             name: 'day',
                             classes: 'govuk-input--width-2',
-                            value: data['partner--dob-day']
+                            value: data['dp--dob-day']
                         },
                         {
                             name: 'month',
                             classes: 'govuk-input--width-2',
-                            value: data['partner--dob-month']
+                            value: data['dp--dob-month']
                         },
                         {
                             name: 'year',
                             classes: 'govuk-input--width-4',
-                            value: data['partner--dob-year']
+                            value: data['dp--dob-year']
                         }
                     ]
                 }) }}

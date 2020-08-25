@@ -116,19 +116,19 @@
                         legend: {
                             text: 'Were there any more times you have not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week since 23 June 2020?',
                             isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--s'
+                            classes: 'govuk-fieldset__legend--m'
                         }
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes~type?selectedBreak=',
-                            checked: true if data['breaks--any'] == 'Yes'
+                            checked: true if data['breaks--add'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~../index',
-                            checked: true if data['breaks--any'] == 'No'
+                            value: 'No~../contact/phone',
+                            checked: true if data['breaks--add'] == 'No'
                         }
                     ]
                 }) }}

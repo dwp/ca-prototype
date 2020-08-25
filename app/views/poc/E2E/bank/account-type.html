@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Where should we send your Carer’s Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios({
+                    idPrefix: 'bank--type',
+                    name: 'bank--type',
+                    fieldset: {
+                        legend: {
+                            text: 'Where should we send your Carer’s Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'It can be paid into someone else’s account.'
+                    },
+                    items: [
+                        {
+                            text: 'UK bank or building society account',
+                            value: 'bank~account-details',
+                            checked: true if data['bank--type'] == 'bank'
+                        },
+                        {
+                            text: 'Post Office card account',
+                            value: 'po-card~po-card-details',
+                            checked: true if data['bank--type'] == 'po-card'
+                        },
+                        {
+                            text: 'I don’t have access to either',
+                            value: 'none~no-account',
+                            checked: true if data['bank--type'] == 'none'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

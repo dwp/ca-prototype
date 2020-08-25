@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    You need a bank account to be paid Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../check-send/cya">
+
+                <h1 class="govuk-heading-l">You need a bank account to be paid Carer’s Allowance</h1>
+
+                <p>
+                    You won’t be paid Carer's Allowance without a UK bank, building society or Post Office card account.
+                </p>
+
+                <p>
+                    You can add these details after you apply by contacting the Carer's Allowance Unit.
+                </p>
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
