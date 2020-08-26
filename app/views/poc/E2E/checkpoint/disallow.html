@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Claim decision
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Claim decision</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Decision'
+                            },
+                            value: {
+                                text: 'You cannot get Carer’s Allowance'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Name'
+                            },
+                            value: {
+                                text: data['dummy-dp-name']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Decision date'
+                            },
+                            value: {
+                                text: '27 August 2020'
+                            }
+                        }
+                    }
+                }) }}
+
+                <p>
+                    We will send a letter confirming this decision to {{ data.dummyAddresses[4].value }}
+                </p>
+
+                <h2 class="govuk-heading-m">Why we have made this decision</h2>
+
+                <p>
+                    Based on what you have told us you cannot get Carer’s Allowance because the person you care for does not receive a benefit that qualifies.
+                </p>
+
+                <p>
+                    For you to qualify the person you care for must already get one of these benefits:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Personal Independence Payment - daily living component</li>
+                    <li>Disability Living Allowance - the middle or highest care rate</li>
+                    <li>Attendance Allowance</li>
+                    <li>Constant Attendance Allowance at or above the normal maximum rate with an Industrial Injuries Disablement Benefit</li>
+                    <li>Constant Attendance Allowance at the basic (full day) rate with a War Disablement Pension</li>
+                    <li>Armed Forces Independence Payment</li>
+                </ul>
+
+                {% set insetHTML %}
+
+                    <p>
+                        If you want to appeal you must be able to prove that the person you care for gets one of these benefits.
+                    </p>
+
+                    <p>
+                        <a href="">Find out how to make an appeal</a>
+                    </p>
+
+                {% endset %}
+
+                {{ govukInsetText ({
+                    html: insetHTML
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Sign out'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
