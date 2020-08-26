@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Declaration
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">Declaration</h1>
+
+                <p>
+                    By reporting this change you agree that:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the information in this change of circumstance is complete as far as you know</li>
+                    <li>the Disability and Carers Service will check your record and the record of the person you care for on internal systems</li>
+                    <li>the Disability and Carers Service may check your information with other government departments</li>
+                    <li>you will pay back any money you have been overpaid if you are asked to</li>
+                    <li>you will report any other changes that affect your Carer's Allowance claim as soon as possible </li>
+                </ul>
+
+                {{ govukWarningText ({
+                    text: 'You could be prosecuted if you deliberately give wrong or incomplete information or don’t report changes. Your Carer’s Allowance may also be stopped or reduced.',
+                    iconFallbackText: 'Warning',
+                    classes: 'app-normal-label'
+                }) }}
+
+                {% set thirdPartyHTML %}
+
+                    {{ govukInput ({
+                        id: 'third-party--name',
+                        name: 'third-party--name',
+                        value: data['third-party--name'] if data['third-party--name'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Your name or organisation',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                    <p class="govuk-hint">The person named as the carer in this application must agree with these terms before you send this application.</p>
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'third-party--bool',
+                    name: 'third-party--bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Did someone fill this form out for you?',
+                            isPageHeading: false,
+                            classes: 'govuk-visually-hidden'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Select this box if you filled this form in for someone else',
+                            value: 'Yes',
+                            conditional: {
+                                html: thirdPartyHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'I agree – send my change'
+                }) }}
+
+            </form>
+
+            {{ govukBackLink ({
+                text: 'Back',
+                href: 'javascript:history.back()'
+            }) }}
+
+        </div>
+
+</div>
+
+{% endblock %}
