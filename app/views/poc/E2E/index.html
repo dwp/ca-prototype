@@ -29,6 +29,15 @@
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
+                                name: 'Qualifying benefit',
+                                url: 'siphoning/qb',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
                                 name: 'State pension',
                                 url: 'siphoning/state-pension',
                                 isActive: 'true',
