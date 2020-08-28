@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What type of organisation pays you Fostering Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="fostering-frequency">
+
+                {{ govukRadios ({
+                    idPrefix: 'income--fostering-org',
+                    name: 'income--fostering-org',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of organisation pays you for fostering?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'A local authority',
+                            value: 'A local authority',
+                            checked: true if data['income--fostering-bool'] == 'A local authority'
+                        },
+                        {
+                            text: 'A private fostering agency',
+                            value: 'A private fostering agency',
+                            checked: true if data['income--fostering-bool'] == 'A private fostering agency'
+                        },
+                        {
+                            text: 'A different organisation',
+                            value: 'A different organisation',
+                            checked: true if data['income--fostering-bool'] == 'A different organisation'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

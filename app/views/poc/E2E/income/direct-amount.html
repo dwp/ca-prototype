@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% set questionText = 'How much money do you get from direct payments for caring for people each month?' if data['income--direct-frequency'] == 'It varies' else 'How much money do you get from direct payments for caring for people each time?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct">
+
+                <h1 class="govuk-heading-l">{{ questionText }}</h1>
+
+                {{ govukInput ({
+                    id: 'income--direct-amount',
+                    name: 'income--direct-amount',
+                    value: data['income--direct-amount'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Amount in pounds',
+                        classes: 'govuk-input--width-10'
+                    },
+                    hint: {
+                        text: 'If the amount varies, give an average'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

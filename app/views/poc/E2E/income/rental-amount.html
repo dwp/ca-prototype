@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% set questionText = 'How much do you get paid from someone boarding in your home each month?' if data['income--rental-frequency'] == 'It varies' else 'How much do you get paid each time from someone boarding in your home?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct">
+
+                <h1 class="govuk-heading-l">{{ questionText }}</h1>
+
+                {{ govukInput ({
+                    id: 'income--rental-amount',
+                    name: 'income--rental-amount',
+                    value: data['income--rental-amount'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Amount in pounds',
+                        classes: 'govuk-input--width-10'
+                    },
+                    hint: {
+                        text: 'If the amount varies, give an average'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

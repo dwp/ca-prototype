@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you get direct payments for caring for people?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct-frequency">
+
+                {{ govukRadios ({
+                    idPrefix: 'income--direct-bool',
+                    name: 'income--direct-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you get direct payments for caring for people?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Direct payments usually come from a local council or trust.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['income--direct-bool'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~rental',
+                            checked: true if data['income--direct-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
