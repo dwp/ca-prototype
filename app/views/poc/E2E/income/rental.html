@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get money from someone boarding in your home?
+    Did you get any money from someone boarding in your home since 23 June 2020?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="rental-frequency">
+            <form action="rental-ongoing">
 
                 {{ govukRadios ({
                     idPrefix: 'income--rental-bool',
                     name: 'income--rental-bool',
                     fieldset: {
                         legend: {
-                            text: 'Do you get money from someone boarding in your home?',
+                            text: 'Did you get any money from someone boarding in your home since 23 June 2020?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

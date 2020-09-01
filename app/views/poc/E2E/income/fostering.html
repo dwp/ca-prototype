@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get money for fostering a child?
+    Did you get any money for fostering a child since 23 June 2020?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="fostering-org">
+            <form action="fostering-ongoing">
 
                 {{ govukRadios ({
                     idPrefix: 'income--fostering-bool',
                     name: 'income--fostering-bool',
                     fieldset: {
                         legend: {
-                            text: 'Do you get money for fostering a child?',
+                            text: 'Did you get money for fostering a child since 23 June 2020?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

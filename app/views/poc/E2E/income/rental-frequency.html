@@ -23,6 +23,24 @@
 
             <form action="rental-amount">
 
+                {% set varyDetails %}
+
+                    {{ govukInput ({
+                        id: 'income--rental-frequency-details',
+                        name: 'income--rental-frequency-details',
+                        value: data['income--rental-frequency-details'],
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Payment frequency',
+                            classes: 'govuk-input--width-20'
+                        },
+                        hint: {
+                            text: 'For example, every three weeks'
+                        }
+                    }) }}
+
+                {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'income--rental-frequency',
                     name: 'income--rental-frequency',
@@ -57,7 +75,10 @@
                         {
                             text: 'It varies',
                             value: 'It varies',
-                            checked: true if data['income--rental-frequency'] == 'It varies'
+                            checked: true if data['income--rental-frequency'] == 'It varies',
+                            conditional: {
+                                html: varyDetails
+                            }
                         }
                     ]
                 }) }}

@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your income outside of employment
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">Your income outside of employment</h1>
+
+                {% if data['income--fostering-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Income type'
+                                },
+                                value: {
+                                    text: 'Money for fostering a child'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: 'Ongoing'
+                                }
+                            },
+                            ,
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: 'Ongoing'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

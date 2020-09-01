@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get direct payments for caring for people?
+    Have you had any direct payments for caring for people since 23 June 2020?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="direct-frequency">
+            <form action="direct-ongoing">
 
                 {{ govukRadios ({
                     idPrefix: 'income--direct-bool',
                     name: 'income--direct-bool',
                     fieldset: {
                         legend: {
-                            text: 'Do you get direct payments for caring for people?',
+                            text: 'Have you had any direct payments for caring for people since 23 June 2020?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
