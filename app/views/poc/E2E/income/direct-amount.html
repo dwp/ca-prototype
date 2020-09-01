@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much money do you get from direct payments for caring for people each month?' if data['income--direct-frequency'] == 'It varies' else 'How much money do you get from direct payments for caring for people each time?' %}
+{% set questionText = 'How much money do you get from direct payments for caring for people each month?' if data['income--direct-frequency'] == 'Other' else 'How much money do you get from direct payments for caring for people each time?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -23,7 +23,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other">
+            <form action="list">
 
                 <h1 class="govuk-heading-l">{{ questionText }}</h1>
 

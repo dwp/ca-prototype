@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    How often do you get money for fostering a child?
+    How often do you get this income?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="rental-amount">
+            <form action="other-amount">
 
                 {% set varyDetails %}
 
                     {{ govukInput ({
-                        id: 'income--rental-frequency-details',
-                        name: 'income--rental-frequency-details',
-                        value: data['income--rental-frequency-details'],
+                        id: 'income--other-frequency-details',
+                        name: 'income--other-frequency-details',
+                        value: data['income--other-frequency-details'],
                         classes: 'govuk-input--width-20',
                         label: {
                             text: 'Payment frequency',
@@ -42,11 +42,11 @@
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'income--rental-frequency',
-                    name: 'income--rental-frequency',
+                    idPrefix: 'income--other-frequency',
+                    name: 'income--other-frequency',
                     fieldset: {
                         legend: {
-                            text: 'How often do you get money from someone boarding in your home?',
+                            text: 'How often do you get this income?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -55,27 +55,27 @@
                         {
                             text: 'Once a week',
                             value: 'Once a week',
-                            checked: true if data['income--rental-frequency'] == 'Once a week'
+                            checked: true if data['income--other-frequency'] == 'Once a week'
                         },
                         {
                             text: 'Every 2 weeks',
                             value: 'Every 2 weeks',
-                            checked: true if data['income--rental-frequency'] == 'Every 2 weeks'
+                            checked: true if data['income--other-frequency'] == 'Every 2 weeks'
                         },
                         {
                             text: 'Every 4 weeks',
                             value: 'Every 4 weeks',
-                            checked: true if data['income--rental-frequency'] == 'Every 4 weeks'
+                            checked: true if data['income--other-frequency'] == 'Every 4 weeks'
                         },
                         {
                             text: 'Every month',
                             value: 'Every month',
-                            checked: true if data['income--rental-frequency'] == 'Every month'
+                            checked: true if data['income--other-frequency'] == 'Every month'
                         },
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--rental-frequency'] == 'Other',
+                            checked: true if data['income--other-frequency'] == 'Other',
                             conditional: {
                                 html: varyDetails
                             }

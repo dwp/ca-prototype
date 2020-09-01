@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get direct payments for caring for people?
+    What type of income did you receive?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,31 +21,73 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-amount">
+            <form action="other-frequency">
+
+                {% set hintHTML %}
+
+                    <p>You do not need to tell us about:</p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>other benefits you get from DWP</li>
+                        <li>money received from pensions</li>
+                        <li>contributions towards your living costs from someone you live with (unless they are a tenant or boarder)</li>
+                        <li>a loan or advance payment from my employer</li>
+                        <li>other loans and borrowing</li>
+                    </ul>
+
+                {% endset %}
+
+                {% set otherHTML %}
+
+                    {{ govukInput ({
+                        id: 'income--other-type-details',
+                        name: 'income--other-type-details',
+                        value: data['income--other-type-details'],
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Income type',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'income--other-bool',
-                    name: 'income--other-bool',
+                    idPrefix: 'income--other-type',
+                    name: 'income--other-type',
                     fieldset: {
                         legend: {
-                            text: 'Do you get any other income?',
+                            text: 'What type of income did you receive?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Direct payments usually come from a local council or trust.'
+                        html: hintHTML
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['income--other-bool'] == 'Yes'
+                            text: 'Money for fostering a child',
+                            value: 'Money for fostering a child',
+                            checked: true if data['income--other-type'] == 'Money for fostering a child'
                         },
                         {
-                            text: 'No',
-                            value: 'No~rental',
-                            checked: true if data['income--other-bool'] == 'No'
+                            text: 'Direct payments for caring for people',
+                            value: 'Direct payments for caring for people',
+                            checked: true if data['income--other-type'] == 'Direct payments for caring for people'
+                        },
+                        {
+                            text: 'Money from someone boarding in your home',
+                            value: 'Money from someone boarding in your home',
+                            checked: true if data['income--other-type'] == 'Money from someone boarding in your home'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if data['income--other-type'] == 'Other',
+                            conditional: {
+                                html: otherHTML
+                            }
                         }
                     ]
                 }) }}

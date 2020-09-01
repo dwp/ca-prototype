@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much do you get paid from someone boarding in your home each month?' if data['income--rental-frequency'] == 'It varies' else 'How much do you get paid each time from someone boarding in your home?' %}
+{% set questionText = 'How much do you get paid from someone boarding in your home each month?' if data['income--rental-frequency'] == 'Other' else 'How much do you get paid each time from someone boarding in your home?' %}
 
 {% block pageTitle %}
     {{ questionText }}

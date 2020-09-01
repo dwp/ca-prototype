@@ -23,7 +23,8 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-xl">Your income outside of employment</h1>
+                <h1 class="govuk-heading-l">Your income outside of employment since 23 June 2020</h1>
+
 
                 {% if data['income--fostering-bool'] == 'Yes' %}
 
@@ -42,22 +43,206 @@
                                     text: 'End date'
                                 },
                                 value: {
-                                    text: 'Ongoing'
+                                    text: (data['income--fostering-end-date-day'] + ' ' + data['income--fostering-end-date-month'] | month + ' ' + data['income--fostering-end-date-year']) if data['income--fostering-ongoing'] == 'No' else 'Ongoing'
                                 }
                             },
-                            ,
                             {
                                 key: {
-                                    text: 'End date'
+                                    text: 'Frequency'
                                 },
                                 value: {
-                                    text: 'Ongoing'
+                                    text: data['income--fostering-frequency-details'] if data['income--fostering-frequency'] == 'Other' else data['income--fostering-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--fostering-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="fostering">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
                                 }
                             }
                         }
                     }) }}
 
                 {% endif %}
+
+                {% if data['income--rental-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Income type'
+                                },
+                                value: {
+                                    text: 'Money from someone boarding in your house'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--rental-end-date-day'] + ' ' + data['income--rental-end-date-month'] | month + ' ' + data['income--rental-end-date-year']) if data['income--rental-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--rental-frequency-details'] if data['income--rental-frequency'] == 'Other' else data['income--rental-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--rental-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="rental">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {% if data['income--direct-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Income type'
+                                },
+                                value: {
+                                    text: 'Direct payments for caring for people'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--direct-end-date-day'] + ' ' + data['income--direct-end-date-month'] | month + ' ' + data['income--direct-end-date-year']) if data['income--direct-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--direct-frequency-details'] if data['income--direct-frequency'] == 'Other' else data['income--direct-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--direct-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="direct">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {% if data['income--other-type'] %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Income type'
+                                },
+                                value: {
+                                    text: data['income--other-type-details'] if data['income--other-type'] == 'Other' else data['income--other-type']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--other-end-date-day'] + ' ' + data['income--other-end-date-month'] | month + ' ' + data['income--other-end-date-year']) if data['income--other-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--other-frequency-details'] if data['income--other-frequency'] == 'Other' else data['income--other-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--other-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="other">Change</a> <a href="other" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'income--add',
+                    name: 'income--add',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you have any other types of income since 23 June 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~other?selectedIncome='
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../claim-date/qb-date'
+                        }
+                    ]
+                }) }}
 
                 {{ govukButton ({
                     html: 'Continue'

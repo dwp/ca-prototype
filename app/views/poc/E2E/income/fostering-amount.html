@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much do you get paid for fostering each month?' if data['income--fostering-frequency'] == 'It varies' else 'How much do you get paid each time for fostering?' %}
+{% set questionText = 'How much do you get paid for fostering each month?' if data['income--fostering-frequency'] == 'Other' else 'How much do you get paid each time for fostering?' %}
 
 {% block pageTitle %}
     {{ questionText }}

@@ -93,7 +93,7 @@
                                         text: 'Actions'
                                     },
                                     value: {
-                                        html: '<a href="type?selectedBreak=' + id + '">Edit</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                        html: '<a href="type?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
                                     }
                                 }
                             }
@@ -122,13 +122,11 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~type?selectedBreak=',
-                            checked: true if data['breaks--add'] == 'Yes'
+                            value: 'Yes~type?selectedBreak='
                         },
                         {
                             text: 'No',
-                            value: 'No~../contact/phone',
-                            checked: true if data['breaks--add'] == 'No'
+                            value: 'No~../contact/phone'
                         }
                     ]
                 }) }}
