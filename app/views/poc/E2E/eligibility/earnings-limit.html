@@ -49,11 +49,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~eligibility/earnings-limit-non-elig'
+                            value: 'Yes',
+                            checked: true if data['employment--earnings-limit'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No',
+                            checked: true if data['employment--earnings-limit'] == 'Yes'
                         }
                     ]
                 }) }}
