@@ -1,38 +1,23 @@
+{% extends "layout.html" %} {% block pageTitle %} ACA-408 {% endblock %} {%
+block beforeContent %} {{ super() }} {{ govukBackLink({ text: 'Back', href:
+'javascript:history.back()' }) }} {% endblock %} {% block content %}
 
-{% extends "layout.html" %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">ACA-408</h1>
 
-{% block pageTitle %}
-  ACA-408
-{% endblock %}
+		<h2 class="govuk-heading-m">Prototypes for this ticket</h2>
 
-{% block beforeContent %}
-  {{ super() }}
-  {{ govukBackLink({
-    text: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
-{% endblock %}
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<a href="statement.html">Accessibility statement – GB</a>
+			</li>
 
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-xl">
-        ACA-408
-      </h1>
-
-      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-
-        <li>
-          <a href="statement.html">Accessibility statement</a>
-        </li>
-
-      </ul>
-
-    </div>
+			<li>
+				<a href="statement-ni.html">Accessibility statement – NI</a>
+			</li>
+		</ul>
+	</div>
 </div>
 
 {% endblock %}

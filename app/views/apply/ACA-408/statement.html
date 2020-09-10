@@ -1,125 +1,215 @@
-{% extends 'layout.html' %}
-
-{% block pageTitle %}
-    Accessibility statement for Apply for Carer's Allowance
-{% endblock %}
-
-{% block beforeContent %}
-    {{ super() }}
-    {{ govukBackLink({
-        text: 'Back',
-        href: 'javascript:history.back()'
-    }) }}
-{% endblock %}
-
-{% block content %}
+{% extends 'layout.html' %} {% block pageTitle %} Accessibility statement for
+Apply for Carer's Allowance {% endblock %} {% block beforeContent %} {{ super()
+}} {{ govukBackLink({ text: 'Back', href: 'javascript:history.back()' }) }} {%
+endblock %} {% block content %}
 
 <div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Accessibility statement for Apply for Carer's Allowance
+			</h1>
 
-        <div class="govuk-grid-column-two-thirds">
+			<p>
+				This service is part of the wider GOV.UK website. There's a separate
+				<a href="https://www.gov.uk/help/accessibility"
+					>accessibility statement for the main GOV.UK website</a
+				>.
+			</p>
 
-            <form method="post">
+			<p>
+				This page only contains information about the Apply for Carer's
+				Allowance service, available at
+				<a
+					href="https://www.carersallowance.service.gov.uk/ui-citizen-claim/allowance-benefits"
+					>www.carersallowance.service.gov.uk/ui-citizen-claim/allowance-benefits</a
+				>.
+			</p>
 
-                <h1 class="govuk-heading-xl">Accessibility statement for Apply for Carer's Allowance</h1>
+			<h2 class="govuk-heading-l">Using this service</h2>
 
-                <p>This service is part of the wider GOV.UK website. There's a separate <a href="https://www.gov.uk/help/accessibility">accessibility statement for the main GOV.UK website</a>.</p>
+			<p>
+				This service is run by the Department for Work and Pensions (DWP). We
+				want as many people as possible to be able to use this service. For
+				example, that means you should be able to:
+			</p>
 
-                <p>This page only contains information about the Apply for Carer's Allowance service, available at <a href="https://www.carersallowance.service.gov.uk/ui-citizen-claim/allowance-benefits">www.carersallowance.service.gov.uk/ui-citizen-claim/allowance-benefits</a>.</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>change colours, contrast levels and fonts</li>
+				<li>zoom in up to 300% without the text spilling off the screen</li>
+				<li>
+					get from the start of the service to the end using just a keyboard
+				</li>
+				<li>
+					get from the start of the service to the end using speech recognition
+					software
+				</li>
+				<li>
+					listen to the service using a screen reader (including the most recent
+					versions of JAWS, NVDA and VoiceOver)
+				</li>
+			</ul>
 
-                <h2 class="govuk-heading-l">Using this service</h2>
+			<p>
+				We’ve also made the text in the service as simple as possible to
+				understand.
+			</p>
 
-                <p>This service is run by the Department for Work and Pensions (DWP). We want as many people as possible to be able to use this service. For example, that means you should be able to:</p>
+			<p>
+				<a href="https://mcmw.abilitynet.org.uk">AbilityNet</a> has advice on
+				making your device easier to use if you have a disability.
+			</p>
 
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>change colours, contrast levels and fonts</li>
-                    <li>zoom in up to 300% without the text spilling off the screen</li>
-                    <li>get from the start of the service to the end using just a keyboard</li>
-                    <li>get from the start of the service to the end using speech recognition software</li>
-                    <li>listen to the service using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)</li>
-                    </ul>
-                
-                <p>We’ve also made the text in the service as simple as possible to understand.</p>
+			<h2 class="govuk-heading-l">How accessible this service is</h2>
 
-                <p><a href="https://mcmw.abilitynet.org.uk">AbilityNet</a> has advice on making your device easier to use if you have a disability.</p>
+			<p>Some people may find parts of this service difficult to use:</p>
 
-                <h2 class="govuk-heading-l">How accessible this service is</h2>
-                
-                <p>Some people may find parts of this service difficult to use:</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>
+					JAWS screen reader software may not read out all page headings in
+					Internet Explorer 11 – this is a known issue with JAWS version 18 or
+					above, we recommend using a different browser to avoid this problem
+				</li>
 
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><mark>issue</mark></li>
-                    <li><mark>issue</mark></li>
-                    <li><mark>issue</mark></li>
-                </ul>
+				<li>
+					JAWS voice packs – some JAWS voices incorrectly read the term ‘P45’ as
+					‘45p’, this is a JAWS issue only affecting some voice packs
+				</li>
+				<li>
+					Dragon speech recognition software – links that reveal hidden text on
+					a page will not respond to the ‘click link’ command, but will respond
+					to ‘click button’ – this is a
+					<a
+						href="https://github.com/alphagov/govuk-design-system-backlog/issues/44#issuecomment-628082040"
+						>known issue with the GOV.UK Design System details component</a
+					>
+				</li>
+			</ul>
 
-                <h2 class="govuk-heading-l">What to do if you have difficulty using this service</h2>
+			<h2 class="govuk-heading-l">
+				What to do if you have difficulty using this service
+			</h2>
 
-                <p>If you have difficulty using this service, contact us by:</p>
+			<p>
+				If you have difficulty using this service,
+				<a href="https://www.gov.uk/carers-allowance-unit"
+					>contact the Carer’s Allowance Unit</a
+				>.
+			</p>
 
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><mark>email [email address]</mark></li>
-                    <li><mark>call [phone number]</mark></li>
-                    <li><mark>[add any other contact details]</mark></li>
-                </ul>
+			<p>
+				As part of providing this service, we may need to send you messages or
+				documents. We’ll ask you how you want us to send messages or documents
+				to you, but contact us if you need them in a different format. For
+				example, large print, audio recording or braille.
+			</p>
 
-                <p>As part of providing this service, we may need to send you messages or documents. We’ll ask you how you want us to send messages or documents to you, but contact us if you need them in a different format. For example, large print, audio recording or braille.</p>
+			<h2 class="govuk-heading-l">
+				Reporting accessibility problems with this service
+			</h2>
 
-                
-                <h2 class="govuk-heading-l">Reporting accessibility problems with this service</h2>
+			<p>
+				We’re always looking to improve the accessibility of this service. If
+				you find any problems that are not listed on this page, or think we’re
+				not meeting accessibility requirements, you can contact us by email:
+				<a
+					href="mailto:care.digital@dwp.gov.uk?subject=Accessibility problems: Apply for Carer’s Allowance!"
+					>care.digital@dwp.gov.uk</a
+				>
+			</p>
 
-                <p>We’re always looking to improve the accessibility of this service. If you find any problems that aren’t listed on this page or think we’re not meeting accessibility requirements, contact:</p>
-                
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><mark>[provide details of how to report these issues to your organisation, and contact details for the unit or person responsible for dealing with these reports]</mark></li>
-                </ul>
-                
-                <h2 class="govuk-heading-l">Enforcement procedure</h2>
+			<h2 class="govuk-heading-l">Enforcement procedure</h2>
 
-                <p>The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, <a href="https://www.equalityadvisoryservice.com">contact the Equality Advisory and Support Service (EASS)</a>.</p>
-                
-                <h2 class="govuk-heading-l">Contacting us by phone or visiting us in person</h2>
+			<p>
+				The Equality and Human Rights Commission (EHRC) is responsible for
+				enforcing the Public Sector Bodies (Websites and Mobile Applications)
+				(No. 2) Accessibility Regulations 2018 (the ‘accessibility
+				regulations’). If you’re not happy with how we respond to your
+				complaint,
+				<a href="https://www.equalityadvisoryservice.com"
+					>contact the Equality Advisory and Support Service (EASS)</a
+				>.
+			</p>
 
-                <p>We provide a text relay service for people who are deaf, hearing impaired or have a speech impediment.</p>
-                
-                <p>Our offices have audio induction loops, or if you contact us before your visit we can arrange a British Sign Language (BSL) interpreter to help you complete the service in person.</p>
+			<h2 class="govuk-heading-l">
+				Contacting us by phone or visiting us in person
+			</h2>
 
-                <p><a href="https://www.gov.uk/carers-allowance-unit">Find out how to contact us</a></p>
-                
-                <h2 class="govuk-heading-l">Technical information about this service’s accessibility</h2>
+			<p>
+				We provide a text relay service for people who are deaf, hearing
+				impaired or have a speech impediment.
+			</p>
 
-                <p>DWP is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</p>
-                
-                <p>This service is fully compliant with the <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines version 2.1 AA standard</a>.</p>
-                
-                <h2 class="govuk-heading-l">Non-accessible content</h2>
+			<p>
+				Our offices have audio induction loops, or if you contact us before your
+				visit we can arrange a British Sign Language (BSL) interpreter to help
+				you complete the service in person.
+			</p>
 
-                <p>The content listed below is non-accessible for the following reasons.</p>
+			<p>
+				<a href="https://www.gov.uk/carers-allowance-unit"
+					>Find out how to contact us</a
+				>
+			</p>
 
-                <h3 class="govuk-heading-m">Content that’s not within the scope of the accessibility regulations</h3>
+			<h2 class="govuk-heading-l">
+				Technical information about this service’s accessibility
+			</h2>
 
-                <p><mark>In this subsection list:</mark></p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><mark>any accessibility problems that fall outside the scope of the accessibility regulations</mark></li>
-                </ul>
+			<p>
+				DWP is committed to making this service accessible, in accordance with
+				the Public Sector Bodies (Websites and Mobile Applications) (No. 2)
+				Accessibility Regulations 2018.
+			</p>
 
-                <h2 class="govuk-heading-l">How we tested this service</h2>
+			<p>
+				This service is fully compliant with the
+				<a href="https://www.w3.org/TR/WCAG21"
+					>Web Content Accessibility Guidelines version 2.1 AA standard</a
+				>.
+			</p>
 
-                <p>The service was last tested on <mark>[date]</mark> and was checked for compliance with WCAG 2.1 AA. The test was carried out by DWP.</p>
+			<!-- Section commented-out for now as no current fails under AAA (ACA-287 looks like it would not be an actual AAA fail based on https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=315#reading-level)
 
-                <p>You can <mark>read the full accessibility audit report [add link to report]</mark>.</p>
+			<h2 class="govuk-heading-l">Non-accessible content</h2>
 
-                <h2 class="govuk-heading-l">What we’re doing to improve accessibility</h2>
+			<p>
+				The content listed below is non-accessible for the following reasons.
+			</p>
 
-                <p><mark>Say what we are doing to tackle accessibility issues. Roadmap is optional</mark>.</p>
+			<h3 class="govuk-heading-m">
+				Content that’s not within the scope of the accessibility regulations
+			</h3>
 
-                <p><mark>Our accessibility roadmap [add link to roadmap] includes information about how and when we plan to improve accessibility on this service.</mark></p>
+			<p><mark>In this subsection list:</mark></p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>
+					<mark
+						>any accessibility problems that fall outside the scope of the
+						accessibility regulations</mark
+					>
+				</li>
+			</ul>
 
-                <p>This page was prepared on <mark>[date when it was first published]</mark>. It was last updated on <mark>[date when it was last updated]</mark>.</p>
+-->
 
-            </form>
+			<h2 class="govuk-heading-l">How we tested this service</h2>
 
-        </div>
+			<p>
+				The service was last tested on <mark>[date]</mark> and was checked for
+				compliance with WCAG 2.1 AA. The test was carried out by DWP.
+			</p>
 
+			<p>
+				You can
+				<mark
+					>read the full accessibility audit report [add link to report]</mark
+				>.
+			</p>
+
+			<p>This page was prepared on 23 September 2020.</p>
+		</form>
+	</div>
 </div>
 
 {% endblock %}
