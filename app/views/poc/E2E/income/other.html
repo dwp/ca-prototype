@@ -1,5 +1,10 @@
 {% extends 'layout.html' %}
 
+
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
 {% block pageTitle %}
     What type of income did you receive?
 {% endblock %}
@@ -21,7 +26,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-frequency">
+            <form action="other-ongoing">
 
                 {% set hintHTML %}
 
@@ -41,8 +46,8 @@
 
                     {{ govukInput ({
                         id: 'income--other-type-details',
-                        name: 'income--other-type-details',
-                        value: data['income--other-type-details'],
+                        name: incomeLoc + '[type-details]',
+                        value: income['type-details'],
                         classes: 'govuk-input--width-20',
                         label: {
                             text: 'Income type',
@@ -54,7 +59,7 @@
 
                 {{ govukRadios ({
                     idPrefix: 'income--other-type',
-                    name: 'income--other-type',
+                    name: incomeLoc + '[type]',
                     fieldset: {
                         legend: {
                             text: 'What type of income did you receive?',
@@ -69,28 +74,30 @@
                         {
                             text: 'Money for fostering a child',
                             value: 'Money for fostering a child',
-                            checked: true if data['income--other-type'] == 'Money for fostering a child'
+                            checked: true if income['type'] == 'Money for fostering a child'
                         },
                         {
                             text: 'Direct payments for caring for people',
                             value: 'Direct payments for caring for people',
-                            checked: true if data['income--other-type'] == 'Direct payments for caring for people'
+                            checked: true if income['type'] == 'Direct payments for caring for people'
                         },
                         {
                             text: 'Money from someone boarding in your home',
                             value: 'Money from someone boarding in your home',
-                            checked: true if data['income--other-type'] == 'Money from someone boarding in your home'
+                            checked: true if income['type'] == 'Money from someone boarding in your home'
                         },
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--other-type'] == 'Other',
+                            checked: true if income['type'] == 'Other',
                             conditional: {
                                 html: otherHTML
                             }
                         }
                     ]
                 }) }}
+
+                <input type="hidden" name="selectedIncome" value="{{ incomeIndex }}">
 
                 {{ govukButton ({
                     html: 'Continue'

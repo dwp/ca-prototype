@@ -173,7 +173,7 @@
 
                 {% endif %}
 
-                {% if data['income--other-type'] %}
+                {% for id, income in data['incomeStore'] %}
 
                     {{ govukSummaryList ({
                         rows: [
@@ -182,7 +182,7 @@
                                     text: 'Income type'
                                 },
                                 value: {
-                                    text: data['income--other-type-details'] if data['income--other-type'] == 'Other' else data['income--other-type']
+                                    text: income['type-details'] if income['type'] == 'Other' else income['type']
                                 }
                             },
                             {
@@ -190,7 +190,7 @@
                                     text: 'End date'
                                 },
                                 value: {
-                                    text: (data['income--other-end-date-day'] + ' ' + data['income--other-end-date-month'] | month + ' ' + data['income--other-end-date-year']) if data['income--other-ongoing'] == 'No' else 'Ongoing'
+                                    text: (income['end-date-day'] + ' ' + income['end-date-month'] | month + ' ' + income['end-date-year']) if income['ongoing'] == 'No' else 'Ongoing'
                                 }
                             },
                             {
@@ -198,7 +198,7 @@
                                     text: 'Frequency'
                                 },
                                 value: {
-                                    text: data['income--other-frequency-details'] if data['income--other-frequency'] == 'Other' else data['income--other-frequency']
+                                    text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
                                 }
                             },
                             {
@@ -206,7 +206,7 @@
                                     text: 'Amount'
                                 },
                                 value: {
-                                    text: '£' + data['income--other-amount']
+                                    text: '£' + income['amount']
                                 }
                             },
                             {
@@ -214,13 +214,13 @@
                                     text: 'Actions'
                                 },
                                 value: {
-                                    html: '<a href="other">Change</a> <a href="other" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    html: '<a href="other?selectedIncome=' + id + '">Change</a> <a href="other-remove?selectedIncome=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
                                 }
                             }
                         }
                     }) }}
 
-                {% endif %}
+                {% endfor %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--add',

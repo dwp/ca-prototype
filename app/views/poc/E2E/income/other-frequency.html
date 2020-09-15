@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
 {% block pageTitle %}
     How often do you get this income?
 {% endblock %}
@@ -27,8 +31,8 @@
 
                     {{ govukInput ({
                         id: 'income--other-frequency-details',
-                        name: 'income--other-frequency-details',
-                        value: data['income--other-frequency-details'],
+                        name: incomeLoc + '[frequency-details]',
+                        value: income['frequency-details'],
                         classes: 'govuk-input--width-20',
                         label: {
                             text: 'Payment frequency',
@@ -43,7 +47,7 @@
 
                 {{ govukRadios ({
                     idPrefix: 'income--other-frequency',
-                    name: 'income--other-frequency',
+                    name: incomeLoc + '[frequency]',
                     fieldset: {
                         legend: {
                             text: 'How often do you get this income?',
@@ -55,27 +59,27 @@
                         {
                             text: 'Once a week',
                             value: 'Once a week',
-                            checked: true if data['income--other-frequency'] == 'Once a week'
+                            checked: true if income['frequency'] == 'Once a week'
                         },
                         {
                             text: 'Every 2 weeks',
                             value: 'Every 2 weeks',
-                            checked: true if data['income--other-frequency'] == 'Every 2 weeks'
+                            checked: true if income['frequency'] == 'Every 2 weeks'
                         },
                         {
                             text: 'Every 4 weeks',
                             value: 'Every 4 weeks',
-                            checked: true if data['income--other-frequency'] == 'Every 4 weeks'
+                            checked: true if income['frequency'] == 'Every 4 weeks'
                         },
                         {
                             text: 'Every month',
                             value: 'Every month',
-                            checked: true if data['income--other-frequency'] == 'Every month'
+                            checked: true if income['frequency'] == 'Every month'
                         },
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--other-frequency'] == 'Other',
+                            checked: true if income['frequency'] == 'Other',
                             conditional: {
                                 html: varyDetails
                             }

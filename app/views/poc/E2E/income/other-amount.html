@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
 {% set questionText = 'How much other income go you get each month?' %}
 
 {% block pageTitle %}
@@ -29,8 +33,8 @@
 
                 {{ govukInput ({
                     id: 'income--other-amount',
-                    name: 'income--other-amount',
-                    value: data['income--other-amount'],
+                    name: incomeLoc + '[amount]',
+                    value: income['amount'],
                     classes: 'govuk-input--width-10',
                     label: {
                         text: 'Amount in pounds',

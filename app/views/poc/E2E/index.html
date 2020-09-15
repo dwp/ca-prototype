@@ -217,8 +217,26 @@
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
-                                name: 'Fostering',
+                                name: 'Money for fostering',
                                 url: 'income/fostering',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Rental income',
+                                url: 'income/rental',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Direct payments',
+                                url: 'income/direct',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Draft',
