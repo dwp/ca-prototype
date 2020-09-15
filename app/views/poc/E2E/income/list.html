@@ -175,50 +175,62 @@
 
                 {% for id, income in data['incomeStore'] %}
 
-                    {{ govukSummaryList ({
-                        rows: [
-                            {
-                                key: {
-                                    text: 'Income type'
+                    {% if income != '' %}
+
+                        {{ govukSummaryList ({
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Income type'
+                                    },
+                                    value: {
+                                        text: income['type-details'] if income['type'] == 'Other' else income['type']
+                                    }
                                 },
-                                value: {
-                                    text: income['type-details'] if income['type'] == 'Other' else income['type']
-                                }
-                            },
-                            {
-                                key: {
-                                    text: 'End date'
+                                {
+                                    key: {
+                                        text: 'End date'
+                                    },
+                                    value: {
+                                        text: (income['end-date-day'] + ' ' + income['end-date-month'] | month + ' ' + income['end-date-year']) if income['ongoing'] == 'No' else 'Ongoing'
+                                    }
                                 },
-                                value: {
-                                    text: (income['end-date-day'] + ' ' + income['end-date-month'] | month + ' ' + income['end-date-year']) if income['ongoing'] == 'No' else 'Ongoing'
-                                }
-                            },
-                            {
-                                key: {
-                                    text: 'Frequency'
+                                {
+                                    key: {
+                                        text: 'Paid by'
+                                    },
+                                    value: {
+                                        text: income['fostering-org']
+                                    }
+                                } if income['type'] == 'Money for fostering a child',
+                                {
+                                    key: {
+                                        text: 'Frequency'
+                                    },
+                                    value: {
+                                        text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
+                                    }
                                 },
-                                value: {
-                                    text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
-                                }
-                            },
-                            {
-                                key: {
-                                    text: 'Amount'
+                                {
+                                    key: {
+                                        text: 'Amount'
+                                    },
+                                    value: {
+                                        text: '£' + income['amount']
+                                    }
                                 },
-                                value: {
-                                    text: '£' + income['amount']
-                                }
-                            },
-                            {
-                                key: {
-                                    text: 'Actions'
-                                },
-                                value: {
-                                    html: '<a href="other?selectedIncome=' + id + '">Change</a> <a href="other-remove?selectedIncome=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                {
+                                    key: {
+                                        text: 'Actions'
+                                    },
+                                    value: {
+                                        html: '<a href="other?selectedIncome=' + id + '">Change</a> <a href="other-remove?selectedIncome=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    }
                                 }
                             }
-                        }
-                    }) }}
+                        }) }}
+
+                    {% endif %}
 
                 {% endfor %}
 
