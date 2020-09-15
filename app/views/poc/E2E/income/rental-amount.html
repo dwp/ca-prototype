@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much do you get paid from someone boarding in your home each month?' if data['income--rental-frequency'] == 'Other' else 'How much do you get paid each time from someone boarding in your home?' %}
+{% set questionText = 'How much do you get paid ' + data['income--fostering-frequency'] | frequencySuffix + ' from someone boarding in your home?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -34,10 +34,16 @@
                     classes: 'govuk-input--width-10',
                     label: {
                         text: 'Amount in pounds',
-                        classes: 'govuk-input--width-10'
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
                         text: 'If the amount varies, give an average'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: data['income--rental-frequency'] | frequencySuffix
                     }
                 }) }}
 

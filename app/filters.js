@@ -82,6 +82,22 @@ module.exports = function (env) {
 		}
 	}
 
+	filters.frequencySuffix = (response) => {
+		switch (response) {
+			case 'Once a week':
+				return 'a week'
+
+			case 'Every 2 weeks':
+				return 'every 2 weeks'
+
+			case 'Every 4 weeks':
+				return 'every 4 weeks'
+
+			default:
+				return 'a month'
+		}
+	}
+
 	filters.sentenceCase = (str) => {
 		if (str) {
 			return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase()

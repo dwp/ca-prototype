@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much money do you get from direct payments for caring for people each month?' if data['income--direct-frequency'] == 'Other' else 'How much money do you get from direct payments for caring for people each time?' %}
+{% set questionText = 'How much do you get ' + data['income--direct-frequency'] | frequencySuffix + ' from direct payments for caring for people?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -34,10 +34,16 @@
                     classes: 'govuk-input--width-10',
                     label: {
                         text: 'Amount in pounds',
-                        classes: 'govuk-input--width-10'
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
                         text: 'If the amount varies, give an average'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: data['income--direct-frequency'] | frequencySuffix
                     }
                 }) }}
 

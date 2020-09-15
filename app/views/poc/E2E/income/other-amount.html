@@ -4,7 +4,7 @@
 {% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
 {% set income = data.incomeStore[incomeIndex] %}
 
-{% set questionText = 'How much other income go you get each month?' %}
+{% set questionText = 'How much do you get ' + income['frequency'] | frequencySuffix + ' from this income?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -38,10 +38,16 @@
                     classes: 'govuk-input--width-10',
                     label: {
                         text: 'Amount in pounds',
-                        classes: 'govuk-input--width-10'
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
                         text: 'If the amount varies, give an average'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: income['frequency'] | frequencySuffix
                     }
                 }) }}
 
