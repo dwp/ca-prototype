@@ -29,23 +29,6 @@
                     rows: [
                         {
                             key: {
-                                text: 'Your address'
-                            },
-                            value: {
-                                text: data.dummyAddresses[4].value
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../idv/check',
-                                        visuallyHiddenText: 'your address'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
                                 text: 'Name of the person you care for'
                             },
                             value: {
@@ -176,23 +159,6 @@
                                         text: 'Change',
                                         href: '../eligibility/35-hours',
                                         visuallyHiddenText: 'whether you spend 35 hours or more each week providing care for the person receiving this benefit'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do you earn more than £128 a week on average?'
-                            },
-                            value: {
-                                text: data['employment--earnings-limit'] | default('Yes')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../eligibility/earnings-limit',
-                                        visuallyHiddenText: 'whether you earn more than £128 a week on average'
                                     }
                                 ]
                             }
