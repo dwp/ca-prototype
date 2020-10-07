@@ -150,15 +150,6 @@
                                     color: 'grey'
                                 }
                             })}}
-                            {{ taskListItem({
-                                name: 'Other carers',
-                                url: 'dp/other-carers',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
                         </ul>
                     </li>
                     <li>
@@ -167,7 +158,7 @@
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
-                                name: 'Caring 35 hours',
+                                name: 'Caring 35 hours start date',
                                 url: 'eligibility/35-hours',
                                 isActive: 'true',
                                 tag: {
@@ -204,7 +195,32 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">6. </span> Non-employment income
+                            <span class="app-task-list__section-number">6. </span> Claim date
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Automatic claim date',
+                                url: 'claim-date/claim-date-auto',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Manual (legacy) claim date',
+                                url: 'claim-date/claim-date-manual',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Draft',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">7. </span> Non-employment income
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -238,59 +254,7 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">6. </span> Claim date
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'QB award date',
-                                url: 'claim-date/qb-date',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'QB backdating',
-                                url: 'claim-date/qb-backdate',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Date started caring',
-                                url: 'claim-date/care-start-date',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Automatic claim date',
-                                url: 'claim-date/claim-date-auto',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Manual (legacy) claim date',
-                                url: 'claim-date/claim-date-manual',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Draft',
-                                    color: 'grey'
-                                }
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">7. </span> Breaks in care
+                            <span class="app-task-list__section-number">8. </span> Breaks in care
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -324,7 +288,7 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">8. </span> Contact details
+                            <span class="app-task-list__section-number">9. </span> Contact details
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -350,7 +314,7 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">9. </span> Bank details
+                            <span class="app-task-list__section-number">10. </span> Bank details
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -375,7 +339,7 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">10. </span> Check and send
+                            <span class="app-task-list__section-number">11. </span> Check and send
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({

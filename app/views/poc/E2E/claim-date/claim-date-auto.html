@@ -18,16 +18,16 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../breaks/any">
+            <form method="post">
 
-                <h1 class="govuk-heading-l">Your start date for Carer’s Allowance</h1>
+                <h1 class="govuk-heading-l">Carer’s Allowance start date</h1>
 
                 {% set careStartDate = data['claim-date--care-start-day'] |isWithinThreeMonths(
                     data['claim-date--care-start-month'],
                     data['claim-date--qb-date-year']
                 ) %}
 
-                <p>Based on what you have told us your start date for Carer’s Allowance is 23 August 2020.</p>
+                <p>Based on what you have told us and information we hold about the benefit {{ data['dp--name'] | default(data['dummy-dp-name']) }} receives you may be able to claim Carer’s Allowance from 23 August 2020.</p>
 
                 {{ govukRadios({
                     idPrefix: 'claim-date--use-auto',
@@ -42,11 +42,11 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~../income/fostering'
                         },
                         {
                             text: 'No, I will choose a date',
-                            value: 'No~claim-date/claim-date-manual'
+                            value: 'No~claim-date-manual'
                         }
                     ]
                 }) }}

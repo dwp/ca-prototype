@@ -131,27 +131,10 @@
                         } if data['dp--same-address'] == 'No',
                         {
                             key: {
-                                text: 'Does anyone else claim a benefit for caring for them?'
+                                text: 'When did you start caring for Jo Bloggs for 35 hours a week or more?'
                             },
                             value: {
-                                text: data['dp--other-carers'] | default('No')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/other-carers',
-                                        visuallyHiddenText: 'whether someone else claims benefits for caring for the person you care for'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?'
-                            },
-                            value: {
-                                text: data['elig--35-hours'] | default('Yes')
+                                text: data['claim-date--care-start-date-day'] + ' ' + data['claim-date--care-start-date-month'] | month + ' ' + data['claim-date--care-start-date-year']
                             },
                             actions: {
                                 items: [
@@ -179,7 +162,7 @@
                 }) }}
 
                 <p>
-                    <a href="../income/fostering" style="color: white !important;">Allow path</a>
+                    <a href="../claim-date/claim-date-auto" style="color: white !important;">Allow path</a>
                 </p>
 
             </form>
