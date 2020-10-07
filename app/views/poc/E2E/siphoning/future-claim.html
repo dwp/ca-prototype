@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you aged 16 or over?
+    When would your claim for Carer’s Allowance to start from?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,28 +18,31 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="future-claim">
+            <form action="../idv/login">
 
                 {{ govukRadios({
-                    idPrefix: 'siphoning--resident',
-                    name: 'siphoning--resident',
+                    idPrefix: 'siphoning--future-claim',
+                    name: 'siphoning--future-claim',
                     fieldset: {
                         legend: {
-                            text: 'Do you live in the United Kingdom?',
+                            text: 'When will your claim for Carer’s Allowance start from?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['siphoning--resident'] == 'Yes'
+                            text: 'Today or a date in the past',
+                            value: 'Today or a date in the past',
+                            checked: true if data['siphoning--future-claim'] == 'Yes'
                         },
                         {
-                            text: 'No',
+                            text: 'A date in the future',
                             value: 'No~siphoning/legacy.html',
-                            checked: true if data['siphoning--resident'] == 'No'
+                            checked: true if data['siphoning--future-claim'] == 'A date in the future',
+                            hint: {
+                                text: 'For example, if you have not started caring for this person yet.'
+                            }
                         }
                     ]
                 }) }}
