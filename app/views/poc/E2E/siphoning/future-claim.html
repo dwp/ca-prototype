@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    When would your claim for Carer’s Allowance to start from?
+    When do you want Carer’s Allowance to start?
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,26 +25,26 @@
                     name: 'siphoning--future-claim',
                     fieldset: {
                         legend: {
-                            text: 'When will your claim for Carer’s Allowance start from?',
+                            text: 'When do you want Carer’s Allowance to start?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Today or a date in the past',
-                            value: 'Today or a date in the past',
+                            text: 'Today or in the past',
+                            value: 'Today or in the past',
                             checked: true if data['siphoning--future-claim'] == 'Yes'
                         },
                         {
-                            text: 'A date in the future',
+                            text: 'A future date',
                             value: 'No~siphoning/legacy.html',
-                            checked: true if data['siphoning--future-claim'] == 'A date in the future',
-                            hint: {
-                                text: 'For example, if you have not started caring for this person yet.'
-                            }
+                            checked: true if data['siphoning--future-claim'] == 'A date in the future'
                         }
-                    ]
+                    ],
+                    hint: {
+                        text: 'Your claim start date can be up to 3 months in the future, for example, when you have not started caring yet.'
+                    }
                 }) }}
 
                 {{ govukButton({
