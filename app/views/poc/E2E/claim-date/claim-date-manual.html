@@ -20,26 +20,26 @@
 
             <form action="../income/fostering">
 
-                {% set hintHTML %}
+                <h1 class="govuk-heading-l">
+                    When do you want Carer’s Allowance to start?
+                </h1>
 
-                    <p>
-                        You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week. The person you care for must also get their disability benefit before your claim can start.
-                    </p>
+                <p>
+                    You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week. The person you care for must also get their disability benefit before your claim can start.
+                </p>
 
-                    {% set detailsContentHTML %}
-                        <p>If the person you care for was awarded their disability benefit in the last 3 months, and the start date was more than 3 months in the past, you can claim from the date their benefit started.</p>
-                    {% endset %}    
-                    
-                    {{ govukDetails({
-                        summaryText: 'Claims that can be backdated for more than 3 months',
-                        html: detailsContentHTML
-                    }) }}
+                {% set detailsContentHTML %}
+                    <p>If the person you care for was awarded their disability benefit in the last 3 months, and the start date was more than 3 months in the past, you can claim from the date their benefit started.</p>
+                {% endset %}    
+                
+                {{ govukDetails({
+                    summaryText: 'Claims that can be backdated for more than 3 months',
+                    html: detailsContentHTML
+                }) }}
 
-                    <p>
-                        Your claim date cannot be more than 3 months in the future.
-                    </p>
-
-                {% endset %}
+                <p>
+                    Your claim date cannot be more than 3 months in the future.
+                </p>
 
                 {{ govukDateInput({
                     id: 'claim-date--claim-date',
@@ -49,13 +49,9 @@
                     },
                     fieldset: {
                         legend: {
-                            text: 'When do you want Carer’s Allowance to start?',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
+                            text: 'Claim date',
+                            isPageHeading: false
                         }
-                    },
-                    hint: {
-                        html: hintHTML
                     },
                     items: [
                         {

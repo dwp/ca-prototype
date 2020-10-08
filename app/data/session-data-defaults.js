@@ -22,6 +22,8 @@ Example usage:
 module.exports = {
 	// Insert values here
 
+	now: new Date().getTime(),
+
 	dummyAddresses: [
 		{
 			text: '20 addresses found',

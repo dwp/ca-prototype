@@ -37,6 +37,20 @@ module.exports = function (env) {
 
 	filters.month = (number) => numberToMonthString(number - 1)
 
+	filters.friendlyDate = (str) => {
+		if (!str) {
+			return '-'
+		}
+		const date = new Date(str)
+		return (
+			date.getDate() +
+			' ' +
+			numberToMonthString(date.getMonth()) +
+			' ' +
+			date.getFullYear()
+		)
+	}
+
 	filters.addressOptions = (addressOptionArray, currentSelection) => {
 		currentSelection = currentSelection ? currentSelection : ''
 		if (Array.isArray(addressOptionArray)) {
