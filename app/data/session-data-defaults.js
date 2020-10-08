@@ -111,4 +111,6 @@ module.exports = {
 		},
 	],
 	'dummy-dp-name': generate.fullName(),
+
+	'dummy-applicant-name': generate.fullName(),
 }

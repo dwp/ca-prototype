@@ -27,14 +27,14 @@
                     data['claim-date--qb-date-year']
                 ) %}
 
-                <p>Based on what you have told us and information we hold about the benefit {{ data['dp--name'] | default(data['dummy-dp-name']) }} receives you may be able to claim Carer’s Allowance from 23 August 2020.</p>
+                <p>Based on what you have told us and information we hold about the benefit {{ data['dp--name'] | default(data['dummy-dp-name']) }} receives you may be able to claim Carer’s Allowance from 24 August 2020.</p>
 
                 {{ govukRadios({
                     idPrefix: 'claim-date--use-auto',
                     name: 'claim-date--use-auto',
                     fieldset: {
                         legend: {
-                            text: 'Do you want to use 23 August 2020 as the start date?',
+                            text: 'Do you want to use 24 August 2020 as the claim date?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }

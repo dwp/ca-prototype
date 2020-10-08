@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../eligibility/35-hours">
+            <form method="post">
 
                 {{ govukRadios({
                     idPrefix: 'dp--same-address',
@@ -33,7 +33,7 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
+                            value: 'Yes~../eligibility/35-hours',
                             checked: true if data['dp--same-address'] == 'Yes'
                         },
                         {

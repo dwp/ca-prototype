@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    When did you start caring for the person for 35 hours a week or more?
+    Do you spend 35 hours or more each week providing care for the person receiving this benefit?
 {% endblock %}
 
 {% block beforeContent %}
@@ -20,31 +20,41 @@
 
             <form action="../checkpoint/cya">
 
-                {{ govukDateInput({
-                    id: 'claim-date--care-start-date',
-                    namePrefix: 'claim-date--care-start-date',
+                {% set hintHTML %}
+
+                    <p class="govuk-hint">
+                        This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel.
+                    </p>
+
+                    <p class="govuk-hint">
+                        During the coronavirus (COVID-19) outbreak this includes care you provide remotely, for example, giving emotional support over the phone or online.
+                    </p>
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'elig--35-hours',
+                    name: 'elig--35-hours',
                     fieldset: {
                         legend: {
-                            text: 'When did you start caring for ' + data['dp--name'] | default('this person') + ' for 35 hours a week or more?',
+                            text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        html: hintHTML
+                    },
                     items: [
                         {
-                            name: 'day',
-                            classes: 'govuk-input--width-2',
-                            value: data['claim-date--care-start-date-day']
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['elig--35-hours'] == 'Yes'
                         },
                         {
-                            name: 'month',
-                            classes: 'govuk-input--width-2',
-                            value: data['claim-date--care-start-date-month']
-                        },
-                        {
-                            name: 'year',
-                            classes: 'govuk-input--width-4',
-                            value: data['claim-date--care-start-date-year']
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['elig--35-hours'] == 'No'
                         }
                     ]
                 }) }}
