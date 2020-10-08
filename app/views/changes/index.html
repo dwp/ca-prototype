@@ -48,6 +48,17 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
 
+      
+      {{ prototypeVersionCard({
+        ticket: 'ACA-571',
+        description: 'Accessibility statement',
+        statusTag: {
+            text: 'Draft', 
+            classes: 'govuk-tag--grey'
+        }
+      }) }}
+      
+      
       {{ prototypeVersionCard({
         ticket: 'ACA-409',
         description: 'Accessibility statement',

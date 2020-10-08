@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {% block pageTitle %} ACA-571 {% endblock %} {%
+block beforeContent %} {{ super() }} {{ govukBackLink({ text: 'Back', href:
+'javascript:history.back()' }) }} {% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">ACA-571</h1>
+
+		<h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<a href="statement.html">Accessibility statement – GB</a>
+			</li>
+
+			<li>
+				<a href="statement-ni.html">Accessibility statement - NI</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+{% endblock %}
