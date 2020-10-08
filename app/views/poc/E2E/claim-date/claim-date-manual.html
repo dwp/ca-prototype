@@ -25,11 +25,28 @@
                 </h1>
 
                 <p>
-                    You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week. The person you care for must also get their disability benefit before your claim can start.
+                    The person you care for must get their disability benefit before your claim can start.
+                </p>
+
+                <p>
+                    You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week.
                 </p>
 
                 {% set detailsContentHTML %}
-                    <p>If the person you care for was awarded their disability benefit in the last 3 months, and the start date was more than 3 months in the past, you can claim from the date their benefit started.</p>
+
+                    <p>
+                        If the person you care for was awarded their disability benefit in the last 3 months with a backdated start date of more than 3 months ago, you can claim from:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                            their disability benefit start date – if you were proving care for at least 35 hours a week from that date
+                        </li>
+                        <li>
+                            the date you started to provide care – if this was after their benefit start date
+                        </li>
+                    </ul>
+
                 {% endset %}    
                 
                 {{ govukDetails({
@@ -45,7 +62,7 @@
                     id: 'claim-date--claim-date',
                     namePrefix: 'claim-date--claim-date',
                     hint: {
-                        text: 'For example, 18 8 2020'
+                        text: 'This is the date you want your claim to start, for example 8 7 2020'
                     },
                     fieldset: {
                         legend: {
