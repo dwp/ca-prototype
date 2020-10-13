@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you spend 35 hours or more each week providing care for the person receiving this benefit?
+    Do you provide care for at least 35 hours a week?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../checkpoint/cya">
+            <form action="care-start-date">
 
                 {% set hintHTML %}
 
@@ -37,7 +37,7 @@
                     name: 'elig--35-hours',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?',
+                            text: 'Do you care for ' + data['dp-name'] | default('the person receiving this benefit') + ' for at least 35 hours a week?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
