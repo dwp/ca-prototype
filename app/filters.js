@@ -1,3 +1,4 @@
+const { date } = require('faker/lib/locales/en')
 const { v4: uuid } = require('uuid')
 
 const isValidDate = (d) => {
@@ -37,6 +38,11 @@ module.exports = function (env) {
 
 	filters.month = (number) => numberToMonthString(number - 1)
 
+	filters.dateFromInputs = (_, day, month, year) => {
+		const outputDate = Date.parse(`${day} ${filters.month(month)} ${year} 00:00:00 GMT`)
+		return outputDate
+	}
+
 	filters.friendlyDate = (str) => {
 		if (!str) {
 			return '-'
@@ -47,6 +53,49 @@ module.exports = function (env) {
 			' ' +
 			numberToMonthString(date.getMonth()) +
 			' ' +
+			date.getFullYear()
+		)
+	}
+
+	filters.autoClaimDate = (_, caringDate, awardDate, decisionDate) => {
+		const today = new Date()
+		const threeMonthsBeforeToday = today.setMonth(today.getMonth() - 3);
+		const decisionIsWithin3Months = new Date(decisionDate) > threeMonthsBeforeToday
+		const qbDate = decisionIsWithin3Months ? new Date(awardDate) : new Date(awardDate) > threeMonthsBeforeToday ? new Date(awardDate) : threeMonthsBeforeToday
+		const dates = [new Date(caringDate), new Date(qbDate)]
+		let hasInvalidDate = false
+		let latestDate = new Date()
+		for (const date of dates) {
+			if (!(date instanceof Date)) {
+				hasInvalidDate = true
+			}
+		}
+		if (!hasInvalidDate) {
+			latestDate = new Date(Math.max.apply(null, dates.map( date => { return date.getTime() })))
+		}
+		if (latestDate.getDay() != 1) {
+			return latestDate.setDate(latestDate.getDate() + (1 + 7 - latestDate.getDay()) % 7)
+		}
+		return latestDate
+	}
+
+	filters.getDay = dateString => {
+		const date = new Date(dateString)
+		return (
+			date.getDate()
+		)
+	}
+
+	filters.getMonth = dateString => {
+		const date = new Date(dateString)
+		return (
+			date.getMonth() + 1
+		)
+	}
+
+	filters.getYear = dateString => {
+		const date = new Date(dateString)
+		return (
 			date.getFullYear()
 		)
 	}

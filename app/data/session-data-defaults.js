@@ -113,4 +113,12 @@ module.exports = {
 	'dummy-dp-name': generate.fullName(),
 
 	'dummy-applicant-name': generate.fullName(),
+
+	'qb-award-date-day': 7,
+	'qb-award-date-month': 5,
+	'qb-award-date-year': 2018,
+
+	'qb-decision-date-day': 28,
+	'qb-decision-date-month': 9,
+	'qb-decision-date-year': 2020,
 }

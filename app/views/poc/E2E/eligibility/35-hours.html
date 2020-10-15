@@ -1,8 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you provide care for at least 35 hours a week?
+    Do you provide care for the person receiving this benefit for at least 35 hours a week?
 {% endblock %}
+
 
 {% block beforeContent %}
     {{ super() }}
@@ -37,7 +38,7 @@
                     name: 'elig--35-hours',
                     fieldset: {
                         legend: {
-                            text: 'Do you care for ' + data['dp-name'] | default('the person receiving this benefit') + ' for at least 35 hours a week?',
+                            text: 'Do you care for ' + data['dp--name'] | default('the person receiving this benefit') + ' for at least 35 hours a week?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
