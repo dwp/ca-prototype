@@ -65,6 +65,11 @@ beforeContent %} {{ super() }} {{ govukBackLink({ text: 'Back', href:
 			<p>Some people may find parts of this service difficult to use:</p>
 
 			<ul class="govuk-list govuk-list--bullet">
+				<!-- first bullet added for ACA-571-->
+				<li>
+					navigating the service using a keyboard – the focus state styles do not meet WCAG 2.1 AA for contrast ratio – this means links and fields highlighted when navigating a page with a keyboard could be hard to see for people with low vision
+				</li>
+				
 				<li>
 					JAWS screen reader software may not read out all page headings in
 					Internet Explorer 11 – this is a known issue with JAWS version 18 or
@@ -183,15 +188,15 @@ beforeContent %} {{ super() }} {{ govukBackLink({ text: 'Back', href:
 
 			<h3 class="govuk-heading-m">Non-compliance with the accessibility regulations</h3>
 
-			<p><mark>Focus state colour contrast...</mark></p>
+			<p>When navigating the service with a keyboard, the interactive elements of the page do not meet a contrast ratio of 3:1 when focused. This fails <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html">WCAG 1.4.11: non-text contrast</a> and means the areas with keyboard focus could be hard to see for people with low vision.</p>
 
-			<p><mark>We plan to ... by ...</mark></p>
+			<p>We plan to fix this issue by 21 January 2020.</p>
 
 <!-- End of new section for ACA-571-->	
 
 			<h2 class="govuk-heading-l">How we tested this service</h2>
 
-<!-- ?Tested date to update for ACA-571?-->
+<!-- ACA-571 - James checking if tested date needs to be updated-->
 			<p>
 				The service was last tested on <mark>29 July 2020</mark>. It was checked for
 				compliance with WCAG 2.1 AA using both automated and manual testing. The
@@ -199,7 +204,7 @@ beforeContent %} {{ super() }} {{ govukBackLink({ text: 'Back', href:
 			</p>
 
 <!-- Updated paragrpah for ACA-571-->
-			<p>This page was prepared on 23 September 2020. It was last updated on <mark>publish date</mark>.</p>
+			<p>This page was prepared on 23 September 2020. It was last updated on 21 October 2020.</p>
 
 		</form>
 	</div>
