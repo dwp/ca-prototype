@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    We will need some more information
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../../contact/phone">
+
+                <h1 class="govuk-heading-l">We will need some more information</h1>
+
+                <p>
+                    You have told us there have been times since 23 June 2020 where you have not cared for {{ data['dp-name'] | default('the person') }} for 35 hours a week or more.
+                </p>
+
+                <p>
+                    We will contact you to ask for more information about these times.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

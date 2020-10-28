@@ -4,21 +4,7 @@
 {% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
 {% set break = data.breaksStore[breakIndex] %}
 
-{% if break.reason == 'applicant-hospital' %}
-    {% set titleText = 'Tell us about this time you were in hospital' %}
-{% elseif break.reason == 'dp-hospital' %}
-    {% set titleText = 'Tell us about this time ' + data['dp--name'] | default('the person you care for') + ' was in hospital' %}
-{% elseif break.reason == 'applicant-respite' %}
-    {% set titleText = 'Tell us about this time you were in respite or a care home' %}
-{% elseif break.reason == 'dp-respite' %}
-    {% set titleText = 'Tell us about this time ' + data['dp--name'] | default('the person you care for') + ' was in respite or a care home' %}
-{% elseif break.reason == 'applicant-holiday' %}
-    {% set titleText = 'Tell us about this time you were on holiday' %}
-{% elseif break.reason == 'dp-holiday' %}
-    {% set titleText = 'Tell us about this time ' + data['dp--name'] | default('the person you care for') + ' was on holiday' %}
-{% else %}
-    {% set titleText = 'Tell us about this time you were not providing care for more than 35 hours a week' %}
-{% endif %}
+{% set titleText = 'Tell us about this time you were not caring for more than 35 hours a week' %}
 
 {% block pageTitle %}
     {{ titleText }}
@@ -41,7 +27,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="list">
+            <form action="medical">
 
                 <h1 class="govuk-heading-l">
                     {{ titleText }}
@@ -114,7 +100,7 @@
                     name: breakLoc + '[did-end]',
                     fieldset: {
                         legend: {
-                            text: 'Have you started to provide care for ' + data['dp--name'] | default('the person') + ' again?',
+                            text: 'Did you start caring for ' + data['dp--name'] | default('the person') + ' again?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -135,44 +121,6 @@
                         }
                     ]
                 }) }}
-
-                {% if break.reason == 'applicant-respite' or break.reason == 'dp-respite' %}
-
-                    {% if break.reason == 'dp-respite' %}
-
-                        {% set medicalQuestionText = 'Did ' + ( data['dp--name'] | default('the person') ) + ' receive care from a medical professional during this time?' %}
-
-                    {% else %}
-
-                        {% set medicalQuestionText = 'Did you receive care from a medical professional during this time?' %}
-
-                    {% endif %}
-
-                    {{ govukRadios ({
-                        idPrefix: 'breaks--medical-care',
-                        name: breakLoc + '[medical-care]',
-                        fieldset: {
-                            legend: {
-                                text: medicalQuestionText,
-                                isPageHeading: true,
-                                classes: 'govuk-fieldset__legend--s'
-                            }
-                        },
-                        items: [
-                            {
-                                text: 'Yes',
-                                value: 'Yes',
-                                checked: true if break['medical-care'] == 'Yes'
-                            },
-                            {
-                                text: 'No',
-                                value: 'No',
-                                checked: true if break['medical-care'] == 'No'
-                            }
-                        ]
-                    }) }}
-
-                {% endif %}
 
                 <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
 

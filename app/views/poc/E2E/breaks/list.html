@@ -33,33 +33,9 @@
 
                         {% set breakCount = breakCount + 1 %}
 
-                        {% if break.reason == 'applicant-hospital' %}
-                            {% set reasonText = 'I was in hospital' %}
-                        {% elseif break.reason == 'dp-hospital' %}
-                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in hospital' %}
-                        {% elseif break.reason == 'applicant-respite' %}
-                            {% set reasonText = 'I was in respite or a care home' %}
-                        {% elseif break.reason == 'dp-respite' %}
-                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in respite or a care home' %}
-                        {% elseif break.reason == 'applicant-holiday' %}
-                            {% set reasonText = 'I was on holiday' %}
-                        {% elseif break.reason == 'dp-holiday' %}
-                            {% set reasonText = data['dp--name'] | default('The person I care for') + ' was on holiday' %}
-                        {% else %}
-                            {% set reasonText = 'Other' %}
-                        {% endif %}
-
                         {{ govukSummaryList ({
                             classes: 'govuk-!-margin-bottom-8',
                             rows: [
-                                {
-                                    key: {
-                                        text: 'Reason'
-                                    },
-                                    value: {
-                                        text: reasonText
-                                    }
-                                },
                                 {
                                     key: {
                                         text: 'Start date'
@@ -82,18 +58,18 @@
                                 },
                                 {
                                     key: {
-                                        text: 'Received care from medical professional'
+                                        text: 'In professional medical care'
                                     },
                                     value: {
                                         text: break['medical-care']
                                     }
-                                } if break.reason == 'applicant-respite' or break.reason == 'dp-respite',
+                                },
                                 {
                                     key: {
                                         text: 'Actions'
                                     },
                                     value: {
-                                        html: '<a href="type?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                        html: '<a href="details?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
                                     }
                                 }
                             }
