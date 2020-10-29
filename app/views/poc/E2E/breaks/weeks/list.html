@@ -48,12 +48,10 @@
                                 },
                                 {
                                     key: {
-                                        text: 'End date'
+                                        text: 'Number of weeks'
                                     },
                                     value: {
-                                        text: (break['end-date-day'] + ' ' + 
-                                        break['end-date-month'] | month + ' ' + 
-                                        break['end-date-year']) if break['did-end'] == 'Yes' else 'Ongoing'
+                                        text: (break['week-count']) if break['did-end'] == 'Yes' else 'Ongoing'
                                     }
                                 },
                                 {
@@ -90,10 +88,13 @@
                     name: 'breaks--add',
                     fieldset: {
                         legend: {
-                            text: 'Were there any more times you have not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week since 23 June 2020?',
+                            text: 'Were there any more weeks you did not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours since 23 June 2020?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }
+                    },
+                    hint: {
+                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
                     },
                     items: [
                         {

@@ -1,11 +1,7 @@
 {% extends 'layout.html' %}
 
-{% set breakIndex = data['selectedBreak'] | uuid %}
-{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
-{% set break = data.breaksStore[breakIndex] %}
-
 {% block pageTitle %}
-    Were you or the person you care for getting care from a medical professional during this time?
+    Since 23 June 2020 have there been any times you have not provided care for [DP name] form 35 hours a week?
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,31 +21,31 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="list">
+            <form action="details">
 
                 {{ govukRadios ({
-                    idPrefix: 'breaks--medical-care',
-                    name: breakLoc + '[medical-care]',
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
                     fieldset: {
                         legend: {
-                            text: 'Were you or ' + data['dp--name'] | default('the person you care for') + ' in the care of medical professionals during this time?',
+                            text: 'Since 23 June 2020 have there been any weeks you did not provide care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
+                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if break['medical-care'] == 'Yes'
+                            checked: true if data['breaks--any'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if break['medical-care'] == 'No'
+                            value: 'No~../contact/phone',
+                            checked: true if data['breaks--any'] == 'No'
                         }
                     ]
                 }) }}
