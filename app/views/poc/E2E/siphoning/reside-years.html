@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you lived permanently in the UK for the last 3 years?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="future-claim">
+
+                {{ govukRadios({
+                    idPrefix: 'siphoning--reside-years',
+                    name: 'siphoning--reside-years',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you lived permanently in the UK for the last 3 years?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['siphoning--reside-years'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~legacy',
+                            checked: true if data['siphoning--reside-years'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

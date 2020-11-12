@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you have the right to live or work in the UK without any immigration restrictions?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="reside-years">
+
+                {{ govukRadios({
+                    idPrefix: 'siphoning--right-to-reside',
+                    name: 'siphoning--right-to-reside',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have the right to live or work in the UK without any immigration restrictions?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'You have this right if you have a British passport or are a British citizen or British subject with right of abode.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['siphoning--right-to-reside'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~legacy',
+                            checked: true if data['siphoning--right-to-reside'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

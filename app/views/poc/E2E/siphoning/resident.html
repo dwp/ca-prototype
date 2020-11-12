@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you aged 16 or over?
+    Which country do you live in?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,28 +18,43 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="future-claim">
+            <form action="right-to-reside">
 
                 {{ govukRadios({
                     idPrefix: 'siphoning--resident',
                     name: 'siphoning--resident',
                     fieldset: {
                         legend: {
-                            text: 'Do you live in the United Kingdom?',
+                            text: 'Which country do you live in?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['siphoning--resident'] == 'Yes'
+                            text: 'England',
+                            value: 'England',
+                            checked: true if data['siphoning--resident'] == 'England'
                         },
                         {
-                            text: 'No',
-                            value: 'No~siphoning/legacy.html',
-                            checked: true if data['siphoning--resident'] == 'No'
+                            text: 'Scotland',
+                            value: 'Scotland',
+                            checked: true if data['siphoning--resident'] == 'Scotland'
+                        },
+                        {
+                            text: 'Wales',
+                            value: 'Wales',
+                            checked: true if data['siphoning--resident'] == 'Wales'
+                        },
+                        {
+                            text: 'Northern Ireland',
+                            value: 'Northern Ireland',
+                            checked: true if data['siphoning--resident'] == 'Northern Ireland'
+                        },
+                        {
+                            text: 'Somewhere else',
+                            value: 'Somewhere else~legacy',
+                            checked: true if data['siphoning--resident'] == 'Somewhere else'
                         }
                     ]
                 }) }}
