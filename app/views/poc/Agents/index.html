@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Test
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">Agent prototypes</h1>
+
+                
+                <h1 class="govuk-heading-m">
+                    Data capture output
+                </h1>
+                
+                <ul class="govuk-list">
+                    <li>
+                        <a href="/documents/sample-output.pdf">
+                            Pathfinder sample PDF
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            
+                        </a>
+                    </li>
+                </ul>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
