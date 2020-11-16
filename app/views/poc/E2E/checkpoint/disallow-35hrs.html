@@ -35,7 +35,7 @@
                                 text: 'Name'
                             },
                             value: {
-                                text: data['dummy-dp-name']
+                                text: data['dummy-applicant-name']
                             }
                         },
                         {
@@ -60,7 +60,7 @@
                 </p>
 
                  <div class="govuk-inset-text">
-                    You do not care for {DP Name} for at least 35 hours a week.
+                    You do not care for {{ data['dp--name'] | default(data['dummy-dp-name']) }} for at least 35 hours a week and they do.
                 </div>
 
                 <p>
