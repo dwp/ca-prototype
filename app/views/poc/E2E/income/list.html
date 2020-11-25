@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Your income outside of employment
+    Your income outside of employment since {{ data | getClaimDate }}
 {% endblock %}
 
 {% block beforeContent %}

@@ -31,17 +31,17 @@
 
                         <p>
                             Account holder name:<br>
-                            {{ data['pay-details--account-holder-name'] }}
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
                         </p>
 
                         <p>
                             Sort code:<br>
-                            {{ data['pay-details--sort-code'] }}
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
                         </p>
 
                         <p>
                             Account number:<br>
-                            {{ data['pay-details--account-number'] }}
+                            {{ data['pay-details--account-number'] | default('54112144') }}
                         </p>
 
                         <p>
@@ -53,17 +53,17 @@
 
                         <p>
                             Account holder name:<br>
-                            {{ data['pay-details--account-holder-name'] }}
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
                         </p>
 
                         <p>
                             Sort code:<br>
-                            {{ data['pay-details--sort-code'] }}
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
                         </p>
 
                         <p>
                             Account number:<br>
-                            {{ data['pay-details--account-number'] }}
+                            {{ data['pay-details--account-number'] | default('54112144') }}
                         </p>
 
                     {% else %}
@@ -81,180 +81,10 @@
                     rows: [
                         {
                             key: {
-                                text: 'Your address'
-                            },
-                            value: {
-                                text: data.dummyAddresses[4].value
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../idv/check',
-                                        visuallyHiddenText: 'your address'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?'
-                            },
-                            value: {
-                                text: data['elig--35-hours'] | default('Yes')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../eligibility/35-hours',
-                                        visuallyHiddenText: 'whether you spend 35 hours or more each week providing care for the person receiving this benefit'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do you earn more than £128 a week on average?'
-                            },
-                            value: {
-                                text: data['employment--earnings-limit'] | default('Yes')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../eligibility/earnings-limit',
-                                        visuallyHiddenText: 'whether you earn more than £128 a week on average'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Name of the person you care for'
-                            },
-                            value: {
-                                text: data['dp--name'] | default(data['dummy-dp-name'])
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/name',
-                                        visuallyHiddenText: 'the name of the person you care for'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do they have a National Insurance number?'
-                            },
-                            value: {
-                                text: data['dp--ni-bool'] | default('No')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/ni',
-                                        visuallyHiddenText: 'the person you care for has a National Insurance number'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Their National Insurance number'
-                            },
-                            value: {
-                                text: data['dp--ni'] | default('KM 83 44 23 C')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/ni',
-                                        visuallyHiddenText: 'the name of the person you care for'
-                                    }
-                                ]
-                            }
-                        } if data['dp--ni-bool'] == 'Yes',
-                        {
-                            key: {
-                                text: 'Their date of birth'
-                            },
-                            value: {
-                                text: data['dp--dob-day'] | default('14') + ' ' + data['dp--dob-month'] | default('4') | month + ' ' + data['dp--dob-year'] | default('1971')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/dob',
-                                        visuallyHiddenText: 'the date of birth of the person you care for'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Do they live at the same address?'
-                            },
-                            value: {
-                                text: data['dp--same-address'] | default('Yes')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/same-address',
-                                        visuallyHiddenText: 'whether the person you care for lives at the same address'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
-                                text: 'Their address'
-                            },
-                            value: {
-                                text: data.dummyAddresses[8].value
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/postcode',
-                                        visuallyHiddenText: 'the address of the person you care for'
-                                    }
-                                ]
-                            }
-                        } if data['dp--same-address'] == 'No',
-                        {
-                            key: {
-                                text: 'Does anyone else claim a benefit for caring for them?'
-                            },
-                            value: {
-                                text: data['dp--other-carers'] | default('No')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../dp/other-carers',
-                                        visuallyHiddenText: 'whether someone else claims benefits for caring for the person you care for'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            key: {
                                 text: 'Claim date'
                             },
                             value: {
-                                text: '23 June 2020'
+                                text: (data | getClaimDate)
                             },
                             actions: {
                                 items: [
@@ -268,7 +98,7 @@
                         },
                         {
                             key: {
-                                text: 'Since 23 June 2020 have there been any times you have not provided care for Testing this for at least 35 hours a week?'
+                                text: 'Since ' + data | getClaimDate + ' have there been any times you have not provided care for Testing this for at least 35 hours a week?'
                             },
                             value: {
                                 text: data['breaks--any']
@@ -278,7 +108,7 @@
                                     {
                                         text: 'Change',
                                         href: '../breaks/any',
-                                        visuallyHiddenText: 'whether there were any times you have not provided care for Testing this for at least 35 hours a week since 23 June 2020'
+                                        visuallyHiddenText: 'whether there were any times you have not provided care for Testing this for at least 35 hours a week since ' + data | getClaimDate + ''
                                     }
                                 ]
                             }
@@ -289,7 +119,7 @@
                 {% if data['breaks--any'] == 'Yes' %}
 
                     <h2 class="govuk-heading-m govuk-!-margin-top-5">
-                        Times you have not provided care for more than 35 hours a week since 23 June 2020
+                        Times you have not provided care for more than 35 hours a week since {{ data | getClaimDate }}
                     </h2>
 
                     {% for id, break in data.breaksStore %}

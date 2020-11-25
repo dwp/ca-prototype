@@ -90,7 +90,7 @@
                     name: 'breaks--add',
                     fieldset: {
                         legend: {
-                            text: 'Were there any more times you have not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week since 23 June 2020?',
+                            text: 'Were there any more times you did not provide care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }
