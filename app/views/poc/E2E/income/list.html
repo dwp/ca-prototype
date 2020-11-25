@@ -23,7 +23,7 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-l">Your income outside of employment since 23 June 2020</h1>
+                <h1 class="govuk-heading-l">Your income outside of employment since {{ data | getClaimDate }}</h1>
 
 
                 {% if data['income--fostering-bool'] == 'Yes' %}
@@ -239,7 +239,7 @@
                     name: 'income--add',
                     fieldset: {
                         legend: {
-                            text: 'Did you have any other types of income since 23 June 2020?',
+                            text: 'Did you have any other types of income since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you had any direct payments for caring for people since 23 June 2020?
+    Have you had any direct payments for caring for people since {{ data | getClaimDate }}?
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
                     name: 'income--direct-bool',
                     fieldset: {
                         legend: {
-                            text: 'Have you had any direct payments for caring for people since 23 June 2020?',
+                            text: 'Have you had any direct payments for caring for people since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

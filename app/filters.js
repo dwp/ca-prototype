@@ -39,7 +39,9 @@ module.exports = function (env) {
 	filters.month = (number) => numberToMonthString(number - 1)
 
 	filters.dateFromInputs = (_, day, month, year) => {
-		const outputDate = Date.parse(`${day} ${filters.month(month)} ${year} 00:00:00 GMT`)
+		const outputDate = Date.parse(
+			`${day} ${filters.month(month)} ${year} 00:00:00 GMT`
+		)
 		return outputDate
 	}
 
@@ -59,9 +61,14 @@ module.exports = function (env) {
 
 	filters.autoClaimDate = (_, caringDate, awardDate, decisionDate) => {
 		const today = new Date()
-		const threeMonthsBeforeToday = today.setMonth(today.getMonth() - 3);
-		const decisionIsWithin3Months = new Date(decisionDate) > threeMonthsBeforeToday
-		const qbDate = decisionIsWithin3Months ? new Date(awardDate) : new Date(awardDate) > threeMonthsBeforeToday ? new Date(awardDate) : threeMonthsBeforeToday
+		const threeMonthsBeforeToday = today.setMonth(today.getMonth() - 3)
+		const decisionIsWithin3Months =
+			new Date(decisionDate) > threeMonthsBeforeToday
+		const qbDate = decisionIsWithin3Months
+			? new Date(awardDate)
+			: new Date(awardDate) > threeMonthsBeforeToday
+			? new Date(awardDate)
+			: threeMonthsBeforeToday
 		const dates = [new Date(caringDate), new Date(qbDate)]
 		let hasInvalidDate = false
 		let latestDate = new Date()
@@ -71,33 +78,43 @@ module.exports = function (env) {
 			}
 		}
 		if (!hasInvalidDate) {
-			latestDate = new Date(Math.max.apply(null, dates.map( date => { return date.getTime() })))
+			latestDate = new Date(
+				Math.max.apply(
+					null,
+					dates.map((date) => {
+						return date.getTime()
+					})
+				)
+			)
 		}
 		if (latestDate.getDay() != 1) {
-			return latestDate.setDate(latestDate.getDate() + (1 + 7 - latestDate.getDay()) % 7)
+			return latestDate.setDate(
+				latestDate.getDate() + ((1 + 7 - latestDate.getDay()) % 7)
+			)
 		}
 		return latestDate
 	}
 
-	filters.getDay = dateString => {
+	filters.getDay = (dateString) => {
 		const date = new Date(dateString)
-		return (
-			date.getDate()
-		)
+		return date.getDate()
 	}
 
-	filters.getMonth = dateString => {
+	filters.getMonth = (dateString) => {
 		const date = new Date(dateString)
-		return (
-			date.getMonth() + 1
-		)
+		return date.getMonth() + 1
 	}
 
-	filters.getYear = dateString => {
+	filters.getYear = (dateString) => {
 		const date = new Date(dateString)
-		return (
-			date.getFullYear()
-		)
+		return date.getFullYear()
+	}
+
+	filters.getClaimDate = (data) => {
+		const dayInput = data['claim-date--claim-date-day'] || 23
+		const monthInput = data['claim-date--claim-date-month'] || 10
+		const yearInput = data['claim-date--claim-date-year'] || 2020
+		return `${dayInput} ${filters.month(monthInput)} ${yearInput}`
 	}
 
 	filters.addressOptions = (addressOptionArray, currentSelection) => {

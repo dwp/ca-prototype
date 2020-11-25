@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Did you get any money for fostering a child since 23 June 2020?
+    Did you get any money for fostering a child since {{ data | getClaimDate }}?
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
                     name: 'income--fostering-bool',
                     fieldset: {
                         legend: {
-                            text: 'Did you get any money for fostering a child since 23 June 2020?',
+                            text: 'Did you get any money for fostering a child since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
