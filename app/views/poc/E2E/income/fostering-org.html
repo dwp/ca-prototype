@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    What type of organisation pays you Fostering Allowance?
+    What type of organisation paid you for fostering?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,29 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="fostering-frequency">
+            <form action="fostering-ongoing">
+
+                {% set orgNameHTML %}
+                
+                    {{ govukInput ({
+                        id: 'income--fostering-org-name',
+                        name: 'income--fostering-org-name',
+                        value: data['income--fostering-org-name'] if data['income--fostering-org-name'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Organisation name',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--fostering-org',
                     name: 'income--fostering-org',
                     fieldset: {
                         legend: {
-                            text: 'What type of organisation pays you for fostering?',
+                            text: 'What type of organisation paid you for fostering?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,7 +51,7 @@
                     items: [
                         {
                             text: 'A local authority',
-                            value: 'A local authority',
+                            value: 'A local authority~rental',
                             checked: true if data['income--fostering-org'] == 'A local authority'
                         },
                         {
@@ -47,6 +62,9 @@
                         {
                             text: 'A different organisation',
                             value: 'A different organisation',
+                            conditional: {
+                                html: orgNameHTML
+                            },
                             checked: true if data['income--fostering-org'] == 'A different organisation'
                         }
                     ]

@@ -4,7 +4,8 @@
 {% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
 {% set income = data.incomeStore[incomeIndex] %}
 
-{% set questionText = 'How much do you get ' + income['frequency'] | frequencySuffix + ' from this income?' %}
+{% set isPastTense = income['ongoing'] == 'No' %}
+{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get ' + income['frequency'] | frequencySuffix + ' from these earnings?' %}
 
 {% block pageTitle %}
     {{ questionText }}

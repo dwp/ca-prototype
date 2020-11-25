@@ -5,7 +5,7 @@
 {% set income = data.incomeStore[incomeIndex] %}
 
 {% block pageTitle %}
-    Do you still get this income?
+    Do you still get these earnings?
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,7 +34,7 @@
                         namePrefix: incomeLoc + '[end-date',
                         fieldset: {
                             legend: {
-                                text: 'When did you stop getting this income?',
+                                text: 'When did you stop getting these earnings?',
                                 isPageHeading: true,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -65,7 +65,7 @@
                     name: incomeLoc + '[ongoing]',
                     fieldset: {
                         legend: {
-                            text: 'Do you still get this income?',
+                            text: 'Do you still get these earnings?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

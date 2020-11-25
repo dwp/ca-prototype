@@ -4,8 +4,11 @@
 {% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
 {% set income = data.incomeStore[incomeIndex] %}
 
+{% set isPastTense = income['ongoing'] == 'No' %}
+{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + '  you get these earnings?' %}
+
 {% block pageTitle %}
-    How often do you get this income?
+    {{ questionText }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -50,7 +53,7 @@
                     name: incomeLoc + '[frequency]',
                     fieldset: {
                         legend: {
-                            text: 'How often do you get this income?',
+                            text: questionText,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

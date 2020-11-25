@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much do you get ' + data['income--direct-frequency'] | frequencySuffix + ' from direct payments for caring for people?' %}
+{% set isPastTense = data['income--direct-ongoing'] == 'No' %}
+{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get ' + data['income--direct-frequency'] | frequencySuffix + ' from direct payments for caring for people?' %}
 
 {% block pageTitle %}
     {{ questionText }}

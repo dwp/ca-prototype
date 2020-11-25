@@ -6,7 +6,7 @@
 {% set income = data.incomeStore[incomeIndex] %}
 
 {% block pageTitle %}
-    What type of income did you receive?
+    What type of earnings did you get?
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,14 +30,13 @@
 
                 {% set hintHTML %}
 
-                    <p>You do not need to tell us about:</p>
+                    <p>You do not need to tell us about earnings anyone else gets, or:</p>
 
                     <ul class="govuk-list govuk-list--bullet">
-                        <li>other benefits you get from DWP</li>
-                        <li>money received from pensions</li>
-                        <li>contributions towards your living costs from someone you live with (unless they are a tenant or boarder)</li>
-                        <li>a loan or advance payment from my employer</li>
-                        <li>other loans and borrowing</li>
+                        <li>benefits you get from DWP</li>
+                        <li>pension income</li>
+                        <li>help with living costs from someone you live with</li>
+                        <li>any loans and borrowing</li>
                     </ul>
 
                 {% endset %}
@@ -50,8 +49,11 @@
                         value: income['type-details'],
                         classes: 'govuk-input--width-20',
                         label: {
-                            text: 'Income type',
+                            text: 'Type of earnings',
                             classes: 'govuk-input--width-20'
+                        },
+                        hint: {
+                            text: 'For example, money from an insurance policy'
                         }
                     }) }}
 
@@ -62,7 +64,7 @@
                     name: incomeLoc + '[type]',
                     fieldset: {
                         legend: {
-                            text: 'What type of income did you receive?',
+                            text: 'What type of earnings did you get?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

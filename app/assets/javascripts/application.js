@@ -27,31 +27,31 @@ window.addEventListener('pageshow', (event) => {
 	}
 })
 
-
 var CFObject
 
 function highlight(text, isPositive) {
 	var inputText = document.getElementById('contentToTest')
 	var innerHTML = inputText.innerHTML
-	inputText.innerHTML = innerHTML.replace(new RegExp(text, 'ig'), function (
-		phrase
-	) {
-		return (
-			'<mark class="content-highlight ' +
-			(isPositive ? 'content-highlight-good' : 'content-highlight-bad') +
-			'">' +
-			phrase +
-			'</mark>'
-		)
-	})
+	inputText.innerHTML = innerHTML.replace(
+		new RegExp(text, 'ig'),
+		function (phrase) {
+			return (
+				'<mark class="content-highlight ' +
+				(isPositive ? 'content-highlight-good' : 'content-highlight-bad') +
+				'">' +
+				phrase +
+				'</mark>'
+			)
+		}
+	)
 }
 
 function performFeedbackHighlightFormatting() {
 	$('#contentToTest mark.content-highlight').contents().unwrap()
 	CFObject.feedback.good.sort(function (a, b) {
 		return b.length - a.length
-  })
-  CFObject.feedback.bad.sort(function (a, b) {
+	})
+	CFObject.feedback.bad.sort(function (a, b) {
 		return b.length - a.length
 	})
 	for (phrase of CFObject.feedback.good) {
@@ -80,7 +80,7 @@ var ContentResearch = {
 			}
 		}
 		performFeedbackHighlightFormatting()
-    $('input#export-field').val(JSON.stringify(this.feedback))
+		$('input#export-field').val(JSON.stringify(this.feedback))
 	},
 	voteUp: function () {
 		var selection = window.getSelection().toString()
@@ -115,14 +115,19 @@ $(document).on('click', 'mark.content-highlight', function () {
 
 var loadedResponses = $('input#export-field').val()
 
-if (loadedResponses.length > 0) {
-  CFObject.feedback = JSON.parse(loadedResponses)
-  performFeedbackHighlightFormatting()
+if (loadedResponses) {
+	if (loadedResponses.length > 0) {
+		CFObject.feedback = JSON.parse(loadedResponses)
+		performFeedbackHighlightFormatting()
+	}
 }
 
 function adaptFooterBottomMargin() {
 	const hightOfVoteButtonContainer = $('.vote-button-container').height()
-	$('footer.govuk-footer').css('margin-bottom', hightOfVoteButtonContainer + 'px')
+	$('footer.govuk-footer').css(
+		'margin-bottom',
+		hightOfVoteButtonContainer + 'px'
+	)
 	console.log(hightOfVoteButtonContainer)
 }
 

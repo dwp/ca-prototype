@@ -25,7 +25,22 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-frequency">
+            <form action="other-frequency" method="post">
+
+                {% set orgNameHTML %}
+                
+                    {{ govukInput ({
+                        id: 'income--fostering-org-name',
+                        name: incomeLoc + '[fostering-org-name]',
+                        value: income['fostering-org-name'] if data['fostering-org-name'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Organisation name',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--fostering-org',
@@ -51,7 +66,10 @@
                         {
                             text: 'A different organisation',
                             value: 'A different organisation',
-                            checked: true if income['fostering-org'] == 'A different organisation'
+                            checked: true if income['fostering-org'] == 'A different organisation',
+                            conditional: {
+                                html: orgNameHTML
+                            }
                         }
                     ]
                 }) }}

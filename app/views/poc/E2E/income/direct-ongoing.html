@@ -37,7 +37,24 @@
                         },
                         hint: {
                             text: 'For example, 14 7 2020'
-                        }
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--direct-end-date-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--direct-end-date-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['income--direct-end-date-year']
+                            }
+                        ]
                     }) }}
 
                 {% endset %}

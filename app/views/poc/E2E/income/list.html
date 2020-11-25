@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Your income outside of employment since {{ data | getClaimDate }}
+    Your earnings outside of employment since {{ data | getClaimDate }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-l">Your income outside of employment since {{ data | getClaimDate }}</h1>
+                <h1 class="govuk-heading-l">Your earnings outside of employment since {{ data | getClaimDate }}</h1>
 
 
                 {% if data['income--fostering-bool'] == 'Yes' %}
@@ -32,10 +32,18 @@
                         rows: [
                             {
                                 key: {
-                                    text: 'Income type'
+                                    text: 'Type'
                                 },
                                 value: {
                                     text: 'Money for fostering a child'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Paid by'
+                                },
+                                value: {
+                                    text: data['income--fostering-org'] if data['income--fostering-org'] != 'A different organisation' else data['income--fostering-org-name']
                                 }
                             },
                             {
@@ -45,7 +53,7 @@
                                 value: {
                                     text: (data['income--fostering-end-date-day'] + ' ' + data['income--fostering-end-date-month'] | month + ' ' + data['income--fostering-end-date-year']) if data['income--fostering-ongoing'] == 'No' else 'Ongoing'
                                 }
-                            },
+                            } if data['income--fostering-org'] != 'A local authority',
                             {
                                 key: {
                                     text: 'Frequency'
@@ -53,7 +61,7 @@
                                 value: {
                                     text: data['income--fostering-frequency-details'] if data['income--fostering-frequency'] == 'Other' else data['income--fostering-frequency']
                                 }
-                            },
+                            } if data['income--fostering-org'] != 'A local authority',
                             {
                                 key: {
                                     text: 'Amount'
@@ -61,7 +69,7 @@
                                 value: {
                                     text: '£' + data['income--fostering-amount']
                                 }
-                            },
+                            } if data['income--fostering-org'] != 'A local authority',
                             {
                                 key: {
                                     text: 'Actions'
@@ -81,7 +89,7 @@
                         rows: [
                             {
                                 key: {
-                                    text: 'Income type'
+                                    text: 'Type'
                                 },
                                 value: {
                                     text: 'Money from someone boarding in your house'
@@ -130,7 +138,7 @@
                         rows: [
                             {
                                 key: {
-                                    text: 'Income type'
+                                    text: 'Type'
                                 },
                                 value: {
                                     text: 'Direct payments for caring for people'
@@ -181,7 +189,7 @@
                             rows: [
                                 {
                                     key: {
-                                        text: 'Income type'
+                                        text: 'Type'
                                     },
                                     value: {
                                         text: income['type-details'] if income['type'] == 'Other' else income['type']
@@ -200,7 +208,7 @@
                                         text: 'Paid by'
                                     },
                                     value: {
-                                        text: income['fostering-org']
+                                        text: income['fostering-org'] if income['fostering-org'] != 'A different organisation' else income['fostering-org-name']
                                     }
                                 } if income['type'] == 'Money for fostering a child',
                                 {
@@ -210,7 +218,7 @@
                                     value: {
                                         text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
                                     }
-                                },
+                                } if income['fostering-org'] != 'A local authority' or income['type'] != 'Money for fostering a child',
                                 {
                                     key: {
                                         text: 'Amount'
@@ -218,7 +226,7 @@
                                     value: {
                                         text: '£' + income['amount']
                                     }
-                                },
+                                } if income['fostering-org'] != 'A local authority' or income['type'] != 'Money for fostering a child',
                                 {
                                     key: {
                                         text: 'Actions'
@@ -239,7 +247,7 @@
                     name: 'income--add',
                     fieldset: {
                         legend: {
-                            text: 'Did you have any other types of income since ' + data | getClaimDate + '?',
+                            text: 'Did you have any other types of earnings since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }

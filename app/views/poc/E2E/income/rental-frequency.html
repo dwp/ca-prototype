@@ -1,7 +1,10 @@
 {% extends 'layout.html' %}
 
+{% set isPastTense = data['income--rental-ongoing'] == 'No' %}
+{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + '  you get money from someone boarding in your home?' %}
+
 {% block pageTitle %}
-    How often do you get money for fostering a child?
+    {{ questionText }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -46,7 +49,7 @@
                     name: 'income--rental-frequency',
                     fieldset: {
                         legend: {
-                            text: 'How often do you get money from someone boarding in your home?',
+                            text: questionText,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

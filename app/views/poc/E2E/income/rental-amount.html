@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
-{% set questionText = 'How much do you get paid ' + data['income--fostering-frequency'] | frequencySuffix + ' from someone boarding in your home?' %}
+{% set isPastTense = data['income--rental-ongoing'] == 'No' %}
+{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get paid ' + data['income--fostering-frequency'] | frequencySuffix + ' from someone boarding in your home?' %}
 
 {% block pageTitle %}
     {{ questionText }}
