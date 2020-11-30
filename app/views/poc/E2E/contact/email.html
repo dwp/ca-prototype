@@ -30,10 +30,7 @@
                         label: {
                             text: 'Email address'
                         },
-                        type: 'email',
-                        hint: {
-                            text: 'We will only use this to send you a confirmation email'
-                        }
+                        type: 'email'
                     }) }}
 
                 {% endset %}
@@ -50,7 +47,7 @@
                         }
                     },
                     hint: {
-                        text: 'If we need more information about your application, we will contact you by phone or post.'
+                        html: 'We will only use your email address to send you a confirmation email.<br>We will not ask for more information about your claim by email.'
                     },
                     items: [
                         {
