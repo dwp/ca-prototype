@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Can we contact you by telephone about your claim?
+    Can we contact you about your claim by telephone?
 {% endblock %}
 
 {% block beforeContent %}
@@ -41,13 +41,13 @@
                     name: 'contact--phone-bool',
                     fieldset: {
                         legend: {
-                            text: 'Can we contact you by telephone about your claim?',
+                            text: 'Can we contact you about your claim by telephone?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'We may be able to process your claim faster if we can contact you by telephone.'
+                        text: 'We might be able to process your claim faster if we can contact you by telephone.'
                     },
                     items: [
                         {
@@ -58,7 +58,7 @@
                             }
                         },
                         {
-                            text: 'No, only contact me by post',
+                            text: 'No, contact me only by post',
                             value: 'No'
                         }
                     ]
