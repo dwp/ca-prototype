@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    What type of organisation paid you for fostering?
+    What type of organisation paid you Fostering Allowance?
 {% endblock %}
 
 {% block beforeContent %}
@@ -43,16 +43,16 @@
                     name: 'income--fostering-org',
                     fieldset: {
                         legend: {
-                            text: 'What type of organisation paid you for fostering?',
+                            text: 'What type of organisation paid you Fostering Allowance?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'A local authority',
-                            value: 'A local authority~rental',
-                            checked: true if data['income--fostering-org'] == 'A local authority'
+                            text: 'A local council',
+                            value: 'A local council~rental',
+                            checked: true if data['income--fostering-org'] == 'A local council'
                         },
                         {
                             text: 'A private fostering agency',

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% set isPastTense = data['income--fostering-ongoing'] == 'No' %}
-{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + 'you get paid ' + data['income--fostering-frequency'] | frequencySuffix + ' for fostering?' %}
+{% set questionText = 'How much Fostering Allowance ' + ('did' if isPastTense else 'do') + ' you get paid ' + data['income--fostering-frequency'] | frequencySuffix + (' on average' if data['income--fostering-frequency'] == 'Other') + '?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -38,7 +38,7 @@
                         classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
-                        text: 'If the amount varies, give an average'
+                        text: 'If the amount varies, give an average.'
                     },
                     prefix: {
                         text: '£'

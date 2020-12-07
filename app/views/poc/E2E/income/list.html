@@ -59,7 +59,7 @@
                                     text: 'Frequency'
                                 },
                                 value: {
-                                    text: data['income--fostering-frequency-details'] if data['income--fostering-frequency'] == 'Other' else data['income--fostering-frequency']
+                                    text: data['income--fostering-frequency']
                                 }
                             } if data['income--fostering-org'] != 'A local authority',
                             {
@@ -108,7 +108,7 @@
                                     text: 'Frequency'
                                 },
                                 value: {
-                                    text: data['income--rental-frequency-details'] if data['income--rental-frequency'] == 'Other' else data['income--rental-frequency']
+                                    text: data['income--rental-frequency']
                                 }
                             },
                             {
@@ -157,7 +157,7 @@
                                     text: 'Frequency'
                                 },
                                 value: {
-                                    text: data['income--direct-frequency-details'] if data['income--direct-frequency'] == 'Other' else data['income--direct-frequency']
+                                    text: data['income--direct-frequency']
                                 }
                             },
                             {
@@ -216,7 +216,7 @@
                                         text: 'Frequency'
                                     },
                                     value: {
-                                        text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
+                                        text: income['frequency']
                                     }
                                 } if income['fostering-org'] != 'A local authority' or income['type'] != 'Money for fostering a child',
                                 {

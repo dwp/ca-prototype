@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% set isPastTense = data['income--rental-ongoing'] == 'No' %}
-{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + '  you get money from someone boarding in your home?' %}
+{% set questionText = 'How often ' + ('were you' if isPastTense else 'are you') + ' paid by someone renting a room in your home?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -25,24 +25,6 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form action="rental-amount">
-
-                {% set varyDetails %}
-
-                    {{ govukInput ({
-                        id: 'income--rental-frequency-details',
-                        name: 'income--rental-frequency-details',
-                        value: data['income--rental-frequency-details'],
-                        classes: 'govuk-input--width-20',
-                        label: {
-                            text: 'Payment frequency',
-                            classes: 'govuk-input--width-20'
-                        },
-                        hint: {
-                            text: 'For example, every three weeks'
-                        }
-                    }) }}
-
-                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--rental-frequency',
@@ -78,10 +60,7 @@
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--rental-frequency'] == 'Other',
-                            conditional: {
-                                html: varyDetails
-                            }
+                            checked: true if data['income--rental-frequency'] == 'Other'
                         }
                     ]
                 }) }}

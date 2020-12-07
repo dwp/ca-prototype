@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% set isPastTense = data['income--fostering-ongoing'] == 'No' %}
-{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + ' you get money for fostering a child?' %}
+{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + ' you get paid Fostering Allowance?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -25,24 +25,6 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form action="fostering-amount">
-
-                {% set varyDetails %}
-
-                    {{ govukInput ({
-                        id: 'income--fostering-frequency-details',
-                        name: 'income--fostering-frequency-details',
-                        value: data['income--fostering-frequency-details'],
-                        classes: 'govuk-input--width-20',
-                        label: {
-                            text: 'Payment frequency',
-                            classes: 'govuk-input--width-20'
-                        },
-                        hint: {
-                            text: 'For example, every three weeks'
-                        }
-                    }) }}
-
-                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--fostering-frequency',
@@ -78,10 +60,7 @@
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--fostering-frequency'] == 'Other',
-                            conditional: {
-                                html: varyDetails
-                            }
+                            checked: true if data['income--fostering-frequency'] == 'Other'
                         }
                     ]
                 }) }}

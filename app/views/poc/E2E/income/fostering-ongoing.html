@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you still get money for fostering a child?
+    Are you still paid Fostering Allowance?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="fostering-org">
+            <form action="fostering-frequency">
 
                 {% set endDateHTML %}
 
@@ -30,7 +30,7 @@
                         namePrefix: 'income--fostering-end-date',
                         fieldset: {
                             legend: {
-                                text: 'When did you stop getting money for fostering?',
+                                text: 'When did you stop getting paid Fostering Allowance?',
                                 isPageHeading: true,
                                 classes: 'govuk-fieldset__legend--m'
                             }
@@ -64,7 +64,7 @@
                     name: 'income--fostering-ongoing',
                     fieldset: {
                         legend: {
-                            text: 'Do you still get money for fostering a child?',
+                            text: 'Are you still paid Fostering Allowance?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

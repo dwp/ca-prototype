@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% set isPastTense = data['income--direct-ongoing'] == 'No' %}
-{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get ' + data['income--direct-frequency'] | frequencySuffix + ' from direct payments for caring for people?' %}
+{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get ' + data['income--direct-frequency'] | frequencySuffix + ' from direct payments for caring for people' + (' on average' if data['income--direct-frequency'] == 'Other') + '?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -38,7 +38,7 @@
                         classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
-                        text: 'If the amount varies, give an average'
+                        text: 'If the amount varies, give an average.'
                     },
                     prefix: {
                         text: '£'

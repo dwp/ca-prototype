@@ -26,24 +26,6 @@
 
             <form action="direct-amount">
 
-                {% set varyDetails %}
-
-                    {{ govukInput ({
-                        id: 'income--direct-frequency-details',
-                        name: 'income--direct-frequency-details',
-                        value: data['income--direct-frequency-details'],
-                        classes: 'govuk-input--width-20',
-                        label: {
-                            text: 'Payment frequency',
-                            classes: 'govuk-input--width-20'
-                        },
-                        hint: {
-                            text: 'For example, every three weeks'
-                        }
-                    }) }}
-
-                {% endset %}
-
                 {{ govukRadios ({
                     idPrefix: 'income--direct-frequency',
                     name: 'income--direct-frequency',
@@ -78,10 +60,7 @@
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['income--direct-frequency'] == 'Other',
-                            conditional: {
-                                html: varyDetails
-                            }
+                            checked: true if data['income--direct-frequency'] == 'Other'
                         }
                     ]
                 }) }}

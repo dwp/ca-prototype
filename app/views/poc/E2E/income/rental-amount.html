@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% set isPastTense = data['income--rental-ongoing'] == 'No' %}
-{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get paid ' + data['income--fostering-frequency'] | frequencySuffix + ' from someone boarding in your home?' %}
+{% set questionText = 'How much ' + ('were you' if isPastTense else 'are') + ' you paid ' + data['income--rental-frequency'] | frequencySuffix + ' from someone renting a room in your home' + (' on average' if data['income--rental-frequency'] == 'Other') +'?' %}
 
 {% block pageTitle %}
     {{ questionText }}
@@ -38,7 +38,7 @@
                         classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
-                        text: 'If the amount varies, give an average'
+                        text: 'If the amount varies, give an average.'
                     },
                     prefix: {
                         text: '£'
