@@ -30,23 +30,6 @@
 
             <form action="other-amount">
 
-                {% set varyDetails %}
-
-                    {{ govukInput ({
-                        id: 'income--other-frequency-details',
-                        name: incomeLoc + '[frequency-details]',
-                        value: income['frequency-details'],
-                        classes: 'govuk-input--width-20',
-                        label: {
-                            text: 'Payment frequency',
-                            classes: 'govuk-input--width-20'
-                        },
-                        hint: {
-                            text: 'For example, every three weeks'
-                        }
-                    }) }}
-
-                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'income--other-frequency',
@@ -82,10 +65,7 @@
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if income['frequency'] == 'Other',
-                            conditional: {
-                                html: varyDetails
-                            }
+                            checked: true if income['frequency'] == 'Other'
                         }
                     ]
                 }) }}
