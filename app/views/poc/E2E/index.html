@@ -32,10 +32,12 @@
                                 name: 'Qualifying benefit',
                                 url: 'siphoning/qb',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Validated',
+                                        color: 'blue'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'State pension',
@@ -49,6 +51,15 @@
                             {{ taskListItem({
                                 name: 'Employment',
                                 url: 'siphoning/employment',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Self employment',
+                                url: 'siphoning/self-employment',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -96,8 +107,8 @@
                                 url: 'siphoning/future-claim',
                                 isActive: 'true',
                                 tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
+                                    text: 'Validated',
+                                    color: 'blue'
                                 }
                             })}}
                         </ul>
@@ -121,8 +132,8 @@
                                 url: 'idv/check',
                                 isActive: 'true',
                                 tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
+                                    text: 'Investigation Needed',
+                                    color: 'purple'
                                 }
                             })}}
                         </ul>
@@ -179,10 +190,16 @@
                                 name: 'Caring 35 hours start date',
                                 url: 'eligibility/35-hours',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Caring start date',
@@ -192,6 +209,21 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Still caring?',
+                                url: 'eligibility/care-ongoing',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                         </ul>
                     </li>
@@ -204,18 +236,24 @@
                                 name: 'Check your answers',
                                 url: 'checkpoint/cya',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Disallow endpoint',
                                 url: 'checkpoint/disallow',
                                 isActive: 'true',
                                 tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
+                                    text: 'Experimental',
+                                    color: 'red'
                                 }
                             })}}
                         </ul>
@@ -229,19 +267,31 @@
                                 name: 'Automatic claim date',
                                 url: 'claim-date/claim-date-auto',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Manual (legacy) claim date',
                                 url: 'claim-date/claim-date-manual',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                         </ul>
                     </li>
@@ -254,28 +304,46 @@
                                 name: 'Money for fostering',
                                 url: 'income/fostering',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Rental income',
                                 url: 'income/rental',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Direct payments',
                                 url: 'income/direct',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                         </ul>
                     </li>
@@ -322,19 +390,31 @@
                                 name: 'Telephone number',
                                 url: 'contact/phone',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             {{ taskListItem({
                                 name: 'Email address',
                                 url: 'contact/email',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Needs work',
+                                        color: 'orange'
+                                    },
+                                    {
+                                        text: 'Content',
+                                        color: 'yellow'
+                                    }
+                                ]
                             })}}
                             
                         </ul>

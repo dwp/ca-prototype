@@ -22,6 +22,14 @@
             text: props.tag.text
         }) }}
     {% endif %}
+    {% if props.tags %}
+        {% for tag in props.tags %}
+            {{ govukTag({
+                classes: 'app-task-list__tag govuk-tag--' + tag.color + ' govuk-!-margin-left-1',
+                text: tag.text
+            }) }}
+        {% endfor %}
+    {% endif %}
 </li>
 
 {% endmacro %}
