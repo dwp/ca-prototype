@@ -163,7 +163,41 @@
                                     }
                                 ]
                             }
-                        } if not data['elig--35-hours'] == 'No'
+                        } if data['elig--35-hours'] != 'No',
+                        {
+                            key: {
+                                text: 'Do you still provide care for the person for at least 35 hours a week?'
+                            },
+                            value: {
+                                text: data['elig--ongoing'] | default('Yes')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/care-ongoing',
+                                        visuallyHiddenText: 'whether you still provide care for the person for at least 35 hours a week'
+                                    }
+                                ]
+                            }
+                        } if data['elig--35-hours'] != 'No',
+                        {
+                            key: {
+                                text: 'When did you stop providing care for the person for at least 35 hours a week?'
+                            },
+                            value: {
+                                text: data['elig--stop-date-day'] + ' ' + data['elig--stop-date-month'] | month + ' ' + data['elig--stop-date-year']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/care-ongoing',
+                                        visuallyHiddenText: 'the date you stop providing care for the person for at least 35 hours a week'
+                                    }
+                                ]
+                            }
+                        } if data['elig--35-hours'] != 'No' and data['elig--ongoing'] == 'No'
                     }
                 }) }}
 
