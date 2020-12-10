@@ -29,7 +29,7 @@
                     namePrefix: 'claim-date--care-start-date',
                     fieldset: {
                         legend: {
-                            text: 'When did you start caring for ' + data['dp--name'] | default('this person') + ' for 35 hours a week or more?',
+                            text: 'When did you start caring for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for 35 hours a week or more?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
