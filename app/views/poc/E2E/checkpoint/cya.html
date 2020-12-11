@@ -159,24 +159,7 @@
                                     {
                                         text: 'Change',
                                         href: '../eligibility/care-start-date',
-                                        visuallyHiddenText: 'whether you spend 35 hours or more each week providing care for the person receiving this benefit'
-                                    }
-                                ]
-                            }
-                        } if data['elig--35-hours'] != 'No',
-                        {
-                            key: {
-                                text: 'Do you still provide care for the person for at least 35 hours a week?'
-                            },
-                            value: {
-                                text: data['elig--ongoing'] | default('Yes')
-                            },
-                            actions: {
-                                items: [
-                                    {
-                                        text: 'Change',
-                                        href: '../eligibility/care-ongoing',
-                                        visuallyHiddenText: 'whether you still provide care for the person for at least 35 hours a week'
+                                        visuallyHiddenText: 'the date you started caring for the person for more than 35 hours a week'
                                     }
                                 ]
                             }
@@ -197,12 +180,12 @@
                                     }
                                 ]
                             }
-                        } if data['elig--35-hours'] != 'No' and data['elig--ongoing'] == 'No'
+                        } if data['elig--35-hours'] == 'No, but I have in the past'
                     }
                 }) }}
 
                 <p>
-                    We will use the information you have told us we will decide if you can continue to apply for Carer’s Allowance.
+                    We will use the information you have provided to check whether you can apply for Carer’s Allowance.
                 </p>
 
                 <p>

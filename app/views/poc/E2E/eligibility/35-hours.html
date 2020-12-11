@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been caring for the person for at least 35 hours a week?
+    Do you care for the person for at least 35 hours a week?
 {% endblock %}
 
 
@@ -38,7 +38,7 @@
                     name: 'elig--35-hours',
                     fieldset: {
                         legend: {
-                            text: 'Have you been caring for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
+                            text: 'Do you care for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -56,6 +56,11 @@
                             text: 'No',
                             value: 'No',
                             checked: true if data['elig--35-hours'] == 'No'
+                        },
+                        {
+                            text: 'No, but I have in the past',
+                            value: 'No, but I have in the past',
+                            checked: true if data['elig--35-hours'] == 'No, but I have in the past'
                         }
                     ]
                 }) }}

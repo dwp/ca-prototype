@@ -23,8 +23,6 @@
 
             <form action="../checkpoint/cya">
 
-                {% set endDateHTML %}
-
                     {{ govukDateInput ({
                         id: 'elig--stop-date',
                         namePrefix: 'elig--stop-date',
@@ -32,7 +30,7 @@
                             legend: {
                                 text: 'When did you stop providing care for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
                                 isPageHeading: true,
-                                classes: 'govuk-fieldset__legend--m'
+                                classes: 'govuk-fieldset__legend--l'
                             }
                         },
                         hint: {
@@ -57,34 +55,7 @@
                         ]
                     }) }}
 
-                {% endset %}
-
-                {{ govukRadios ({
-                    idPrefix: 'elig--ongoing',
-                    name: 'elig--ongoing',
-                    fieldset: {
-                        legend: {
-                            text: 'Do you still provide care for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
-                        }
-                    },
-                    items: [
-                        {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['elig--ongoing'] == 'Yes'
-                        },
-                        {
-                            text: 'No',
-                            value: 'No',
-                            conditional: {
-                                html: endDateHTML
-                            },
-                            checked: true if data['elig--ongoing'] == 'No'
-                        }
-                    ]
-                }) }}
+               
 
                 {{ govukButton ({
                     html: 'Continue'

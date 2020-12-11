@@ -22,7 +22,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
+            {% if data['elig--35-hours'] == 'No, but I have in the past' %}
             <form action="care-ongoing">
+            {% else %}
+            <form action="../checkpoint/cya">
+            {% endif %}
 
                 {{ govukDateInput({
                     id: 'claim-date--care-start-date',
