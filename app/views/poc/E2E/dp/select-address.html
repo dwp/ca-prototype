@@ -30,7 +30,11 @@
                 }) }}
             {% endif %}
 
-            <form action="../eligibility/35-hours">
+            {% if data['from-check'] != 'true' %}
+                <form action="../eligibility/35-hours">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
 
                 <h1 class="govuk-heading-l">Select the address where {{ data['dp--name'] | default('the person you care for') }} lives</h1>
 

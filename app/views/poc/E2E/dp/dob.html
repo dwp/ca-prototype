@@ -18,7 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="same-address">
+            {% if data['from-check'] != 'true' %}
+                <form action="same-address">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
 
                 {{ govukDateInput({
                     id: 'dp--dob',

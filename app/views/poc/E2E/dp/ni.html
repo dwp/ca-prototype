@@ -18,7 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="dob">
+            {% if data['from-check'] != 'true' %}
+                <form action="dob">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
 
                 {% set DpNiHTML %}
 

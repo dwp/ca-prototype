@@ -18,7 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="ni">
+            {% if data['from-check'] != 'true' %}
+                <form action="ni">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
 
                 <h1 class="govuk-heading-l">What is the name of the person you care for?</h1>
 
