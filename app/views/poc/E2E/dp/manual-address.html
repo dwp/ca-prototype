@@ -18,7 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-carers">
+            {% if data['from-check'] != 'true' %}
+                <form action="other-carers">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
 
                 {% call govukFieldset({
                 legend: {

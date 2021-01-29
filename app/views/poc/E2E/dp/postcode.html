@@ -37,8 +37,13 @@
                     }
                 }) }}
 
+
+                {% if data['from-check'] == 'true' %}
+                    <input type="hidden" name="from-check" value="true">
+                {% endif %}
+
                 <p>
-                    <a href="manual-address">Enter address manually</a>
+                    <a href="manual-address{{ '?from-check=true' if data['from-check'] == 'true' }}">Enter address manually</a>
                 </p>
 
                 {{ govukButton({

@@ -33,12 +33,12 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~../eligibility/35-hours',
+                            value: 'Yes~../eligibility/35-hours' if data['from-check'] != 'true' else 'Yes~../checkpoint/cya',
                             checked: true if data['dp--same-address'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~postcode',
+                            value: 'No~postcode' if data['from-check'] != 'true' else 'No~postcode?fromCheck=true',
                             checked: true if data['dp--same-address'] == 'No'
                         }
                     ]
