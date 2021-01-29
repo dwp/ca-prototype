@@ -1,0 +1,269 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Employer details
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="employer-details-2">
+
+                <h1 class="govuk-heading-l">Employer details</h1>
+
+                <p>
+                    These details are used to contact your employer.
+                </p>
+
+                {{ govukInput ({
+                    id: 'employer-name',
+                    name: 'employer-name',
+                    value: data['employer-name'] if data['employer-name'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Employer’s name',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-contact-number',
+                    name: 'employer-contact-number',
+                    value: data['employer-contact-number'] if data['employer-contact-number'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Contact number',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-address-1',
+                    name: 'employer-address-1',
+                    value: data['employer-address-1'] if data['employer-address-1'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Address',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-address-2',
+                    name: 'employer-address-2',
+                    value: data['employer-address-2'] if data['employer-address-2'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Address line 2',
+                        classes: 'govuk-input--width-20 govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-address-3',
+                    name: 'employer-address-3',
+                    value: data['employer-address-3'] if data['employer-address-3'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Address line 3',
+                        classes: 'govuk-input--width-20 govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-postcode',
+                    name: 'employer-postcode',
+                    value: data['employer-postcode'] if data['employer-postcode'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Postcode (optional)',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {% set jobStartDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'employment-start-date',
+                        namePrefix: 'employment-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'Job start date',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 18 1 2020'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['employment-start-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['employment-start-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['employment-start-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-start-before',
+                    name: 'employment-start-before',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you start this job before 1 January 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This is 1 month before your claim date.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-start-before'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-start-before'] == 'No',
+                            conditional: {
+                                html: jobStartDateHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {% set jobEndDetailsHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'employment-last-date',
+                        namePrefix: 'employment-last-date',
+                        fieldset: {
+                            legend: {
+                                text: 'Date last worked',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 31 1 2020'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['employment-last-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['employment-last-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['employment-last-date-year']
+                            }
+                        ]
+                    }) }}
+
+                    {{ govukDateInput ({
+                        id: 'employment-last-date-p45',
+                        namePrefix: 'employment-last-date-p45',
+                        fieldset: {
+                            legend: {
+                                text: 'Leaving date on your P45 (optional)',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 31 1 2020'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['employment-last-date-p45-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['employment-last-date-p45-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['employment-last-date-p45-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-finished-job',
+                    name: 'employment-finished-job',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you finished this job?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-finished-job'] == 'Yes',
+                            conditional: {
+                                html: jobEndDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-finished-job'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

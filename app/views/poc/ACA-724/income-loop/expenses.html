@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Pension contributions, employment expenses or care costs
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="self-employment">
+
+                <h1 class="govuk-heading-l">Pension contributions, employment expenses or care costs</h1>
+
+                {% set pensionDetailsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'employment-pension-details',
+                        id: 'employment-pension-details',
+                        value: data['employment-pension-details'],
+                        maxlength: '300',
+                        label: {
+                            text: 'Give details of each pension you pay into, including how much and how often you pay.',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-pay-into-pension',
+                    name: 'employment-pay-into-pension',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you pay into a pension?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-pay-into-pension'] == 'Yes',
+                            conditional: {
+                                html: pensionDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-pay-into-pension'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {% set expensesDetailsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'employment-expenses-details',
+                        id: 'employment-expenses-details',
+                        value: data['employment-expenses-details'],
+                        maxlength: '300',
+                        label: {
+                            text: 'Give details of what you need to buy, why you need it and how much it costs.',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-expenses',
+                    name: 'employment-expenses',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you pay for things you need to do your job?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This means anything you have to pay for yourself - not expenses your company pays'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-expenses'] == 'Yes',
+                            conditional: {
+                                html: expensesDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-expenses'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {% set careCostsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'care-costs-details',
+                        id: 'care-costs-details',
+                        value: data['care-costs-details'],
+                        maxlength: '300',
+                        label: {
+                            text: 'Give details of who you pay and what it costs.',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'If you pay a family member let us know their relationship to you and the person you care for'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-care-costs',
+                    name: 'employment-care-costs',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have any care costs because of this work?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This includes childcare costs as well as costs for looking after the person you provide care for. Tell us here if you are claiming Tax-Free Childcare.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-care-costs'] == 'Yes',
+                            conditional: {
+                                html: careCostsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-care-costs'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

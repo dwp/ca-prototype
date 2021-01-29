@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="income-loop/employer-details">
+
+                <h1 class="govuk-heading-l">Your income</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'been-employed',
+                    name: 'been-employed',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been employed since 1 August 2019?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'no'
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'been-self-employed',
+                    name: 'been-self-employed',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been self-employed since 25 January 2020?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'no'
+                        }
+                    ]
+                }) }}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'other-income',
+                    name: 'other-income',
+                    fieldset: {
+                        legend: {
+                            text: 'What other income have you had since 1 February 2020?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'Choose all that apply to you. You do not need to tell us about any state pensions or benefits that you may be receiving as we already hold that information'
+                    },
+                    items: [
+                        {
+                            text: 'Statutory Sick Pay',
+                            value: 'Statutory Sick Pay'
+                        },
+                        {
+                            text: 'Statutory Paternity, Maternity or Adoption Pay',
+                            value: 'Statutory Paternity, Maternity or Adoption Pay'
+                        },
+                        {
+                            text: 'Fostering Allowance',
+                            value: 'Fostering Allowance'
+                        },
+                        {
+                            text: 'Direct payment for caring for someone',
+                            value: 'Direct payment for caring for someone'
+                        },
+                        {
+                            text: 'Rental income',
+                            value: 'Rental income'
+                        },
+                        {
+                            text: 'Any other income',
+                            value: 'Any other income'
+                        },
+                        {
+                            text: 'None',
+                            value: 'None'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
