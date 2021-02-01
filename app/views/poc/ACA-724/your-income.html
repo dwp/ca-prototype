@@ -30,7 +30,7 @@
                     name: 'been-employed',
                     fieldset: {
                         legend: {
-                            text: 'Have you been employed since 1 August 2019?',
+                            text: 'Have you been employed since 1 April 2020?',
                             isPageHeading: false,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -38,11 +38,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'yes'
+                            value: 'Yes',
+                            checked: true if data['been-employed'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'no'
+                            value: 'No',
+                            checked: true if data['been-employed'] == 'No'
                         }
                     ]
                 }) }}
@@ -52,7 +54,7 @@
                     name: 'been-self-employed',
                     fieldset: {
                         legend: {
-                            text: 'Have you been self-employed since 25 January 2020?',
+                            text: 'Have you been self-employed since 24 September 2020?',
                             isPageHeading: false,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -60,11 +62,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'yes'
+                            value: 'Yes',
+                            checked: true if data['been-self-employed'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'no'
+                            value: 'No',
+                            checked: true if data['been-self-employed'] == 'No'
                         }
                     ]
                 }) }}
@@ -74,7 +78,7 @@
                     name: 'other-income',
                     fieldset: {
                         legend: {
-                            text: 'What other income have you had since 1 February 2020?',
+                            text: 'What other income have you had since 1 October 2020?',
                             isPageHeading: false,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -85,31 +89,38 @@
                     items: [
                         {
                             text: 'Statutory Sick Pay',
-                            value: 'Statutory Sick Pay'
+                            value: 'Statutory Sick Pay',
+                            checked: true if data['other-income'] | includes('Statutory Sick Pay')
                         },
                         {
                             text: 'Statutory Paternity, Maternity or Adoption Pay',
-                            value: 'Statutory Paternity, Maternity or Adoption Pay'
+                            value: 'Statutory Paternity, Maternity or Adoption Pay',
+                            checked: true if data['other-income'] | includes('Statutory Paternity, Maternity or Adoption Pay')
                         },
                         {
                             text: 'Fostering Allowance',
-                            value: 'Fostering Allowance'
+                            value: 'Fostering Allowance',
+                            checked: true if data['other-income'] | includes('Fostering Allowance')
                         },
                         {
                             text: 'Direct payment for caring for someone',
-                            value: 'Direct payment for caring for someone'
+                            value: 'Direct payment for caring for someone',
+                            checked: true if data['other-income'] | includes('Direct payment for caring for someone')
                         },
                         {
                             text: 'Rental income',
-                            value: 'Rental income'
+                            value: 'Rental income',
+                            checked: true if data['other-income'] | includes('Rental income')
                         },
                         {
                             text: 'Any other income',
-                            value: 'Any other income'
+                            value: 'Any other income',
+                            checked: true if data['other-income'] | includes('Any other income')
                         },
                         {
                             text: 'None',
-                            value: 'None'
+                            value: 'None',
+                            checked: true if data['other-income'] | includes('None')
                         }
                     ]
                 }) }}

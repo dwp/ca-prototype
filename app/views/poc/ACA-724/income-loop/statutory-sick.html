@@ -17,6 +17,8 @@
 
 {% block content %}
 
+{{ 'statutory-maternity' | redirect | safe if not data['other-income'] | includes('Statutory Sick Pay') }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">

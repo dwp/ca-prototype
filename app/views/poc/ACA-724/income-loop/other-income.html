@@ -17,11 +17,13 @@
 
 {% block content %}
 
+{{ '../end' | redirect | safe if not data['other-income'] | includes('Any other income') }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-income">
+            <form action="../end">
 
                 <h1 class="govuk-heading-l">Other income</h1>
 

@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Employment summary
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'self-employment' | redirect | safe if data['been-employed'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="employment-router">
+
+                <h1 class="govuk-heading-l">Employment summary</h1>
+
+                <h2 class="govuk-heading-m">Employment you have added</h2>
+
+                {% for id, job in data['jobStore'] %}
+
+                    {% if job != '' %}
+
+                        <h3 class="govuk-heading-s">{{ job['employer-name'] }}</h3>
+
+                        {{ govukSummaryList ({
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Start Date:',
+                                        classes: 'app-type-force-normal'
+                                    },
+                                    value: {
+                                        text: 'Before 1 April 2020' if job['employment-start-before'] == 'Yes' else (job['employment-start-date-day'] + ' ' + job['employment-start-date-month'] | month + ' ' + job['employment-start-date-year'])
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'employer-details?selectedJob=' + id,
+                                                visuallyHiddenText: ''
+                                            },
+                                            {
+                                                text: 'Delete',
+                                                href: 'employment-list?jobStore[' + id + ']=',
+                                                visuallyHiddenText: ''
+                                            }
+                                        ],
+                                        classes: 'app-actions-force-inline'
+                                    }
+                                }
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                <h2 class="govuk-heading-m">Your employment history</h2>
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-add',
+                    name: 'employment-add',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you had any other jobs since 1 April 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This is six months before your claim date.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

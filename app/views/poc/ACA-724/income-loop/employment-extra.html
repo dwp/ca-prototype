@@ -17,6 +17,8 @@
 
 {% block content %}
 
+{{ 'statutory-sick' | redirect | safe if (data['been-self-employed'] != 'Yes' and data['been-employed'] != 'Yes') }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">

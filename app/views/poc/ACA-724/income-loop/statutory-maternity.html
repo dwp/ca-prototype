@@ -17,6 +17,8 @@
 
 {% block content %}
 
+{{ 'fostering-allowance' | redirect | safe if not data['other-income'] | includes('Statutory Paternity, Maternity or Adoption Pay') }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">

@@ -17,6 +17,8 @@
 
 {% block content %}
 
+{{ 'employment-extra' | redirect | safe if data['been-self-employed'] != 'Yes' }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">

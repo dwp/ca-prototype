@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
 {% block pageTitle %}
-    Page title
+    Employer income
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,20 +21,22 @@
 
 {% block content %}
 
+{{ 'self-employment' | redirect | safe if data['been-employed'] != 'Yes' }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
             <form action="expenses">
 
-                <h1 class="govuk-heading-xl">{{ data['employer-name'] }}</h1>
+                <h1 class="govuk-heading-xl">{{ job['employer-name'] }}</h1>
 
                 {{ govukRadios ({
                     idPrefix: 'employer-pay-frequency',
-                    name: 'employer-pay-frequency',
+                    name: jobLoc + '[employer-pay-frequency]',
                     fieldset: {
                         legend: {
-                            text: 'How often are you paid?',
+                            text: 'How often are you paid?' if job['employment-finished-job'] == 'No' else 'How often were you paid?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -39,38 +45,38 @@
                         {
                             text: 'Weekly',
                             value: 'Weekly',
-                            checked: true if data['employer-pay-frequency'] == 'Weekly'
+                            checked: true if job['employer-pay-frequency'] == 'Weekly'
                         },
                         {
                             text: 'Fortnightly',
                             value: 'Fortnightly',
-                            checked: true if data['employer-pay-frequency'] == 'Fortnightly'
+                            checked: true if job['employer-pay-frequency'] == 'Fortnightly'
                         },
                         {
                             text: 'Every 4 weeks',
                             value: 'Every 4 weeks',
-                            checked: true if data['employer-pay-frequency'] == 'Every 4 weeks'
+                            checked: true if job['employer-pay-frequency'] == 'Every 4 weeks'
                         },
                         {
                             text: 'Monthly',
                             value: 'Monthly',
-                            checked: true if data['employer-pay-frequency'] == 'Monthly'
+                            checked: true if job['employer-pay-frequency'] == 'Monthly'
                         },
                         {
                             text: 'Other',
                             value: 'Other',
-                            checked: true if data['employer-pay-frequency'] == 'Other'
+                            checked: true if job['employer-pay-frequency'] == 'Other'
                         }
                     ]
                 }) }}
 
                 {{ govukInput ({
                     id: 'employer-pay-date',
-                    name: 'employer-pay-date',
-                    value: data['employer-pay-date'] if data['employer-pay-date'] else '',
+                    name: jobLoc + '[employer-pay-date]',
+                    value: job['employer-pay-date'] if job['employer-pay-date'] else '',
                     classes: 'govuk-input--width-20',
                     label: {
-                        text: 'When do you get paid?',
+                        text: 'When do you get paid?' if job['employment-finished-job'] == 'No' else 'When did you get paid?',
                         classes: 'govuk-input--width-20 app-bold-label'
                     },
                     hint: {
@@ -80,7 +86,7 @@
 
                 {{ govukDateInput ({
                     id: 'employment-last-pay-date',
-                    namePrefix: 'employment-last-pay-date',
+                    namePrefix: jobLoc + '[employment-last-pay-date',
                     fieldset: {
                         legend: {
                             text: 'When were you last paid?',
@@ -94,26 +100,26 @@
                     items: [
                         {
                             classes: 'govuk-input--width-2',
-                            name: 'day',
-                            value: data['employment-last-pay-date-day']
+                            name: 'day]',
+                            value: job['employment-last-pay-date-day']
                         },
                         {
                             classes: 'govuk-input--width-2',
-                            name: 'month',
-                            value: data['employment-last-pay-date-month']
+                            name: 'month]',
+                            value: job['employment-last-pay-date-month']
                         },
                         {
                             classes: 'govuk-input--width-4',
-                            name: 'year',
-                            value: data['employment-last-pay-date-year']
+                            name: 'year]',
+                            value: job['employment-last-pay-date-year']
                         }
                     ]
                 }) }}
 
                 {{ govukInput ({
                     id: 'employment-last-pay-amount',
-                    name: 'employment-last-pay-amount',
-                    value: data['employment-last-pay-amount'] if data['employment-last-pay-amount'] else '',
+                    name: jobLoc + '[employment-last-pay-amount]',
+                    value: job['employment-last-pay-amount'] if job['employment-last-pay-amount'] else '',
                     classes: 'govuk-input--width-20',
                     label: {
                         text: 'What were you paid in your last wage?',
@@ -126,8 +132,8 @@
 
                 {{ govukCharacterCount ({
                     id: 'employment-pay-includes',
-                    name: 'employment-pay-includes',
-                    value: data['employment-pay-includes'] if data['employment-pay-includes'] else '',
+                    name: jobLoc + '[employment-pay-includes]',
+                    value: job['employment-pay-includes'] if job['employment-pay-includes'] else '',
                     maxlength: 300,
                     label: {
                         text: 'What was included in this pay? (Optional)',
@@ -140,10 +146,10 @@
 
                 {{ govukRadios ({
                     idPrefix: 'employment-same-amount',
-                    name: 'employment-same-amount',
+                    name: jobLoc + '[employment-same-amount]',
                     fieldset: {
                         legend: {
-                            text: 'Do you get the same amount each time?',
+                            text: 'Do you get the same amount each time?' if job['employment-finished-job'] == 'No' else 'Did you get the same amount each time?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -152,12 +158,12 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['employment-same-amount'] == 'Yes'
+                            checked: true if job['employment-same-amount'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['employment-same-amount'] == 'No'
+                            checked: true if job['employment-same-amount'] == 'No'
                         }
                     ]
                 }) }}

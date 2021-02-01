@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
 {% block pageTitle %}
     Pension contributions, employment expenses or care costs
 {% endblock %}
@@ -17,20 +21,22 @@
 
 {% block content %}
 
+{{ 'self-employment' | redirect | safe if data['been-employed'] != 'Yes' }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="self-employment">
+            <form action="employment-list">
 
                 <h1 class="govuk-heading-l">Pension contributions, employment expenses or care costs</h1>
 
                 {% set pensionDetailsHTML %}
 
                     {{ govukCharacterCount ({
-                        name: 'employment-pension-details',
+                        name: jobLoc + '[employment-pension-details]',
                         id: 'employment-pension-details',
-                        value: data['employment-pension-details'],
+                        value: job['employment-pension-details'],
                         maxlength: '300',
                         label: {
                             text: 'Give details of each pension you pay into, including how much and how often you pay.',
@@ -42,7 +48,7 @@
 
                 {{ govukRadios ({
                     idPrefix: 'employment-pay-into-pension',
-                    name: 'employment-pay-into-pension',
+                    name: jobLoc + '[employment-pay-into-pension]',
                     fieldset: {
                         legend: {
                             text: 'Do you pay into a pension?',
@@ -54,7 +60,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['employment-pay-into-pension'] == 'Yes',
+                            checked: true if job['employment-pay-into-pension'] == 'Yes',
                             conditional: {
                                 html: pensionDetailsHTML
                             }
@@ -62,7 +68,7 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['employment-pay-into-pension'] == 'No'
+                            checked: true if job['employment-pay-into-pension'] == 'No'
                         }
                     ]
                 }) }}
@@ -70,9 +76,9 @@
                 {% set expensesDetailsHTML %}
 
                     {{ govukCharacterCount ({
-                        name: 'employment-expenses-details',
+                        name: jobLoc + '[employment-expenses-details]',
                         id: 'employment-expenses-details',
-                        value: data['employment-expenses-details'],
+                        value: job['employment-expenses-details'],
                         maxlength: '300',
                         label: {
                             text: 'Give details of what you need to buy, why you need it and how much it costs.',
@@ -84,7 +90,7 @@
 
                 {{ govukRadios ({
                     idPrefix: 'employment-expenses',
-                    name: 'employment-expenses',
+                    name: jobLoc + '[employment-expenses]',
                     fieldset: {
                         legend: {
                             text: 'Do you pay for things you need to do your job?',
@@ -99,7 +105,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['employment-expenses'] == 'Yes',
+                            checked: true if job['employment-expenses'] == 'Yes',
                             conditional: {
                                 html: expensesDetailsHTML
                             }
@@ -107,7 +113,7 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['employment-expenses'] == 'No'
+                            checked: true if job['employment-expenses'] == 'No'
                         }
                     ]
                 }) }}
@@ -115,9 +121,9 @@
                 {% set careCostsHTML %}
 
                     {{ govukCharacterCount ({
-                        name: 'care-costs-details',
+                        name: jobLoc + '[care-costs-details]',
                         id: 'care-costs-details',
-                        value: data['care-costs-details'],
+                        value: job['care-costs-details'],
                         maxlength: '300',
                         label: {
                             text: 'Give details of who you pay and what it costs.',
@@ -132,7 +138,7 @@
 
                 {{ govukRadios ({
                     idPrefix: 'employment-care-costs',
-                    name: 'employment-care-costs',
+                    name: jobLoc + '[employment-care-costs]',
                     fieldset: {
                         legend: {
                             text: 'Do you have any care costs because of this work?',
@@ -147,7 +153,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['employment-care-costs'] == 'Yes',
+                            checked: true if job['employment-care-costs'] == 'Yes',
                             conditional: {
                                 html: careCostsHTML
                             }

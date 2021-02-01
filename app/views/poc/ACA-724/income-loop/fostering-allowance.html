@@ -17,11 +17,13 @@
 
 {% block content %}
 
+{{ 'direct-payments' | redirect | safe if not data['other-income'] | includes('Fostering Allowance') }}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="rental-income">
+            <form action="direct-payments">
 
                 <h1 class="govuk-heading-l">Fostering Allowance</h1>
 
