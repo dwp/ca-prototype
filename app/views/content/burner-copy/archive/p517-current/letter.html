@@ -1,0 +1,224 @@
+
+{% extends "layout.html" %}
+
+{% set carerName = 'Libby Chessler' %}
+{% set dpName = 'Charlie M Marsden' %}
+{% set claimDate = '28 September 2020' %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+
+        <div class="address-row">
+          <div class="address-row-item">
+            <p>
+              {{ dpName }} <br><br>
+              68  Worthy Lane <br>
+              MAUNBY <br>
+              YO7 3FS
+            </p>
+          </div>
+          <div class="address-row-item">
+            <p>
+              Carer’s Allowance Unit<br>
+              Mail Handling Site A<br>
+              Wolverhampton<br>
+              WV98 2AB
+            </p>
+            <p>
+              www.gov.uk/carers-allowance
+            </p>
+            <p>
+              Telephone: 0800 731 0297<br>
+              Textphone: 0800 713 0317
+            </p>
+          </div>
+        </div>
+
+        <p>
+          {{ data.now | friendlyDate }}
+        </p>
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-5 govuk-!-margin-bottom-0">A new claim for Carer’s Allowance</h2>
+
+        <h3 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">We have received a claim for Carer’s Allowance which may affect other benefits</h3>
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-9">
+
+        <div class="letter-content-row">
+
+          <div class="letter-content-primary">
+
+            <p>
+              Dear {{ dpName }}
+            </p>
+
+            <p>
+              {{ carerName }} has made a claim to Carer’s Allowance on 28 September 2020. They told us they provide you with 35 hours of care or more a week. You do not need to do anything if this is correct.
+            </p>
+
+            <p>
+              If {{ carerName }} does not care for you, or provides care for you for less than 35 hours a week, please tell us straightaway. You will need to have your National Insurance number if you call us.
+            </p>
+
+            <p>
+              To get Carer’s Allowance a carer must provide 35 hours of care to someone who gets Personal Independence Payment, Disability Living Allowance, Attendance Allowance, Constant Attendance Allowance or Armed Forces Independence Payment or an EU equivalent disability benefit.
+            </p>
+
+            <p>
+              Because of this we may look at details of any benefit claims you have made in order to process {{ carerName }}’s claim for Carer’s Allowance. We may also look at details of any benefit claims made on your behalf, for example those made by a partner if you have one.
+            </p>
+
+            <h4 class="govuk-heading-s">How this could affect you</h4>
+
+            <p>
+              Some benefits can be affected if someone gets Carer’s Allowance for looking after you. The benefits that could be affected are set out below.
+            </p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>If you get income-based Jobseeker’s Allowance, income-related Employment & Support Allowance, Income Support or Housing Benefit and the amount includes a Severe Disability Premium, you may no longer get  that premium</li>
+              <li>If you get Pension Credit and the amount received includes an additional amount for Severe Disability, you may no longer get that additional amount</li>
+            </ul>
+
+          </div>
+
+          <div class="letter-content-secondary">
+
+            <div class="alt-format-text">
+
+              <h4 class="govuk-heading-s">
+                Communicating in a way that meets your needs
+              </h4>
+
+              <p class="govuk-body">
+                Please tell us if you need us to communicate with you in a different way. For example, large print, braille, British Sign Language, translations, email, audio or something else. Our contact details are at the top of this letter.
+              </p>
+            
+            </div>
+
+            <!--div class="govuk-!-margin-top-9 grey-box-text">
+
+              <p class="govuk-body">
+                {{ carerName }} has made a Carer’s Allowance claim. This may affect some benefits you may get.
+              </p>
+            
+            </div-->
+
+          </div>
+
+        </div>
+
+        </div>
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+
+            <p class="govuk-!-margin-top-9">
+              For more information you should contact the office dealing with these benefits. If you get a reduction in Council Tax this may also be affected. To find out more please contact your local authority.
+            </p>
+
+            <p>
+              {{ carerName }}’s Carer’s Allowance <b>will not</b> affect any Personal Independence Payment, Disability Living Allowance, Attendance Allowance, Constant Attendance Allowance or Armed Forces Independence Payment you may get.
+            </p>
+
+          <h4 class="govuk-heading-s">More information</h4>
+
+          <p>
+            You can find out more about Carer’s Allowance at www.gov.uk/carers-allowance.
+          </p>
+
+          <p>Yours sincerely,</p>
+
+          <p>Office manager</p>
+
+          <div class="govuk-!-margin-top-9 govuk-!-margin-bottom-9"><br></div>
+          <div class="govuk-!-margin-top-9 govuk-!-margin-bottom-9"><br></div>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-9">
+        
+          <h4 class="govuk-heading-s">Equality and Diversity</h4>
+
+          <p>
+            We treat people fairly, regardless of their disability, ethnicity, gender, sexual orientation, transgender status, marital or civil partnership status, age, religion or beliefs.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-5">
+
+          <h4 class="govuk-heading-s">Call charges</h4>
+
+          <p>
+            Calls to 0800 numbers are free from personal mobiles and landlines.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-5">
+
+          <h4 class="govuk-heading-s">Why DWP needs personal information and how we treat it</h4>
+
+          <p>
+            We treat personal information carefully. We may use it for any of our purposes. To learn more about information rights and how we use information, please see our DWP Personal Information Charter at <b>www.gov.uk/dwp/personal-information-charter</b>
+          </p>
+
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="vote-button-container">
+
+      <div class="govuk-width-container">
+
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-full">
+
+            <div class="vote-buttons-wrapper">
+
+              <form action="export" class="vote-buttons colour-distinction">
+
+                <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}">
+
+                  {{ govukButton({
+                    text: 'Makes sense',
+                    type: 'button',
+                    classes: 'button--good',
+                    attributes: {
+                      'onclick': 'javascript:CFObject.voteUp();'
+                    }
+                  }) }}
+
+                  {{ govukButton({
+                    text: 'Does not make sense',
+                    classes: 'govuk-button--warning button--bad',
+                    type: 'button',
+                    attributes: {
+                      'onclick': 'javascript:CFObject.voteDown();'
+                    }
+                  }) }}
+
+                  <div class="spacer"></div>
+
+                  {{ govukButton({
+                    text: 'I am finished',
+                    type: 'submit',
+                    classes: 'govuk-button--secondary'
+                  }) }}
+
+                </form>
+
+            </div>
+            
+          </div>
+          
+        </div>
+
+      </div>
+
+  </div>
+
+{% endblock %}
