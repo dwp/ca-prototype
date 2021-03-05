@@ -15,10 +15,15 @@
 
       <div id="contentToTest" class="content-letter colour-distinction taller-lines">
 
+        <div class="govuk-!-margin-top-4">
+          {{ dwpLogo() }}
+          {{ niLogo() }}
+        </div>
+
         <div class="address-row">
           <div class="address-row-item">
             <p>
-              {{ dpName }} <br><br>
+              {{ dpName | upperCase }} <br><br>
               68  Worthy Lane <br>
               MAUNBY <br>
               YO7 3FS
