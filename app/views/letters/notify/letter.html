@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+
+{% set carerName = 'Libby Chessler' %}
+{% set dpName = 'Charlie M Marsden' %}
+{% set claimDate = '28 September 2020' %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+
+        <div class="govuk-!-margin-top-4">
+          {{ dwpLogo() }}
+          {{ niLogo() }}
+        </div>
+
+        <div class="address-row">
+          <div class="address-row-item">
+            <p>
+              {{ dpName | upperCase }} <br><br>
+              68  Worthy Lane <br>
+              MAUNBY <br>
+              YO7 3FS
+            </p>
+          </div>
+          <div class="address-row-item">
+            <p>
+              Carer’s Allowance Unit<br>
+              Mail Handling Site A<br>
+              Wolverhampton<br>
+              WV98 2AB
+            </p>
+            <p>
+              www.gov.uk/carers-allowance
+            </p>
+            <p>
+              Telephone: 0800 731 0297<br>
+              Textphone: 0800 713 0317
+            </p>
+          </div>
+        </div>
+
+        <div class="main-container">
+
+          <p>
+            {{ data.now | friendlyDate }}
+          </p>
+
+          <h2 class="govuk-heading-l govuk-!-margin-bottom-4">A new claim for Carer’s Allowance</h2>
+
+          <p class="govuk-heading-m">If you need this letter in a different format, for example, Braille, large print or audio, contact us by telephone on 0800 731 0297 or textphone on 0800 731 0317.</p>
+    
+          <p>
+            Dear {{ dpName }}
+          </p>
+
+          <p>
+            Jane Doe has applied for Carer’s Allowance from {{ claimDate }} and named you as the person they care for. 
+          </p>
+
+          <p>
+            This is a benefit for carers who look after someone for 35 hours a week or more. 
+          </p>
+
+          <h2 class="govuk-heading-m">What this means for you</h2>
+
+          <p>
+            You do not need to do anything unless Jane Doe is not caring for you. You can contact us to report this.
+          </p>
+
+          <p>
+            We will need to check your benefit records to deal with Jane Doe’s claim. You can find out how we use your data at:
+            <br>
+              www.gov.uk/dwp/personal‑information‑charter
+          </p>
+
+        </div>
+
+        <p class="page-number" >Page 1 of 2</p>
+
+        </div>
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+
+        <div class="main-container govuk-!-margin-top-7">
+
+        <h2 class="govuk-heading-m">If your benefits include a severe disability premium</h2>
+
+        <p>
+          If the Carer’s Allowance claim is paid, you will stop getting any severe disability premium.
+        </p>
+
+        <p>
+          A severe disability premium is an extra amount of money that may be added to your:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Income Support</li>
+          <li>income-based Jobseeker’s Allowance (JSA)</li>
+          <li>income-related Employment and Support Allowance (ESA)</li>
+          <li>Housing Benefit</li>
+        </ul>
+
+        <h2 class="govuk-heading-m">If you get Pension Credit</h2>
+
+        <p>
+          If you are paid an extra amount of Pension Credit for severe disability, this will stop if the Carer’s Allowance claim is paid.
+        </p>
+
+        <h2 class="govuk-heading-m">If you pay a reduced rate of Council Tax</h2>
+
+        <p>
+          Your Council Tax reduction could be affected if the Carer’s Allowance claim is successful. You can check this with your local council at:
+          <br> 
+           www.gov.uk/find-local-council
+        </p>
+
+        <h2 class="govuk-heading-m">If you need to speak to someone about your benefits</h2>
+
+        <p>Contact the department that deals with your benefit if you need to check whether Carer’s Allowance will affect your payments.</p>
+
+        <h2 class="govuk-heading-m">If you need to contact us about Carer’s Allowance</h2>
+
+        <p>
+          You can contact us for free on:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Telephone: 0800 731 0297</li>
+          <li>Textphone: 0800 731 0317</li>
+          <li>Relay UK: 18001 then 0800 731 0297 (text service if you cannot hear or speak on the phone) </li>
+        </ul>
+
+        <p>
+          You can find out more about ways to contact us at:
+          <br> 
+          www.gov.uk/carers-allowance-unit
+        </p>
+
+        <p>Yours sincerely</p>  
+
+
+        <p>The Carer’s Allowance Unit</p>
+
+        </div>
+
+        <p class="page-number" >Page 2 of 2</p>
+
+        
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="vote-button-container">
+
+      <div class="govuk-width-container">
+
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-full">
+
+            <div class="vote-buttons-wrapper">
+
+              <form action="export" class="vote-buttons colour-distinction">
+
+                <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}">
+
+                  {{ govukButton({
+                    text: 'Makes sense',
+                    type: 'button',
+                    classes: 'button--good',
+                    attributes: {
+                      'onclick': 'javascript:CFObject.voteUp();'
+                    }
+                  }) }}
+
+                  {{ govukButton({
+                    text: 'Does not make sense',
+                    classes: 'govuk-button--warning button--bad',
+                    type: 'button',
+                    attributes: {
+                      'onclick': 'javascript:CFObject.voteDown();'
+                    }
+                  }) }}
+
+                  <div class="spacer"></div>
+
+                  {{ govukButton({
+                    text: 'I am finished',
+                    type: 'submit',
+                    classes: 'govuk-button--secondary'
+                  }) }}
+
+                </form>
+
+            </div>
+            
+          </div>
+          
+        </div>
+
+      </div>
+
+  </div>
+
+{% endblock %}
