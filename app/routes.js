@@ -53,6 +53,7 @@ const resetBooleanUnlessOverwritten = (req, name) => {
 
 router.all('*', (req, _, next) => {
 	resetBooleanUnlessOverwritten(req, 'error')
+	resetBooleanUnlessOverwritten(req, 'show-buttons')
 	resetBooleanUnlessOverwritten(req, 'fromCheck')
 	req.session.data.time = new Date().getTime()
 	next()
