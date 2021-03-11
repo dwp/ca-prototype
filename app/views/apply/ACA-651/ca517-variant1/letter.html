@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
-{% set carerName = 'Libby Chessler' %}
-{% set dpName = 'Charlie M Marsden' %}
-{% set claimDate = '28 September 2020' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
 
 {% block pageTitle %}
   GOV.UK Prototype Kit
@@ -23,10 +23,10 @@
         <div class="address-row">
           <div class="address-row-item">
             <p>
-              {{ dpName | upperCase }} <br><br>
-              68  Worthy Lane <br>
-              MAUNBY <br>
-              YO7 3FS
+              {{ dpName | upperCase }} <br>
+              ADDRESS LINE 1<br>
+              ADDRESS LINE 2 <br>
+              BT59 4NN
             </p>
           </div>
           <div class="address-row-item">
@@ -58,11 +58,11 @@
           <p class="govuk-heading-m">If you need this letter in a different format, for example, Braille, large print or audio, contact us by telephone on 0800 587 0912 or textphone on 0800 012 1574.</p>
     
           <p>
-            Dear {{ dpName }}
+            Dear {{ dpName | upperCase }}
           </p>
 
           <p>
-            [CARER NAME] has applied for Carer’s Allowance from {{ claimDate }} and named you as the person they care for. 
+            {{ carerName | upperCase }} has applied for Carer’s Allowance from {{ claimDate }} and named you as the person they care for. 
           </p>
 
           <p>
@@ -72,7 +72,7 @@
           <h2 class="govuk-heading-m">What this means for you</h2>
 
           <p>
-            You do not need to do anything unless [CARER NAME] is not caring for you. You can contact us to report this.
+            You do not need to do anything unless {{ carerName | upperCase }} is not caring for you. You can contact us to report this.
           </p>
 
           <p>
