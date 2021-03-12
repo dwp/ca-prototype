@@ -11,426 +11,349 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+            <div class="govuk-!-margin-top-4">
+                {{ dwpLogo() }}
+            </div>
 
-      <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+            <div class="address-row">
+                <div class="address-row-item">
+                    <p>
+                        {{ dpName | upperCase }} <br />
+                        ADDRESS LINE 1<br />
+                        ADDRESS LINE 2 <br />
+                        N12 4NN
+                    </p>
+                </div>
+                <div class="address-row-item">
+                    <p>
+                        Carer’s Allowance Unit<br />
+                        Mail Handling Site A<br />
+                        Wolverhampton<br />
+                        WV98 2AB
+                    </p>
+                    <p>
+                        www.gov.uk/carers-allowance
+                    </p>
+                    <p>
+                        Telephone: 0800 731 0297<br />
+                        Textphone: 0800 713 0317
+                    </p>
+                </div>
+            </div>
 
-        <div class="govuk-!-margin-top-4">
-          {{ dwpLogo() }}
-         
+            <p>
+                {{ data.now | friendlyDate }}
+            </p>
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-5 govuk-!-margin-bottom-0">Letter heading</h2>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">Sub-heading</h3>
+
+            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-9" />
+
+            <div class="letter-content-row">
+                <div class="letter-content-primary">
+                    <p>
+                        Dear {{ carerName }}
+                    </p>
+
+                    <p>
+                        We are pleased to tell you that your claim for Carer's Allowance has been successful for the period(s) shown below. The details of your award are as follows:-
+                    </p>
+
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">
+                            Dates and amounts
+                        </caption>
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">From date</th>
+                                <th scope="col" class="govuk-table__header">To date</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Weeks/Days</th>
+                                <td class="govuk-table__cell">£0.00</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Personal Rate</th>
+                                <td class="govuk-table__cell">£0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        <div class="address-row">
-          <div class="address-row-item">
-            <p>
-              {{ dpName | upperCase }} <br>
-              ADDRESS LINE 1<br>
-              ADDRESS LINE 2 <br>
-              N12 4NN
-            </p>
-          </div>
-          <div class="address-row-item">
-            <p>
-              Carer’s Allowance Unit<br>
-              Mail Handling Site A<br>
-              Wolverhampton<br>
-              WV98 2AB
-            </p>
-            <p>
-              www.gov.uk/carers-allowance
-            </p>
-            <p>
-              Telephone: 0800 731 0297<br>
-              Textphone: 0800 713 0317
-            </p>
-          </div>
-        </div>
-
-        <p>
-          {{ data.now | friendlyDate }}
-        </p>
-
-        <h2 class="govuk-heading-l govuk-!-margin-top-5 govuk-!-margin-bottom-0">Letter heading</h2>
-
-        <h3 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">Sub-heading</h3>
-
-        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-9">
-
-        <div class="letter-content-row">
-
-          <div class="letter-content-primary">
-
-            <p>
-              Dear {{ carerName }}
-            </p>
-
-            <p>
-              We are pleased to tell you that your claim for Carer's Allowance has been successful for the period(s) shown below. The details of your award are as follows:-
-            </p>
-
-            <table class="govuk-table">
-              <caption class="govuk-table__caption govuk-table__caption--m">Dates and amounts</caption>
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th scope="col" class="govuk-table__header">From date</th>
-                  <th scope="col" class="govuk-table__header">To date</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Weeks/Days</th>
-                  <td class="govuk-table__cell">£0.00</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Personal Rate</th>
-                  <td class="govuk-table__cell">£0.00</td>
-                </tr>
-                
-              </tbody>
-            </table>
-
-
-          </div>
-        </div>
-      </div>
-      <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-
-        <p class="govuk-!-margin-top-9">
-              <strong>Information about Direct Payments </strong>
-            </p>
-
-            <p>
-              If you have chosen to be paid Carer's Allowance weekly you will receive your payment on the same day every week. If you have chosen to be paid four weekly you will receive your payment on the same day every four weeks. This is called the payday. 
-            </p>
-
-            <p>
-              <strong>If we pay you early, please remember this payment is still for your normal weekly or four-weekly payment period.</strong>
-            </p>
-
-            <p>
-              <strong>About your Christmas Bonus</strong>
-            </p>
-
-            <p>
-              You are only entitled to one Christmas Bonus for yourself, even if you are getting more than one benefit. 
-            </p>
-
-            <p>
-              If you have already had a bonus for yourself with another benefit or receive one at a later date, please contact us to discuss what you need to do next. 
-            </p>
-
-            <p>
-              Please note that we will need details of who paid the other bonus and the years it was paid when you contact us. 
-            </p>
-
-            <p>
-              If you get Attendance Allowance, Personal Independence Payment or Disability Living Allowance on behalf of a disabled person, the bonus added to the Attendance Allowance, Personal Independence Payment or Disability Living Allowance is for the disabled person, not you. 
-            </p>
-
-            <p>
-              <strong>About Class 1 National Insurance Credits </strong>
-            </p>
-  
-            <p>
-              You will normally get a Class 1 National Insurance credit for each week that you are paid Carer's Allowance, and you are under State Pension age. These credits may help you to qualify for certain other benefits such as State Pension, Incapacity Benefit, contribution-based Jobseeker's Allowance or contribution-based Employment and Support Allowance. 
-            </p>
-  
-          <p>
-            If you have underlying entitlement to Carer's Allowance, you can only get a Class 1 National Insurance credit from us if the reason we cannot pay you Carer's Allowance is because you are getting Widow's Pension or Bereavement Allowance at a higher rate than Carer's Allowance. We will write to you each year between April and June to work out if you will get a Class 1 credit from us. 
-          </p>
-  
-          <p>
-            We cannot give you credits if you are a married woman who has elected to pay reduced National Insurance contributions and that election is still in force. Leaflet CA13 (National Insurance Guidance for Married Women) or CA08 (Voluntary Contributions) give more advice. You can get these leaflets or any more information about your National Insurance record from HM Revenue & Customs (National Insurance Contributions Office). 
-          </p>
-
-          </div>
-
-
-
-        </div>
-
-        </div>
-
-
         <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-
-
-          <p class="govuk-!-margin-top-9">
-          <strong>Carer's Credit </strong>
-        </p>
-
-        <p>
-          From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it. 
-        </p>
-
-        <p>
-          They will cover periods of up to 12 weeks; 
-        </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>before your Carer's Allowance entitlement begins; </li>
-          <li>during any breaks in care; and </li>
-          <li>at the end of any period of Carer's Allowance entitlement. </li>
-            </ul>
-
-        <p>
-          If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting www.direct.gov.uk/carers or by phoning 0800 731 0297. 
-        </p>
-
-        <p>
-          <strong>What to do if you think this decision is wrong </strong>
-        </p>
-
-        <p>
-          If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
-        </p>
-
-        <p>
-          You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
-        </p>
-
-        <p>
-          You, or someone who has the authority to act for you, can: 
-        </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>ask us for an explanation of the decision, or  </li>
-          <li>ask for a written statement of reasons for the decision, if we have not already sent one  </li>
-          <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.  </li>
-            </ul>
-
-          </div>
-  
-  
-  
-          </div>
-  
-          </div>
-
-          <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-
-
             <p class="govuk-!-margin-top-9">
-            <strong>Not working1 </strong>
-          </p>
-  
-          <p>
-            From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it. 
-          </p>
-  
-          <p>
-            They will cover periods of up to 12 weeks; 
-          </p>
-  
-          <ul class="govuk-list govuk-list--bullet">
-            <li>before your Carer's Allowance entitlement begins; </li>
-            <li>during any breaks in care; and </li>
-            <li>at the end of any period of Carer's Allowance entitlement. </li>
-              </ul>
-  
-          <p>
-            If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting www.direct.gov.uk/carers or by phoning 0800 731 0297. 
-          </p>
-  
-          <p>
-            <strong>What to do if you think this decision is wrong </strong>
-          </p>
-  
-          <p>
-            If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
-          </p>
-  
-          <p>
-            You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
-          </p>
-  
-          <p>
-            You, or someone who has the authority to act for you, can: 
-          </p>
-  
-          <ul class="govuk-list govuk-list--bullet">
-            <li>ask us for an explanation of the decision, or  </li>
-            <li>ask for a written statement of reasons for the decision, if we have not already sent one  </li>
-            <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.  </li>
-              </ul>
-  
-            </div>
-    
-    
-    
-            </div>
-    
-            </div>
-
-            <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-
-
-              <p class="govuk-!-margin-top-9">
-              <strong>Not working2 </strong>
+                <strong>Information about Direct Payments </strong>
             </p>
-    
+
             <p>
-              From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it. 
+                If you have chosen to be paid Carer's Allowance weekly you will receive your payment on the same day every week. If you have chosen to be paid four weekly you will receive your payment on the same day every four weeks. This
+                is called the payday.
             </p>
-    
+
             <p>
-              They will cover periods of up to 12 weeks; 
+                <strong>If we pay you early, please remember this payment is still for your normal weekly or four-weekly payment period.</strong>
             </p>
-    
-            <ul class="govuk-list govuk-list--bullet">
-              <li>before your Carer's Allowance entitlement begins; </li>
-              <li>during any breaks in care; and </li>
-              <li>at the end of any period of Carer's Allowance entitlement. </li>
-                </ul>
-    
+
             <p>
-              If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting www.direct.gov.uk/carers or by phoning 0800 731 0297. 
+                <strong>About your Christmas Bonus</strong>
             </p>
-    
+
             <p>
-              <strong>What to do if you think this decision is wrong </strong>
+                You are only entitled to one Christmas Bonus for yourself, even if you are getting more than one benefit.
             </p>
-    
+
             <p>
-              If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
+                If you have already had a bonus for yourself with another benefit or receive one at a later date, please contact us to discuss what you need to do next.
             </p>
-    
+
             <p>
-              You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
+                Please note that we will need details of who paid the other bonus and the years it was paid when you contact us.
             </p>
-    
+
             <p>
-              You, or someone who has the authority to act for you, can: 
+                If you get Attendance Allowance, Personal Independence Payment or Disability Living Allowance on behalf of a disabled person, the bonus added to the Attendance Allowance, Personal Independence Payment or Disability Living
+                Allowance is for the disabled person, not you.
             </p>
-    
-            <ul class="govuk-list govuk-list--bullet">
-              <li>ask us for an explanation of the decision, or  </li>
-              <li>ask for a written statement of reasons for the decision, if we have not already sent one  </li>
-              <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.  </li>
-                </ul>
-    
-              </div>
-      
-      
-      
-              </div>
-      
-              </div>
 
-              
+            <p>
+                <strong>About Class 1 National Insurance Credits </strong>
+            </p>
 
-     <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p>
+                You will normally get a Class 1 National Insurance credit for each week that you are paid Carer's Allowance, and you are under State Pension age. These credits may help you to qualify for certain other benefits such as State
+                Pension, Incapacity Benefit, contribution-based Jobseeker's Allowance or contribution-based Employment and Support Allowance.
+            </p>
 
+            <p>
+                If you have underlying entitlement to Carer's Allowance, you can only get a Class 1 National Insurance credit from us if the reason we cannot pay you Carer's Allowance is because you are getting Widow's Pension or
+                Bereavement Allowance at a higher rate than Carer's Allowance. We will write to you each year between April and June to work out if you will get a Class 1 credit from us.
+            </p>
 
-          <p class="govuk-!-margin-top-9">
-          <strong>Not working 3 </strong>
-        </p>
-
-        <p>
-          From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it. 
-        </p>
-
-        <p>
-          They will cover periods of up to 12 weeks; 
-        </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>before your Carer's Allowance entitlement begins; </li>
-          <li>during any breaks in care; and </li>
-          <li>at the end of any period of Carer's Allowance entitlement. </li>
-            </ul>
-
-        <p>
-          If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting www.direct.gov.uk/carers or by phoning 0800 731 0297. 
-        </p>
-
-        <p>
-          <strong>What to do if you think this decision is wrong </strong>
-        </p>
-
-        <p>
-          If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
-        </p>
-
-        <p>
-          You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
-        </p>
-
-        <p>
-          You, or someone who has the authority to act for you, can: 
-        </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>ask us for an explanation of the decision, or  </li>
-          <li>ask for a written statement of reasons for the decision, if we have not already sent one  </li>
-          <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.  </li>
-            </ul>
-
-          </div>
-  
-  
-  
-          </div>
-  
-          </div>     
-
-
-
-
-        
-  </div>
-
-  <div class="vote-button-container {{ 'vote-button-hidden' if data['show-buttons'] != 'true'}}">
-
-      <div class="govuk-width-container">
-
-        <div class="govuk-grid-row">
-
-          <div class="govuk-grid-column-full">
-
-            <div class="vote-buttons-wrapper">
-
-              <form action="export" class="vote-buttons colour-distinction">
-
-                <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}">
-
-                  {{ govukButton({
-                    text: 'Makes sense',
-                    type: 'button',
-                    classes: 'button--good',
-                    attributes: {
-                      'onclick': 'javascript:CFObject.voteUp();'
-                    }
-                  }) }}
-
-                  {{ govukButton({
-                    text: 'Does not make sense',
-                    classes: 'govuk-button--warning button--bad',
-                    type: 'button',
-                    attributes: {
-                      'onclick': 'javascript:CFObject.voteDown();'
-                    }
-                  }) }}
-
-                  <div class="spacer"></div>
-
-                  {{ govukButton({
-                    text: 'I am finished',
-                    type: 'submit',
-                    classes: 'govuk-button--secondary'
-                  }) }}
-
-                </form>
-
-            </div>
-            
-          </div>
-          
+            <p>
+                We cannot give you credits if you are a married woman who has elected to pay reduced National Insurance contributions and that election is still in force. Leaflet CA13 (National Insurance Guidance for Married Women) or CA08
+                (Voluntary Contributions) give more advice. You can get these leaflets or any more information about your National Insurance record from HM Revenue & Customs (National Insurance Contributions Office).
+            </p>
         </div>
+    </div>
+</div>
 
-      </div>
+<div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+    <p class="govuk-!-margin-top-9">
+        <strong>Carer's Credit </strong>
+    </p>
 
-  </div>
+    <p>
+        From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes
+        called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it.
+    </p>
+
+    <p>
+        They will cover periods of up to 12 weeks;
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>before your Carer's Allowance entitlement begins;</li>
+        <li>during any breaks in care; and</li>
+        <li>at the end of any period of Carer's Allowance entitlement.</li>
+    </ul>
+
+    <p>
+        If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting
+        www.direct.gov.uk/carers or by phoning 0800 731 0297.
+    </p>
+
+    <p>
+        <strong>What to do if you think this decision is wrong </strong>
+    </p>
+
+    <p>
+        If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may
+        only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter.
+    </p>
+
+    <p>You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>.</p>
+
+    <p>
+        You, or someone who has the authority to act for you, can:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>ask us for an explanation of the decision, or</li>
+        <li>ask for a written statement of reasons for the decision, if we have not already sent one</li>
+        <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.</li>
+    </ul>
+</div>
+
+<div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+    <p class="govuk-!-margin-top-9">
+        <strong>Not working1 </strong>
+    </p>
+
+    <p>
+        From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes
+        called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it.
+    </p>
+
+    <p>
+        They will cover periods of up to 12 weeks;
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>before your Carer's Allowance entitlement begins;</li>
+        <li>during any breaks in care; and</li>
+        <li>at the end of any period of Carer's Allowance entitlement.</li>
+    </ul>
+
+    <p>
+        If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting
+        www.direct.gov.uk/carers or by phoning 0800 731 0297.
+    </p>
+
+    <p>
+        <strong>What to do if you think this decision is wrong </strong>
+    </p>
+
+    <p>
+        If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may
+        only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter.
+    </p>
+
+    <p>You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>.</p>
+
+    <p>
+        You, or someone who has the authority to act for you, can:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>ask us for an explanation of the decision, or</li>
+        <li>ask for a written statement of reasons for the decision, if we have not already sent one</li>
+        <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.</li>
+    </ul>
+</div>
+
+<div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+    <p class="govuk-!-margin-top-9">
+        <strong>Not working2 </strong>
+    </p>
+
+    <p>
+        From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes
+        called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it.
+    </p>
+
+    <p>
+        They will cover periods of up to 12 weeks;
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>before your Carer's Allowance entitlement begins;</li>
+        <li>during any breaks in care; and</li>
+        <li>at the end of any period of Carer's Allowance entitlement.</li>
+    </ul>
+
+    <p>
+        If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting
+        www.direct.gov.uk/carers or by phoning 0800 731 0297.
+    </p>
+
+    <p>
+        <strong>What to do if you think this decision is wrong </strong>
+    </p>
+
+    <p>
+        If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may
+        only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter.
+    </p>
+
+    <p>You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>.</p>
+
+    <p>
+        You, or someone who has the authority to act for you, can:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>ask us for an explanation of the decision, or</li>
+        <li>ask for a written statement of reasons for the decision, if we have not already sent one</li>
+        <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.</li>
+    </ul>
+</div>
+
+<div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+    <p class="govuk-!-margin-top-9">
+        <strong>Not working 3 </strong>
+    </p>
+
+    <p>
+        From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes
+        called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it.
+    </p>
+
+    <p>
+        They will cover periods of up to 12 weeks;
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>before your Carer's Allowance entitlement begins;</li>
+        <li>during any breaks in care; and</li>
+        <li>at the end of any period of Carer's Allowance entitlement.</li>
+    </ul>
+
+    <p>
+        If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting
+        www.direct.gov.uk/carers or by phoning 0800 731 0297.
+    </p>
+
+    <p>
+        <strong>What to do if you think this decision is wrong </strong>
+    </p>
+
+    <p>
+        If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us <strong>within one month of the date</strong> of this letter we may
+        only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter.
+    </p>
+
+    <p>You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>.</p>
+
+    <p>
+        You, or someone who has the authority to act for you, can:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>ask us for an explanation of the decision, or</li>
+        <li>ask for a written statement of reasons for the decision, if we have not already sent one</li>
+        <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.</li>
+    </ul>
+</div>
+
+<div class="vote-button-container {{ 'vote-button-hidden' if data['show-buttons'] != 'true'}}">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="vote-buttons-wrapper">
+                    <form action="export" class="vote-buttons colour-distinction">
+                        <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}" />
+
+                        {{ govukButton({ text: 'Makes sense', type: 'button', classes: 'button--good', attributes: { 'onclick': 'javascript:CFObject.voteUp();' } }) }} {{ govukButton({ text: 'Does not make sense', classes:
+                        'govuk-button--warning button--bad', type: 'button', attributes: { 'onclick': 'javascript:CFObject.voteDown();' } }) }}
+
+                        <div class="spacer"></div>
+
+                        {{ govukButton({ text: 'I am finished', type: 'submit', classes: 'govuk-button--secondary' }) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
