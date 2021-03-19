@@ -14,12 +14,13 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <div id="contentToTest" class="content-letter colour-distinction taller-lines">
-            <div class="govuk-!-margin-top-4">
-                {{ dwpLogo() }}
-            </div>
 
-            <div class="address-row">
-                <div class="address-row-item">
+            <div class="address-row govuk-!-padding-top-1">
+                <div class="address-row-item" style="width: 50%">
+                    <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-9">
+                        {{ dwpOldLogo() }}
+                        <p><b>Disability and Carers Service</b></p>
+                    </div>
                     <p>
                         {{ dpName | upperCase }} <br />
                         ADDRESS LINE 1<br />
@@ -27,35 +28,66 @@
                         N12 4NN
                     </p>
                 </div>
-                <div class="address-row-item">
-                    <p>
-                        Carer’s Allowance Unit<br />
-                        Mail Handling Site A<br />
-                        Wolverhampton<br />
-                        WV98 2AB
-                    </p>
-                    <p>
-                        www.gov.uk/carers-allowance
-                    </p>
-                    <p>
-                        Telephone: 0800 731 0297<br />
-                        Textphone: 0800 713 0317
-                    </p>
+                <div class="address-row-item" style="width: 50%">
+                    <table class="govuk-table app-content-letter-table">
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%"></td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    <b>Carer’s Allowance</b><br>
+                                    www.gov.uk
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%">If you get in touch with us, tell us this <br> <br> reference number</td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    QQ 12 34 56 C
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our address is</td>
+                                <td class="govuk-table__cell">
+                                    Carer’s Allowance Unit<br />
+                                    Mail Handling Site A<br />
+                                    Wolverhampton<br />
+                                    WV98 2AB
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our phone number</td>
+                                <td class="govuk-table__cell">
+                                    0800 7310297
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                    Textphone ONLY for customers with speech/hearing problems 0800 731317
+                                </td>
+                            </tr>
+                             <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    Date
+                                </td>
+                                <td class="govuk-table__cell">
+                                    19/03/2021
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <p>
-                {{ data.now | friendlyDate }}
-            </p>
-
-            <h2 class="govuk-heading-l govuk-!-margin-top-5 govuk-!-margin-bottom-0">Letter heading</h2>
-
-            <h3 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">Sub-heading</h3>
-
-            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-9" />
-
+            
             <div class="letter-content-row">
-                <div class="letter-content-primary">
+                <div class="letter-content-clerical">
                     <p>
                         Dear {{ carerName }}
                     </p>
@@ -64,24 +96,44 @@
                         We are pleased to tell you that your claim for Carer's Allowance has been successful for the period(s) shown below. The details of your award are as follows:-
                     </p>
 
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">
-                            Dates and amounts
-                        </caption>
+                    <table class="govuk-table app-content-letter-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
                                 <th scope="col" class="govuk-table__header">From date</th>
                                 <th scope="col" class="govuk-table__header">To date</th>
+                                <th scope="col" class="govuk-table__header">Weeks/ Days</th>
+                                <th scope="col" class="govuk-table__header">Personal Rate</th>
+                                <th scope="col" class="govuk-table__header">Child Dependant Increase</th>
+                                <th scope="col" class="govuk-table__header">Adult Dependant Increase</th>
+                                <th scope="col" class="govuk-table__header">Amount</th>
                             </tr>
                         </thead>
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Weeks/Days</th>
+                                <td class="govuk-table__cell">28/10/2019</td>
+                                <td class="govuk-table__cell">09/02/2020</td>
+                                <td class="govuk-table__cell">15/00</td>
+                                <td class="govuk-table__cell">£66.15</td>
                                 <td class="govuk-table__cell">£0.00</td>
+                                <td class="govuk-table__cell">£0.00</td>
+                                <td class="govuk-table__cell">£992.25</td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Personal Rate</th>
-                                <td class="govuk-table__cell">£0.00</td>
+                                <td class="govuk-table__cell" colspan="2">Christmas Bonus</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell">£10.00</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><b>Total</b></td>
+                                <td class="govuk-table__cell">£1002.25</td>
                             </tr>
                         </tbody>
                     </table>
