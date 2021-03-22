@@ -374,6 +374,11 @@ $govuk-assets-path: '/govuk/assets/';
   }
 }
 
+.app-page-number-row,
+.app-page-number-row p {
+  text-align: right;
+}
+
 @font-face {
   font-family: 'Redacted';
   src: url('/public/fonts/redacted-regular.eot');
