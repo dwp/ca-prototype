@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Tell us about these other types of earnings
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="choice-message">
+
+
+                {{ govukRadios ({
+                    idPrefix: 'income-other-type',
+                    name: 'income-other-type',
+                    fieldset: {
+                        legend: {
+                            text: 'Which type of earnings do you get?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'If you get more than one type of earnings you can add others later.'
+                    },
+                    items: [
+                        {
+                            text: 'Pension income',
+                            value: 'Pension income',
+                            checked: true if data['income-other-type'] == 'Pension income'
+                        },
+                        {
+                            text: 'A benefit from DWP',
+                            value: 'A benefit from DWP',
+                            checked: true if data['income-other-type'] == 'A benefit from DWP'
+                        },
+                        {
+                            text: 'Help with living costs from someone I live with',
+                            value: 'Help with living costs from someone I live with',
+                            checked: true if data['income-other-type'] == 'Help with living costs from someone I live with'
+                        },
+                        {
+                            text: 'Loans or borrowing',
+                            value: 'Loans or borrowing',
+                            checked: true if data['income-other-type'] == 'Loans or borrowing'
+                        },
+                        {
+                            text: 'A different type of income',
+                            value: 'A different type of income',
+                            checked: true if data['income-other-type'] == 'A different type of income'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

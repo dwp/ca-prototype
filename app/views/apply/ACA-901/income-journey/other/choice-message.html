@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    You do not need to tell us about this
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="type">
+
+                <h1 class="govuk-heading-l">You do not need to tell us about this</h1>
+
+                {% if data['income-other-type'] == 'Pension income' %}
+                    <p>You do not need to tell us about any pensions income you get. This includes State Pension or any private pensions.</p>
+                {% endif %}
+
+                {% if data['income-other-type'] == 'A benefit from DWP' %}
+                    <p>You do not need to tell us about any benefits you or anyone else gets from DWP.</p>
+                {% endif %}
+
+                {% if data['income-other-type'] == 'Help with living costs from someone I live with' %}
+                    <p>You do not need to tell us about any money you get to help with living costs from someone you live with.</p>
+                {% endif %}
+
+                {% if data['income-other-type'] == 'Loans or borrowing' %}
+                    <p>You do not need tell us about any money you get from loans or borrowing.</p>
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'add-other',
+                    name: 'add-other',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you have any other types of earnings since 1 April 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

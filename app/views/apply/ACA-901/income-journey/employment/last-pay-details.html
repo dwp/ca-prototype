@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Final pay details
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ ('costs' | redirect | safe) if job['got-last-pay'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="costs">
+
+                {% set hintHTML %}
+
+                    <p>This includes things like:</p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>money for holidays you had left</li>
+                        <li>sick pay</li>
+                        <li>any redundancy pay</li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'last-pay-details',
+                    name: jobLoc + '[last-pay-details]',
+                    fieldset: {
+                        legend: {
+                            text: 'Did your final pay from ' + job['employer-name'] + ' include any money that would not usually get?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['last-pay-details'] == 'Yes'
+                        },
+                        {
+                            text: 'No, it was the same as usual',
+                            value: 'No',
+                            checked: true if job['last-pay-details'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

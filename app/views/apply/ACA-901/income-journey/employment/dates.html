@@ -1,0 +1,140 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    About your employment 
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="last-pay">
+
+                <h1 class="govuk-heading-l">Your employment with {{ job['employer-name'] }}</h1>
+
+                {{ govukDateInput ({
+                        id: 'start-date',
+                        namePrefix: jobLoc + '[start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you start working for ' + job['employer-name'] + '?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 18 6 2020'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: job['start-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: job['start-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: job['start-date-year']
+                            }
+                        ]
+                    }) }}
+
+                    {% set jobEndDetailsHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'end-date',
+                        namePrefix: jobLoc + '[end-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you stop working for ' + job['employer-name'] + '?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            html: 'This date will be on your P45 if you have one. <br>For example, 15 2 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: job['end-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: job['end-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: job['end-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'finished-job',
+                    name: jobLoc + '[finished-job]',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you finished working for ' + job['employer-name'] + '?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['finished-job'] == 'Yes',
+                            conditional: {
+                                html: jobEndDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if job['finished-job'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

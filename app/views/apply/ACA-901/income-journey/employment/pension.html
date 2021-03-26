@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Have you paid into a pension?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                {% set expensesDetails %}
+
+                    {{ govukCharacterCount ({
+                        id: 'pension-details',
+                        name: jobLoc + '[pension-details]',
+                        maxlength: '300',
+                        value: job['pension-details'] if job['pension-details'] else '',
+                        label: {
+                            text: 'Give details of each pension you paid into, including how much and how often you paid into them.'
+                        },
+                        hint: {
+                            text: 'You do not need to tell us about pension contributions you have already told us about'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'pension',
+                    name: jobLoc + '[pension]',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you paid into a pension while working for ' + job['employer-name'] + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['pension'] == 'Yes',
+                            conditional: {
+                                html: expensesDetails
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if job['pension'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

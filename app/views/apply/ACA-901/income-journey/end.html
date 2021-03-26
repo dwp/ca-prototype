@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    End of prototype
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">End of prototype</h1>
+
+                <p>You have reached the end of the prototype. The researcher will tell you what to do next.</p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

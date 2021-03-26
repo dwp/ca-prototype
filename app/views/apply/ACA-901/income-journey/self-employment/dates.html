@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    About your self-employment 
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="accounts">
+
+                <h1 class="govuk-heading-l">Your self-employment</h1>
+
+                {{ govukDateInput ({
+                        id: 'self-start-date',
+                        namePrefix: 'self-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did your self-employment start?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['self-start-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['self-start-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['self-start-date-year']
+                            }
+                        ]
+                    }) }}
+
+                    {% set selfEndDetailsHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'self-end-date',
+                        namePrefix: 'self-end-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did your self-employment end?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 15 2 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: data['self-end-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: data['self-end-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: data['self-end-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'self-finished',
+                    name: 'self-finished',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still doing this work?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-finished'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-finished'] == 'No',
+                            conditional: {
+                                html: selfEndDetailsHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

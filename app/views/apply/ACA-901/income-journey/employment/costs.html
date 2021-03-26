@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Employment costs
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                {% set expensesDetails %}
+
+                    {{ govukCharacterCount ({
+                        id: 'expenses-details',
+                        name: jobLoc + '[expenses-details]',
+                        maxlength: '300',
+                        value: job['expenses-details'] if job['expenses-details'] else '',
+                        label: {
+                            text: 'Give details of what you needed to buy and how much it cost'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'expenses',
+                    name: jobLoc + '[expenses]',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you had to pay for things you needed to do your job with ' + job['employer-name']  + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This means anything you have to pay for yourself, not expenses your company pays.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['expenses'] == 'Yes',
+                            conditional: {
+                                html: expensesDetails
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if job['expenses'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Delete employment 
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                <h1 class="govuk-heading-l">Delete employment with {{ job['employer-name'] }}</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Name'
+                            },
+                            value: {
+                                text: job['employer-name']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Start date'
+                            },
+                            value: {
+                                text: job['start-date-day'] + ' ' + job['start-date-month'] | month + ' ' + job['start-date-year']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'End date'
+                            },
+                            value: {
+                                text: 'Still employed with ' + job['employer-name'] if job['finished-job'] == 'No' else job['end-date-day'] + ' ' + job['end-date-month'] | month + ' ' + job['end-date-year']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Recieved final pay'
+                            },
+                            value: {
+                                text: job['got-last-pay']
+                            }
+                        } if job['finished-job'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Any extra money in final pay'
+                            },
+                            value: {
+                                text: job['last-pay-details']
+                            }
+                        } if job['finished-job'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Any necessary costs for work'
+                            },
+                            value: {
+                                text: job['expenses']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Nessesary costs details'
+                            },
+                            value: {
+                                text: job['expenses-details']
+                            }
+                        } if job['expenses'] == 'Yes'
+                    }
+                }) }}
+
+                <input type="hidden" name="{{ jobLoc }}" value="">
+
+                {{ govukButton ({
+                    html: 'Delete employment',
+                    classes: 'govuk-button--warning'
+                }) }}
+
+                <p>
+                    <a href="list">Cancel</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

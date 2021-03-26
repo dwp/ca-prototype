@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    About your self-employment 
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../pensions">
+
+                {{ govukRadios ({
+                    idPrefix: 'self-accounts',
+                    name: 'self-accounts',
+                    fieldset: {
+                        legend: {
+                            html: 'Do you have accounts?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, a spreadsheet or records of your business transactions'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-accounts'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-accounts'] == 'No'
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

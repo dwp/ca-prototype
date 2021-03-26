@@ -1,0 +1,204 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your employment since 1 April 2020
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Your employment since 1 April 2020</h1>
+
+                {% set jobCount = 0 %}
+
+                {% for id, job in data['jobStore'] %}
+
+                    {% if job != '' %}
+
+                        {% set jobCount = 1 + jobCount %}
+
+                        {{ govukSummaryList ({
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Name'
+                                    },
+                                    value: {
+                                        text: job['employer-name']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'name?selectedJob=' + id,
+                                                visuallyHiddenText: 'name of employer'
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Start date'
+                                    },
+                                    value: {
+                                        text: job['start-date-day'] + ' ' + job['start-date-month'] | month + ' ' + job['start-date-year']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'dates?selectedJob=' + id,
+                                                visuallyHiddenText: 'start date'
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'End date'
+                                    },
+                                    value: {
+                                        text: 'Still employed with ' + job['employer-name'] if job['finished-job'] == 'No' else job['end-date-day'] + ' ' + job['end-date-month'] | month + ' ' + job['end-date-year']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'dates?selectedJob=' + id,
+                                                visuallyHiddenText: 'end date'
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Recieved final pay'
+                                    },
+                                    value: {
+                                        text: job['got-last-pay']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'last-pay?selectedJob=' + id,
+                                                visuallyHiddenText: 'whether you got your final pay'
+                                            }
+                                        ]
+                                    }
+                                } if job['finished-job'] == 'Yes',
+                                {
+                                    key: {
+                                        text: 'Any extra money in final pay'
+                                    },
+                                    value: {
+                                        text: job['last-pay-details']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'last-pay?selectedJob=' + id,
+                                                visuallyHiddenText: 'whether you got an extra amount in your final pay'
+                                            }
+                                        ]
+                                    }
+                                } if job['finished-job'] == 'Yes',
+                                {
+                                    key: {
+                                        text: 'Any necessary costs for work'
+                                    },
+                                    value: {
+                                        text: job['expenses']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'costs?selectedJob=' + id,
+                                                visuallyHiddenText: 'whether you had any necessary costs'
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Necessary costs details'
+                                    },
+                                    value: {
+                                        text: job['expenses-details']
+                                    },
+                                    actions: {
+                                        items: [
+                                            {
+                                                text: 'Change',
+                                                href: 'costs?selectedJob=' + id,
+                                                visuallyHiddenText: 'details for your necessary costs'
+                                            }
+                                        ]
+                                    }
+                                } if job['expenses'] == 'Yes'
+                            }
+                        }) }}
+
+                        <p>
+                            <a href="delete?selectedJob={{ id }}" class="govuk-link--destructive">Delete employment with {{ job['employer-name'] }}</a>
+                        </p>
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if jobCount == 0 %}
+                    {{ 'any' | redirect | safe }}
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'add-employment',
+                    name: 'add-employment',
+                    fieldset: {
+                        legend: {
+                            html: 'Have you been employed anywhere else since <span style="white-space: nowrap;">1 April 2020</span>?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~name?selectedJob='
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../self-employment/any'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you paid into a pension?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="care-costs">
+
+                {% set pensionsDetails %}
+
+                    {{ govukCharacterCount ({
+                        id: 'pension-details',
+                        name: 'pension-details',
+                        maxlength: '300',
+                        value: data['pension-details'] if data['pension-details'] else '',
+                        label: {
+                            text: 'Give details of each pension you paid into, including how much and how often you paid into them.'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'pensions',
+                    name: 'pensions',
+                    fieldset: {
+                        legend: {
+                            html: 'Have you paid into any pensions since <span style="white-space: nowrap;">1 April 2020</span>?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['pensions'] == 'Yes',
+                            conditional: {
+                                html: pensionsDetails
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['pensions'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

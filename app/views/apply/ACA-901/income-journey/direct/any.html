@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you had any direct payments for caring since 1 April 2020?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../other/any">
+
+                {{ govukRadios ({
+                    idPrefix: 'income--direct-bool',
+                    name: 'income--direct-bool',
+                    fieldset: {
+                        legend: {
+                            html: 'Have you had any direct payments from your local council for caring since <span style="white-space:nowrap">1 April 2020</span>?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'You might get direct payments if you have asked to pay for support services yourself instead of getting support from your local council or NHS trust'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['income--direct-bool'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['income--direct-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Content testing
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+
+            <h1 class="govuk-heading-xl">Content testing</h1>
+
+            <h2 class="govuk-heading-l">Templates</h2>
+
+            <p>
+                To use the content research tool use the files inside the 'content-research-tool' folder and replace 'letter.html' with the content you would like to test.
+            </p>
+
+            <ul class="govuk-list">
+                <li>
+                    <a href="templates/cacs">CACS letter</a>
+                </li>
+                <li>
+                    <a href="templates/clerical">Clerical letter</a>
+                </li>
+            </ul>
+
+            
+        </div>
+
+</div>
+
+{% endblock %}

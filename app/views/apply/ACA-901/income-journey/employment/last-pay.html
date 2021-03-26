@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Did you get your final pay?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ ('costs' | redirect | safe) if job['finished-job'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="last-pay-details">
+
+                {{ govukRadios ({
+                    idPrefix: 'got-last-pay',
+                    name: jobLoc + '[got-last-pay]',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you get your final pay from ' + job['employer-name'] + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['got-last-pay'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if job['got-last-pay'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

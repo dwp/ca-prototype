@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-901
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-901
+      </h1>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="income-journey/employment/any">Employment income</a>
+        </li>
+
+        <li>
+          <a href="income-journey/self-employment/any">Self-employment income</a>
+        </li>
+
+        <li>
+          <a href="income-journey/care-costs">Care costs</a>
+        </li>
+
+        <li>
+          <a href="income-journey/pensions">Pension contributions</a>
+        </li>
+
+        <li>
+          <a href="income-journey/fostering-allowance/any">Fostering allowance</a>
+        </li>
+
+        <li>
+          <a href="income-journey/rental/any">Rental income</a>
+        </li>
+
+        <li>
+          <a href="income-journey/direct/any">Direct payments</a>
+        </li>
+
+
+        <li>
+          <a href="income-journey/other/any">Other types of income</a>
+        </li>
+
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

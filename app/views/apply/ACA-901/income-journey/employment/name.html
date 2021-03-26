@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Who were you employed by?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="dates">
+
+                <h1 class="govuk-heading-l">Who were you employed by?</h1>
+
+                <p>If you have had more than one job since 1 April 2020, you can add others later.</p>
+
+                {{ govukInput ({
+                    id: 'employer-name',
+                    name: jobLoc + '[employer-name]',
+                    value: job['employer-name'] if job['employer-name'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Name of employer',
+                        classes: 'govuk-input--width-20'
+                    }
+                }) }}
+
+                <input type="hidden" name="selectedJob" value={{ jobIndex }}>
+
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

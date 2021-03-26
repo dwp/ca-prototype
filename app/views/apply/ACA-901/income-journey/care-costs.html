@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you had any care costs because you were working?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="fostering-allowance/any">
+
+                {% set careDetails %}
+
+                    {{ govukCharacterCount ({
+                        id: 'care-details',
+                        name: 'care-details',
+                        maxlength: '300',
+                        value: data['care-details'] if data['care-details'] else '',
+                        label: {
+                            text: 'Give details of who you paid and what it cost'
+                        },
+                        hint: {
+                            text: 'If you paid a family member let us know their relationship to you and the person you care for'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'care',
+                    name: 'care',
+                    fieldset: {
+                        legend: {
+                            html: 'Have you had any care costs because you were working since <span style="white-space: nowrap;">1 April 2020</span>?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This includes childcare costs as well as costs for looking after the person you provide care for. Tell us here if you are claiming Tax-Free Childcare.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['care'] == 'Yes',
+                            conditional: {
+                                html: careDetails
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['care'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
