@@ -1,0 +1,100 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-180
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        ACA-180 
+      </h1>
+      
+      
+     
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+      <p class="govuk-inset-text"><a href="type-of-change.html">Full end claim journey (including DP died)</a> </p>
+
+     <p class="govuk-body">Individual pages:</p>
+     
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="type-of-change.html">type of change radio content</a> updated page
+        </li>
+        
+        <li>
+          <a href="end-claim-reason.html">reason for ending claim</a> new page (with DP died option)
+        </li>
+
+        <li>
+          <a href="about-you.html">your details </a> current page (no changes)
+        </li>
+
+
+        <li>
+          <a href="end-claim-date.html">claim end date</a> updated page 
+        </li>
+
+        <li>
+          <a href="person-you-care-for-has-died.html">GB DP died outcome</a> new page
+        </li>
+        <li>
+          <a href="ni-person-you-care-for-has-died.html">NI DP died outcome</a> new page
+        </li>
+
+      </ul>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Description of changes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+
+            <li>
+              change type content updated at beginning of service
+            </li>
+
+            <li>
+              stopped caring journey replaced with end claim journey
+            </li>
+
+            <li>
+              new 'claim end reason' filtering question 
+            </li>
+           
+            <li>
+              new DP died outcome pages for GB and NI
+            </li>
+            
+     
+            <li>
+              stopped caring date content updated (to ask for claim end date) 
+            </li>
+    
+          </ul>
+        </div>
+      </details>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

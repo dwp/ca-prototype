@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Why do you need to end your claim? – Report a change to Carer's Allowance – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="type-of-change">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="about-you">
+      <div class="govuk-form-group">
+    
+
+        {{ govukRadios ({
+          idPrefix: 'end-claim-reason',
+          name: 'end-claim-reason',
+          fieldset: {
+            legend: {
+              text: 'Why do you need to end your claim?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: 'The person I care for has died',
+              value: 'dp-died'
+          
+            },
+            {
+              text: 'I have permanently stopped providing care for 35 hours a week or more',
+              value: 'stopped-providing-care'
+            },
+            {
+              text: 'Someone else who cares for the same person is claiming the allowance instead',
+              value: 'someone-else-claiming'
+            },
+            {
+              text: 'I do not want to claim anymore',
+              value: 'do-not-want-ca-anymore'
+            }
+          ]
+        }) }}
+
+
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+    </div>
+  </div>
+
+{% endblock %}
