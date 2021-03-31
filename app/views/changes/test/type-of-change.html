@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Type of change
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Report a change in your circumstances</h1>
+
+    <form action="/form-handler" method="post" novalidate>
+      
+      
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            What type of change do you need to report?
+          </h2>
+        </legend>
+
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="f-radio-typeOfChange-EndClaim" name="typeOfChange" type="radio" value="f-radio-typeOfChange-EndClaim~/changes/ACA-180/end-claim-reason.html">
+            <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-EndClaim">
+              End Carer's Allowance claim, for example, stopped being a carer
+            </label>
+          </div>
+          
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="f-radio-typeOfChange-Employment" name="typeOfChange" type="radio" value="Employment">
+              <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-Employment">
+                Employment or self-employment income change
+              </label>
+            </div>
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="f-radio-typeOfChange-BreakInCare" name="typeOfChange" type="radio" value="BreakInCare">
+                <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-BreakInCare">
+                  Temporarily stopped providing care
+                </label>
+              </div>
+
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="f-radio-typeOfChange-AddressChange" name="typeOfChange" type="radio" value="AddressChange">
+                  <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-AddressChange">
+                    Address change 
+                  </label>
+                </div>
+
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="f-radio-typeOfChange-PaymentChange" name="typeOfChange" type="radio" value="PaymentChange">
+                    <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-PaymentChange">
+                      Bank or building society change 
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="f-radio-typeOfChange-OtherChange" name="typeOfChange" type="radio" value="OtherChange">
+                      <label class="govuk-label govuk-radios__label" for="f-radio-typeOfChange-OtherChange">
+                        Something else 
+                      </label>
+                    </div>
+
+
+          
+        </div>
+
+      </fieldset>
+  
+    </div>
+
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </form>
+  </div>
+</div>
+
+{% endblock %}
