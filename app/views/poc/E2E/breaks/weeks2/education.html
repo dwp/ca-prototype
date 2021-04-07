@@ -18,11 +18,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../idv/login">
+            <form action="list">
 
                 {{ govukRadios({
-                    idPrefix: 'siphoning--future-claim',
-                    name: 'siphoning--future-claim',
+                    idPrefix: 'breaks--education',
+                    name: 'breaks--education',
                     fieldset: {
                         legend: {
                             text: 'Have you been on a course of education since your claim date?',
@@ -30,21 +30,24 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+
+                    hint: {
+                        text: 'Your claim date is ' + ( data['claim--date'] | default('1 March 2021') ) + '.'
+                    },
+
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['end'] == 'Yes'
+                            checked: true if data['breaks--education'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['end] == 'No'
+                            checked: true if data['breaks--education'] == 'No'
                         }
-                    ],
-                    hint: {
-                        text: 'Your claim date is ' + ( data['claim--date'] | default('1 March 2021') ) + '.'
-                    }
+                    ]
+
                 }) }}
 
                 {{ govukButton({
