@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Times you have not provided care for 35 hours a week
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Times you have not provided care for 35 hours a week</h1>
+
+                {% set breakCount = 0 %}
+
+                {% for id, break in data.breaksStore %}
+
+                    {% if break != '' %}
+
+                        {% set breakCount = breakCount + 1 %}
+
+                        {{ govukSummaryList ({
+                            classes: 'govuk-!-margin-bottom-8',
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Start date'
+                                    },
+                                    value: {
+                                        text: break['start-date-day'] + ' ' + 
+                                        break['start-date-month'] | month + ' ' + 
+                                        break['start-date-year']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Number of weeks'
+                                    },
+                                    value: {
+                                        text: (break['week-count']) if break['did-end'] == 'Yes' else 'Ongoing'
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'In professional medical care'
+                                    },
+                                    value: {
+                                        text: break['medical-care']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Actions'
+                                    },
+                                    value: {
+                                        html: '<a href="details?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    }
+                                }
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if breakCount == 0 %}
+
+                    {{ 'any' | redirect | safe }}
+
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--add',
+                    name: 'breaks--add',
+                    fieldset: {
+                        legend: {
+                            text: 'Were there any more weeks you did not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours since 23 June 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    hint: {
+                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~details?selectedBreak='
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../contact/phone'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
