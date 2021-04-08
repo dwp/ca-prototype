@@ -1,0 +1,495 @@
+
+{% extends "layout.html" %}
+
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+
+            <div class="address-row govuk-!-padding-top-1">
+                <div class="address-row-item" style="width: 50%">
+                    <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-9">
+                        {{ dwpOldLogo() }}
+                        <p><b>Disability and Carers Service</b></p>
+                    </div>
+                    <p>
+                        {{ dpName | upperCase }} <br />
+                        ADDRESS LINE 1<br />
+                        ADDRESS LINE 2 <br />
+                        N12 4NN
+                    </p>
+                </div>
+                <div class="address-row-item" style="width: 50%">
+                    <table class="govuk-table app-content-letter-table">
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%"></td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    <b>Carer’s Allowance</b><br>
+                                    www.gov.uk
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%">If you get in touch with us, tell us this <br> <br> reference number</td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    QQ 12 34 56 C
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our address is</td>
+                                <td class="govuk-table__cell">
+                                    Carer’s Allowance Unit<br />
+                                    Mail Handling Site A<br />
+                                    Wolverhampton<br />
+                                    WV98 2AB
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our phone number</td>
+                                <td class="govuk-table__cell">
+                                    0800 7310297
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                    Textphone ONLY for customers with speech/hearing problems 0800 731317
+                                </td>
+                            </tr>
+                             <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    Date
+                                </td>
+                                <td class="govuk-table__cell">
+                                    19/03/2021
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <div class="letter-content-row">
+                <div class="letter-content-clerical">
+                    <p>
+                        Dear {{ carerName }}
+                    </p>
+
+                    <p>
+                        We are pleased to tell you that your claim for Carer's Allowance has been successful for the period(s) shown below. The details of your award are as follows:-
+                    </p>
+
+                    <table class="govuk-table app-content-letter-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">From date</th>
+                                <th scope="col" class="govuk-table__header">To date</th>
+                                <th scope="col" class="govuk-table__header">Weeks/ Days</th>
+                                <th scope="col" class="govuk-table__header">Personal Rate</th>
+                                <th scope="col" class="govuk-table__header">Child Dependant Increase</th>
+                                <th scope="col" class="govuk-table__header">Adult Dependant Increase</th>
+                                <th scope="col" class="govuk-table__header">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">28/10/2019</td>
+                                <td class="govuk-table__cell">09/02/2020</td>
+                                <td class="govuk-table__cell">15/00</td>
+                                <td class="govuk-table__cell">£66.15</td>
+                                <td class="govuk-table__cell">£0.00</td>
+                                <td class="govuk-table__cell">£0.00</td>
+                                <td class="govuk-table__cell">£992.25</td>
+                            </tr>
+                            <tr class="govuk-table__row app-redacted">
+                                <td class="govuk-table__cell" colspan="2">Christmas Bonus</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell">£10.00</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><b>Total</b></td>
+                                <td class="govuk-table__cell">£1002.25</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Information about Direct Payments </strong>
+                    </p>
+
+                    <p>
+                        If you have chosen to be paid Carer's Allowance weekly you will receive your payment on the same day every week. If you have chosen to be paid four weekly you will receive your payment on the same day every four weeks. This
+                        is called the payday.
+                    </p>
+
+                    <p>
+                        <strong>If we pay you early, please remember this payment is still for your normal weekly or four-weekly payment period.</strong>
+                    </p>
+
+                    
+
+                </div>
+            </div>
+            <div class="app-page-number-row">
+                <p>
+                    Page 1 of 6
+                </p>
+            </div>
+        </div>
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <div class="app-redacted">
+
+                <p class="govuk-!-margin-top-9">
+                    <strong>About your Christmas Bonus</strong><br>
+                    You are only entitled to one Christmas Bonus for yourself, even if you are getting more than one benefit.
+                </p>
+
+                <p>
+                    If you have already had a bonus for yourself with another benefit or receive one at a later date, please contact us to discuss what you need to do next.
+                </p>
+
+                <p>
+                    Please note that we will need details of who paid the other bonus and the years it was paid when you contact us.
+                </p>
+
+                <p>
+                    If you get Attendance Allowance, Personal Independence Payment or Disability Living Allowance on behalf of a disabled person, the bonus added to the Attendance Allowance, Personal Independence Payment or Disability Living
+                    Allowance is for the disabled person, not you.
+                </p>
+
+            </div>
+
+            <p class="app-redacted">
+                <strong>About Class 1 National Insurance Credits </strong><br>
+                You will normally get a Class 1 National Insurance credit for each week that you are paid Carer's Allowance, and you are under State Pension age. These credits may help you to qualify for certain other benefits such as State
+                Pension, Incapacity Benefit, contribution-based Jobseeker's Allowance or contribution-based Employment and Support Allowance.
+            </p>
+
+            <p class="app-redacted">
+                If you have underlying entitlement to Carer's Allowance, you can only get a Class 1 National Insurance credit from us if the reason we cannot pay you Carer's Allowance is because you are getting Widow's Pension or
+                Bereavement Allowance at a higher rate than Carer's Allowance. We will write to you each year between April and June to work out if you will get a Class 1 credit from us.
+            </p>
+
+            <p class="app-redacted">
+                We cannot give you credits if you are a married woman who has elected to pay reduced National Insurance contributions and that election is still in force. Leaflet CA13 (National Insurance Guidance for Married Women) or CA08
+                (Voluntary Contributions) give more advice. You can get these leaflets or any more information about your National Insurance record from HM Revenue & Customs (National Insurance Contributions Office).
+            </p>
+
+            <p class="govuk-!-margin-bottom-0 app-redacted">
+                <strong>Carer's Credit </strong><br>
+                From 6 April 2010, new National Insurance Credits for carers will protect your future entitlement to State Pension and bereavement benefits automatically. The credit may also help you build up some additional pension, sometimes
+                called State Second Pension but only up to 05/04/2016. Any additional pension you are entitled to will be part of your State Pension when you claim it.
+
+                <br>
+
+                They will cover periods of up to 12 weeks;
+            </p>
+        
+            <ul class="govuk-list govuk-list--bullet app-redacted">
+                <li>before your Carer's Allowance entitlement begins;</li>
+                <li>during any breaks in care; and</li>
+                <li>at the end of any period of Carer's Allowance entitlement.</li>
+            </ul>
+        
+            <p class="app-redacted">
+                If you are not entitled to Carer's Allowance or it has ended but you are providing care of 20 hours or more each week you may be able to receive Carer's Credit. You can find out more about Carer's Credit and how to apply by visiting
+                www.direct.gov.uk/carers or by phoning 0800 731 0297.
+            </p>
+
+            <p class="app-redacted">
+                <strong>What to do if you think this decision is wrong</strong>
+            </p>
+        
+            <p class="app-redacted">
+                If you think the decision is wrong, please get in touch with us by telephone or in writing, <strong>one month of the date</strong> of this letter. If you do not contact us within one month of the 
+            </p>
+
+            <div class="app-page-number-row">
+                <p>
+                    Page 2 of 6
+                </p>
+            </div>
+
+        </div>
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9 app-redacted">
+                date of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter.
+            </p>
+
+
+            <p class="app-redacted">You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>.</p>
+
+            <p class="app-redacted">
+                You, or someone who has the authority to act for you, can:
+            </p>
+
+            <ul class="govuk-list govuk-list--bullet app-redacted">
+                <li>ask us for an explanation of the decision, or</li>
+                <li>ask for a written statement of reasons for the decision, if we have not already sent one</li>
+                <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision.</li>
+            </ul>
+
+            <p class="app-redacted">
+                When we have looked at the decision again, we will send you a letter explaining what we have done. We call this a <strong>Mandatory Reconsideration Notice</strong>. This will include the information you need to be able to appeal. 
+            </p>
+
+            <p>
+                <strong>Further help and advice </strong>
+                <br>
+                If you want more advice about benefits or entitlements, you can find out more information online from the Government by visiting the Directgov website. 
+            </p>
+
+            <p>
+                There is a section for carers covering financial support, assessments and support services, carers' rights, employment and much more www.direct.gov.uk/carers. 
+            </p>
+
+
+            <p>
+                There is also a section for disabled people www.direct.gov.uk/disability. 
+            </p>
+
+            <p>
+                <strong>Useful information  </strong>
+            </p>
+
+            <p>
+                You can find more information online at www.gov.uk/carers-allowance.
+            </p>
+
+            <br>
+            <br>
+
+            <p>
+                <strong>If you receive Income Support, income-based Jobseeker's Allowance, income-related Employment and Support Allowance, Pension Credit, Housing Benefit, Universal Credit or a reduction in Council Tax </strong>
+                <br>
+                If you are getting Income Support, income-based Jobseeker's Allowance, income-related Employment and Support Allowance, Universal Credit or Pension Credit, you may be able to get the Carer Premium, the Carer Element of Universal Credit or your appropriate amount may be increased for any period(s) that you are entitled, or have an underlying entitlement, to Carer's Allowance. We have notified your local Jobcentre Plus or social security office about the period(s) that you have entitlement, or underlying entitlement, to Carer's Allowance.
+            </p>
+
+            <p>
+                Your Local DWP office uses this information to work out if you can receive Carer Premium or the extra amount for Pension Credit. If you get Universal Credit you may get the Carer Element. If you are getting Housing Benefit or a reduction in your Council Tax there may be an extra amount to include when working out what you are entitled to. To get this extra help, you must tell the office working out your Housing benefit or the reduction in your Council Tax about the dates that you have entitlement or underlying entitlement to Carer's Allowance. 
+            </p>
+
+            <p>
+                Even though a claim for Income Support, income based Job-Seeker's Allowance, income-related Employment and Support Allowance, Pension Credit, Housing Benefit or Universal Credit may have been previously refused, it could be worthwhile claiming again. And if an application to the local authority for help with your Council Tax has been previously refused, it could be worthwhile applying again. 
+            </p>
+            
+
+
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 3 of 6
+                </p>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9">
+                <strong>Please read these instructions carefully. </strong>
+            </p>
+
+            <p>
+                Please keep this letter for future reference. If any of the changes listed in these pages occur you must tell the Carer's Allowance Unit what has happened. If you need to get in touch with the Carer's Allowance Unit the address to write to is given at the top of this letter, or you can report a change of circumstances through the Carer's Allowance e-service at www.direct.gov.uk/carers. When you contact us, make sure you always give your full name and your National Insurance Number. 
+            </p>
+
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>You must always tell any office where you claim any other benefits that you are getting Carer's Allowance. </li>
+            </ul>
+
+            <p>
+                <strong>Payment of Carer's Allowance</strong><br>
+                Your Carer's Allowance is payable 4 weekly, 3 weeks in arrears and 1 in advance. The money is usually credited to your account on a Monday. Please let us know at once if your account details change.                                                                           
+            </p>
+
+            <p>
+                <strong>If you are paid too much money</strong><br>
+                We have the right to recover any money paid to you, which you are not entitled to, this may be because of the way the Direct Payment system works. For example, you may give us some information which means you are entitled to less money, but we may not be able to change the amount we have already sent out. <strong>If this happens, we will contact you before we recover any money from your account.</strong> 
+            </p>
+
+            <p>
+                You can check your payments on your account statements. Your statements may show your National Insurance (NI) number next to payments that are from us. If you think your payment is wrong, get in touch with the office that pays you straight away. 
+            </p>
+
+            <p><strong>Important changes you must tell us about </strong><br>
+                You must tell us <strong>straight away</strong> if anything changes about yourself or the disabled person you are looking after. 
+            
+            </p>
+
+            <p>
+                If you tell us about a change we may need to stop any further payments of Carer's Allowance while enquiries are made. 
+            </p>
+
+            <p>In particular, you must tell us:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>If you stop looking after the disabled person or you no longer normally spend at least 35 hours a week caring for them. You must also notify us if you temporarily stop looking after the disabled person. For example, this could be because either you or the disabled person go on holiday, or into hospital or a similar place or a care home. 
+                    <br>
+                    <span class="govuk-!-padding-left-8" style="display: inline-block">By care home we mean a home such as a residential care home, a nursing home, a residential college or school or somewhere like this.</span>
+                </li>
+                <li>
+                    <mark>If the person you are looking after stops getting:</mark> 
+            
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><mark>Attendance Allowance, </mark></li>
+                        <li><mark>Constant Attendance Allowance, </li>
+                        <li><mark>the care component of Disability Living Allowance, </li>
+                        <li><mark>Child Disability Payment (Scotland only),</li>
+                        <li><mark>the Daily Living Component of Personal Independence Payment, or,</li>
+                        <li><mark>if the rate of any of these benefits is reduced</li>
+                    </ul>
+                </li>
+
+                <li>If the disabled person you look after dies. </li>
+                <li>You start work as an employed or self-employed person, either full-time or part-time, temporary or casual, whatever your earnings. </li>
+                <li>If you are appointed as a director or you start to receive director's fees or earned income relief on your husband's, wife's or civil partner's self-employment. </li>
+            </ul>
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 4 of 6
+                </p>
+            </div>
+
+        </div>
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-9">    
+                <li>If you have already told us that you are working, you must tell us if your earnings go up or any expenses already claimed change. You must also tell us if you work any overtime or receive a bonus. </li>
+                <li>If you are claiming child care costs you must tell us when your child reaches the age of 16. If you claim care costs for the disabled person or a child these <strong>cannot be allowed for any period when you are not working</strong>. You <strong>must</strong> write to tell us about any care costs you incur. </li>
+                <li>If you start to receive Statutory Sick Pay, Company Sick Pay, Statutory Maternity Pay, Statutory Paternity Pay or Statutory Adoption Pay</li>
+                <li>If you start getting contribution-based Jobseeker's Allowance</li>
+                <li>If you start getting State Pension. If you already get State Pension, Widow's Pension, Widowed Mother's Allowance, Bereavement Allowance or Widowed Parent's Allowance and the amount changes for any reason other than the annual increase in April, you must tell us. For example, you must tell us if the amount of your State Pension changes because your partner has started receiving their own State Pension. </li>
+                <li>If you start to get contribution-based Employment and Support Allowance or Maternity Allowance</li>
+                <li>If you start to get Pension Credit or Universal Credit. Go to www.gov.uk for more information on how to apply and report any changes to these benefits including changes to your Carers Allowance award.</li>
+                <li>If someone else is claiming or has been awarded a social security benefit which includes an increase for you as their dependant. </li>
+                <li>If you start a full-time education course or go on a course of full-time instruction</li>
+                <li>If either you, or the person you are looking after change address</li>
+                <li>If you or the person you look after are detained in legal custody. </li>
+                <li>If you or the person you look after go into any of these places: 
+                    <br>
+                    - A Hospital or similar place <br>
+                    - A Care Home <br>
+                    - A Hostel / Group Home <br>
+                    <br>
+                    <span class="govuk-!-padding-left-8" style="display: inline-block">By care home we mean a home such as a residential care home, a nursing home, a residential college or school or somewhere like this.</span>
+
+                </li>
+                <li>You or the person you are looking after are going to leave Great Britain, either permanently, or for a short time. You must let us know as soon as possible when you intend to go. We can then tell you if your benefit will be affected. </li>
+            </ul>
+
+            <p class="app-redacted">
+                <strong>Income Tax</strong>
+            </p>
+
+
+            <p class="app-redacted">Carer's Allowance is taxable. If you have any queries about Income Tax, please contact the tax office which deals with your tax affairs. </p>
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 5 of 6
+                </p>
+            </div>
+            
+        </div>
+
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9 app-redacted">
+                <strong>Information about Income Tax  </strong>(only read about this if we have paid you any benefit)
+                <br>
+                Carer’s Allowance is taxable. If the money that we owe you Includes Carer’s Allowance for previous years, this will be taxed as Income for the year that it relates to, rather than the current year. If you want any more information about Income tax please contact the HM Revenue & Customs office that deals with your own or your partner’s tax affairs.
+            </p>
+
+            <p><strong>How to get in touch with us</strong></p>
+
+            <p>    
+                If you want more information about Carer's Allowance please get in touch with us. Our address and telephone number are shown at the top of this letter. You can claim Carer's Allowance or report a change of circumstances online at the following address, www.direct.gov.uk/carers. 
+            </p>
+
+            <p>
+                If you need us to, we can provide the information in this letter in a different format which you find easier to access. For example, you can ask us to provide information in braille, large print, audio or email. Please contact us to discuss your requirements regarding format. 
+            </p>
+
+            <p style="text-align: center">
+                <strong>Please keep this letter in a safe place. You may want to look at it again.</strong>
+            </p>
+
+            <p>
+                Your sincerely
+            </p>
+
+            <p>
+                Unit Manager<br>
+                Manager
+            </p>
+
+            <div class="app-page-number-row">
+                <p>
+                    Page 6 of 6
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="vote-button-container {{ 'vote-button-hidden' if data['show-buttons'] != 'true'}}">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="vote-buttons-wrapper">
+                    <form action="export" class="vote-buttons colour-distinction">
+                        <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}" />
+
+                        {{ govukButton({ text: 'Makes sense', type: 'button', classes: 'button--good', attributes: { 'onclick': 'javascript:CFObject.voteUp();' } }) }} {{ govukButton({ text: 'Does not make sense', classes:
+                        'govuk-button--warning button--bad', type: 'button', attributes: { 'onclick': 'javascript:CFObject.voteDown();' } }) }}
+
+                        <div class="spacer"></div>
+
+                        {{ govukButton({ text: 'I am finished', type: 'submit', classes: 'govuk-button--secondary' }) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

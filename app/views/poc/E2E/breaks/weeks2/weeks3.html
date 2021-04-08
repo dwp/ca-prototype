@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 January 2021' %}
+
 {% block pageTitle %}
-    Select any weeks you did not provide care for Jo Bloogs for at least 35 hours
+    Select any weeks you did not provide care for at least 35 hours
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,13 +33,13 @@
                     name: 'week-select',
                     fieldset: {
                         legend: {
-                            text: 'Select any weeks you were not caring for Jo Bloggs for at least 35 hours',
+                            text: 'Select any weeks you did not provide care for 35 hours or more',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Weeks are shown from Sunday to Saturday'
+                        text: 'Weeks are shown from Sunday to Saturday.'
                     },
                     items: [
                         {
