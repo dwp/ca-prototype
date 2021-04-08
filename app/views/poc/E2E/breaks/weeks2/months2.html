@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Select any weeks you did not provide care for Jo Bloogs for at least 35 hours
+    What month did you temporarily stop providing care?
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,39 +29,34 @@
                     name: 'week-select',
                     fieldset: {
                         legend: {
-                            text: 'Select any weeks you were not caring for Jo Bloggs for at least 35 hours',
+                            text: 'What month did you temporarily stop providing care?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Weeks are shown from Sunday to Saturday'
+                        text: 'You can select more than one month if you need to tell us about more than one period.'
                     },
                     items: [
                         {
-                            text: '4 January 2021 to 9 January 2021',
-                            value: '4 January 2021 to 9 January 2021',
-                            checked: true if data['week-select'] == '4 January 2021 to 9 January 2021'
+                            text: 'January 2021',
+                            value: 'January 2021',
+                            checked: true if data['week-select'] == 'January 2021'
                         },
                         {
-                            text: '10 January 2021 to 16 January 2021',
-                            value: '10 January 2021 to 16 January 2021',
-                            checked: true if data['week-select'] == '10 January 2021 to 16 January 2021'
+                            text: 'February 2021',
+                            value: 'February 2021',
+                            checked: true if data['week-select'] == 'February 2021'
                         },
                         {
-                            text: '17 January 2021 to 23 January 2021',
-                            value: '17 January 2021 to 23 January 2021',
-                            checked: true if data['week-select'] == '17 January 2021 to 23 January 2021'
+                            text: 'March 2021',
+                            value: 'March 2021',
+                            checked: true if data['week-select'] == 'March 2021'
                         },
                         {
-                            text: '24 January 2021 to 30 January 2021',
-                            value: '24 January 2021 to 30 January 2021',
-                            checked: true if data['week-select'] == '24 January 2021 to 30 January 2021'
-                        },
-                        {
-                            text: '31 January 2021 to 6 February 2021',
-                            value: '31 January 2021 to 6 February 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021'
+                            text: 'April 2021',
+                            value: 'April 2021',
+                            checked: true if data['week-select'] == 'April 2021'
                         }
                     ]
                 }) }}
