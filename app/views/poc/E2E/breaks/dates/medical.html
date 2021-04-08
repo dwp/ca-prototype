@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
+{% block pageTitle %}
+    Were you or the person you care for getting care from a medical professional during this time?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--medical-care',
+                    name: breakLoc + '[medical-care]',
+                    fieldset: {
+                        legend: {
+                            text: 'Were you or ' + data['dp--name'] | default('the person you care for') + ' in the care of medical professionals during this time?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if break['medical-care'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if break['medical-care'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

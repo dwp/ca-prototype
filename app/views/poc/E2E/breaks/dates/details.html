@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
+{% set titleText = 'Tell us about this time you were not caring for more than 35 hours a week' %}
+
+{% block pageTitle %}
+    {{ titleText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="medical">
+
+                <h1 class="govuk-heading-l">
+                    {{ titleText }}
+                </h1>
+
+                {{ govukDateInput ({
+                    id: 'break--start-date',
+                    namePrefix: breakLoc + '[start-date',
+                    fieldset: {
+                        legend: {
+                            text: 'When did you stop providing care?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            name: 'day]',
+                            classes: 'govuk-input--width-2',
+                            value: break['start-date-day']
+                        },
+                        {
+                            name: 'month]',
+                            classes: 'govuk-input--width-2',
+                            value: break['start-date-month']
+                        },
+                        {
+                            name: 'year]',
+                            classes: 'govuk-input--width-4',
+                            value: break['start-date-year']
+                        }
+                    ]
+                }) }}
+
+                {% set weekCountHTML %}
+
+                    {{ govukInput ({
+                        id: 'break--week-count',
+                        name: breakLoc + '[week-count]',
+                        value: break['week-count'],
+                        classes: 'govuk-input--width-2',
+                        label: {
+                            text: 'How many weeks were your not providing care for at least 35 hours during this time?'
+                        },
+                        hint: {
+                            text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'break--did-end',
+                    name: breakLoc + '[did-end]',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you start caring for ' + data['dp--name'] | default('the person') + ' again?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if break['did-end'] == 'Yes',
+                            conditional: {
+                                html: weekCountHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if break['did-end'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
