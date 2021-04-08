@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Since 23 June 2020 have there been any times you have not provided care for [DP name] form 35 hours a week?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="details">
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
+                    fieldset: {
+                        legend: {
+                            text: 'Since 23 June 2020 have there been any weeks you did not provide care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['breaks--any'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../contact/phone',
+                            checked: true if data['breaks--any'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
