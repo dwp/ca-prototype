@@ -1,0 +1,431 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Select any weeks you did not provide care for Jo Bloogs for at least 35 hours
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="medical4" method="post">
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% set test1 %}
+                {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: 'breaks--medical-care',
+                name: breakLoc + '[medical-care]',
+                fieldset: {
+                    legend: {
+                    text: "Were you or the person you care for in the care of medical professionals during this time?",
+                    classes: "govuk-fieldset__legend--s"
+                    }
+                },
+                    hint: {
+                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if break['medical-care'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if break['medical-care'] == 'No'
+                        }
+                    ]
+                }) }}
+{% endset -%}
+
+
+
+
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'week-select',
+                    name: 'week-select',
+                    fieldset: {
+                        legend: {
+                            text: 'Within these weeks, elect any weeks in which you cared less than 35 hours',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Weeks are shown from Sunday to Saturday'
+                    },
+                    items: [
+                        {
+                            text: '7 June 2020 to 13 June 2020',
+                            value: '7 June 2020 to 13 June 2020',
+                            checked: true if data['week-select'] == '7 June 2020 to 13 June 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                {
+                            text: '14 June 2020 to 20 June 2020',
+                            value: '14 June 2020 to 20 June 2020',
+                            checked: true if data['week-select'] == '14 June 2020 to 20 June 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                {
+                            text: '21 June 2020 to 27 June 2020',
+                            value: '21 June 2020 to 27 June 2020',
+                            checked: true if data['week-select'] == '21 June 2020 to 27 June 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                {
+                            text: '28 June 2020 to 4 July 2020',
+                            value: '28 June 2020 to 4 July 2020',
+                            checked: true if data['week-select'] == '28 June 2020 to 4 July 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '5 July 2020 to 11 July 2020',
+                            value: '5 July 2020 to 11 July 2020',
+                            checked: true if data['week-select'] == '5 July 2020 to 11 July 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '12 July 2020 to 18 July 2020',
+                            value: '12 July 2020 to 18 July 2020',
+                            checked: true if data['week-select'] == '12 July 2020 to 18 July 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '19 July 2020 to 25 July 2020',
+                            value: '19 July 2020 to 25 July 2020',
+                            checked: true if data['week-select'] == '19 July 2020 to 25 July 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                                                {
+                            text: '26 July 2020 to 1 August 2020',
+                            value: '26 July 2020 to 1 August 2020',
+                            checked: true if data['week-select'] == '26 July 2020 to 1 August 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '2 August 2020 to 8 August 2020',
+                            value: '2 August 2020 to 8 August 2020',
+                            checked: true if data['week-select'] == '2 August 2020 to 8 August 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '9 August 2020 to 15 August 2020',
+                            value: '9 August 2020 to 15 August 2020',
+                            checked: true if data['week-select'] == '9 August 2020 to 15 August 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '16 August 2020 to 22 August 2020',
+                            value: '16 August 2020 to 22 August 2020',
+                            checked: true if data['week-select'] == '16 August 2020 to 22 August 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '23 August 2020 to 29 August 2020',
+                            value: '23 August 2020 to 29 August 2020',
+                            checked: true if data['week-select'] == '23 August 2020 to 29 August 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                {
+                            text: '30 August 2020 to 5 September 2020',
+                            value: '30 August 2020 to 5 September 2020',
+                            checked: true if data['week-select'] == '9 August 2020 to 5 September 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                    {
+                            text: '6 September 2020 to 12 September 2020',
+                            value: '6 September 2020 to 12 September 2020',
+                            checked: true if data['week-select'] == '6 September 2020 to 12 September 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '13 September 2020 to 19 September 2020',
+                            value: '13 September 2020 to 19 September 2020',
+                            checked: true if data['week-select'] == '13 September 2020 to 19 September 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '20 September 2020 to 26 September 2020',
+                            value: '20 September 2020 to 26 September 2020',
+                            checked: true if data['week-select'] == '20 September 2020 to 26 September 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '27 September 2020 to 3 October 2020',
+                            value: '27 September 2020 to 3 October 2020',
+                            checked: true if data['week-select'] == '27 September 2020 to 3 October 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '4 October 2020 to 10 October 2020',
+                            value: '4 October 2020 to 10 October 2020',
+                            checked: true if data['week-select'] == '4 October 2020 to 10 October 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '11 October 2020 to 17 October 2020',
+                            value: '11 October 2020 to 17 October 2020',
+                            checked: true if data['week-select'] == '11 October 2020 to 17 October 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '18 October 2020 to 24 October 2020',
+                            value: '18 October 2020 to 24 October 2020',
+                            checked: true if data['week-select'] == '18 October 2020 to 24 October 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '25 October 2020 to 31 October 2020',
+                            value: '25 October 2020 to 31 October 2020',
+                            checked: true if data['week-select'] == '25 October 2020 to 31 October 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '1 November 2020 to 7 November 2020',
+                            value: '1 November 2020 to 7 November 2020',
+                            checked: true if data['week-select'] == '1 November 2020 to 7 November 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '8 November 2020 to 14 November 2020',
+                            value: '8 November 2020 to 14 November 2020',
+                            checked: true if data['week-select'] == '8 November 2020 to 14 November 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                                        {
+                            text: '15 November 2020 to 21 November 2020',
+                            value: '15 November 2020 to 21 November 2020',
+                            checked: true if data['week-select'] == '15 November 2020 to 21 November 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                                                 {
+                            text: '22 November 2020 to 28 November 2020',
+                            value: '22 November 2020 to 28 November 2020',
+                            checked: true if data['week-select'] == '22 November 2020 to 28 November 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '29 November 2020 to 5 December 2020',
+                            value: '29 November 2020 to 5 December 2020',
+                            checked: true if data['week-select'] == '29 November 2020 to 5 December 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '6 December 2020 to 12 December 2020',
+                            value: '6 December 2020 to 12 December 2020',
+                            checked: true if data['week-select'] == '6 December 2020 to 12 December 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '7 December 2020 to 12 December 2020',
+                            value: '7 December 2020 to 12 December 2020',
+                            checked: true if data['week-select'] == '7 December 2020 to 12 December 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '13 December 2020 to 19 December 2020',
+                            value: '13 December 2020 to 19 December 2020',
+                            checked: true if data['week-select'] == '13 December 2020 to 19 December 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '20 December 2020 to 26 December 2020',
+                            value: '20 December 2020 to 26 December 2020',
+                            checked: true if data['week-select'] == '20 December 2020 to 26 December 2020',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '27 December 2020 to 2 January 2021',
+                            value: '27 December 2020 to 2 January 2021',
+                            checked: true if data['week-select'] == '27 December 2020 to 2 January 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '3 January 2021 to 9 January 2021',
+                            value: '3 January 2021 to 9 January 2021',
+                            checked: true if data['week-select'] == '3 January 2021 to 9 January 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '10 January 2021 to 16 January 2021',
+                            value: '10 January 2021 to 16 January 2021',
+                            checked: true if data['week-select'] == '10 January 2021 to 16 January 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '17 January 2021 to 23 January 2021',
+                            value: '17 January 2021 to 23 January 2021',
+                            checked: true if data['week-select'] == '17 January 2021 to 23 January 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '24 January 2021 to 30 January 2021',
+                            value: '24 January 2021 to 30 January 2021',
+                            checked: true if data['week-select'] == '24 January 2021 to 30 January 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '31 January 2021 to 6 February 2021',
+                            value: '31 January 2021 to 6 February 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '7 February 2021 to 13 February 2021',
+                            value: '7 February 2021 to 13 February 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '14 February 2021 to 20 February 2021',
+                            value: '13 February 2021 to 20 February 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '21 February 2021 to 27 February 2021',
+                            value: '21 February 2021 to 27 February 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '28 February 2021 to 6 March 2021',
+                            value: '28 February 2021 to 6 March 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '7 March 2021 to 13 March 2021',
+                            value: '7 March 2021 to 13 March 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '14 March 2021 to 20 March 2021',
+                            value: '14 March 2021 to 20 March 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        },
+                        {
+                            text: '21 March 2021 to 27 March 2021',
+                            value: '21 March 2021 to 27 March 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            conditional: {
+                                html: test1
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

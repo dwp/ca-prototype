@@ -27,7 +27,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="list">
+            <form action="medical">
 
                 <h1 class="govuk-heading-l">
                     {{ titleText }}
@@ -62,8 +62,44 @@
                     ]
                 }) }}
 
+{# new resume option #}
 
 
+
+{#
+
+{{ govukCheckboxes ({
+    idPrefix: '',
+    name: '',
+    fieldset: {
+        legend: {
+            text: 'Legend text',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--xl'
+        }
+    },
+    hint: {
+        text: 'Hint text'
+    },
+    items: [
+    Use gov-form-option
+    ]
+}) }}
+
+ ____________________________ #}
+
+
+
+
+<div class="govuk-form-group">
+
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+
+
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+       
         {{ govukDateInput ({
                     id: 'break--start-date',
                     namePrefix: breakLoc + '[start-date',   
@@ -90,62 +126,35 @@
                             classes: 'govuk-input--width-4',
                             value: break['start-date-year']
                         }
-
                     ]
                 }) }}
- <div class="govuk-radios__divider">or</div>
- </br>
-
-{#  ____________________  #}
-{#  ____________________  #}
 
 
-                {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-                {{ govukCheckboxes({
-                idPrefix: "contact",
-                name: "contact",
+    </div>
 
-                items: [
 
-                    {
-                    value: "text message",
-                    text: "You still haven't resumed after this break",
-                    conditional: {
-                        html: textHtml
-                    }
-                    }
-                ]
-                }) }}
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="contact-4" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-checkboxes__label" for="contact-4">
+            Text message xxx
+            </label>
+        </div>
+</br> 
+</br>        
 
-                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  </fieldset>
+</div>
 
-                {{ govukRadios({
-                classes: "govuk-radios--inline",
-                idPrefix: 'breaks--medical-care',
-                name: breakLoc + '[medical-care]',
-                fieldset: {
-                    legend: {
-                    text: "Were you or the person you care for in the care of medical professionals during this time?",
-                    classes: "govuk-fieldset__legend--s"
-                    }
-                },
-                    hint: {
-                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
-                    },
-                    items: [
-                        {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if break['medical-care'] == 'Yes'
-                        },
-                        {
-                            text: 'No',
-                            value: 'No',
-                            checked: true if break['medical-care'] == 'No'
-                        }
-                    ]
-                }) }}
+
+
+
+
+
+
+
+
+
 
 
 
