@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Select any weeks you did not provide care for Jo Bloogs for at least 35 hours
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="weeks3">
+
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'week-select',
+                    name: 'week-select',
+                    fieldset: {
+                        legend: {
+                            text: 'In which months were there weeks when you cared less than 35 hours for [DP name]?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Weeks are shown from Sunday to Saturday'
+                    },
+                    items: [
+                        {
+                            text: 'Week 1, from 4 January 2021 to 9 January 2021',
+                            value: 'Week 1, from 4 January 2021 to 9 January 2021',
+                            checked: true if data['week-select'] == '4 January 2021 to 9 January 2021'
+                        },
+                        {
+                            text: 'Week 2, from 10 January 2021 to 16 January 2021',
+                            value: 'Week 2, from 10 January 2021 to 16 January 2021',
+                            checked: true if data['week-select'] == '10 January 2021 to 16 January 2021'
+                        },
+                        {
+                            text: 'Week 3, from 17 January 2021 to 23 January 2021',
+                            value: 'Week 3, from 17 January 2021 to 23 January 2021',
+                            checked: true if data['week-select'] == '17 January 2021 to 23 January 2021'
+                        },
+                        {
+                            text: 'Week 4, from 24 January 2021 to 30 January 2021',
+                            value: 'Week 4, from 24 January 2021 to 30 January 2021',
+                            checked: true if data['week-select'] == '24 January 2021 to 30 January 2021'
+                        },
+                        {
+                            text: 'Week 5, from 31 January 2021 to 6 February 2021',
+                            value: 'Week 5, from 31 January 2021 to 6 February 2021',
+                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
