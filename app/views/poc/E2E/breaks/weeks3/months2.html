@@ -8,6 +8,10 @@
 
     {{ super() }}
 
+{% if data['end-claim-reason'] == 'dp-died' %}
+{{ 'weeks3' | redirect | safe }}
+{% endif %}
+
     {{ govukBackLink ({
         text: 'Back',
         href: 'javascript:history.back()'
@@ -41,7 +45,7 @@
                         {
                             text: 'June 2020',
                             value: 'June 2020',
-                            checked: true if data['week-select'] == '4 January 2021 to 9 January 2021'
+                            checked: true if data['week-select'] == 'June 2020'
                         },
                         {
                             text: 'July 2020',
