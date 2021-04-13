@@ -36,13 +36,17 @@
                 {{ govukDateInput ({
                     id: 'break--stop-date',
                     namePrefix: breakLoc + '[stop-date',
+                    hint: {
+                     text: "For example, 12 12 2020"
+                    },
                     fieldset: {
                         legend: {
                             text: 'When did you stop providing care?',
                             isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--s'
+                            classes: 'govuk-label--m'
                         }
                     },
+
                     items: [
                         {
                             name: 'day]',
@@ -60,20 +64,28 @@
                             value: break['stop-date-year']
                         }
                     ]
+
                 }) }}
+
+                
 
 
 
         {{ govukDateInput ({
                     id: 'break--start-date',
                     namePrefix: breakLoc + '[start-date',   
+
+                    hint: {
+                     text: "For example, 12 12 2020"
+                    },
                     fieldset: {
                         legend: {
-                            text: 'When did you resume providing care?',
+                            text: 'When did you start providing care again?',
                             isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--s'
+                            classes: 'govuk-label--m'
                         }
                     },
+
                     items: [
                         {
                             name: 'day]',
@@ -92,7 +104,9 @@
                         }
 
                     ]
+
                 }) }}
+
  <div class="govuk-radios__divider">or</div>
  </br>
 
@@ -110,16 +124,13 @@
 
                     {
                     value: "text message",
-                    text: "You still haven't resumed after this break",
+                    text: "Not started to provide care again yet",
                     conditional: {
                         html: textHtml
                     }
                     }
                 ]
                 }) }}
-
-
-
 
 
                 <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
