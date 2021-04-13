@@ -32,15 +32,16 @@
                     name: breakLoc + '[medical-care]',
                     fieldset: {
                         legend: {
-                            text: 'Were you or ' + data['dp--name'] | default('the person you care for') + ' in the care of medical professionals during this time?',
+                            text: 'Did you or ' + data['dp--name'] | default('Emily Marsden') + ' stay somewhere that provided medical care during this time?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
+                        text: 'For example, staying overnight in hospital, or a respite or care home that provided medical treatment.'
                     },
                     items: [
+                        
                         {
                             text: 'Yes',
                             value: 'Yes',
