@@ -67,10 +67,8 @@
 
                 }) }}
 
-                
-
-
-
+ </br>
+ 
         {{ govukDateInput ({
                     id: 'break--start-date',
                     namePrefix: breakLoc + '[start-date',   
@@ -110,24 +108,14 @@
  <div class="govuk-radios__divider">or</div>
  </br>
 
-{#  ____________________  #}
-{#  ____________________  #}
-
-
-                {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
                 {{ govukCheckboxes({
-                idPrefix: "contact",
-                name: "contact",
-
+                    idPrefix: 'breaks--not-started',
+                    name: breakLoc + '[not-started]',              
                 items: [
-
                     {
-                    value: "text message",
-                    text: "Not started to provide care again yet",
-                    conditional: {
-                        html: textHtml
-                    }
+                        text: 'I have not started providing care yet',
+                        value: 'No',
+                        checked: true if break['not-started'] == 'No'
                     }
                 ]
                 }) }}
