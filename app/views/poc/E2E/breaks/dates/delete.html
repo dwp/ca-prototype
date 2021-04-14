@@ -48,14 +48,7 @@
                 {{ govukSummaryList ({
                     classes: 'govuk-!-margin-bottom-8',
                     rows: [
-                        {
-                            key: {
-                                text: 'Reason'
-                            },
-                            value: {
-                                text: reasonText
-                            }
-                        },
+
                         {
                             key: {
                                 text: 'Start date'
@@ -78,12 +71,12 @@
                         },
                         {
                             key: {
-                                text: 'Received care from medical professional'
+                                text: 'Medical care'
                             },
                             value: {
-                                text: ''
+                                text: break['medical-care']
                             }
-                        } if break.reason == 'applicant-respite' or break.reason == 'dp-respite'
+                        } 
                     }
                 }) }}
 
