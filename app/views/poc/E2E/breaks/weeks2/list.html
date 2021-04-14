@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Times you have not provided care for 35 hours a week
+    Weeks you did not provide care for 35 hours or more
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,7 +26,7 @@
 
 
 {{ govukTable({
-  caption: "Times you have not provided care for 35 hours a week",
+  caption: "Weeks since 1 January 2021 where you did not provide care for at least 35 hours",
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
   head: [
@@ -68,7 +68,7 @@
 
 
 
-
+{#  Old radio question iwith link using months2?selectedBreak to reference breakLoc code at top of destination page - but not added as these pages work differently
 
                 {{ govukRadios ({
                     idPrefix: 'breaks--add',
@@ -86,7 +86,7 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~details?selectedBreak='
+                            value: 'Yes~months2?selectedBreak='
                         },
                         {
                             text: 'No',
@@ -98,6 +98,27 @@
                 {{ govukButton ({
                     html: 'Continue'
                 }) }}
+#}
+
+
+{#  button destination to add new break just takes user back to month page - no breakLoc uuid code added to month2 page yet as this may not work for checkbox journey - we may not need an add another break button for this journey with it allowing multiple entries in flow #}
+                <div>
+
+                {{ govukButton({
+                     text: "Add another week",
+                     classes: "govuk-button--secondary",
+                     href: "months2" 
+                }) }}  
+
+                </div>
+
+                <div>
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+                              
+                </div>                     
 
             </form>
 
