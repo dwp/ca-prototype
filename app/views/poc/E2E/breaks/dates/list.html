@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Times you have not provided care for 35 hours a week
+    Breaks in care summary
 {% endblock %}
 
 {% block beforeContent %} 
@@ -23,7 +23,7 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-l">Times you have not provided care for at least 35 hours a week</h1>
+                <h1 class="govuk-heading-l">Breaks in care summary</h1>
 
                 {% set breakCount = 0 %}
 
@@ -58,7 +58,7 @@
                                 },
                                 {
                                     key: {
-                                        text: 'In professional medical care'
+                                        text: 'Medical care'
                                     },
                                     value: {
                                         text: break['medical-care']
@@ -85,18 +85,24 @@
 
                 {% endif %}
 
+
+
+
+
+{#  Radio question instead of button to add another to list
+
                 {{ govukRadios ({
                     idPrefix: 'breaks--add',
                     name: 'breaks--add',
                     fieldset: {
                         legend: {
-                            text: 'Was there any other week you did not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours since 23 June 2020?',
+                            text: 'Do you need to add details of another time you did not provide care since 1 January 2021?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--m'
                         }
                     },
                     hint: {
-                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
+                        text: 'You only need to tell us about a break if you were not providing care for at least 35 hours a week. Caring weeks run from Sunday to Saturday.'
                     },
                     items: [
                         {
@@ -113,6 +119,44 @@
                 {{ govukButton ({
                     html: 'Continue'
                 }) }}
+#}
+
+
+{#  Buttons in a group from design system https://design-system.service.gov.uk/components/button
+
+                <div class="govuk-button-group">
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+
+                {{ govukButton({
+                     text: "Add another break in care",
+                     classes: "govuk-button--secondary",
+                     href: "details?selectedBreak=" 
+                }) }}                
+                
+                </div>
+
+#}
+                <div>
+
+                {{ govukButton({
+                     text: "Add another break in care",
+                     classes: "govuk-button--secondary",
+                     href: "details?selectedBreak=" 
+                }) }}  
+
+                </div>
+
+                <div>
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+                              
+                </div>                
+
 
             </form>
 
