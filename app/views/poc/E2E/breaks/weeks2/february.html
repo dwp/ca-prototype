@@ -56,8 +56,8 @@
 {% endset -%}
 
                 {{ govukCheckboxes ({
-                    idPrefix: 'week-select',
-                    name: 'week-select',
+                    idPrefix: 'dp--name',
+                    name: 'dp--name',
                     fieldset: {
                         legend: {
                             text: 'Select any weeks you did not provide care for 35 hours or more',
@@ -73,7 +73,7 @@
                         {
                             text: '7 February 2021 to 13 February 2021',
                             value: '7 February 2021 to 13 February 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            checked: true if data['dp--name'] == 'holahola',
                             conditional: {
                                 html: test1
                             }

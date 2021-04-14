@@ -23,65 +23,52 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-l">Times you have not provided care for 35 hours a week</h1>
 
-                {% set breakCount = 0 %}
 
-                {% for id, break in data.breaksStore %}
+{{ govukTable({
+  caption: "Times you have not provided care for 35 hours a week",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Week"
+    },
+    {
+      text: "Action"
+    }
+  ],
+  rows: [
+    [
+    {
+        text: data['january-select']
+        
+    },
+    {
+        html: '<a href="months2.html">Change</a>'
+    }
+    ],
+    [
+      {
+        text: data['january2-select']
+      },
+      {
+        html: '<a href="months2.html">Change</a>'
+      }
+    ],
+    [
+      {
+        text: "Total estimated pay"
+      },
+      {
+        text: "£4,282.20"
+      }
+    ]
+  ]
+}) }}
 
-                    {% if break != '' %}
 
-                        {% set breakCount = breakCount + 1 %}
 
-                        {{ govukSummaryList ({
-                            classes: 'govuk-!-margin-bottom-8',
-                            rows: [
-                                {
-                                    key: {
-                                        text: 'Start date'
-                                    },
-                                    value: {
-                                        text: break['start-date-day'] + ' ' + 
-                                        break['start-date-month'] | month + ' ' + 
-                                        break['start-date-year']
-                                    }
-                                },
-                                {
-                                    key: {
-                                        text: 'Number of weeks'
-                                    },
-                                    value: {
-                                        text: (break['week-count']) if break['did-end'] == 'Yes' else 'Ongoing'
-                                    }
-                                },
-                                {
-                                    key: {
-                                        text: 'In professional medical care'
-                                    },
-                                    value: {
-                                        text: break['medical-care']
-                                    }
-                                },
-                                {
-                                    key: {
-                                        text: 'Actions'
-                                    },
-                                    value: {
-                                        html: '<a href="details?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
-                                    }
-                                }
-                            }
-                        }) }}
 
-                    {% endif %}
-
-                {% endfor %}
-
-                {% if breakCount == 0 %}
-
-                    {{ 'any' | redirect | safe }}
-
-                {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'breaks--add',
