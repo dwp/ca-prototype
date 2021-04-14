@@ -60,8 +60,8 @@
 {% endset -%}
 
                 {{ govukCheckboxes ({
-                    idPrefix: 'week-select',
-                    name: 'week-select',
+   
+
                     fieldset: {
                         legend: {
                             text: 'Select any weeks you did not provide care for 35 hours or more',
@@ -74,18 +74,23 @@
                     },
                     items: [
                          
-                        {
+                        {                 
+                            idPrefix: 'january-select',
+                            name: 'january-select',
                             text: '3 January 2021 to 9 January 2021',
                             value: '3 January 2021 to 9 January 2021',
-                            checked: true if data['week-select'] == '3 January 2021 to 9 January 2021',
+                            checked: true if data['january-select'] | includes('3 January 2021 to 9 January 2021'),
                             conditional: {
                                 html: test1
                             }
+
                         },
                         {
+                            idPrefix: 'january2-select',
+                            name: 'january2-select',
                             text: '10 January 2021 to 16 January 2021',
                             value: '10 January 2021 to 16 January 2021',
-                            checked: true if data['week-select'] == '10 January 2021 to 16 January 2021',
+                            checked: true if data['january2-select'] == 'January',
                             conditional: {
                                 html: test1
                             }
@@ -93,7 +98,7 @@
                         {
                             text: '17 January 2021 to 23 January 2021',
                             value: '17 January 2021 to 23 January 2021',
-                            checked: true if data['week-select'] == '17 January 2021 to 23 January 2021',
+                            checked: true if data['january-selectx'] == 'January',
                             conditional: {
                                 html: test1
                             }
@@ -101,7 +106,7 @@
                         {
                             text: '24 January 2021 to 30 January 2021',
                             value: '24 January 2021 to 30 January 2021',
-                            checked: true if data['week-select'] == '24 January 2021 to 30 January 2021',
+                            checked: true if data['january-selectx'] == 'January',
                             conditional: {
                                 html: test1
                             }
@@ -109,7 +114,7 @@
                         {
                             text: '31 January 2021 to 6 February 2021',
                             value: '31 January 2021 to 6 February 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            checked: true if data['january-selectx'] == 'January',
                             conditional: {
                                 html: test1
                             }
