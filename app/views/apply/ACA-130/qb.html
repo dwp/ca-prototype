@@ -31,13 +31,13 @@
                         }
                     },
                     hint: {
-                        text: 'Only select a benefit that they are getting now – do not select a benefit which is still being decided.'
+                        text: 'Do not include any benefits they have applied for if they have not got a decision yet.'
                     },
                     items: [
                         {
-                            text: 'Personal Independence Payment (PIP) daily living component',
-                            value: 'Personal Independence Payment (PIP) daily living component',
-                            checked: true if data['elig--qb'] == 'Personal Independence Payment (PIP) daily living component'
+                            text: 'Personal Independence Payment (PIP) – daily living component',
+                            value: 'Personal Independence Payment (PIP) – daily living component',
+                            checked: true if data['elig--qb'] == 'Personal Independence Payment (PIP) – daily living component'
                         },
                         {
                             text: 'Disability Living Allowance (DLA) – middle or highest care rate',
@@ -45,9 +45,9 @@
                             checked: true if data['elig--qb'] == 'Disability Living Allowance (DLA) – middle or highest care rate'
                         },
                         {
-                            text: 'Child Disability Payment – Scotland only',
-                            value: 'Child Disability Payment – Scotland only',
-                            checked: true if data['elig--qb'] == 'Child Disability Payment – Scotland only'
+                            text: 'Child Disability Payment (CDP) – middle or highest care rate (Scotland only)',
+                            value: 'Child Disability Payment (CDP) – middle or highest care rate (Scotland only)',
+                            checked: true if data['elig--qb'] == 'Child Disability Payment (CDP) – middle or highest care rate (Scotland only)'
                         },
                         {
                             text: 'Attendance Allowance (AA)',
