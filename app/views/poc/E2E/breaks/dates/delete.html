@@ -25,7 +25,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form method="post">    
 
                 <h1 class="govuk-heading-l">Confirm you want to remove this</h1>
 
@@ -48,27 +48,26 @@
                 {{ govukSummaryList ({
                     classes: 'govuk-!-margin-bottom-8',
                     rows: [
-
+                        {
+                            key: {
+                                text: 'Stop date'
+                            },
+                            value: {
+                                text: break['stop-date-day'] + ' ' + 
+                                break['stop-date-month'] | month + ' ' + 
+                                break['stop-date-year']
+                            }
+                        },
                         {
                             key: {
                                 text: 'Start date'
                             },
                             value: {
-                                text: break['start-date-day'] + ' ' + 
-                                break['start-date-month'] | month + ' ' + 
-                                break['start-date-year']
+                                text: break['start-date-day'] + ' ' + break['start-date-month'] | month + ' ' + break['start-date-year'] if break['not-started'] != 'No' else 'Ongoing'
+                                  
                             }
                         },
-                        {
-                            key: {
-                                text: 'End date'
-                            },
-                            value: {
-                                text: (break['end-date-day'] + ' ' + 
-                                break['end-date-month'] | month + ' ' + 
-                                break['end-date-year']) if break['did-end'] == 'Yes' else 'Ongoing'
-                            }
-                        },
+
                         {
                             key: {
                                 text: 'Medical care'

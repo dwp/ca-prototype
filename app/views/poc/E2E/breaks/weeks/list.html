@@ -25,6 +25,28 @@
 
                 <h1 class="govuk-heading-l">Times you have not provided care for 35 hours a week</h1>
 
+
+breakStore = [
+  {
+    id: break1,
+    break: {
+      start-data: '10-1-2020',
+      end-date: '15-5-2020'
+    }
+  }
+  {
+    id: break2,
+    break: {
+      start-data: '15-1-2022',
+      end-date: '11-5-2022'
+    }
+  }
+]
+
+
+
+
+
                 {% set breakCount = 0 %}
 
                 {% for id, break in data.breaksStore %}
