@@ -26,6 +26,32 @@
             <form action="april" method="post">
 
                 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+                    {% set februarycare4 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-february-care4',
+                                name: breakLoc + '[medical-february-care4]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                                  
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-february-care4'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-february-care4'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
                 {% set marchcare1 %}
                                 {{ govukRadios({
                                 classes: "govuk-radios--inline",
@@ -105,32 +131,7 @@
                                     ]
                                 }) }}
                 {% endset -%}
-                {% set marchcare4 %}
-                                {{ govukRadios({
-                                classes: "govuk-radios--inline",
-                                idPrefix: 'breaks--medical-march-care4',
-                                name: breakLoc + '[medical-march-care4]',
-                                fieldset: {
-                                    legend: {
-                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
-                                    classes: "govuk-fieldset__legend--s"
-                                    }
-                                },
-                              
-                                    items: [
-                                        {
-                                            text: 'Yes',
-                                            value: 'Yes',
-                                            checked: true if break['medical-march-care4'] == 'Yes'
-                                        },
-                                        {
-                                            text: 'No',
-                                            value: 'No',
-                                            checked: true if break['medical-march-care4'] == 'No'
-                                        }
-                                    ]
-                                }) }}
-                {% endset -%}
+
                 {{ govukCheckboxes ({
 
                     fieldset: {
@@ -145,11 +146,22 @@
                     },
                     items: [
                         {
+                            idPrefix: '28 February 2021 to 6 March 2021',
+                            name: '28 February 2021 to 6 March 2021',
+                            text: '28 February 2021 to 6 March 2021',
+                            value: '28 February 2021 to 6 March 2021',
+                            checked: true if data['28 February 2021 to 6 March 2021'] | includes('28 February 2021 to 6 March 2021'),
+                            conditional: {
+                                html: februarycare4
+                        }
+                        },
+                        
+                        {
                             idPrefix: '7 March 2021 to 13 March 2021',
                             name: '7 March 2021 to 13 March 2021',
                             text: '7 March 2021 to 13 March 2021',
                             value: '7 March 2021 to 13 March 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            checked: true if data['7 March 2021 to 13 March 2021'] | includes('7 March 2021 to 13 March 2021'),
                             conditional: {
                                 html: marchcare1
                             }
@@ -159,7 +171,7 @@
                             name: '14 March 2021 to 20 March 2021',
                             text: '14 March 2021 to 20 March 2021',
                             value: '14 March 2021 to 20 March 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            checked: true if data['14 March 2021 to 20 March 2021'] | includes('14 March 2021 to 20 March 2021'),
                             conditional: {
                                 html: marchcare2
                             }
@@ -169,7 +181,7 @@
                             name: '21 March 2021 to 27 March 2021',
                             text: '21 March 2021 to 27 March 2021',
                             value: '21 March 2021 to 27 March 2021',
-                            checked: true if data['week-select'] == '31 January 2021 to 6 February 2021',
+                            checked: true if data['21 March 2021 to 27 March 2021'] | includes('21 March 2021 to 27 March 2021'),
                             conditional: {
                                 html: marchcare3
                             }
@@ -179,7 +191,7 @@
                             name: '28 March 2021 to 3 April 2021',
                             text: '28 March 2021 to 3 April 2021',
                             value: '28 March 2021 to 3 April 2021',
-                            checked: true if data['week-select'] == '28 March 2021 to 3 April 2021',
+                            checked: true if data['28 March 2021 to 3 April 2021'] | includes('28 March 2021 to 3 April 2021'),
                             conditional: {
                                 html: marchcare4
                             }
