@@ -6,7 +6,7 @@
 {% set claimDate = '1 February 2021' %}
 
 {% block pageTitle %}
-  Letter d-c
+  GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -90,34 +90,33 @@
             <div class="letter-content-row">
                 <div class="letter-content-clerical">
                     <p>
-                        Dear {{ carerName | upperCase }}
+                        Dear {{ carerName }}
                     </p>
 
                     <p>
-                        I am writing to tell you that you are not entitled Carer's Allowance from 1 February 2021 to <nobr>20 April 2021</nobr>. This is because {{ dpName | upperCase }} did not get an appropriate disability benefit.
-                        
+                        I am writing to tell you that we cannot pay you Carer's Allowance from [Insert Date] to [Insert Date]. This is because you are not entitled to Carer's Allowance because the person you are looking after does or did not get an appropriate disability benefit.
                     </p>
 
                     <p>
-                    <strong>
-                       Qualifying benefits
-                    </strong>   
+                       The law says that a person may be entitled to Carer’s Allowance for the week if they are regularly and substantially engaged in caring for a severely disabled person. 
                     </p>
 
                     <p>
-                        The decision above tells you that you are not entitled to Carer’s Allowance because the person you are looking after does or did not get an appropriate disability benefit. For our purposes, an appropriate disability benefit would be one of the following: 
+                        A severely disabled person is someone who receives a qualifying benefit or a qualifying benefit is paid to someone else as an appointee, parent or guardian. A qualifying benefit for Carer’s Allowance purposes is one of the following:
                     </p>
 
                      <ul class="govuk-list govuk-list--bullet">
-                        <li>Personal Independence payment daily living component</li>    
-                        <li>Disability Living Allowance at the middle or highest care rate</li>
-                        <li><mark>Child Disability Payment at the middle or highest care rate</mark></li>
                         <li>Attendance Allowance</li>
-                        <li>Constant Attendance Allowance at the full day rate or more</li>                         
+                         <li>Disability Living Allowance care component at the middle or highest rate</li>
+                         <li>Constant Attendance Allowance at the full day rate or more</li>
+                         <li>Personal Independence payment daily living component</li>
+                         <li>Armed Forces Independence Payment</li>
                      </ul>                    
 
                     <p>
-                    <strong>If the person you look after has not yet made a claim to any of these benefits, they should make a claim straight away.</strong>
+                    <strong>Social Security Contributions and Benefits Act 1992, section 70(2)</strong>
+                    <br>
+                    <strong>Social Security (Invalid Care Allowance) Regulations 1976, regulation 3</strong>
                     </p>
 
 
@@ -138,11 +137,11 @@
                 </p>
 
                 <p>
-                    If you think the decision is wrong, please get in touch with us by telephone or in writing, <strong>within one month of the date</strong> of this letter. If you do not contact us within one month of the date of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
+                    If you think the decision is wrong, please get in touch with us by telephone or in writing, within one month of the date of this letter. If you do not contact us within one month of the date of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
                 </p>
 
                 <p>
-                    You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
+                    You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a Mandatory Reconsideration. 
                 </p>
 
                 <p>
@@ -158,32 +157,20 @@
             </ul>
         
             <p>
-                When we have looked at the decision again, we will send you a letter explaining what we have done. We call this a <strong>Mandatory Reconsideration Notice</strong>. This will include the information you need to be able to appeal. 
+                When we have looked at the decision again, we will send you a letter explaining what we have done. We call this a Mandatory Reconsideration Notice. This will include the information you need to be able to appeal. 
             </p>
 
             <p>
-               <strong>When and how you should make another claim to Carer’s Allowance</strong>
+               <strong>When and how you you should make another claim to Carer’s Allowance</strong>
             </p>
 
             <p>
-               If the person you look after is awarded one of the appropriate disability benefits, you should make another claim to Carer’s Allowance straight away. If you do not claim Carer’s Allowance within 3 months of the decision on the Disability Living Allowance, <mark>Child Disability Payment</mark>, Attendance Allowance or Constant Attendance Allowance claim, you may lose benefit.
+               If the person you look after is awarded one of the appropriate disability benefits, you should make another claim to Carer’s Allowance straight away. If you do not claim Carer’s Allowance within 3 months of the decision on the Disability Living Allowance, Attendance Allowance or Constant Attendance Allowance claim, you may lose benefit.
             </p>
 
-
-
-            <div class="app-page-number-row">
-                <p>
-                    Page 2 of 6
-                </p>
-            </div>
-
-        </div>
-
-        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-            <p class="govuk-!-margin-top-9">
-                <strong>Complete this form if the person you are caring for is awarded Personal Independence Payment at either rate of the Daily Living Component, Disability Living Allowance at the middle or highest care rate, <mark>Child Disability Payment</mark> at the middle or highest care rate, Attendance Allowance or Constant Attendance Allowance at not less than the full day rate.</strong>
-            </p>
-      
+            <p>
+               Complete this form if the person you are caring for is awarded Disability Living Allowance at the middle or higher rate of the care component, Attendance Allowance or Constant Attendance Allowance at not less than the full day rate.
+            </p>            
 
             <p>
                <strong>Carer’s Allowance reclaim</strong>
@@ -198,7 +185,7 @@
             </p>     
 
             <p>
-               3. Date Disability Living Allowance, <mark>Child Disability Payment</mark>, Attendance Allowance or Constant Attendance Allowance awarded from  
+               3. Date Disability Living Allowance, Attendance Allowance or Constant Attendance Allowance awarded from  
                <br>
                ____/____/________
             </p>   
@@ -237,37 +224,36 @@
                 If you need more space please use a separate sheet of paper. Write your name and National Insurance number on any separate papers and sign and date them.
             </p>
 
-            <p>
+            <div class="app-page-number-row">
+                <p>
+                    Page 2 of 6
+                </p>
+            </div>
+
+        </div>
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9">
                 <strong>Declaration</strong>
             </p>
 
 
-            <p><strong>Send this form back to us as soon as possible. You can use the envelope we have sent you. It does not need a stamp.</strong></p>
+            <p>Send this form back to us as soon as possible. You can use the envelope we have sent you. It does not need a stamp.</p>
 
             <p>
-            <strong>What to do if the person you look after has claimed a qualifying benefit but is waiting to hear</strong>
-                 <br>   
+                <strong>What to do if the person you look after has claimed a qualifying benefit but is waiting to hear</strong>
+            </p>
+
+            <p>
                 If the person you look after receives a decision awarding a qualifying benefit you must let us know within 3 months of their decision, or you may lose out on benefit. You can use the form at the end of this letter called Carer’s Allowance reclaim.
             </p>
 
             <p>
                 If you use this form you may not need to fill in a new Carer’s Allowance claim form, but we may need to ask you for more information. You may be entitled from the date you first claimed or the date the qualifying benefit started.
             </p>
-
-        <div class="app-page-number-row">
-                <p>
-                    Page 3 of 6
-                </p>
-            </div>
-
-
-        </div>
-
-
-
-        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
-            <p class="govuk-!-margin-top-9">
-                <p class="govuk-!-margin-top-9">
+            
+            
+            <p>
                 <strong>Further help and advice </strong>
           </p>
 
@@ -302,6 +288,24 @@
             <p>
                 Unit Manager<br>
                 Manager
+            </p>
+
+
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 3 of 6
+                </p>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9">
+                <strong>Extra page? </strong>
             </p>
 
            

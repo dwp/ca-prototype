@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page example
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk/browse/benefits">Benefits</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk/browse/benefits/help-for-carers">Benefits and financial support if you're caring for someone</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <h1 class="govuk-heading-xl">
+        {% if serviceName %} {{ serviceName }} {% endif %}
+      </h1>
+
+        <p class="govuk-!-font-size-16">Contents</p>
+        <ul class="govuk-list app-govuk-nav">
+        <li class="govuk-!-font-size-16">— <a href="https://www.gov.uk/carers-allowance" class="govuk-link">How it works</a></li>
+        <li class="govuk-!-font-size-16">— Eligibility</li>
+        <li class="govuk-!-font-size-16">— <a href="https://www.gov.uk/carers-allowance/effect-on-other-benefits" class="govuk-link">Effect on other benefits</a></li>
+        <li class="govuk-!-font-size-16">— <a href="https://www.gov.uk/carers-allowance/how-to-claim" class="govuk-link">Make a claim</a></li>
+        <li class="govuk-!-font-size-16">— <a href="https://www.gov.uk/carers-allowance/further-information" class="govuk-link">Report a change in circumstances</a></li>
+        <li class="govuk-!-font-size-16">— <a href="https://www.gov.uk/carers-allowance/if-youre-working-" class="govuk-link">If you’re working</a></li>
+      </ul>
+      
+      
+     
+ <hr>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+    
+    <h2 class="govuk-heading-m govuk-!-font-size-27">Eligibility</h2>
+
+    <p>You may be eligible for Carer’s Allowance if you, the person you care for and the type of care you provide meets certain criteria.</p>
+
+    <h3 class="govuk-heading-m">The person you care for</h3>
+
+    <p>The person you care for must already get one of these benefits:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Personal Independence Payment – daily living component</li>
+        <li>Disability Living Allowance – the middle or highest care rate</li>
+        <li>Child Disability Payment – the middle or highest care rate</li>
+        <li>Attendance Allowance</li>
+        <li>Constant Attendance Allowance at or above the normal maximum rate with an Industrial Injuries Disablement Benefit</li>
+        <li>Constant Attendance Allowance at the basic (full day) rate with a War Disablement Pension</li>
+        <li>Armed Forces Independence Payment</li>
+      </ul>
+
+    <p>If someone else also cares for the same person as you, only one of you can claim Carer’s Allowance.</p>
+
+    <h3 class="govuk-heading-m">The type of care you provide</h3>
+    
+    <p>You need to spend at least 35 hours a week caring for someone. This can include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>helping with washing and cooking</li>
+        <li>taking the person you care for to a doctor’s appointment</li>
+        <li>helping with household tasks, like managing bills and shopping</li>
+    </ul>
+
+    <div class="govuk-inset-text">
+      If you or the person you care for are affected by coronavirus, you can still claim Carer’s Allowance if you provide care remotely. This includes giving emotional support over the phone or online.
+    </div>
+
+    <h3 class="govuk-heading-m">Your eligibility</h3>
+
+    <p>All of the following must apply:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>you’re 16 or over</li>
+        <li>you spend at least 35 hours a week caring for someone</li>
+        <li>you’ve been in England, Scotland or Wales for at least 2 of the last 3 years (this does not apply if you’re a refugee or have humanitarian protection status)</li>
+        <li>you normally live in England, Scotland or Wales, or you live abroad as a member of the armed forces (you might still be eligible if you’re moving to or already living in an <a href="/guidance/benefits-and-pensions-for-uk-nationals-in-the-eea-or-switzerland">EEA country or Switzerland</a>)</li>
+        <li>you’re not in full-time education</li>
+        <li>you’re not studying for 21 hours a week or more</li>
+        <li>you’re not subject to <a rel="external" href="http://www.adviceguide.org.uk/england/benefits_e/benefits_coming_from_abroad_and_claiming_benefits_hrt/non-eea_nationals_and_the_hrt/are_you_subject_to_immigration_control_hrt.htm">immigration control</a></li>
+        <li>your earnings are £128 or less a week after tax, National Insurance and expenses</li>
+      </ul>
+
+    <div class="govuk-inset-text">
+      If your earnings are sometimes more than £128 a week you might still be eligible for Carer’s Allowance. Your average earnings may be calculated to work out if you’re eligible.
+    </div>
+
+    <h4 class="govuk-heading-s">Calculating your earnings</h4>
+
+    <p>Your earnings are any income from employment and self-employment after tax, National Insurance and expenses.</p>
+
+    <p>Expenses can include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>50% of your pension contributions</li>
+        <li>equipment you need to do your job, for example specialist clothing</li>
+        <li>travel costs between different workplaces that are not paid for by your employer, for example fuel or train fares</li>
+        <li>business costs if you’re self-employed, for example a computer you only use for work</li>
+    </ul>
+
+    <p>If you pay a carer to look after the disabled person or your children while you work, you can treat care costs that are less than or equal to 50% of your earnings as an expense. The carer must not be your spouse, partner, parent, child or sibling.</p>
+
+    <div class="govuk-inset-text">
+      <strong>Example</strong>
+      <br>
+      You earn £100 a week (after tax, National Insurance and other expenses) and spend £60 a week on care while you work. You can treat £50 of this as an expense.
+    </div>
+    
+    <p>Payments that do not count as earnings include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">  
+      <li>money received from an occupational or private pension</li>
+      <li>contributions towards your living or accommodation costs from someone you live with (they cannot be a tenant or boarder)</li>
+      <li>the first £20 a week and 50% of the rest of any income you make from someone boarding in your home</li>
+      <li>a loan or advance payment from your employer</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">If you get State Pension</h3>
+
+    <p>You cannot get the full amount of both Carer’s Allowance and your State Pension at the same time.</p>
+    <p>If your pension is £67.60 a week or more, you will not get a Carer’s Allowance payment.</p>
+    <p>If your pension is less than £67.60 a week, you’ll get a Carer’s Allowance payment to make up the difference.</p>
+
+    <h3 class="govuk-heading-m">If you get Pension Credit</h3>
+    <p>If your State Pension is more than £67.60 a week, you will not get a Carer’s Allowance payment but your Pension Credit payments will increase instead.</p>
+
+    <h3 class="govuk-heading-m">If you’re not eligible</h3>
+
+    <p>You might be eligible for <a href="/carers-credit">Carer’s Credit</a> if you’re not eligible for Carer’s Allowance.</p>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third ">
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-s" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="https://www.gov.uk/carers-allowance-report-change">
+                Carer's Allowance: report changes
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/carers-allowance-unit">
+                Contact the Carer's Allowance Unit
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.gov.uk/attendance-allowance">
+                Attendance Allowance
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.gov.uk/carers-credit">
+                Carer's Credit
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.gov.uk/constant-attendance-allowance">
+                Constant Attendance Allowance
+              </a>
+            </li>
+            <li>
+              <a href="#" >
+                + 3 more <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}
