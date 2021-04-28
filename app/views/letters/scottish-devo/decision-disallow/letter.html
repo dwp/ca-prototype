@@ -1,0 +1,354 @@
+
+{% extends "layout.html" %}
+
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+
+{% block pageTitle %}
+  Letter d-v
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines">
+
+            <div class="address-row govuk-!-padding-top-1">
+                <div class="address-row-item" style="width: 50%">
+                    <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-9">
+                        {{ dwpOldLogo() }}
+                        <p><b>Disability and Carers Service</b></p>
+                    </div>
+                    <p>
+                        {{ carerName | upperCase }} <br />
+                        ADDRESS LINE 1<br />
+                        ADDRESS LINE 2 <br />
+                        N12 4NN
+                    </p>
+                </div>
+                <div class="address-row-item" style="width: 50%">
+                    <table class="govuk-table app-content-letter-table">
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%"></td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    <b>Carer’s Allowance</b><br>
+                                    www.gov.uk
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"  style="width: 40%">If you get in touch with us, tell us this <br> <br> reference number</td>
+                                <td class="govuk-table__cell"  style="width: 60%; vertical-align: bottom">
+                                    QQ 12 34 56 C
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our address is</td>
+                                <td class="govuk-table__cell">
+                                    Carer’s Allowance Unit<br />
+                                    Mail Handling Site A<br />
+                                    Wolverhampton<br />
+                                    WV98 2AB
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Our phone number</td>
+                                <td class="govuk-table__cell">
+                                    0800 7310297
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                    Textphone ONLY for customers with speech/hearing problems 0800 731317
+                                </td>
+                            </tr>
+                             <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" colspan="2">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    Date
+                                </td>
+                                <td class="govuk-table__cell">
+                                    20/04/2021
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <div class="letter-content-row">
+                <div class="letter-content-clerical">
+                    <p>
+                        Dear {{ carerName | upperCase }}
+                    </p>
+
+                    <p>
+                        I am writing to tell you that you are not entitled Carer's Allowance from 1 February 2021 to <nobr>20 April 2021</nobr>. This is because {{ dpName | upperCase }} did not get an appropriate disability benefit.
+                        
+                    </p>
+
+                    
+                    <p>
+                    <strong>
+                       Qualifying benefits
+                    </strong>   
+                    </p>
+
+                    <p>
+                        The decision above tells you that you are not entitled to Carer’s Allowance because the person you are looking after does or did not get an appropriate disability benefit. For our purposes, an appropriate disability benefit would be one of the following: 
+                    </p>
+                    
+                     <ul class="govuk-list govuk-list--bullet">
+                        <li><mark> Personal Independence Payment – daily living component</mark></li>    
+                        <li><mark>Disability Living Allowance at the middle or highest care rate</mark></li>
+                        <li><mark>Child Disability Payment at the middle or highest care rate</mark></li>
+                        <li><mark>Attendance Allowance</mark></li>
+                        <li><mark>Constant Attendance Allowance at not less than the full day rate </mark></li> 
+                        <li><mark>Armed Forces Independence Payment</mark></li>                       
+                     </ul>                    
+                    
+                    <p>
+                    <strong>If the person you look after has not yet made a claim to any of these benefits, they should make a claim straight away.</strong>
+                    </p>
+
+
+
+                </div>
+            </div>
+            <div class="app-page-number-row">
+                <p>
+                    Page 1 of 6
+                </p>
+            </div>
+        </div>
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <div>
+
+                <p class="govuk-!-margin-top-9">
+                    <strong>What to do if you think this decision is wrong </strong>
+                </p>
+
+                <p>
+                    If you think the decision is wrong, please get in touch with us by telephone or in writing, <strong>within one month of the date</strong> of this letter. If you do not contact us within one month of the date of this letter we may only be able to change the decision from the date you contact us. Our telephone number and address are on the front page of this letter. 
+                </p>
+
+                <p>
+                    You can appeal against this decision, but you cannot appeal until we have looked at the decision again. We call this a <strong>Mandatory Reconsideration</strong>. 
+                </p>
+
+                <p>
+                   You, or someone who has the authority to act for you, can: 
+                </p>
+
+            </div>
+        
+            <ul class="govuk-list govuk-list--bullet">
+                <li>ask us for an explanation of the decision, or </li>
+                <li>ask for a written statement of reasons for the decision, if we have not already sent one </li>
+                <li>ask us to look at the decision again, to see if it can be changed. There may be some facts you think we have overlooked, or you may have further information that affects the decision. </li>
+            </ul>
+        
+            <p>
+                When we have looked at the decision again, we will send you a letter explaining what we have done. We call this a <strong>Mandatory Reconsideration Notice</strong>. This will include the information you need to be able to appeal. 
+            </p>
+
+            <p>
+               <strong>When and how you should make another claim to Carer’s Allowance</strong>
+            </p>
+
+            <p>
+            <mark>
+               If the person you look after is awarded one of the qualifying disability benefits, you should make another claim to Carer’s Allowance straight away. If you do not claim Carer’s Allowance within 3 months of the decision on their disability benefit, you may lose benefit.
+            </mark>
+            </p>
+
+
+
+            <div class="app-page-number-row">
+                <p>
+                    Page 2 of 6
+                </p>
+            </div>
+
+        </div>
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9">
+                <strong>
+                <mark>Complete this form if the person you are caring for is awarded a qualifying disability benefit for Carer’s Allowance</mark>
+                </strong>
+            </p>
+      
+
+            <p>
+               <strong>Carer’s Allowance reclaim</strong>
+            </p>     
+
+            <p>
+               1. Disabled person’s name                       
+            </p>     
+
+            <p>
+               2. Disabled person’s National Insurance number
+            </p>     
+
+            <p>
+              <mark> 3. Date qualifying disability benefit awarded from  </mark>
+               <br>
+               ____/____/________
+            </p>   
+
+            <p>
+               4. Date you wish to claim from (You may wish to claim from the Monday of the week the qualifying benefit was awarded)  
+               <br>
+               ____/____/________
+            </p>   
+
+            <p>
+              5. Have your circumstances changed since you last claimed Carer’s Allowance?                               
+              <br>
+                 For example, you or the disabled person you are looking after have gone into hospital or you have started work
+
+                 <br>
+                  [ &#8193;] No
+                  <br>
+                  [ &#8193;] Yes
+            </p>   
+
+            <p>
+               If you have answered Yes to the above question, please tell us what has changed and the dates of the changes.
+            </p>
+
+            <p>
+                __________________________________________________________
+                <br>
+                __________________________________________________________
+                <br>
+                __________________________________________________________
+
+            </p>
+
+            <p>
+                If you need more space please use a separate sheet of paper. Write your name and National Insurance number on any separate papers and sign and date them.
+            </p>
+
+            <p>
+                <strong>Declaration</strong>
+            </p>
+
+
+            <p><strong>Send this form back to us as soon as possible. You can use the envelope we have sent you. It does not need a stamp.</strong></p>
+
+            <p>
+            <strong>What to do if the person you look after has claimed a qualifying benefit but is waiting to hear</strong>
+                 <br>   
+                If the person you look after receives a decision awarding a qualifying benefit you must let us know within 3 months of their decision, or you may lose out on benefit. You can use the form at the end of this letter called Carer’s Allowance reclaim.
+            </p>
+
+            <p>
+                If you use this form you may not need to fill in a new Carer’s Allowance claim form, but we may need to ask you for more information. You may be entitled from the date you first claimed or the date the qualifying benefit started.
+            </p>
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 3 of 6
+                </p>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="contentToTest" class="content-letter colour-distinction taller-lines govuk-!-margin-top-9">
+            <p class="govuk-!-margin-top-9">
+                <p class="govuk-!-margin-top-9">
+                <strong>Further help and advice </strong>
+          </p>
+
+            <p>
+                You can find more information online at www.gov.uk/carers-allowance.
+            </p>
+
+            <p>
+                <strong>How to get in touch with us  </strong>
+            </p>
+
+            <p>
+                If you want more information about Carer's Allowance please get in touch with us. Our address and telephone number are shown at the top of this letter. You can claim Carer's Allowance or report a change of circumstances online at the following address, www.direct.gov.uk/carers. 
+            </p>
+
+            <br>
+            <br>
+
+            <p>
+                If you need us to, we can provide the information in this letter in a different format which you find easier to access. For example, you can ask us to provide information in braille, large print, audio or email. Please contact us to discuss your requirements regarding format. 
+            </p>
+
+
+            <p style="text-align: center">
+                <strong>Please keep this letter in a safe place. You may want to look at it again.</strong>
+            </p>
+
+            <p>
+                Your sincerely
+            </p>
+
+            <p>
+                Unit Manager<br>
+                Manager
+            </p>
+
+           
+
+        <div class="app-page-number-row">
+                <p>
+                    Page 4 of 6
+                </p>
+            </div>
+
+       
+
+
+       
+
+    </div>
+
+</div>
+
+<div class="vote-button-container {{ 'vote-button-hidden' if data['show-buttons'] != 'true'}}">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="vote-buttons-wrapper">
+                    <form action="export" class="vote-buttons colour-distinction">
+                        <input id="export-field" type="hidden" name="export-json" value="{{ data['export-json'] }}" />
+
+                        {{ govukButton({ text: 'Makes sense', type: 'button', classes: 'button--good', attributes: { 'onclick': 'javascript:CFObject.voteUp();' } }) }} {{ govukButton({ text: 'Does not make sense', classes:
+                        'govuk-button--warning button--bad', type: 'button', attributes: { 'onclick': 'javascript:CFObject.voteDown();' } }) }}
+
+                        <div class="spacer"></div>
+
+                        {{ govukButton({ text: 'I am finished', type: 'submit', classes: 'govuk-button--secondary' }) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
