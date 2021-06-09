@@ -12,7 +12,7 @@
 
 {% block beforeContent %}
 
-    {{ super() }} 
+    {{ super() }}
 
     {{ govukBackLink ({
         text: 'Back',
@@ -36,17 +36,13 @@
                 {{ govukDateInput ({
                     id: 'break--stop-date',
                     namePrefix: breakLoc + '[stop-date',
-                    hint: {
-                     text: "For example, 12 12 2020"
-                    },
                     fieldset: {
                         legend: {
                             text: 'When did you stop providing care?',
                             isPageHeading: true,
-                            classes: 'govuk-label--m'
+                            classes: 'govuk-fieldset__legend--s'
                         }
                     },
-
                     items: [
                         {
                             name: 'day]',
@@ -64,26 +60,56 @@
                             value: break['stop-date-year']
                         }
                     ]
-
                 }) }}
 
- </br>
- 
+{# new resume option #}
+
+
+
+{#
+
+{{ govukCheckboxes ({
+    idPrefix: '',
+    name: '',
+    fieldset: {
+        legend: {
+            text: 'Legend text',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--xl'
+        }
+    },
+    hint: {
+        text: 'Hint text'
+    },
+    items: [
+    Use gov-form-option
+    ]
+}) }}
+
+ ____________________________ #}
+
+
+
+
+<div class="govuk-form-group">
+
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+
+
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+       
         {{ govukDateInput ({
                     id: 'break--start-date',
                     namePrefix: breakLoc + '[start-date',   
-
-                    hint: {
-                     text: "For example, 30 12 2020"
-                    },
                     fieldset: {
                         legend: {
-                            text: 'When did you start providing care again?',
+                            text: 'When did you resume providing care?',
                             isPageHeading: true,
-                            classes: 'govuk-label--m'
+                            classes: 'govuk-fieldset__legend--s'
                         }
                     },
-
                     items: [
                         {
                             name: 'day]',
@@ -100,27 +126,37 @@
                             classes: 'govuk-input--width-4',
                             value: break['start-date-year']
                         }
-
                     ]
- 
                 }) }}
 
- <div class="govuk-radios__divider">or</div>
- </br>
 
-                {{ govukCheckboxes({
-                    idPrefix: 'breaks--not-started',
-                    name: breakLoc + '[not-started]',              
-                items: [
-                    {
-                        text: 'I have not started providing care yet',
-                        value: 'No',
-                        checked: true if break['not-started'] == 'No'
 
-                        
-                    }
-                ]
-                }) }}
+    </div>
+
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="contact-4" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-checkboxes__label" for="contact-4">
+            Text message xxx
+            </label>
+        </div>
+</br> 
+</br>        
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
