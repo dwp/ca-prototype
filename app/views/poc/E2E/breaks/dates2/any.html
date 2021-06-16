@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+
+{% block pageTitle %}
+    Since 1 February 2021, have there been any times you have not provided care for at least 35 hours a week?
+{% endblock %}
+
+{% block beforeContent %} 
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="details">
+
+                {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+                {{ govukFieldset({
+                  legend: {
+                    text: "We need to know about any breaks in care",
+                    classes: "govuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) }}
+
+               <p>
+                A break in care is any time you have not been caring for John Smith for at least 35 hours in a week. For Carer's Allowance, a week is classed as Sunday to Saturday
+               </p>
+
+               <p>
+                This can include times where you or John Smith were:
+               </p>
+
+               <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>
+                    in hospital
+                </li>
+                <li>
+                    in respite or a care home
+                </li>
+                <li>
+                    on holiday
+                </li>
+                </ul>
+
+                <p>
+                    You do not need to tell us about any of the above if you continued to care for John Smith for 35 hours or more a week during that time.
+                 </p>
+<br>
+                {{ govukRadios ({
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
+                    fieldset: {
+                        legend: {
+                          text: "Since 17 February have there been any breaks in care?",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['breaks--any'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~education',
+                            checked: true if data['breaks--any'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

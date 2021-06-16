@@ -4,7 +4,7 @@
 {% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
 {% set break = data.breaksStore[breakIndex] %}
 
-{% set titleText = 'Times you have not provided care for at least 35 hours a week' %}
+{% set titleText = 'Time you did not provide care for at least 35 hours a week' %}
 
 {% block pageTitle %} 
     {{ titleText }}
@@ -32,6 +32,8 @@
                 <h1 class="govuk-heading-l">
                     {{ titleText }}
                 </h1>
+               <p class="govuk-hint">If there has been more than one break in care, just tell us about the first one. You can tell us about other breaks in care later.</p>
+               <br>
 
                 {{ govukDateInput ({
                     id: 'break--stop-date',
@@ -43,7 +45,7 @@
                         legend: {
                             text: 'When did you stop providing care?',
                             isPageHeading: true,
-                            classes: 'govuk-label--m'
+                            classes: 'govuk-label--s'
                         }
                     },
 
@@ -68,60 +70,75 @@
                 }) }}
 
  </br>
+
  
-        {{ govukDateInput ({
-                    id: 'break--start-date',
-                    namePrefix: breakLoc + '[start-date',   
+ {% set yesHtml %}
 
-                    hint: {
-                     text: "For example, 30 12 2020"
-                    },
-                    fieldset: {
-                        legend: {
-                            text: 'When did you start providing care again?',
-                            isPageHeading: true,
-                            classes: 'govuk-label--m'
-                        }
-                    },
+ {{ govukDateInput ({
+    id: 'break--start-date',
+    namePrefix: breakLoc + '[start-date',
+    hint: {
+     text: "For example, 12 12 2020"
+    },
+    fieldset: {
+        legend: {
+            text: 'When did you start providing care again?',
+            isPageHeading: true,
+            classes: 'govuk-label--s'
+        }
+    },
 
-                    items: [
-                        {
-                            name: 'day]',
-                            classes: 'govuk-input--width-2',
-                            value: break['start-date-day']
-                        },
-                        {
-                            name: 'month]',
-                            classes: 'govuk-input--width-2',
-                            value: break['start-date-month']
-                        },
-                        {
-                            name: 'year]',
-                            classes: 'govuk-input--width-4',
-                            value: break['start-date-year']
-                        }
+    items: [
+        {
+            name: 'day]',
+            classes: 'govuk-input--width-2',
+            value: break['start-date-day']
+        },
+        {
+            name: 'month]',
+            classes: 'govuk-input--width-2',
+            value: break['start-date-month']
+        },
+        {
+            name: 'year]',
+            classes: 'govuk-input--width-4',
+            value: break['start-date-year']
+        }
+    ]
 
-                    ]
+}) }}
+
+ {% endset -%}
  
-                }) }}
-
- <div class="govuk-radios__divider">or</div>
- </br>
-
-                {{ govukCheckboxes({
-                    idPrefix: 'breaks--not-started',
-                    name: breakLoc + '[not-started]',              
-                items: [
-                    {
-                        text: 'I have not started providing care yet',
-                        value: 'No',
-                        checked: true if break['not-started'] == 'No'
-
-                        
-                    }
-                ]
-                }) }}
-
+ {{ govukRadios({
+   idPrefix: "contact",
+   name: "contact",
+   fieldset: {
+     legend: {
+       text: "Have you started providing care again?",
+       isPageHeading: true,
+       classes: "govuk-fieldset__legend--s"
+     }
+   },
+  
+   items: [
+     {
+       value: "yes",
+       text: "Yes",
+       conditional: {
+         html: yesHtml
+       }
+     },
+     {
+       value: "no",
+       text: "No",
+       conditional: {
+         html: noHtml
+       }
+     }
+    ]
+ }) }}
+ 
 
                 <input type="hidden" name="selectedBreak" value="{{ breakIndex }}">
 
