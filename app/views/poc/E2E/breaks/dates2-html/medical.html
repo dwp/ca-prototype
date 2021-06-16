@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
+{% block pageTitle %}
+    Were you or the person you care for getting care from a medical professional during this time?
+{% endblock %}
+
+{% block beforeContent %} 
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Did you or John Smith stay somewhere that provided medical care during this time?
+                        </h1>
+                    </legend>
+                    <p class="govuk-hint">For example, staying overnight in hospital, or a respite or care home that provided medical treatment.</p>
+                    
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="medical-yes" name="medical-yes" type="radio" value="yes">
+                        <label class="govuk-label govuk-radios__label" for="medical-yes">
+                            Yes
+                        </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="medical-no" name="medical-no" type="radio" value="no">
+                        <label class="govuk-label govuk-radios__label" for="medical-no">
+                            No
+                        </label>
+                        </div>
+                    </div>
+                
+                    </fieldset>
+                </div>
+
+                    <button class="govuk-button" data-module="govuk-button" href="list">
+                    Continue
+                  </button>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
