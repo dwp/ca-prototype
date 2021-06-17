@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+
+{% block pageTitle %}
+    Since 1 February 2021, have there been any times you have not provided care for at least 35 hours a week?
+{% endblock %}
+
+{% block beforeContent %} 
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="details">
+
+                <h1 class="govuk-heading-l">We need to know about any breaks in care
+                </h1>
+
+
+               <p>A break in care is any time you have not been caring for John Smith for at least 35 hours in a week. For Carer's Allowance, a week is classed as Sunday to Saturday.
+
+               <p>
+                You need to tell us about any time since 17 February 2021 where:               </p>
+               </p>
+
+               <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>
+                    you or John Smith stayed overnight in hospital, or a respite or care home
+                </li>
+                <li>
+                    you did not provide care for at least 35 hours a week for any other reason
+                </li>
+                </ul>
+
+               
+<br>
+
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Since 17 February have there been any breaks in care?
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="breaks-in-care-yes" name="breaks-in-care-yes" type="radio" value="yes">
+                        <label class="govuk-label govuk-radios__label" for="breaks-in-care-yes">
+                            Yes
+                        </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="breaks-in-care-no" name="breaks-in-care-no" type="radio" value="no">
+                        <label class="govuk-label govuk-radios__label" for="breaks-in-care-no">
+                            No
+                        </label>
+                        </div>
+                    </div>
+                
+                    </fieldset>
+                </div>
+
+                    <button class="govuk-button" data-module="govuk-button" href="details">
+                    Continue
+                  </button>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
