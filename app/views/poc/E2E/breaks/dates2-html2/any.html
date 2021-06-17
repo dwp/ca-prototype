@@ -25,7 +25,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="education">
+            <form>
 
                 <h1 class="govuk-heading-l">We need to know about any breaks in care since 24 May 2021
                 </h1>
@@ -43,7 +43,29 @@
 <br>
 
 
-                <div class="govuk-form-group">
+                {{ govukRadios({
+                    idPrefix: "breaks-in-care",
+                    name: "breaks-in-care",
+                    fieldset: {
+                    legend: {
+                        text: "Since 24 May 2021, have there been any breaks in care?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--m"
+                    }
+                    },
+                    items: [
+                        {
+                            value: "Yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: "No",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                <!-- <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h1 class="govuk-fieldset__heading">
@@ -66,11 +88,17 @@
                     </div>
                 
                     </fieldset>
-                </div>
+                </div> -->
 
-                    <button class="govuk-button" data-module="govuk-button">
+                    <!-- <button class="govuk-button" data-module="govuk-button">
                     Continue
-                  </button>
+                  </button> -->
+
+                  {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button',
+                    href: 'education'
+                }) }}
 
             </form>
 
