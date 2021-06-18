@@ -33,15 +33,18 @@ href: 'javascript:history.back()'
                     <tbody class="govuk-table__body">
                       <!-- We get the ID of the break (so we can pre fill the data if we click edit) and the break itself which contains all the info about it -->
                       <!-- For each break that's been added, we need a new row -->
+                      {% set breakCount = 0 %}
                       {% for id, break in data.breaksStore %}
                         {% if break != '' %}
+                          <!-- Increment breakCount by 1 -->
+                          {% set breakCount = breakCount + 1 %}
                           <tr class="govuk-table__row">
                               <td class="govuk-table__cell">
                                 {{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }}
                               </td>
                               {% if break['not-started'] %}
                                 <td class="govuk-table__cell">
-                                  Not started yet
+                                  Not restarted care
                                 </td>
                               {% else %}
                                 <td class="govuk-table__cell">
@@ -62,6 +65,10 @@ href: 'javascript:history.back()'
                           </tr>
                         {% endif %}
                       {% endfor %}
+                      <!-- If there are no breaks, redirect back to the 'any' page -->
+                      {% if breakCount == 0 %}
+                        {{ 'any' | redirect | safe }}
+                      {% endif %}
                     </tbody>
                   </table>
                   <br>
