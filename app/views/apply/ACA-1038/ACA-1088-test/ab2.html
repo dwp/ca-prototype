@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Temporary breaks
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+    
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Temporary breaks in care, including hospital stays</h1>
+
+                    {{ govukCheckboxes({
+                        idPrefix: "anytimes",
+                        name: "anytimes",
+                        fieldset: {
+                            legend: {
+                            text: "Since 3 April 2021 have there been any times you or John Smith have been in hospital, respite or care home for at least a week?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                            }
+                        },
+                        hint: {
+                            text: "Select all that apply."
+                        },
+                        items: [
+                            {
+                            value: "hosptial",
+                            text: "Hosptial"
+                            },
+                            {
+                            value: "respite",
+                            text: "Respite or care home"
+                            },
+                            {
+                            value: "none",
+                            text: "None"
+                            }
+                        ]
+                        }) }}
+
+                
+                
+
+                {{ govukRadios ({
+                    idPrefix: 'pay-details--has-bank',
+                    name: 'pay-details--has-bank',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have a bank account?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                           
+                        },
+                        {
+                            text: 'No',
+                            value: 'no',
+                           
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

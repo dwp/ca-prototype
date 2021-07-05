@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-906
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-1038
+      </h1>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2> 
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="ACA-1088/first.html">ACA-1088</a> – Add new page for removing a break in care entry from the summary page
+        </li>
+       
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}
