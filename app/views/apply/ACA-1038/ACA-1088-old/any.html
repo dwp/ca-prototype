@@ -1,34 +1,28 @@
 {% extends 'layout.html' %}
-
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
 {% block pageTitle %}
-    Temporary breaks
+    Since 1 February 2021, have there been any times you have not provided care for at least 35 hours a week?
 {% endblock %}
-
-{% block beforeContent %}
-
+{% block beforeContent %} 
     {{ super() }}
-
     {{ govukBackLink ({
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
-    
-
 {% endblock %}
-
 {% block content %}
-
 <div class="govuk-grid-row">
-
         <div class="govuk-grid-column-two-thirds">
-
             <form method="post">
+                <h1 class="govuk-heading-l">Temporary breaks in care, including hospital stays
 
-                <h1 class="govuk-heading-l">Temporary breaks in care, including hospital stays</h1>
-
-                    {{ govukCheckboxes({
-                        idPrefix: "anytimes",
-                        name: "anytimes",
+                </h1>
+              
+              {{ govukCheckboxes({
+                        idPrefix: "waste",
+                        name: "waste",
                         fieldset: {
                             legend: {
                             text: "Since 3 April 2021 have there been any times you or John Smith have been in hospital, respite or care home for at least a week?",
@@ -42,7 +36,7 @@
                         items: [
                             {
                             value: "hosptial",
-                            text: "Hosptial"
+                            text: "Hospital"
                             },
                             {
                             value: "respite",
@@ -55,41 +49,36 @@
                         ]
                         }) }}
 
-                
-                
-
-                {{ govukRadios ({
-                    idPrefix: 'pay-details--has-bank',
-                    name: 'pay-details--has-bank',
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+                {{ govukRadios({
+                    idPrefix: "breaks-in-care",
+                    name: "breaks-in-care",
                     fieldset: {
-                        legend: {
-                            text: 'Do you have a bank account?',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--s'
-                        }
+                    legend: {
+                        text: "Have there been any other times you've not provided care for John Smith for 35 hours a week?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--s"
+                    }
                     },
+                    hint: {
+                            text: "This includes times on holiday"
+                        },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'yes',
-                           
+                            value: "Yes~#",
+                            text: "Yes"
                         },
                         {
-                            text: 'No',
-                            value: 'no',
-                           
+                            value: "No~/apply/ACA-1038/ACA-1088/who",
+                            text: "No"
                         }
                     ]
                 }) }}
-
                 {{ govukButton ({
-                    html: 'Continue'
+                    html: 'Continue',
+                    classes: 'govuk-button'
                 }) }}
-
             </form>
-
         </div>
-
 </div>
-
 {% endblock %}

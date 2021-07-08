@@ -1,19 +1,18 @@
 {% extends 'layout.html' %}
 {% block pageTitle %}
-  Breaks in care summary
+Breaks in care summary
 {% endblock %}
 {% block beforeContent %}
-  {{ super() }}
-  {{ govukBackLink ({
-    text: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
 {% endblock %}
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form method="post">
-            {# {{ data | dump }} #}
             <h1 class="govuk-heading-l">Breaks in care summary</h1>
             <h1 class="govuk-hint">Check the breaks in care information you have entered. If you need to, you can add
                 another break in care.</h1>
@@ -22,7 +21,6 @@
                       <p>{{ id }}</p>
                       <p>{{ break | dump }}</p>
                 {% endfor %} #}
-
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
@@ -42,52 +40,39 @@
                           {% set breakCount = breakCount + 1 %}
                           <tr class="govuk-table__row">
                               <td class="govuk-table__cell">
-                                <!-- If you were in hospital pull the data for you -->
-                                {% if break['who-was-in-hospital'] == "you" %}
-                                  {{ break['you-hospital-admitted-day'] }} {{ break['you-hospital-admitted-month'] | month }} {{ break['you-hospital-admitted-year'] }}
-                                {% else %} <!-- If not, pull the john smith details -->
-                                  {{ break['js-hospital-admitted-day'] }} {{ break['js-hospital-admitted-month'] | month }} {{ break['js-hospital-admitted-year'] }}
-                                {% endif %}
+                                {{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }}
                               </td>
-                              <!-- If the break has not ended show message -->
-                              {% if break['you-hospital-ended'] == "no" or break['js-hospital-ended'] %}
+                              {% if break['not-started'] %}
                                 <td class="govuk-table__cell">
                                   Not restarted care
                                 </td>
                               {% else %}
                                 <td class="govuk-table__cell">
-                                  <!-- If you were in hospital pull the data for you -->
-                                  {% if break['who-was-in-hospital'] == "you" %}
-                                    {{ break['you-hospital-ended-day'] }} {{ break['you-hospital-ended-month'] | month }} {{ break['you-hospital-ended-year'] }}
-                                  {% else %} <!-- If not, pull the john smith details -->
-                                    {{ break['js-hospital-ended-day'] }} {{ break['js-hospital-ended-month'] | month }} {{ break['js-hospital-ended-year'] }}
-                                  {% endif %}
+                                  {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
                                 </td>
                               {% endif%}
                             <td class="govuk-table__cell">
-                              {% if break['breakType'] === 'hospital' %}
-                                Hospital
-                              {% elif break['breakType'] === 'respite' %}
-                                Respite
-                              {% elif break['breakType'] === 'other' %}
-                                Other
+                              {% if break['medical'] === 'Yes' %}
+                                Yes
+                              {% else %}
+                                No
                               {% endif %}
                             </td>
                             <td class="govuk-table__cell">
-                              <a href="{{ break['breakType'] }}?selectedBreak={{ id }}">Change</a>
+                              <a href="details?selectedBreak={{ id }}">Change</a>
                               <a href="delete?selectedBreak={{ id }}" class="govuk-!-margin-left-2">Remove</a>
                             </td>
                           </tr>
                         {% endif %}
                       {% endfor %}
                       <!-- If there are no breaks, redirect back to the 'any' page -->
-                      {% if breakCount == 0 %}
-                        {{ 'first' | redirect | safe }}
-                      {% endif %}
+                      {# {% if breakCount == 0 %}
+                        {{ 'any' | redirect | safe }}
+                      {% endif %} #}
                     </tbody>
                   </table>
                   <br>
-                  <a href="any?selectedBreak=" class="govuk-button govuk-button--secondary">Add another break in care</a>
+                  <a href="details?selectedBreak=" class="govuk-button govuk-button--secondary">Add another break in care</a>
                   <br>
                   <a href="education" class="govuk-button">Continue</a>
         </form>

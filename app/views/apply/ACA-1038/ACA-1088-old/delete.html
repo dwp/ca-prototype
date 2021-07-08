@@ -16,52 +16,43 @@
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <form action="list">    
-                <h1 class="govuk-heading-l">Delete this break in care</h1>
+                <h1 class="govuk-heading-l">Remove this break in care</h1>
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Who</th>
-                        <td class="govuk-table__cell">{{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }}</td>
-                      </tr>
+                        <td class="govuk-table__cell">{{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }}John Smithh
                     </thead>
                     <tbody class="govuk-table__body">
                       <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">Where</th>
                         {% if break['not-started'] %}
                             <td class="govuk-table__cell">
-                              Not started yet
+                              Hospital
                             </td>
                           {% else %}
                             <td class="govuk-table__cell">
-                              {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
+                              Hospital
                             </td>
                           {% endif%}
                       </tr>
                       <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">From</th>
                         <td class="govuk-table__cell">
-                          {% if break['medical'] === 'Yes' %}
-                            Yes
-                          {% else %}
-                            
-                          {% endif %}
+                         6 May 2021
                         </td>
                       </tr>
-                      <tr class="govuk-table__row">
+                       <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">To</th>
                         <td class="govuk-table__cell">
-                          {% if break['medical'] === 'Yes' %}
-                            Yes
-                          {% else %}
-                            
-                          {% endif %}
+                         6 June 2021
                         </td>
                       </tr>
                     </tbody>
                   </table>
                   <input type="hidden" name="{{ breakLoc }}" value="">
                   {{ govukButton ({
-                      html: 'Delete',
+                      html: 'Remove',
                       classes: 'govuk-button--warning'
                   }) }}
                 <p>

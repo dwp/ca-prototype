@@ -21,29 +21,41 @@
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Stop date</th>
-                        <td class="govuk-table__cell">{{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }}</td>
+                        <td class="govuk-table__cell">
+                          {% if break['who-was-in-hospital'] == "you" %}
+                            {{ break['you-hospital-admitted-day'] }} {{ break['you-hospital-admitted-month'] | month }} {{ break['you-hospital-admitted-year'] }}
+                          {% else %} <!-- If not, pull the john smith details -->
+                            {{ break['js-hospital-admitted-day'] }} {{ break['js-hospital-admitted-month'] | month }} {{ break['js-hospital-admitted-year'] }}
+                          {% endif %}
+                        </td>
                       </tr>
                     </thead>
                     <tbody class="govuk-table__body">
                       <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">Start date</th>
-                        {% if break['not-started'] %}
-                            <td class="govuk-table__cell">
-                              Not started yet
-                            </td>
+                          {% if break['you-hospital-ended'] == "no" or break['js-hospital-ended'] %}
+                                <td class="govuk-table__cell">
+                                  Not restarted care
+                                </td>
                           {% else %}
                             <td class="govuk-table__cell">
-                              {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
+                              {% if break['who-was-in-hospital'] == "you" %}
+                                {{ break['you-hospital-ended-day'] }} {{ break['you-hospital-ended-month'] | month }} {{ break['you-hospital-ended-year'] }}
+                              {% else %} <!-- If not, pull the john smith details -->
+                                {{ break['js-hospital-ended-day'] }} {{ break['js-hospital-ended-month'] | month }} {{ break['js-hospital-ended-year'] }}
+                              {% endif %}
                             </td>
                           {% endif%}
                       </tr>
                       <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">Where</th>
                         <td class="govuk-table__cell">
-                          {% if break['medical'] === 'Yes' %}
-                            Yes
-                          {% else %}
-                            No
+                          {% if break['breakType'] === 'hospital' %}
+                            Hospital
+                          {% elif break['breakType'] === 'respite' %}
+                            Respite
+                          {% elif break['breakType'] === 'other' %}
+                            Other
                           {% endif %}
                         </td>
                       </tr>
