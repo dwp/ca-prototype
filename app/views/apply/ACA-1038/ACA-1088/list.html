@@ -50,7 +50,7 @@
                                 {% endif %}
                               </td>
                               <!-- If the break has not ended show message -->
-                              {% if break['you-hospital-ended'] == "no" or break['js-hospital-ended'] %}
+                              {% if break['you-hospital-ended'] == "no" or not break['js-hospital-ended-day'] %}
                                 <td class="govuk-table__cell">
                                   Not restarted care
                                 </td>
