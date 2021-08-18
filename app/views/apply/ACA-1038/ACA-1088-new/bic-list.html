@@ -14,18 +14,17 @@
     <div class="govuk-grid-column-two-thirds">
         <form method="post">
             {# {{ data | dump }} #}
-            <h1 class="govuk-heading-l">Summary of time in hospital, respite care or a care home</h1>
-            <h1 class="govuk-hint">Check the information you have entered. If you need to, you can add another time in hospital, respite care or a care home.</h1>
+            <h1 class="govuk-heading-l">Breaks in care summary</h1>
+            <h1 class="govuk-hint">Check the breaks in care information you have entered. If you need to, you can add another break in care.</h1>
              
 
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header">Where</th>
-                        <th scope="col" class="govuk-table__header">Who</th>
                         <th scope="col" class="govuk-table__header">Start date</th>
                         <th scope="col" class="govuk-table__header">End date</th>
                         <th scope="col" class="govuk-table__header"></th>
+
 
                       </tr>
                     </thead>
@@ -34,20 +33,13 @@
                           <tr class="govuk-table__row">
                             
                                 <td class="govuk-table__cell">
-                                Hospital
+                                7 June 2021
                                 </td>
                               <td class="govuk-table__cell">
-                               John Smith
+                               14 June 2021
                               </td>
+
                             
-                            
-                                <td class="govuk-table__cell">
-                                5 June 2021
-                                </td>
-                            
-                            <td class="govuk-table__cell">
-                            Not restarted care
-                            </td>
                             <td class="govuk-table__cell">
                               <a href="{{ break['breakType'] }}?selectedBreak={{ id }}">Change</a>
                               <a href="delete?selectedBreak={{ id }}" class="govuk-!-margin-left-2">Remove</a>
@@ -62,9 +54,9 @@
                     </tbody>
                   </table>
                   <br>
-                  <a href="who-hosp" class="govuk-button govuk-button--secondary">Add another time</a>
+                  <a href="who-hosp" class="govuk-button govuk-button--secondary">Add another break</a>
                   <br>
-                  <a href="bic-first" class="govuk-button">Continue</a>
+                  <a href="education" class="govuk-button">Continue</a>
         </form>
     </div>
 </div>
