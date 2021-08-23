@@ -16,18 +16,17 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="post" action="bic-list">
-                <h1 class="govuk-heading-l">Time you have not provided care for 35 hours a week
+            <form method="post" action="list">
+                <h1 class="govuk-heading-l">Time you were in hospital
                 </h1>
             
-                    <p>If there was more than one occasion, you can add more later.</p>
-
+        
          {{ govukDateInput ({
                         id: 'hosp-start',
                         namePrefix: breakLoc + '[hosp-start',
                         fieldset: {
                             legend: {
-                                text: 'When did you stop providing care for John Smith?',
+                                text: 'When did you go into hospital?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -69,7 +68,7 @@
                         namePrefix: breakLoc + '[hosp-ended',
                         fieldset: {
                             legend: {
-                                text: 'When did you start providing care again?',
+                                text: 'When did this hospital stay end?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -110,7 +109,7 @@
                     name: breakLoc + '[has-hosp-ended]',
                     fieldset: {
                         legend: {
-                            text: 'Have you started providing care again?',
+                            text: 'Has this hospital stay ended?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }

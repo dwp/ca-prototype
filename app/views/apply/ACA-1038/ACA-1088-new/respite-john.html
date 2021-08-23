@@ -16,18 +16,17 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="post" action="bic-list">
-                <h1 class="govuk-heading-l">Time you have not provided care for 35 hours a week
+            <form method="post" action="35hours">
+                <h1 class="govuk-heading-l">Time John Smith was in respite care
                 </h1>
             
-                    <p>If there was more than one occasion, you can add more later.</p>
-
+        
          {{ govukDateInput ({
-                        id: 'hosp-start',
-                        namePrefix: breakLoc + '[hosp-start',
+                        id: 'respite-start',
+                        namePrefix: breakLoc + 'respite-start',
                         fieldset: {
                             legend: {
-                                text: 'When did you stop providing care for John Smith?',
+                                text: 'When did this respite care start?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -39,17 +38,17 @@
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'day]',
-                                value: break['hosp-start-day']
+                                value: break['respite-start-day']
                             },
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'month]',
-                                value: break['hosp-start-month']
+                                value: break['respite-start-month']
                             },
                             {
                                 classes: 'govuk-input--width-4',
                                 name: 'year]',
-                                value: break['hosp-start-year']
+                                value: break['respite-start-year']
                             }
                         ]
                     }) }}
@@ -65,11 +64,11 @@
                 {% set yesHTML %}
 
                     {{ govukDateInput ({
-                        id: 'hosp-ended',
-                        namePrefix: breakLoc + '[hosp-ended',
+                        id: 'respite-ended',
+                        namePrefix: breakLoc + '[respite-ended',
                         fieldset: {
                             legend: {
-                                text: 'When did you start providing care again?',
+                                text: 'When did this respite care end?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -81,17 +80,17 @@
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'day]',
-                                value: break['hosp-ended-day']
+                                value: break['respite-ended-day']
                             },
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'month]',
-                                value: break['hosp-ended-month']
+                                value: break['respite-ended-month']
                             },
                             {
                                 classes: 'govuk-input--width-4',
                                 name: 'year]',
-                                value: break['hosp-ended-year']
+                                value: break['respite-ended-year']
                             }
                         ]
                     }) }}
@@ -107,10 +106,10 @@
 
                    {{ govukRadios ({
                     idPrefix: 'has-hosp-ended',
-                    name: breakLoc + '[has-hosp-ended]',
+                    name: breakLoc + '[has-respite-ended]',
                     fieldset: {
                         legend: {
-                            text: 'Have you started providing care again?',
+                            text: 'Has this respite care ended?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -118,7 +117,7 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: "Yes~/apply/ACA-1038/ACA-1088-new/list",
+                            value: "Yes~/apply/ACA-1038/ACA-1088-new/35hours",
 
                             conditional: {
                                 html: yesHTML
@@ -127,7 +126,7 @@
                         },
                         {
                             text: 'No',
-                            value: "No~/apply/ACA-1038/ACA-1088-new/list",
+                            value: "No~/apply/ACA-1038/ACA-1088-new/35hours",
                             conditional: {
                                 html: johnSmithHTML
                             },

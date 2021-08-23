@@ -16,18 +16,17 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="post" action="bic-list">
-                <h1 class="govuk-heading-l">Time you have not provided care for 35 hours a week
+            <form method="post" action="35hours-care">
+                <h1 class="govuk-heading-l">Time you were in a care home
                 </h1>
             
-                    <p>If there was more than one occasion, you can add more later.</p>
-
+        
          {{ govukDateInput ({
                         id: 'hosp-start',
                         namePrefix: breakLoc + '[hosp-start',
                         fieldset: {
                             legend: {
-                                text: 'When did you stop providing care for John Smith?',
+                                text: 'When did you go into a care home?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -39,17 +38,17 @@
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'day]',
-                                value: break['hosp-start-day']
+                                value: break['carehome-start-day']
                             },
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'month]',
-                                value: break['hosp-start-month']
+                                value: break['carehome-start-month']
                             },
                             {
                                 classes: 'govuk-input--width-4',
                                 name: 'year]',
-                                value: break['hosp-start-year']
+                                value: break['carehome-start-year']
                             }
                         ]
                     }) }}
@@ -65,11 +64,11 @@
                 {% set yesHTML %}
 
                     {{ govukDateInput ({
-                        id: 'hosp-ended',
+                        id: 'carehome-ended',
                         namePrefix: breakLoc + '[hosp-ended',
                         fieldset: {
                             legend: {
-                                text: 'When did you start providing care again?',
+                                text: 'When did this care home stay end?',
                                 isPageHeading: false,
                                 classes: 'govuk-fieldset__legend--s'
                             }
@@ -81,17 +80,17 @@
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'day]',
-                                value: break['hosp-ended-day']
+                                value: break['carehome-ended-day']
                             },
                             {
                                 classes: 'govuk-input--width-2',
                                 name: 'month]',
-                                value: break['hosp-ended-month']
+                                value: break['carehome-ended-month']
                             },
                             {
                                 classes: 'govuk-input--width-4',
                                 name: 'year]',
-                                value: break['hosp-ended-year']
+                                value: break['carehome-ended-year']
                             }
                         ]
                     }) }}
@@ -106,11 +105,11 @@
                 {# has hosp ended radios #}
 
                    {{ govukRadios ({
-                    idPrefix: 'has-hosp-ended',
+                    idPrefix: 'has-carehome-ended',
                     name: breakLoc + '[has-hosp-ended]',
                     fieldset: {
                         legend: {
-                            text: 'Have you started providing care again?',
+                            text: 'Has this care home stay ended?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--s'
                         }
@@ -123,7 +122,7 @@
                             conditional: {
                                 html: yesHTML
                             },
-                            checked: true if break['has-hosp-ended'] == 'yes'
+                            checked: true if break['has-carehome-ended'] == 'yes'
                         },
                         {
                             text: 'No',
@@ -131,7 +130,7 @@
                             conditional: {
                                 html: johnSmithHTML
                             },
-                            checked: true if break['has-hosp-ended'] == 'no'
+                            checked: true if break['has-carehome-ended'] == 'no'
                         }
                     ]
                 }) }}

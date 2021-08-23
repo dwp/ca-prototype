@@ -3,7 +3,8 @@
 {% set dpName = 'Emily Marsden' %}
 {% set claimDate = '1 February 2021' %}
 {% block pageTitle %}
-    Since 24 May 2021, have there been any times you have not provided care for John Smith for at least 35 hours a week?
+    Where was John Smith?
+
 {% endblock %}
 {% block beforeContent %} 
     {{ super() }}
@@ -16,29 +17,26 @@
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <form method="post">
-                <h1 class="govuk-heading-l">Since 24 May 2021, have there been any times you have not provided care for John Smith for at least 35 hours a week?
+                <h1 class="govuk-heading-l">Where were you at this time?
                 </h1>
-                {# <p>
-                For Carer's Allowance, a week runs from Sunday morning to Saturday night.
-
-                </p>  #}
-                <p>You do not need to tell us about times in hospital, respite care or a care home that you have already told us about.
-</p>
             
-           
+        
                 <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
                 {{ govukRadios({
                     idPrefix: "breaks-in-care",
                     name: "breaks-in-care",
-                  
                     items: [
                         {
-                            value: "Yes~/apply/ACA-1038/ACA-1088-new/other-times",
-                            text: "Yes"
+                            value: "Yes~/apply/ACA-1038/ACA-1088-new/hosp-you",
+                            text: "Hospital"
                         },
                         {
-                            value: "No~/apply/ACA-1038/ACA-1088-new/education",
-                            text: "No"
+                            value: "No~/apply/ACA-1038/ACA-1088-new/respite-you",
+                            text: "Respite care"
+                        },
+                         {
+                            value: "No~/apply/ACA-1038/ACA-1088-new/care-you",
+                            text: "Care home"
                         }
                     ]
                 }) }}

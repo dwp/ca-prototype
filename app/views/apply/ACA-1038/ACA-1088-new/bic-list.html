@@ -14,8 +14,9 @@
     <div class="govuk-grid-column-two-thirds">
         <form method="post">
             {# {{ data | dump }} #}
-            <h1 class="govuk-heading-l">Summary of temporary breaks in care</h1>
-            <h1 class="govuk-hint">Check the information you have entered about temporary breaks in care. If you need to, you can add another break.</h1>
+            <h1 class="govuk-heading-l">Summary of times you have not provided care for at least 35 hours a week</h1>
+            <h1 class="govuk-hint">Check the information you have entered. If you need to, you can add another time.
+</h1>
              
 
                 <table class="govuk-table">
@@ -33,16 +34,16 @@
                           <tr class="govuk-table__row">
                             
                                 <td class="govuk-table__cell">
-                                7 June 2021
+                                11 July 2021
                                 </td>
                               <td class="govuk-table__cell">
-                               14 June 2021
+                               17 July 2021
                               </td>
 
                             
                             <td class="govuk-table__cell">
-                              <a href="{{ break['breakType'] }}?selectedBreak={{ id }}">Change</a>
-                              <a href="delete?selectedBreak={{ id }}" class="govuk-!-margin-left-2">Remove</a>
+                              <a href="">Change</a>
+                              <a href="" class="govuk-!-margin-left-2">Remove</a>
                             </td>
                           </tr>
                        
@@ -54,7 +55,7 @@
                     </tbody>
                   </table>
                   <br>
-                  <a href="who-hosp" class="govuk-button govuk-button--secondary">Add another break</a>
+                  <a href="who-hosp" class="govuk-button govuk-button--secondary">Add another time</a>
                   <br>
                   <a href="education" class="govuk-button">Continue</a>
         </form>
