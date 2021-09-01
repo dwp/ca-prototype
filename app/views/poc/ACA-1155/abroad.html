@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you been in full-time or part-time education since you started caring?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="future-claim">
+
+
+
+<h1 class="govuk-heading-l">
+  Payments from abroad
+</h1>
+<h1 class="govuk-heading-s">
+  Have you or any of your family....
+</h1>
+                {{ govukRadios ({
+                    idPrefix: 'siphoning--education',
+                    name: 'siphoning--education',
+                
+                 
+                     hint: {
+                            text: "This means your partner...."
+                        },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~legacy',
+                            checked: true if data['siphoning--education'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['siphoning--education'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -48,6 +48,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
 
+  {{ prototypeVersionCard({
+        ticket: 'ACA-1155',
+        description: 'Siphoning questions with ID&V journey',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Currently in UR'
+        ]
+      }) }}
+      
       {{ prototypeVersionCard({
         ticket: 'E2E',
         description: 'End-to-end journey for POC.',
