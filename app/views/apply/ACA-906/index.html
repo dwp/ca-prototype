@@ -1,0 +1,40 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-906
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-906 
+      </h1>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2> 
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="qb.html">Qualifying benefit question in CADS</a> – Child Disability Payment added to QB list
+        </li>
+        <li>
+          <a href="../ACA-728/govuk-eligibility">GOV.UK Carer‘s Allowance eligibility page mock-up – Child Disability Payment added to QB list</a> also added to <a href="../ACA-728/index.html">ACA-728</a>
+        </li>
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

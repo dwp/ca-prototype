@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+{% block pageTitle %}
+    Time John Smith was in hospital
+
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="list">
+                <h1 class="govuk-heading-l">Time John Smith was in hospital
+                </h1>
+            
+        
+         {{ govukDateInput ({
+                        id: 'hosp-start',
+                        namePrefix: breakLoc + '[hosp-start',
+                        fieldset: {
+                            legend: {
+                                text: 'When did John Smith go into hospital?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 24 3 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: break['hosp-start-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: break['hosp-start-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: break['hosp-start-year']
+                            }
+                        ]
+                    }) }}
+
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+             
+
+ {# you hospital ended conditional radio #}
+       
+                                                                 
+                {# you radio #}
+
+                {% set yesHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'hosp-ended',
+                        namePrefix: breakLoc + '[hosp-ended',
+                        fieldset: {
+                            legend: {
+                                text: 'When did this hospital stay end?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 24 3 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: break['hosp-ended-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: break['hosp-ended-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: break['hosp-ended-year']
+                            }
+                        ]
+                    }) }}
+
+
+                {% endset %}
+                 
+
+              
+
+
+                {# has hosp ended radios #}
+
+                   {{ govukRadios ({
+                    idPrefix: 'has-hosp-ended',
+                    name: breakLoc + '[has-hosp-ended]',
+                    fieldset: {
+                        legend: {
+                            text: 'Has this hospital stay ended?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: "Yes~/apply/ACA-1038/ACA-1088-new/list",
+
+                            conditional: {
+                                html: yesHTML
+                            },
+                            checked: true if break['has-hosp-ended'] == 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: "No~/apply/ACA-1038/ACA-1088-new/list",
+                            conditional: {
+                                html: johnSmithHTML
+                            },
+                            checked: true if break['has-hosp-ended'] == 'no'
+                        }
+                    ]
+                }) }}
+
+
+
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

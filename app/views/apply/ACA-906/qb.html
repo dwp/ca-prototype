@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What benefit does the person you provide care for get?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="state-pension">
+
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: 'What benefit does the person you provide care for get?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Do not include any benefits they have applied for if they have not got a decision yet.'
+                    },
+                    items: [
+                        {
+                            text: 'Personal Independence Payment – daily living component',
+                            value: 'Personal Independence Payment – daily living component',
+                            checked: true if data['elig--qb'] == 'Personal Independence Payment – daily living component'
+                        },
+                        {
+                            text: 'Disability Living Allowance – middle or highest care rate',
+                            value: 'Disability Living Allowance – middle or highest care rate',
+                            checked: true if data['elig--qb'] == 'Disability Living Allowance – middle or highest care rate'
+                        },
+                        {
+                            text: 'Child Disability Payment – middle or highest care rate',
+                            value: 'Child Disability Payment – middle or highest care rate',
+                            checked: true if data['elig--qb'] == 'Child Disability Payment – middle or highest care rate'
+                        },
+                        {
+                            text: 'Attendance Allowance',
+                            value: 'Attendance Allowance~legacy',
+                            checked: true if data['elig--qb'] == 'Attendance Allowance'
+                        },
+                        {
+                            text: 'Constant Attendance Allowance',
+                            value: 'Constant Attendance Allowance~legacy',
+                            checked: true if data['elig--qb'] == 'Constant Attendance Allowance'
+                        },
+                        {
+                            text: 'Armed Forces Independence Payment',
+                            value: 'Armed Forces Independence Payment~legacy',
+                            checked: true if data['elig--qb'] == 'Armed Forces Independence Payment'
+                        },
+                        {
+                            text: 'A disability benefit paid by a country in the EU',
+                            value: 'a disability benefit paid by a country in the EU~legacy',
+                            checked: true if data['elig--qb'] == 'a disability benefit paid by a country in the EU'
+                        },
+                        {
+                            text: 'None of these benefits',
+                            value: 'None of these benefits~qb-non-elig',
+                            checked: true if data['elig--qb'] == 'None of these benefits'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

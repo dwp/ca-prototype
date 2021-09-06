@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  Breaks in care summary
+{% endblock %}
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+            {# {{ data | dump }} #}
+            <h1 class="govuk-heading-l">Summary of times you have not provided care for at least 35 hours a week</h1>
+            <h1 class="govuk-hint">Check the information you have entered. If you need to, you can add another time.
+</h1>
+             
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                      <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Start date</th>
+                        <th scope="col" class="govuk-table__header">End date</th>
+                        <th scope="col" class="govuk-table__header"></th>
+
+
+                      </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                     
+                          <tr class="govuk-table__row">
+                            
+                                <td class="govuk-table__cell">
+                                11 July 2021
+                                </td>
+                              <td class="govuk-table__cell">
+                               17 July 2021
+                              </td>
+
+                            
+                            <td class="govuk-table__cell">
+                              <a href="">Change</a>
+                              <a href="" class="govuk-!-margin-left-2">Remove</a>
+                            </td>
+                          </tr>
+                       
+                  
+                      {# <!-- If there are no breaks, redirect back to the 'any' page -->
+                      {% if breakCount == 0 %}
+                        {{ 'first' | redirect | safe }}
+                      {% endif %} #}
+                    </tbody>
+                  </table>
+                  <br>
+                  <a href="who-hosp" class="govuk-button govuk-button--secondary">Add another time</a>
+                  <br>
+                  <a href="education" class="govuk-button">Continue</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Breaks in care summary
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post">
+
+            <h1 class="govuk-heading-l">Breaks in care summary</h1>
+            <h1 class="govuk-hint">Check the breaks in care information you have entered. If you need to, you can add
+                another break in care.</h1>
+                
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                      <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Stop date</th>
+                        <th scope="col" class="govuk-table__header">Start date</th>
+                        <th scope="col" class="govuk-table__header">Medical care</th>
+                        <th scope="col" class="govuk-table__header"></th>
+                      </tr>
+
+                    </thead>
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">pull throughhy</td>
+                        <td class="govuk-table__cell">pull through</td>
+                        <td class="govuk-table__cell">pull through</td>
+                        <td class="govuk-table__cell">
+                           <a href="">Change</a>
+                           <a href="delete" class="govuk-!-margin-left-2">Remove</a>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+<br>
+                 
+                  <a href="details" class="govuk-button govuk-button--secondary">Add another break in care</a>
+                  <br>
+                  <a href="education" class="govuk-button">Continue</a>
+
+                  
+                 
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

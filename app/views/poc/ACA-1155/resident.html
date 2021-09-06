@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Which country do you live in?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="employment">
+
+                {{ govukRadios({
+                    idPrefix: 'siphoning--resident',
+                    name: 'siphoning--resident',
+                    fieldset: {
+                        legend: {
+                            text: 'Which country do you live in?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'England',
+                            value: 'England',
+                            checked: true if data['siphoning--resident'] == 'England'
+                        },
+                        {
+                            text: 'Scotland',
+                            value: 'Scotland',
+                            checked: true if data['siphoning--resident'] == 'Scotland'
+                        },
+                        {
+                            text: 'Wales',
+                            value: 'Wales',
+                            checked: true if data['siphoning--resident'] == 'Wales'
+                        },
+                        {
+                            text: 'Northern Ireland',
+                            value: 'Northern Ireland',
+                            checked: true if data['siphoning--resident'] == 'Northern Ireland'
+                        },
+                        {
+                            text: 'Somewhere else',
+                            value: 'Somewhere else~legacy',
+                            checked: true if data['siphoning--resident'] == 'Somewhere else'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
