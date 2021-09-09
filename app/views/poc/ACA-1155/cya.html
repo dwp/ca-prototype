@@ -1,0 +1,199 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="disallow">
+
+                <h1 class="govuk-heading-l">Check the information you have given</h1>
+
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Benefit the person you care for gets 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Personal Independence Payment
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Getting State Pension 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Aged 16 or over 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Provide care for 35 hours a week 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Country you live in 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            England
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Receiving any other benefits 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Employed or self-employed in the 6 months before providing care
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          Receiving any other income 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                In education since providing care 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Any income from abroad 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Carer’s Allowance start date 
+            </dt>
+            <dd class="govuk-summary-list__value">
+            16 September 2021
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+                
+
+                <p>
+                    We will use the information you have provided to check whether you can apply for Carer’s Allowance.
+                </p>
+
+                <p>
+                    You will not be able to change these answers after you continue.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Submit and continue'
+                }) }}
+
+                <p>
+                    <a href="../claim-date/claim-date-auto" style="color: white !important;">Allow path</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
