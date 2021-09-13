@@ -18,17 +18,20 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours">
+            <form action="state-pension">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Are you 16 or over?',
+                            text: 'Does the person you provide care for get Personal Independence Payment (PIP)?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                     hint: {
+                        text: 'You may still be eligible if they receive a different benefit.'
                     },
                     
                     items: [

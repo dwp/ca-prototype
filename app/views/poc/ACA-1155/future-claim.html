@@ -18,14 +18,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../idv/login">
+            <form action="https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%E2%80%99s%20Allowance">
 
                 {{ govukRadios({
                     idPrefix: 'siphoning--future-claim',
                     name: 'siphoning--future-claim',
                     fieldset: {
                         legend: {
-                            text: 'When do you want Carer’s Allowance to start?',
+                            text: 'When do you want to receive your Carers Allowance from?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -43,7 +43,7 @@
                         }
                     ],
                     hint: {
-                        text: 'Your claim start date can be up to 3 months in the future, for example, when you have not started caring yet.'
+                        text: 'This could be up to 3 months in the past or the future.'
                     }
                 }) }}
 
