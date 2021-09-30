@@ -68,7 +68,7 @@
                             })}}
                             {{ taskListItem({
                                 name: 'Claim date',
-                                url: 'siphoning/future-claim',
+                                url: 'siphoning/claim-date',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -159,21 +159,21 @@
                         
                         </ul>
                     </li>
-                    {# <li>
+                     <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">2. </span> ID&V
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
                                 name: 'Login',
-                                url: 'idv/login',
+                                url: 'https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Green team',
                                     color: 'green'
                                 }
                             })}}
-                            {{ taskListItem({
+                            {# {{ taskListItem({
                                 name: 'Check address',
                                 url: 'idv/check',
                                 isActive: 'true',
@@ -181,12 +181,33 @@
                                     text: 'Investigation Needed',
                                     color: 'purple'
                                 }
-                            })}}
+                            })}} #}
                         </ul>
                     </li>
+
+                      <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3. </span> Check your answers
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Check your answers',
+                                url: 'cya',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                         
+                        </ul>
+                    </li>
+
+
+                    
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">3. </span> Dependant person
+                            <span class="app-task-list__section-number">4. </span> Person being cared for details
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -227,6 +248,8 @@
                             })}}
                         </ul>
                     </li>
+
+                    {#  
                     <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">4. </span> Eligibility for simple disallow

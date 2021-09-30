@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?
+    Does the person you care for live at the same address as you?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,27 +21,26 @@ Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?
             <form method="post">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'dp--same-address',
+                    name: 'dp--same-address',
                     fieldset: {
                         legend: {
-                            text: 'Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?',
+                            text: 'Does ' + data['dp--name'] | default('the person you care for') + ' live at the same address as you?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                   
-                    
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance'
+                            value: 'Yes~../eligibility/35-hours' if data['from-check'] != 'true' else 'Yes~../checkpoint/cya',
+                            checked: true if data['dp--same-address'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No~/poc/E2E/siphoning/reside'
+                            value: 'No~postcode' if data['from-check'] != 'true' else 'No~postcode?fromCheck=true',
+                            checked: true if data['dp--same-address'] == 'No'
                         }
-                     
                     ]
                 }) }}
 

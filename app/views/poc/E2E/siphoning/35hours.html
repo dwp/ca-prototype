@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are you age 16 or over?
+Do you provide care for 35 hours or more a week?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,7 +18,7 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="future-claim">
+            <form action="claim-date">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
