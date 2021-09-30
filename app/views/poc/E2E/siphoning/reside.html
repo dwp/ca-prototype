@@ -18,30 +18,27 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="state-pension">
+            <form method="post">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Does the person you provide care for get Personal Independence Payment (PIP)?',
+                            text: 'Do you have the right to live or work in the UK without immigration restrictions?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                     hint: {
-                        text: 'You may still be eligible if they receive a different benefit.'
-                    },
-                    
+                   
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No~/poc/E2E/legacy'
                         }
                      
                     ]

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been in full-time or part-time education since you started caring?
+    Do you get State Pension?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="abroad">
+            <form action="employment">
 
                 {{ govukRadios ({
-                    idPrefix: 'siphoning--education',
-                    name: 'siphoning--education',
+                    idPrefix: 'siphoning--state-pension',
+                    name: 'siphoning--state-pension',
                     fieldset: {
                         legend: {
-                            html: 'Have you been in <span style="white-space: nowrap;">full-time</span> or <span style="white-space: nowrap;">part-time</span> education since you started caring?',
+                            text: 'Do you get State Pension?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy',
-                            checked: true if data['siphoning--education'] == 'Yes'
+                            value: 'Yes~legacy.html',
+                            checked: true if data['siphoning--state-pension'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['siphoning--education'] == 'No'
+                            checked: true if data['siphoning--state-pension'] == 'No'
                         }
                     ]
                 }) }}

@@ -18,26 +18,24 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="resident">
+            <form action="abroad">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you provide care for 35 hours or more within a week?',
+                            text: 'Are you receiving any other benefits?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                     hint: {
-                        text: 'For Carers Allowance, the week runs from Sunday to Saturday.'
-                    },
+                   
                     
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~/poc/E2E/legacy'
                         },
                         {
                             text: 'No',

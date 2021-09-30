@@ -18,27 +18,28 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="other-benefits">
+            <form method="post">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you have the right to live or work in the UK without immigration restrictions?',
+                            text: 'Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                    
+                    
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No~/poc/E2E/siphoning/reside'
                         }
                      
                     ]

@@ -28,7 +28,7 @@
                     name: 'siphoning--employment',
                     fieldset: {
                         legend: {
-                            html: 'Have you been employed since 6 month before your started caring?',
+                            html: 'Have you been employed in the last 6 months?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html',
-                            checked: true if data['siphoning--employment'] == 'Yes'
+                            value: 'Yes~legacy.html'
+                            
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['siphoning--employment'] == 'No'
+                            value: 'No'
+                        
                         }
                     ]
                 }) }}

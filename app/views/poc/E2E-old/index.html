@@ -1,28 +1,28 @@
-
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block pageTitle %}
-  End to end simple allow journey
+    POC end-to-end journey
 {% endblock %}
 
 {% block beforeContent %}
-  {{ super() }}
-  {{ govukBackLink({
-    text: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
 
-      <h1 class="govuk-heading-xl">
-        End to end simple allow journey
-      </h1>
+        <div class="govuk-grid-column-two-thirds">
 
-   <ol class="app-task-list">
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">POC end-to-end journey</h1>
+
+                <ol class="app-task-list">
                     <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">1. </span> Siphoning
@@ -30,7 +30,7 @@
                         <ul class="app-task-list__items">
                             {{ taskListItem({
                                 name: 'Qualifying benefit',
-                                url: 'siphoning/pip',
+                                url: 'siphoning/qb',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -48,33 +48,6 @@
                                     color: 'blue'
                                 }
                             })}}
-                                 {{ taskListItem({
-                                name: '16 or over',
-                                url: 'siphoning/age',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
-                                }
-                            })}}
-                                 {{ taskListItem({
-                                name: '35 hours',
-                                url: 'siphoning/35hours',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Claim date',
-                                url: 'siphoning/future-claim',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
                             {{ taskListItem({
                                 name: 'Employment',
                                 url: 'siphoning/employment',
@@ -87,33 +60,6 @@
                             {{ taskListItem({
                                 name: 'Self employment',
                                 url: 'siphoning/self-employment',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                              {{ taskListItem({
-                                name: 'Other income',
-                                url: 'siphoning/other-income',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                             {{ taskListItem({
-                                name: 'Other benefits',
-                                url: 'siphoning/other-benefits',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Payments from abroad',
-                                url: 'siphoning/abroad',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -139,8 +85,8 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'Reside 3 years',
-                                url: 'siphoning/esw',
+                                name: 'Right to reside',
+                                url: 'siphoning/right-to-reside',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -148,18 +94,26 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'Right to live and work',
-                                url: 'siphoning/reside',
+                                name: 'Reside 3 years',
+                                url: 'siphoning/reside-years',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
                                     color: 'red'
                                 }
                             })}}
-                        
+                            {{ taskListItem({
+                                name: 'Future claim date',
+                                url: 'siphoning/future-claim',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
                         </ul>
                     </li>
-                    {# <li>
+                    <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">2. </span> ID&V
                         </h2>
@@ -529,10 +483,41 @@
                                 }
                             })}}
                         </ul>
-                    </li> #}
+                    </li>
                 </ol>
-    
-    </div>
+
+                <h2 class="govuk-heading-m">Possible questions for before sign in to improve usability</h2>
+
+                <ul class="govuk-list">
+                    <li><a href="siphoning/possible/qb">DP qualifying benefit</a></li>
+                    <li><a href="siphoning/possible/age">Under 16</a></li>
+                </ul>
+
+                <h2 class="govuk-heading-m">Other</h2>
+
+                <ul class="govuk-list">
+                    <li><a href="task-list/task-list">Task list example</a></li>
+                    <li><a href="breaks/alt/any">Alternative ‘breaks in care’ journey</a></li>
+                </ul>
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            
+            <h2 class="govuk-heading-m">Prototype options</h2>
+
+            <ul class="govuk-list">
+                <li>
+                    <a href="options/claim-date">
+                        Date of claim options
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
 </div>
 
 {% endblock %}
