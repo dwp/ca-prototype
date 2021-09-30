@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you age 16 or over?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="state-pension">
+
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: 'Does the person you provide care for get Personal Independence Payment (PIP) - daily living component?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                     hint: {
+                        text: 'You may still be eligible if they receive a different benefit.'
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~/poc/E2E/siphoning/state-pension'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~/poc/E2E/legacy'
+                        }
+                     
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
