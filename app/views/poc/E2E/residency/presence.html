@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+​
+{% block pageTitle %}
+    Do you currently live in the United Kingdom?
+{% endblock %}
+​
+{% block beforeContent %}
+​
+    {{ super() }}
+​
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+​
+{% endblock %}
+​
+{% block content %}
+​
+<div class="govuk-grid-row">
+​
+        <div class="govuk-grid-column-two-thirds">
+​
+            <form action="/citizen/habitual_residency_test/simple_hrt_v3b/continue_application.html" class="form">
+​
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="presence-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Do you live in the United Kingdom?
+      </h1>
+    </legend>
+        <div id="nationality-hint" class="govuk-hint">
+      Select 'Yes' if you consider England, Scotland, Wales or Northern Ireland to be your home.
+    </div>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="presence" name="presence" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="presence">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="presence-2" name="presence" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="presence-2">
+          No
+        </label>
+      </div>
+    </div>
+​
+  </fieldset>
+</div>
+                
+​
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+​
+            </form>
+​
+        </div>
+​
+</div>
+​
+{% endblock %}
