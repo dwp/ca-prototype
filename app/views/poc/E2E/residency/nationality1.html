@@ -18,38 +18,47 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="employment">
+            <form method="post" action="nationality2">
 
-             <h1 class="govuk-heading-xl">
-                    What is your nationality?
-             </h1>
-                <div class="govuk-radios govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="nationality" name="nationality" type="radio" value="british">
-                            <label class="govuk-label govuk-radios__label" for="nationality">
-                            British
-                            </label>
-                            <div id="british-hint" class="govuk-hint govuk-radios__hint">select if you're from England, Scotland, Wales or Northern Ireland</div>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="nationality-2" name="nationality" type="radio" value="irish">
-                            <label class="govuk-label govuk-radios__label" for="nationality-2">
-                            Irish
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="nationality-3" name="nationality" type="radio" value="no">
-                            <label class="govuk-label govuk-radios__label" for="nationality-3">
-                            Another nationality
-                        </div>
-                </div>
+           
+              
+                    {{ govukRadios({
+                    idPrefix: "nationality",
+                    name: "nationality",
+                    fieldset: {
+                        legend: {
+                        text: "What is your nationality?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    
+                    items: [
+                        {
+                        value: "british",
+                        text: "British",
+                        hint: {
+                            text: "select if you're from England, Scotland, Wales or Northern Ireland"
+                        }
+                        },
+                        {
+                        value: "irish",
+                        text: "Irish"
+                        },
+                         {
+                        value: "another~another-nationality",
+                        text: "Another nationality"
+                        }
+                    ]
+                    }) }}
+
         <br>
         <div class="govuk-body">
             If you hold a permanent British passport, you're a Briish national. 
             If you're not sure whether you qualify, <a href="https://www.gov.uk/types-of-british-nationality">find out if you're a British national</a>
         </div>
 
-          <details class="govuk-details govuk-!-margin-top-8" data-module="govuk-details">
+          <details class="govuk-details govuk-!-margin-top-7" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">
                     I have dual citizenship
@@ -59,7 +68,7 @@
                         If you have dual citizenship, select the nationality on the identity documents you're using to make this application.
                     </div>
         </details>
-        
+
                 {{ govukButton({
                     html: 'Continue'
                 }) }}
