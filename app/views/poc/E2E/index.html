@@ -250,7 +250,7 @@
                     </li>
 
                 
-                    <li>
+                    {# <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">5. </span> Start dates
                         </h2>
@@ -279,12 +279,12 @@
                             })}}
                          
                         </ul>
-                    </li>
+                    </li> #}
                    
                     
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">6. </span> Residency
+                            <span class="app-task-list__section-number">5. </span> Residency
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -303,12 +303,23 @@
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">7. </span> Payment details
+                            <span class="app-task-list__section-number">6. </span> Payment details
                         </h2>
                         <ul class="app-task-list__items">
                               {{ taskListItem({
                                 name: 'Frequency',
-                                url: '',
+                                url: 'bank/pay-frequency',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
+                            })}}
+                             {{ taskListItem({
+                                name: 'Account type',
+                                url: 'bank/account-type',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -318,8 +329,8 @@
                                 ]
                             })}}
                             {{ taskListItem({
-                                name: 'Bank details',
-                                url: '',
+                                name: 'Account details',
+                                url: 'bank/account-details',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -332,12 +343,12 @@
                     </li>
                          <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">8. </span> End of claim
+                            <span class="app-task-list__section-number">7. </span> End of claim
                         </h2>
                         <ul class="app-task-list__items">
                               {{ taskListItem({
                                 name: 'Check your answers',
-                                url: '',
+                                url: 'cya2',
                                 isActive: 'true',
                                 tags: [
                                     {

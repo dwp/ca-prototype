@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Does the person you care for live at the same address as you?
+    How often would you like to be paid Carer’s Allowance?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,31 +18,30 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="account-type">
 
                 {{ govukRadios({
-                    idPrefix: 'dp--same-address',
-                    name: 'dp--same-address',
+                    idPrefix: 'bank--frequency',
+                    name: 'bank--frequency',
                     fieldset: {
                         legend: {
-                            text: 'Does ' + data['dp--name'] | default('the person you care for') + ' live at the same address as you?',
+                            text: 'How often would you like to be paid Carer’s Allowance?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes~../residency/eligibility' if data['from-check'] != 'true' else 'Yes~../checkpoint/cya',
-                            checked: true if data['dp--same-address'] == 'Yes'
+                            text: 'Every week',
+                            value: 'Every week'
                         },
                         {
-                            text: 'No',
-                            value: 'No~postcode' if data['from-check'] != 'true' else 'No~postcode?fromCheck=true',
-                            checked: true if data['dp--same-address'] == 'No'
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks'
                         }
                     ]
                 }) }}
+
 
                 {{ govukButton({
                     html: 'Continue'
