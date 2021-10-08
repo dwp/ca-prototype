@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../idv/login">
+            <form method="post" action="employment">
 
                 {{ govukRadios({
                     idPrefix: 'siphoning--future-claim',
@@ -32,18 +32,18 @@
                     },
                     items: [
                         {
-                            text: 'Today or in the past',
-                            value: 'Today or in the past',
-                            checked: true if data['siphoning--future-claim'] == 'Yes'
+                            text: 'From today’s date',
+                            value: 'today'
                         },
                         {
-                            text: 'A future date',
-                            value: 'No~siphoning/legacy.html',
-                            checked: true if data['siphoning--future-claim'] == 'A date in the future'
+                            text: 'From a date in the past or future',
+                            value: 'No~siphoning/legacy.html'
+                        
                         }
+                        
                     ],
                     hint: {
-                        text: 'Your claim start date can be up to 3 months in the future, for example, when you have not started caring yet.'
+                        text: 'You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week. You can also claim from up to 3 months in the future.'
                     }
                 }) }}
 

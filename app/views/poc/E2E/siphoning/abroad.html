@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been in full-time or part-time education since you started caring?
+    Do you or any of your family receive any payments from abroad?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,34 +21,30 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="future-claim">
+            <form action="education">
 
 
 
 <h1 class="govuk-heading-l">
-  Payments from abroad
+  Do you or any of your family receive any payments from abroad?
 </h1>
-<h1 class="govuk-heading-s">
-  Have you or any of your family....
-</h1>
+
                 {{ govukRadios ({
                     idPrefix: 'siphoning--education',
                     name: 'siphoning--education',
                 
                  
                      hint: {
-                            text: "This means your partner...."
+                            text: "This includes any payments, benefits or state pensions from outside the UK."
                         },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy',
-                            checked: true if data['siphoning--education'] == 'Yes'
+                            value: 'Yes~legacy'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['siphoning--education'] == 'No'
+                            value: 'No'
                         }
                     ]
                 }) }}

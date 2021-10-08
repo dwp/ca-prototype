@@ -1,28 +1,28 @@
-{% extends 'layout.html' %}
+
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-    POC end-to-end journey
+  End to end simple allow journey
 {% endblock %}
 
 {% block beforeContent %}
-    {{ super() }}
-    {{ govukBackLink({
-        text: 'Back',
-        href: 'javascript:history.back()'
-    }) }}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        End to end simple allow journey
+      </h1>
 
-            <form method="post">
-
-                <h1 class="govuk-heading-xl">POC end-to-end journey</h1>
-
-                <ol class="app-task-list">
+   <ol class="app-task-list">
                     <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">1. </span> Siphoning
@@ -30,7 +30,7 @@
                         <ul class="app-task-list__items">
                             {{ taskListItem({
                                 name: 'Qualifying benefit',
-                                url: 'siphoning/qb',
+                                url: 'siphoning/pip',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -48,6 +48,33 @@
                                     color: 'blue'
                                 }
                             })}}
+                                 {{ taskListItem({
+                                name: '16 or over',
+                                url: 'siphoning/age',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+                                 {{ taskListItem({
+                                name: '35 hours',
+                                url: 'siphoning/35hours',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Claim date',
+                                url: 'siphoning/claim-date',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
                             {{ taskListItem({
                                 name: 'Employment',
                                 url: 'siphoning/employment',
@@ -60,6 +87,33 @@
                             {{ taskListItem({
                                 name: 'Self employment',
                                 url: 'siphoning/self-employment',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                              {{ taskListItem({
+                                name: 'Other income',
+                                url: 'siphoning/other-income',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                             {{ taskListItem({
+                                name: 'Other benefits',
+                                url: 'siphoning/other-benefits',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Payments from abroad',
+                                url: 'siphoning/abroad',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -85,17 +139,8 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'Right to reside',
-                                url: 'siphoning/right-to-reside',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
                                 name: 'Reside 3 years',
-                                url: 'siphoning/reside-years',
+                                url: 'siphoning/esw',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Experimental',
@@ -103,31 +148,32 @@
                                 }
                             })}}
                             {{ taskListItem({
-                                name: 'Future claim date',
-                                url: 'siphoning/future-claim',
+                                name: 'Right to live and work',
+                                url: 'siphoning/reside',
                                 isActive: 'true',
                                 tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
+                                    text: 'Experimental',
+                                    color: 'red'
                                 }
                             })}}
+                        
                         </ul>
                     </li>
-                    <li>
+                     <li>
                         <h2 class="app-task-list__section">
                             <span class="app-task-list__section-number">2. </span> ID&V
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
                                 name: 'Login',
-                                url: 'idv/login',
+                                url: 'https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Green team',
                                     color: 'green'
                                 }
                             })}}
-                            {{ taskListItem({
+                            {# {{ taskListItem({
                                 name: 'Check address',
                                 url: 'idv/check',
                                 isActive: 'true',
@@ -135,12 +181,33 @@
                                     text: 'Investigation Needed',
                                     color: 'purple'
                                 }
-                            })}}
+                            })}} #}
                         </ul>
                     </li>
+
+                      <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3. </span> Check your answers
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Check your answers',
+                                url: 'cya',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Experimental',
+                                    color: 'red'
+                                }
+                            })}}
+                         
+                        </ul>
+                    </li>
+
+
+                    
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">3. </span> Dependant person
+                            <span class="app-task-list__section-number">4. </span> Person being cared for details
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
@@ -181,14 +248,16 @@
                             })}}
                         </ul>
                     </li>
-                    <li>
+
+                
+                    {# <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">4. </span> Eligibility for simple disallow
+                            <span class="app-task-list__section-number">5. </span> Start dates
                         </h2>
                         <ul class="app-task-list__items">
                             {{ taskListItem({
-                                name: 'Caring 35 hours start date',
-                                url: 'eligibility/35-hours',
+                                name: 'Claim start date',
+                                url: '',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -197,18 +266,9 @@
                                     }
                                 ]
                             })}}
-                            {{ taskListItem({
-                                name: 'Caring start date',
-                                url: 'eligibility/care-start-date',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Still caring?',
-                                url: 'eligibility/care-ongoing',
+                              {{ taskListItem({
+                                name: 'Care start date',
+                                url: '',
                                 isActive: 'true',
                                 tags: [
                                     {
@@ -217,307 +277,116 @@
                                     }
                                 ]
                             })}}
+                         
+                        </ul>
+                    </li> #}
+                   
+                    
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">5. </span> Residency
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Residency',
+                                url: 'residency/eligibility',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'Green zone',
+                                        color: 'green'
+                                    }
+                                ]
+                            })}}
+                         
                         </ul>
                     </li>
                     <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">5. </span> Interstitial eligibility checkpoint
+                            <span class="app-task-list__section-number">6. </span> Payment details
                         </h2>
                         <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Check your answers',
-                                url: 'checkpoint/cya',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Experimental',
-                                        color: 'red'
-                                    }
-                                ]
-                            })}}
-                            {{ taskListItem({
-                                name: 'Disallow endpoint',
-                                url: 'checkpoint/disallow',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">6. </span> Claim date
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Automatic claim date',
-                                url: 'claim-date/claim-date-auto',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                            {{ taskListItem({
-                                name: 'Manual (legacy) claim date',
-                                url: 'claim-date/claim-date-manual',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">7. </span> Non-employment income
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Money for fostering',
-                                url: 'income/fostering',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                            {{ taskListItem({
-                                name: 'Rental income',
-                                url: 'income/rental',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                            {{ taskListItem({
-                                name: 'Direct payments',
-                                url: 'income/direct',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">8. </span> Breaks in care
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Any breaks?',
-                                url: 'breaks/any',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Break type',
-                                url: 'breaks/type',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Break details',
-                                url: 'breaks/details',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Medical break',
-                                url: 'breaks/dates2-html2/any',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                            {{ taskListItem({
-                                name: 'Medical break with interupt',
-                                url: 'breaks/dates3/any',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
-                            })}}
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">9. </span> Contact details
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Telephone number',
-                                url: 'contact/phone',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                            {{ taskListItem({
-                                name: 'Email address',
-                                url: 'contact/email',
-                                isActive: 'true',
-                                tags: [
-                                    {
-                                        text: 'Needs work',
-                                        color: 'orange'
-                                    },
-                                    {
-                                        text: 'Content',
-                                        color: 'yellow'
-                                    }
-                                ]
-                            })}}
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">10. </span> Bank details
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
-                                name: 'Pay frequency',
+                              {{ taskListItem({
+                                name: 'Frequency',
                                 url: 'bank/pay-frequency',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
                             })}}
-                            {{ taskListItem({
+                             {{ taskListItem({
                                 name: 'Account type',
                                 url: 'bank/account-type',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Experimental',
-                                    color: 'red'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
+                            })}}
+                            {{ taskListItem({
+                                name: 'Account details',
+                                url: 'bank/account-details',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
                             })}}
                         </ul>
                     </li>
-                    <li>
+                         <li>
                         <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">11. </span> Check and send
+                            <span class="app-task-list__section-number">7. </span> End of claim
                         </h2>
                         <ul class="app-task-list__items">
-                            {{ taskListItem({
+                              {{ taskListItem({
                                 name: 'Check your answers',
-                                url: 'check-send/cya',
+                                url: 'cya2',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
                             })}}
-                            {{ taskListItem({
+                      
+                              {{ taskListItem({
                                 name: 'Declaration',
-                                url: 'check-send/declaration',
+                                url: 'declaration',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
                             })}}
-                            {{ taskListItem({
-                                name: 'Confirmation',
-                                url: 'check-send/confirmation',
+                              {{ taskListItem({
+                                name: 'Acknowledgement of claim',
+                                url: 'confirmation',
                                 isActive: 'true',
-                                tag: {
-                                    text: 'Needs work',
-                                    color: 'orange'
-                                }
+                                tags: [
+                                    {
+                                        text: 'Experimental',
+                                        color: 'red'
+                                    }
+                                ]
                             })}}
+                        
                         </ul>
                     </li>
+                  
                 </ol>
-
-                <h2 class="govuk-heading-m">Possible questions for before sign in to improve usability</h2>
-
-                <ul class="govuk-list">
-                    <li><a href="siphoning/possible/qb">DP qualifying benefit</a></li>
-                    <li><a href="siphoning/possible/age">Under 16</a></li>
-                </ul>
-
-                <h2 class="govuk-heading-m">Other</h2>
-
-                <ul class="govuk-list">
-                    <li><a href="task-list/task-list">Task list example</a></li>
-                    <li><a href="breaks/alt/any">Alternative ‘breaks in care’ journey</a></li>
-                </ul>
-
-            </form>
-
-        </div>
-
-        <div class="govuk-grid-column-one-third">
-            
-            <h2 class="govuk-heading-m">Prototype options</h2>
-
-            <ul class="govuk-list">
-                <li>
-                    <a href="options/claim-date">
-                        Date of claim options
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
+    
+    </div>
 </div>
 
 {% endblock %}

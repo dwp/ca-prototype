@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been employed since 6 month before your started caring?
+    Do you get State Pension?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="self-employment">
+            <form action="employment">
 
                 {{ govukRadios ({
-                    idPrefix: 'siphoning--employment',
-                    name: 'siphoning--employment',
+                    idPrefix: 'siphoning--state-pension',
+                    name: 'siphoning--state-pension',
                     fieldset: {
                         legend: {
-                            html: 'Have you been employed in the last 6 months?',
+                            text: 'Do you get State Pension?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html'
-                            
+                            value: 'Yes~legacy.html',
+                            checked: true if data['siphoning--state-pension'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No'
-                        
+                            value: 'No',
+                            checked: true if data['siphoning--state-pension'] == 'No'
                         }
                     ]
                 }) }}

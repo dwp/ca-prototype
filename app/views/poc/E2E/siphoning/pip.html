@@ -18,27 +18,30 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="resident">
+            <form action="state-pension">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you care for at least 35 hours or more?',
+                            text: 'Does the person you provide care for get Personal Independence Payment (PIP) - daily living component?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                     hint: {
+                        text: 'You may still be eligible if they receive a different benefit.'
                     },
                     
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~/poc/E2E/siphoning/state-pension'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No~/poc/E2E/legacy'
                         }
                      
                     ]

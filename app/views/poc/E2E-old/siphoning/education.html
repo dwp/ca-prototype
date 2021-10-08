@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been employed since 6 month before your started caring?
+    Have you been in full-time or part-time education since you started caring?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="self-employment">
+            <form action="resident">
 
                 {{ govukRadios ({
-                    idPrefix: 'siphoning--employment',
-                    name: 'siphoning--employment',
+                    idPrefix: 'siphoning--education',
+                    name: 'siphoning--education',
                     fieldset: {
                         legend: {
-                            html: 'Have you been employed in the last 6 months?',
+                            html: 'Have you been in <span style="white-space: nowrap;">full-time</span> or <span style="white-space: nowrap;">part-time</span> education since you started caring?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html'
-                            
+                            value: 'Yes~legacy',
+                            checked: true if data['siphoning--education'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No'
-                        
+                            value: 'No',
+                            checked: true if data['siphoning--education'] == 'No'
                         }
                     ]
                 }) }}

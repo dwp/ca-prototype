@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="right-to-reside">
+            <form action="esw">
 
                 {{ govukRadios({
                     idPrefix: 'siphoning--resident',
@@ -33,28 +33,23 @@
                     items: [
                         {
                             text: 'England',
-                            value: 'England',
-                            checked: true if data['siphoning--resident'] == 'England'
+                            value: 'England'
                         },
                         {
                             text: 'Scotland',
-                            value: 'Scotland',
-                            checked: true if data['siphoning--resident'] == 'Scotland'
+                            value: 'Scotland'
                         },
                         {
                             text: 'Wales',
-                            value: 'Wales',
-                            checked: true if data['siphoning--resident'] == 'Wales'
+                            value: 'Wales'
                         },
                         {
                             text: 'Northern Ireland',
-                            value: 'Northern Ireland',
-                            checked: true if data['siphoning--resident'] == 'Northern Ireland'
+                            value: 'Northern Ireland~NI'
                         },
                         {
                             text: 'Somewhere else',
-                            value: 'Somewhere else~legacy',
-                            checked: true if data['siphoning--resident'] == 'Somewhere else'
+                            value: 'Somewhere else~legacy'
                         }
                     ]
                 }) }}

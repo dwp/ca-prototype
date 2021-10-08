@@ -21,7 +21,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="employment">
+            <form action="age">
 
                 {{ govukRadios ({
                     idPrefix: 'siphoning--state-pension',
@@ -36,13 +36,12 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html',
-                            checked: true if data['siphoning--state-pension'] == 'Yes'
+                            value: 'Yes~legacy.html'
+                            
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['siphoning--state-pension'] == 'No'
+                            value: 'No'
                         }
                     ]
                 }) }}

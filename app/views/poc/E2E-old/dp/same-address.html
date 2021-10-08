@@ -1,18 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been in full-time or part-time education since you started caring?
+    Does the person you care for live at the same address as you?
 {% endblock %}
 
 {% block beforeContent %}
-
     {{ super() }}
-
-    {{ govukBackLink ({
+    {{ govukBackLink({
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -21,14 +18,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="abroad">
+            <form method="post">
 
-                {{ govukRadios ({
-                    idPrefix: 'siphoning--education',
-                    name: 'siphoning--education',
+                {{ govukRadios({
+                    idPrefix: 'dp--same-address',
+                    name: 'dp--same-address',
                     fieldset: {
                         legend: {
-                            html: 'Have you been in <span style="white-space: nowrap;">full-time</span> or <span style="white-space: nowrap;">part-time</span> education since you started caring?',
+                            text: 'Does ' + data['dp--name'] | default('the person you care for') + ' live at the same address as you?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,18 +33,18 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy',
-                            checked: true if data['siphoning--education'] == 'Yes'
+                            value: 'Yes~../eligibility/35-hours' if data['from-check'] != 'true' else 'Yes~../checkpoint/cya',
+                            checked: true if data['dp--same-address'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['siphoning--education'] == 'No'
+                            value: 'No~postcode' if data['from-check'] != 'true' else 'No~postcode?fromCheck=true',
+                            checked: true if data['dp--same-address'] == 'No'
                         }
                     ]
                 }) }}
 
-                {{ govukButton ({
+                {{ govukButton({
                     html: 'Continue'
                 }) }}
 

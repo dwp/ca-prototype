@@ -1,18 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Do you get State Pension?
+Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?
 {% endblock %}
 
 {% block beforeContent %}
-
     {{ super() }}
-
-    {{ govukBackLink ({
+    {{ govukBackLink({
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -21,33 +18,34 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="age">
+            <form method="post">
 
-                {{ govukRadios ({
-                    idPrefix: 'siphoning--state-pension',
-                    name: 'siphoning--state-pension',
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you get State Pension?',
+                            text: 'Have you lived in England, Scotland or Wales for at least 2 of the last 3 years?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                   
+                    
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~legacy.html',
-                            checked: true if data['siphoning--state-pension'] == 'Yes'
+                            value: 'Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['siphoning--state-pension'] == 'No'
+                            value: 'No~/poc/E2E/siphoning/reside'
                         }
+                     
                     ]
                 }) }}
 
-                {{ govukButton ({
+                {{ govukButton({
                     html: 'Continue'
                 }) }}
 

@@ -18,10 +18,10 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="/poc/E2E/cya2">
+            <form action="../check-send/cya">
 
                 <h1 class="govuk-heading-l">
-                    Bank or building society account details
+                    Post Office card account details
                 </h1>
 
                 <p>You can use someone else’s account if they agree to let you use it and use your money how you tell them to.</p>
@@ -31,7 +31,8 @@
                     name: 'pay-details--account-holder-name',
                     value: data['pay-details--account-holder-name'] if data['pay-details--account-holder-name'] else '',
                     label: {
-                        text: 'Account holder name'
+                        text: 'Account holder name',
+                        classes: 'app-bold-label'
                     }
                 }) }}
 
@@ -41,7 +42,8 @@
                     value: data['pay-details--sort-code'] if data['pay-details--sort-code'] else '',
                     classes: 'govuk-input--width-5',
                     label: {
-                        text: 'Sort code'
+                        text: 'Sort code',
+                        classes: 'app-bold-label'
                     },
                     hint: {
                         text: 'Must be 6 digits long'
@@ -58,27 +60,11 @@
                     value: data['pay-details--account-number'] if data['pay-details--account-number'] else '',
                     classes: 'govuk-input--width-10',
                     label: {
-                        text: 'Account number'
+                        text: 'Account number',
+                        classes: 'app-bold-label'
                     },
                     hint: {
-                        text: 'Must be between 6 and 8 digits long' 
-                    },
-                    pattern: "[0-9]*",
-                    attributes: {
-                        spellcheck: "false"
-                    }
-                }) }}
-
-                {{ govukInput ({
-                    id: 'pay-details--roll-number',
-                    name: 'pay-details--roll-number',
-                    value: data['pay-details--roll-number'],
-                    classes: 'govuk-input--width-10',
-                    label: {
-                        text: 'Building society roll number (if you have one)'
-                    },
-                    hint: {
-                        text: 'You can find it on your card, statement or passbook' 
+                        text: 'Must be 8 digits long, it is not on your card but will be on letters you have had from the Post Office'
                     },
                     pattern: "[0-9]*",
                     attributes: {

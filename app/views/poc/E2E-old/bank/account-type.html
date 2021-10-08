@@ -36,18 +36,18 @@
                     items: [
                         {
                             text: 'UK bank or building society account',
-                            value: 'bank~account-details'
-                            
+                            value: 'bank~account-details',
+                            checked: true if data['bank--type'] == 'bank'
                         },
                         {
                             text: 'Post Office card account',
-                            value: 'po-card~po-card-details'
-                            
+                            value: 'po-card~po-card-details',
+                            checked: true if data['bank--type'] == 'po-card'
                         },
                         {
                             text: 'I don’t have access to either',
-                            value: 'none~no-account'
-                            
+                            value: 'none~no-account',
+                            checked: true if data['bank--type'] == 'none'
                         }
                     ]
                 }) }}

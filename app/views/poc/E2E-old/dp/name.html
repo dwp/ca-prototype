@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is the name of the person you care for?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-check'] != 'true' %}
+                <form action="ni">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
+
+                <h1 class="govuk-heading-l">What is the name of the person you care for?</h1>
+
+                {{ govukInput({
+                    id: 'dp--name',
+                    name: 'dp--name',
+                    value: data['dp--name'],
+                    hint: {
+                        text: 'Include their middle name if they have one'
+                    },
+                    label: {
+                        text: 'Full name'
+                    }
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
