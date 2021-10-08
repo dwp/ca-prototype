@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Third party - Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="claim-date">
+
+                <h1 class="govuk-heading-l">Are you the carer?</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-status',
+                    name: 'applicant-status',
+                    fieldset: {
+                        legend: {
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes, you are the carer',
+                            value: 'Yes, you are the carer',
+                            checked: true if data['applicant-status'] == 'Yes, you are the carer'
+                        },
+                        {
+                            text: 'No, you are filling this in on behalf of the carer',
+                            value: 'No, you are filling this in on behalf of the carer',
+                            checked: true if data['applicant-status'] == 'No, you are filling this in on behalf of the carer'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

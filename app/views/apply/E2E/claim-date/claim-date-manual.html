@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    When do you want Carer’s Allowance to start?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../income/fostering">
+
+                <h1 class="govuk-heading-l">
+                    When do you want your claim to start?
+                </h1>
+
+                <p>
+                    The person you care for must get their disability benefit before your claim can start.
+                </p>
+
+                <p>
+                    You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week.
+                </p>
+
+                {% set detailsContentHTML %}
+
+                    <p>
+                        If the person you care for was awarded their disability benefit in the last 3 months with a backdated start date of more than 3 months ago, you can claim from:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                            their disability benefit start date – if you were proving care for at least 35 hours a week from that date
+                        </li>
+                        <li>
+                            the date you started to provide care – if this was after their benefit start date
+                        </li>
+                    </ul>
+
+                {% endset %}    
+                
+                {{ govukDetails({
+                    summaryText: 'Claims that can be backdated for more than 3 months',
+                    html: detailsContentHTML
+                }) }}
+
+                <p>
+                    Your claim date cannot be more than 3 months in the future.
+                </p>
+
+                {{ govukDateInput({
+                    id: 'claim-date--claim-date',
+                    namePrefix: 'claim-date--claim-date',
+                    hint: {
+                        text: 'For example 8 7 2020'
+                    },
+                    fieldset: {
+                        legend: {
+                            text: 'Claim start date',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--claim-date-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--claim-date-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['claim-date--claim-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

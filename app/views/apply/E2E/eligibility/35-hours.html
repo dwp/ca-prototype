@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you care for the person for at least 35 hours a week?
+{% endblock %}
+
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="care-start-date">
+
+                {% set hintHTML %}
+
+                    <p class="govuk-hint">
+                        This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel.
+                    </p>
+
+                    <p class="govuk-hint">
+                        During the coronavirus (COVID-19) outbreak this includes care you provide remotely, for example, giving emotional support over the phone or online.
+                    </p>
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'elig--35-hours',
+                    name: 'elig--35-hours',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you care for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['elig--35-hours'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['elig--35-hours'] == 'No'
+                        },
+                        {
+                            text: 'No, but I have in the past',
+                            value: 'No, but I have in the past',
+                            checked: true if data['elig--35-hours'] == 'No, but I have in the past'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

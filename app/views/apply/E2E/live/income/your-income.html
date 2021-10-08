@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="income-loop/employer-details">
+
+                <h1 class="govuk-heading-l">Your income</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'been-employed',
+                    name: 'been-employed',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been employed since 1 April 2020?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['been-employed'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['been-employed'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'been-self-employed',
+                    name: 'been-self-employed',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been self-employed since 24 September 2020?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['been-self-employed'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['been-self-employed'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'other-income',
+                    name: 'other-income',
+                    fieldset: {
+                        legend: {
+                            text: 'What other income have you had since 1 October 2020?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'Choose all that apply to you. You do not need to tell us about any state pensions or benefits that you may be receiving as we already hold that information'
+                    },
+                    items: [
+                        {
+                            text: 'Statutory Sick Pay',
+                            value: 'Statutory Sick Pay',
+                            checked: true if data['other-income'] | includes('Statutory Sick Pay')
+                        },
+                        {
+                            text: 'Statutory Paternity, Maternity or Adoption Pay',
+                            value: 'Statutory Paternity, Maternity or Adoption Pay',
+                            checked: true if data['other-income'] | includes('Statutory Paternity, Maternity or Adoption Pay')
+                        },
+                        {
+                            text: 'Fostering Allowance',
+                            value: 'Fostering Allowance',
+                            checked: true if data['other-income'] | includes('Fostering Allowance')
+                        },
+                        {
+                            text: 'Direct payment for caring for someone',
+                            value: 'Direct payment for caring for someone',
+                            checked: true if data['other-income'] | includes('Direct payment for caring for someone')
+                        },
+                        {
+                            text: 'Rental income',
+                            value: 'Rental income',
+                            checked: true if data['other-income'] | includes('Rental income')
+                        },
+                        {
+                            text: 'Any other income',
+                            value: 'Any other income',
+                            checked: true if data['other-income'] | includes('Any other income')
+                        },
+                        {
+                            text: 'None',
+                            value: 'None',
+                            checked: true if data['other-income'] | includes('None')
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% set isPastTense = data['income--rental-ongoing'] == 'No' %}
+{% set questionText = 'How often ' + ('were you' if isPastTense else 'are you') + ' paid by someone renting a room in your home?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="rental-amount">
+
+                {{ govukRadios ({
+                    idPrefix: 'income--rental-frequency',
+                    name: 'income--rental-frequency',
+                    fieldset: {
+                        legend: {
+                            text: questionText,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Once a week',
+                            value: 'Once a week',
+                            checked: true if data['income--rental-frequency'] == 'Once a week'
+                        },
+                        {
+                            text: 'Every 2 weeks',
+                            value: 'Every 2 weeks',
+                            checked: true if data['income--rental-frequency'] == 'Every 2 weeks'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if data['income--rental-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Every month',
+                            value: 'Every month',
+                            checked: true if data['income--rental-frequency'] == 'Every month'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if data['income--rental-frequency'] == 'Other'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

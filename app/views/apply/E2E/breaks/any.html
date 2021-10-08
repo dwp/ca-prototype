@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you studying at a university?
+    Since {{ data | getClaimDate }} have there been any times you have not provided care for 35 hours a week?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="details">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Since ' + data | getClaimDate + ', have there been any times you have not cared for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours a week?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',
+                            checked: true if data['breaks--any'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            value: 'No~../contact/phone',
+                            checked: true if data['breaks--any'] == 'No'
                         }
                     ]
                 }) }}

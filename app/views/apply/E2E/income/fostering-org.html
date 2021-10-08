@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What type of organisation paid you Fostering Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="fostering-ongoing">
+
+                {% set orgNameHTML %}
+                
+                    {{ govukInput ({
+                        id: 'income--fostering-org-name',
+                        name: 'income--fostering-org-name',
+                        value: data['income--fostering-org-name'] if data['income--fostering-org-name'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Organisation name',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'income--fostering-org',
+                    name: 'income--fostering-org',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of organisation paid you Fostering Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'A local council',
+                            value: 'A local council~rental',
+                            checked: true if data['income--fostering-org'] == 'A local council'
+                        },
+                        {
+                            text: 'A private fostering agency',
+                            value: 'A private fostering agency',
+                            checked: true if data['income--fostering-org'] == 'A private fostering agency'
+                        },
+                        {
+                            text: 'A different organisation',
+                            value: 'A different organisation',
+                            conditional: {
+                                html: orgNameHTML
+                            },
+                            checked: true if data['income--fostering-org'] == 'A different organisation'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

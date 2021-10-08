@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your status - Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="about-you-postcode-lookup">
+
+                <h1 class="govuk-heading-l">Your status</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-status',
+                    name: 'applicant-status',
+                    fieldset: {
+                        legend: {
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Married or civil partner',
+                            value: 'Married or civil partner',
+                            checked: true if data['applicant-status'] == 'Married or civil partner'
+                        },
+                        {
+                            text: 'Single',
+                            value: 'Single',
+                            checked: true if data['applicant-status'] == 'Single'
+                        },
+                        {
+                            text: 'Divorced or civil partnership dissolved',
+                            value: 'Divorced or civil partnership dissolved',
+                            checked: true if data['applicant-status'] == 'Divorced or civil partnership dissolved'
+                        },
+                        {
+                            text: 'Widowed or surviving civil partner',
+                            value: 'Widowed or surviving civil partner',
+                            checked: true if data['applicant-status'] == 'Widowed or surviving civil partner'
+                        },
+                        {
+                            text: 'Separated',
+                            value: 'Separated',
+                            checked: true if data['applicant-status'] == 'Separated'
+                        },
+                        {
+                            text: 'Living with partner',
+                            value: 'Living with partner',
+                            checked: true if data['applicant-status'] == 'Living with partner'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

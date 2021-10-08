@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Was the start date for this benefit backdated?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="care-start-date">
+
+                {% set qbDateHTML %}
+
+                    {{ govukDateInput({
+                        id: 'claim-date--qb-backdate',
+                        namePrefix: 'claim-date--qb-backdate',
+                        hint: {
+                            text: 'For example, 18 8 2019'
+                        },
+                        fieldset: {
+                            legend: {
+                                text: 'When was the start date backdated to?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend'
+                            }
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['claim-date--qb-backdate-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['claim-date--qb-backdate-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['claim-date--qb-backdate-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'claim-date--qb-backdate-bool',
+                    name: 'claim-date--qb-backdate-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Was the start date for this benefit backdated?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['claim-date--qb-backdate-bool'] == 'Yes',
+                            conditional: {
+                                html: qbDateHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['claim-date--qb-backdate-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

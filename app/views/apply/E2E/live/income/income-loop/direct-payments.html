@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Direct Payments for caring for people
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'rental-income' | redirect | safe if not data['other-income'] | includes('Direct payment for caring for someone') }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="rental-income">
+
+                <h1 class="govuk-heading-l">Direct Payments for caring for people</h1>
+
+                {% set lastPaidHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'direct-last-paid',
+                        namePrefix: 'direct-last-paid',
+                        fieldset: {
+                            legend: {
+                                text: 'When were you last paid?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['direct-last-paid-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['direct-last-paid-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['direct-last-paid-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'direct-still-paid',
+                    name: 'direct-still-paid',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still being paid this?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['direct-still-paid'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['direct-still-paid'] == 'No',
+                            conditional: {
+                                html: lastPaidHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukInput ({
+                    id: 'direct-who-paid',
+                    name: 'direct-who-paid',
+                    value: data['direct-who-paid'] if data['direct-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Who paid you this?',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'direct-amount',
+                    name: 'direct-amount',
+                    value: data['direct-who-paid'] if data['direct-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Amount paid',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {% set frequencyDetailsHTML %}
+
+                    {{ govukInput ({
+                        id: 'direct-frequency-details',
+                        name: 'direct-frequency-details',
+                        value: data['direct-frequency-details'] if data['direct-frequency-details'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'How often are you paid?',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'direct-frequency',
+                    name: 'direct-frequency',
+                    fieldset: {
+                        legend: {
+                            text: 'How often are you paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Weekly',
+                            value: 'Weekly',
+                            checked: true if data['direct-frequency'] == 'Weekly'
+                        },
+                        {
+                            text: 'Fortnightly',
+                            value: 'Fortnightly',
+                            checked: true if data['direct-frequency'] == 'Fortnightly'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if data['direct-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Monthly',
+                            value: 'Monthly',
+                            checked: true if data['direct-frequency'] == 'Monthly'
+                        },
+                        {
+                            text: 'It varies',
+                            value: 'It varies',
+                            checked: true if data['direct-frequency'] == 'It varies',
+                            conditional: {
+                                html: frequencyDetailsHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

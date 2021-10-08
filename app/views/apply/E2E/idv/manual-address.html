@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is the address of the person you care for?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../dp/name">
+
+                {% call govukFieldset({
+                    legend: {
+                        text: 'What is your address?',
+                        classes: 'govuk-fieldset__legend--l govuk-!-margin-bottom-8',
+                        isPageHeading: true
+                    }
+                }) %}
+
+                    {% set applicantAddress = data['info--manual-address'] %}
+
+                    {{ govukInput({
+                        label: {
+                            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+                        },
+                        id: 'address-line-1',
+                        name: 'info--manual-address[address-line-1]',
+                        value: applicantAddress['address-line-1'],
+                        autocomplete: 'address-line1',
+                        errorMessage: {
+                            text: 'Enter your building and street'
+                        } if data.error
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                        },
+                        id: 'address-line-2',
+                        name: 'info--manual-address[address-line-2]',
+                        value: applicantAddress['address-line-2'],
+                        autocomplete: 'address-line2'
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: 'Town or city'
+                        },
+                        classes: 'govuk-!-width-two-thirds',
+                        id: 'address-town',
+                        name: 'info--manual-address[address-town]',
+                        value: applicantAddress['address-town'],
+                        autocomplete: 'address-level2',
+                        errorMessage: {
+                            text: 'Enter your town or city'
+                        } if data.error
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: 'County'
+                        },
+                        classes: 'govuk-!-width-two-thirds',
+                        id: 'address-county',
+                        name: 'info--manual-address[address-county]',
+                        value: applicantAddress['address-county']
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: 'Postcode'
+                        },
+                        classes: 'govuk-input--width-10',
+                        id: 'address-postcode',
+                        name: 'info--manual-address[address-postcode]',
+                        value: applicantAddress['address-postcode'],
+                        autocomplete: 'postal-code'
+                    }) }}
+
+                {% endcall %}
+
+                <input type="hidden" name="info--address-is-manual" value="Yes">
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

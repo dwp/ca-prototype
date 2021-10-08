@@ -1,0 +1,240 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    About your nationality and where you live
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="nationality-payments-from-abroad">
+
+                <h1 class="govuk-heading-l">About your nationality and where you live</h1>
+
+                {% set nationalityHTML %}
+
+                    {{ govukInput ({
+                        id: 'applicant-nationality-other',
+                        name: 'applicant-nationality-other',
+                        value: data['applicant-nationality-other'] if data['applicant-nationality-other'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Your nationality',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {% set arrivalHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'applicant-arrival-date',
+                        name: 'applicant-arrival-date',
+                        fieldset: {
+                            legend: {
+                                text: 'Date arrived',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'applicant-arrival-country',
+                        name: 'applicant-arrival-country',
+                        value: data['applicant-arrival-country'] if data['applicant-arrival-country'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Which country did you live in?',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {% set arrivalInESWHTML %}
+
+                    {{ govukRadios ({
+                        idPrefix: 'applicant-arrival-in-esw',
+                        name: 'applicant-arrival-in-esw',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you arrive in England, Scotland or Wales?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Less than 3 years ago',
+                                value: 'Less than 3 years ago',
+                                conditional: {
+                                    html: arrivalHTML
+                                },
+                                checked: true if data['applicant-arrival-in-esw'] == 'Less than 3 years ago'
+                            },
+                            {
+                                text: 'More than 3 years ago',
+                                value: 'More than 3 years ago',
+                                checked: true if data['applicant-arrival-in-esw'] == 'More than 3 years ago'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-nationality',
+                    name: 'applicant-nationality',
+                    fieldset: {
+                        legend: {
+                            text: 'What is your nationality?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'British',
+                            value: 'British',
+                                checked: true if data['applicant-nationality'] == 'British'
+                        },
+                        {
+                            text: 'Another nationality',
+                            value: 'Another nationality',
+                            conditional: {
+                                html: nationalityHTML
+                            },
+                            checked: true if data['applicant-nationality'] == 'Another nationality'
+                        }
+                    ]
+                }) }}
+
+                {% set liveInESWNowHTML %}
+
+                    {{ govukRadios ({
+                        idPrefix: 'applicant-live-in-esw',
+                        name: 'applicant-live-in-esw',
+                        fieldset: {
+                            legend: {
+                                text: 'Do you live in England, Scotland or Wales now?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'Yes',
+                                conditional: {
+                                    html: arrivalInESWHTML
+                                },
+                                checked: true if data['applicant-live-in-esw'] == 'Yes'
+                            },
+                            {
+                                text: 'No',
+                                value: 'No',
+                                checked: true if data['applicant-live-in-esw'] == 'No'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-always-lived-esw',
+                    name: 'applicant-always-lived-esw',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you always lived in England, Scotland or Wales?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['applicant-always-lived-esw'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            conditional: {
+                                html: liveInESWNowHTML
+                            },
+                            checked: true if data['applicant-always-lived-esw'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {% set whereYouveBeenHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'applicant-been-away-details',
+                        id: 'applicant-been-away-details',
+                        maxlength: '3000',
+                        label: {
+                            text: 'Tell us about where you’ve been.',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Include dates you left and returned. We might contact you for further details.'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-been-away',
+                    name: 'applicant-been-away',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been away from England, Scotland or Wales for more than 52 weeks in the 3 years before your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This could be one trip, or a number of trips adding up to 52 weeks.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: whereYouveBeenHTML
+                            },
+                            checked: true if data['applicant-been-away'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['applicant-been-away'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

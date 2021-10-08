@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Claim decision
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Claim decision</h1>
+
+                {% set not35Hours = data['elig--35-hours'] == 'No' %}
+
+                {% set noQB = data['elig--valid-qb'] != 'Yes' %}
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Decision'
+                            },
+                            value: {
+                                text: 'You cannot get Carer’s Allowance'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Name'
+                            },
+                            value: {
+                                text: data['dummy-applicant-name']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Decision date'
+                            },
+                            value: {
+                                text: data.now | friendlyDate
+                            }
+                        }
+                    }
+                }) }}
+
+                <p>
+                    We will send a letter confirming this decision to {{ data.dummyAddresses[4].value }}.
+                </p>
+
+                <h2 class="govuk-heading-m">Why we have made this decision</h2>
+
+                <p>
+                    Based on the information you have provided, you cannot get Carer’s Allowance because:
+                </p>
+
+                {% if noQB and not35Hours %}
+
+                    <div class="govuk-inset-text">
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>you do not care for {{ data['dp--name'] | default(data['dummy-dp-name']) }} for at least 35 hours a week</li>
+                            <li>{{ data['dp--name'] | default(data['dummy-dp-name']) }} does not get a qualifying disability benefit</li>
+                        </ul>
+                    </div>
+
+                {% elseif noQB %}
+
+                    <div class="govuk-inset-text">
+                        {{ data['dp--name'] | default(data['dummy-dp-name']) }} does not get a qualifying disability benefit.
+                    </div>
+
+                {% else %}
+
+                    <div class="govuk-inset-text">
+                        You do not care for {{ data['dp--name'] | default(data['dummy-dp-name']) }} for at least 35 hours a week.
+                    </div>
+
+                {% endif %}
+
+                {% if noQB %}
+
+                    <p>
+                        The person you care for must get one of these benefits before your claim can start:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>Personal Independence Payment – daily living component</li>
+                        <li>Disability Living Allowance – the middle or highest care rate</li>
+                        <li>Attendance Allowance</li>
+                        <li>Constant Attendance Allowance – at or above the normal maximum rate with an Industrial Injuries Disablement Benefit</li>
+                        <li>Constant Attendance Allowance – at the basic (full day) rate with a War Disablement Pension</li>
+                        <li>Armed Forces Independence Payment</li>
+                    </ul>
+
+                {% endif %}
+
+                {% if not35Hours and not noQB %}
+
+                    <p>
+                        If you provide care for at least 20 hours a week, you could qualify for <a href="https://www.gov.uk/carers-credit">Carer's Credit</a>.
+                    </p>
+
+                {% endif %}
+
+                <h2 class="govuk-heading-m">If you disagree with this decision</h2>
+         
+
+                    <p>
+                        You can ask us to look your application again. This is known as <a href="https://www.gov.uk/mandatory-reconsideration">mandatory reconsideration</a>. 
+                    </p>
+
+                    <p>
+                        <a href="https://www.gov.uk/carers-allowance-unit">Contact us to ask for this decision to be looked at again</a>
+                    </p>
+
+                {{ govukButton ({
+                    html: 'Sign out'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

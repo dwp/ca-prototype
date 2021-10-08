@@ -1,0 +1,277 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your earnings outside of employment since {{ data | getClaimDate }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Your earnings outside of employment since {{ data | getClaimDate }}</h1>
+
+
+                {% if data['income--fostering-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Type'
+                                },
+                                value: {
+                                    text: 'Money for fostering a child'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Paid by'
+                                },
+                                value: {
+                                    text: data['income--fostering-org'] if data['income--fostering-org'] != 'A different organisation' else data['income--fostering-org-name']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--fostering-end-date-day'] + ' ' + data['income--fostering-end-date-month'] | month + ' ' + data['income--fostering-end-date-year']) if data['income--fostering-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            } if data['income--fostering-org'] != 'A local authority',
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--fostering-frequency']
+                                }
+                            } if data['income--fostering-org'] != 'A local authority',
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--fostering-amount']
+                                }
+                            } if data['income--fostering-org'] != 'A local authority',
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="fostering">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {% if data['income--rental-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Type'
+                                },
+                                value: {
+                                    text: 'Money from someone boarding in your house'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--rental-end-date-day'] + ' ' + data['income--rental-end-date-month'] | month + ' ' + data['income--rental-end-date-year']) if data['income--rental-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--rental-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--rental-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="rental">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {% if data['income--direct-bool'] == 'Yes' %}
+
+                    {{ govukSummaryList ({
+                        rows: [
+                            {
+                                key: {
+                                    text: 'Type'
+                                },
+                                value: {
+                                    text: 'Direct payments for caring for people'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'End date'
+                                },
+                                value: {
+                                    text: (data['income--direct-end-date-day'] + ' ' + data['income--direct-end-date-month'] | month + ' ' + data['income--direct-end-date-year']) if data['income--direct-ongoing'] == 'No' else 'Ongoing'
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Frequency'
+                                },
+                                value: {
+                                    text: data['income--direct-frequency']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Amount'
+                                },
+                                value: {
+                                    text: '£' + data['income--direct-amount']
+                                }
+                            },
+                            {
+                                key: {
+                                    text: 'Actions'
+                                },
+                                value: {
+                                    html: '<a href="direct">Change</a> <a href="fostering" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                }
+                            }
+                        }
+                    }) }}
+
+                {% endif %}
+
+                {% for id, income in data['incomeStore'] %}
+
+                    {% if income != '' %}
+
+                        {{ govukSummaryList ({
+                            rows: [
+                                {
+                                    key: {
+                                        text: 'Type'
+                                    },
+                                    value: {
+                                        text: income['type-details'] if income['type'] == 'Other' else income['type']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'End date'
+                                    },
+                                    value: {
+                                        text: (income['end-date-day'] + ' ' + income['end-date-month'] | month + ' ' + income['end-date-year']) if income['ongoing'] == 'No' else 'Ongoing'
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Paid by'
+                                    },
+                                    value: {
+                                        text: income['fostering-org'] if income['fostering-org'] != 'A different organisation' else income['fostering-org-name']
+                                    }
+                                } if income['type'] == 'Money for fostering a child',
+                                {
+                                    key: {
+                                        text: 'Frequency'
+                                    },
+                                    value: {
+                                        text: income['frequency']
+                                    }
+                                } if income['fostering-org'] != 'A local authority' or income['type'] != 'Money for fostering a child',
+                                {
+                                    key: {
+                                        text: 'Amount'
+                                    },
+                                    value: {
+                                        text: '£' + income['amount']
+                                    }
+                                } if income['fostering-org'] != 'A local authority' or income['type'] != 'Money for fostering a child',
+                                {
+                                    key: {
+                                        text: 'Actions'
+                                    },
+                                    value: {
+                                        html: '<a href="other?selectedIncome=' + id + '">Change</a> <a href="other-remove?selectedIncome=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    }
+                                }
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {{ govukRadios ({
+                    idPrefix: 'income--add',
+                    name: 'income--add',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you have any other types of earnings since ' + data | getClaimDate + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~other?selectedIncome='
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../breaks/any'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

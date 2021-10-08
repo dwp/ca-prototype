@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Your start date for Carer’s Allowance 
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% set careStartDate = '' | dateFromInputs(data['claim-date--care-start-date-day'] | default('23'), data['claim-date--care-start-date-month'] | default('8'), data['claim-date--care-start-date-year'] | default('2020')) %}
+
+{% set qbAwardDate = '' | dateFromInputs(data['qb-award-date-day'], data['qb-award-date-month'], data['qb-award-date-year']) %}
+
+{% set qbDecisionDate = '' | dateFromInputs(data['qb-decision-date-day'], data['qb-decision-date-month'], data['qb-decision-date-year']) %}
+
+{% set autoClaimDate = '' | autoClaimDate(careStartDate, qbAwardDate, qbDecisionDate) %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Carer’s Allowance start date</h1>
+
+                <p>Based on our records and the information you have entered, the earliest date you could claim from is {{ autoClaimDate | friendlyDate }}.</p>
+
+                {{ govukRadios({
+                    idPrefix: 'claim-date--use-auto',
+                    name: 'claim-date--use-auto',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want to use ' + autoClaimDate | friendlyDate + ' as the claim start date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~../income/fostering'
+                        },
+                        {
+                            text: 'No, I want to use a different date',
+                            value: 'No~claim-date-manual'
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="claim-date--claim-date-day" value="{{ autoClaimDate | getDay }}">
+                <input type="hidden" name="claim-date--claim-date-month" value="{{ autoClaimDate | getMonth }}">
+                <input type="hidden" name="claim-date--claim-date-year" value="{{ autoClaimDate | getYear }}">
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

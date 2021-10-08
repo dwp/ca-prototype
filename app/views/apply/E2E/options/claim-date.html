@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Date of claim options
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../index">
+
+                <h1 class="govuk-heading-l">Date of claim options</h1>
+
+                {{ govukDateInput({
+                    id: 'qb-award-date',
+                    namePrefix: 'qb-award-date',
+                    fieldset: {
+                        legend: {
+                            text: 'Qualifying benefit award date',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['qb-award-date-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['qb-award-date-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['qb-award-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukDateInput({
+                    id: 'qb-decision-date',
+                    namePrefix: 'qb-decision-date',
+                    fieldset: {
+                        legend: {
+                            text: 'Qualifying benefit decision date',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['qb-decision-date-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['qb-decision-date-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['qb-decision-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Save and go back'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

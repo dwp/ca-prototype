@@ -1,0 +1,193 @@
+{% extends 'layout.html' %}
+
+
+{% block pageTitle %}    
+Eligibility – hours caring, age and country – Apply for Carer's Allowance – GOV.UK
+{% endblock %}
+
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="allowance-approve">
+
+                <h1 class="govuk-heading-l">Eligibility: caring hours, age and country</h1>
+
+                {% set hintHTML %}
+
+                    <p class="govuk-hint">
+                        This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel.
+                    </p>
+
+                    <p class="govuk-hint">
+                        During the coronavirus (COVID-19) outbreak this includes care you provide remotely, for example, giving emotional support over the phone or online.
+                    </p>
+
+                {% endset %}
+
+                {% set careHoursHTML %}
+
+                {{ govukRadios ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'You can not get Carers Allowance if you provide care for someone less than 35 hours a week. You might still be entitled to Carers Credit.',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        }
+
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'elig--35-hours',
+                    name: 'elig--35-hours',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you spend 35 hours or more each week providing care for the person receiving this benefit?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['elig--35-hours'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['elig--35-hours'] == 'No',
+                            conditional : {
+                                html: careHoursHTML
+                            }
+                        }
+                    ]
+                }) }}
+                
+                {% set careAgeHTML %}
+
+                {{ govukRadios ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'You can only get Carers Allowance if you are 16 or over.',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        }
+
+                    }) }}
+
+                {% endset %}
+                
+
+                {{ govukRadios ({
+                    idPrefix: 'elig--over-16-years',
+                    name: 'elig--over-16-years',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you aged 16 or over?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['elig--over-16-years'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['elig--over-16-years'] == 'No',
+                            conditional : {
+                                html: careAgeHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+
+                {% set careCountryHTML %}
+
+                {{ govukRadios ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'You can normally get Carers Allowance if you live in England, Scotland or Wales. You might get it if you live in the EEA (European Economic Area) or Switzerland, but you must apply to find out.',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        }
+
+                    }) }}
+
+                {% endset %}
+
+
+                {{ govukRadios ({
+                    idPrefix: 'elig--country',
+                    name: 'elig--country',
+                    fieldset: {
+                        legend: {
+                            text: 'Which country do you live in?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'England, Scotland or Wales',
+                            value: 'England, Scotland or Wales',
+                            checked: true if data['elig--country'] == 'England, Scotland or Wales'
+                        },
+                        {
+                            text: 'Northern Ireland',
+                            value: 'Northern Ireland',
+                            checked: true if data['elig--country'] == 'Northern Ireland'
+                        },
+                        {
+                            text: 'Another country',
+                            value: 'Another country',
+                            checked: true if data['elig--country'] == 'Another country',
+                            conditional : {
+                                html: careCountryHTML
+                            }
+            
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

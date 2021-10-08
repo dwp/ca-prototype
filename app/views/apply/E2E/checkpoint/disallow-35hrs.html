@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Claim decision
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Claim decision</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Decision'
+                            },
+                            value: {
+                                text: 'You cannot get Carer’s Allowance'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Name'
+                            },
+                            value: {
+                                text: data['dummy-applicant-name']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Decision date'
+                            },
+                            value: {
+                                text: data.now | friendlyDate
+                            }
+                        }
+                    }
+                }) }}
+
+                <p>
+                    We will send a letter confirming this decision to {{ data.dummyAddresses[4].value }}.
+                </p>
+
+                <h2 class="govuk-heading-m">Why we have made this decision</h2>
+
+                <p>
+                    Based on the information you have provided, you cannot get Carer’s Allowance because:
+                </p>
+
+                 <div class="govuk-inset-text">
+                    You do not care for {{ data['dp--name'] | default(data['dummy-dp-name']) }} for at least 35 hours a week and they do.
+                </div>
+
+                <p>
+                    If you provide care for at least 20 hours a week, you could qualify for <a href="https://www.gov.uk/carers-credit">Carer's Credit</a>.
+                </p>
+
+
+                <h2 class="govuk-heading-m">If you disagree with this decision</h2>
+         
+
+                    <p>
+                        You can ask us to look your application again again. This is known as <a href="https://www.gov.uk/mandatory-reconsideration">mandatory reconsideration</a>. 
+                    </p>
+
+                    <p>
+                        <a href="https://www.gov.uk/carers-allowance-unit">Contact us to ask for this decision to be looked at again</a>
+                    </p>
+
+        
+
+
+
+                {{ govukButton ({
+                    html: 'Sign out'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

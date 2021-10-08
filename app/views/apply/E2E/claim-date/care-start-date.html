@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    When did you start caring for the person for 35 hours a week or more?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="claim-date-auto">
+
+                {{ govukDateInput({
+                    id: 'claim-date--care-start-date',
+                    namePrefix: 'claim-date--care-start-date',
+                    fieldset: {
+                        legend: {
+                            text: 'When did you start caring for ' + data['dp--name'] | default('this person') + ' for 35 hours a week or more?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            name: 'day',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--care-start-date-day']
+                        },
+                        {
+                            name: 'month',
+                            classes: 'govuk-input--width-2',
+                            value: data['claim-date--care-start-date-month']
+                        },
+                        {
+                            name: 'year',
+                            classes: 'govuk-input--width-4',
+                            value: data['claim-date--care-start-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

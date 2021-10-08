@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Before you continue
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="check">
+
+                <h1 class="govuk-heading-l">Before you continue</h1>
+
+                <p>
+                    By continuing you confirm that:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the person you care for gets a benefit that qualifies</li>
+                    <li>you do not get State Pension</li>
+                    <li>you do not get income from employment or self employment</li>
+                    <li>you are not in full time or part time education</li>
+                    <li>you live in the United Kingdom</li>
+                    <li>you want Carer’s Allowance to start from from today or a date in the past</li>
+                </ul>
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+                <p>
+                    <a href="../siphoning/state-pension">Cancel</a>
+                </p>
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

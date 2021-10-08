@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Breaks in care summary
+{% endblock %}
+
+{% block beforeContent %} 
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Breaks in care summary</h1>
+
+                {% set breakCount = 0 %}
+
+                {% for id, break in data.breaksStore %}
+
+                    {% if break != '' %}
+
+                        {% set breakCount = breakCount + 1 %}
+
+                        {{ govukTable({
+                            caption: "Month you apply",
+                            captionClasses: "govuk-table__caption--m",
+                            firstCellIsHeader: true,
+                            classes: 'govuk-!-margin-bottom-8',
+                            head: [
+                                {
+                                        text: "Stop date",
+                                        classes: 'govuk-!-width-one-quarter'
+
+                                    },
+                                    {
+                                        text: "Stop date",
+                                        classes: 'govuk-!-width-one-quarter'
+
+                                    },
+                                    {
+                                        text: "Stop date",
+                                        classes: 'govuk-!-width-one-quarter'
+
+                                    },
+                                    {
+                                        text: "Stop date",
+                                        classes: 'govuk-!-width-one-quarter'
+
+                                    }
+                                    ],
+
+                            rows:[
+                            
+                             [
+                    
+
+
+                                    {
+                                        text: break['stop-date-day'] + ' ' + 
+                                        break['stop-date-month'] | month + ' ' + 
+                                        break['stop-date-year']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Start date'
+                                    },
+                                    value: {
+                                        text: break['start-date-day'] + ' ' + break['start-date-month'] | month + ' ' + break['start-date-year'] if break['not-started'] != 'No' else 'Ongoing'
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Medical care'
+                                    },
+                                    value: {
+                                        text: break['medical-care']
+                                    }
+                                },
+                                {
+                                    key: {
+                                        text: 'Actions'
+                                    },
+                                    value: {
+                                        html: '<a href="details?selectedBreak=' + id + '">Change</a> <a href="delete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                    }
+                                }
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if breakCount == 0 %}
+
+                    {{ 'any' | redirect | safe }}
+
+                {% endif %}
+
+
+
+
+
+
+
+{#  Buttons in a group from design system https://design-system.service.gov.uk/components/button
+
+                <div class="govuk-button-group">
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+
+                {{ govukButton({
+                     text: "Add another break in care",
+                     classes: "govuk-button--secondary",
+                     href: "details?selectedBreak=" 
+                }) }}                
+                
+                </div>
+
+#}
+                <div>
+
+                {{ govukButton({
+                     text: "Add another break in care",
+                     classes: "govuk-button--secondary",
+                     href: "details?selectedBreak=" 
+                }) }}  
+
+                </div>
+
+                <div>
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+                              
+                </div>                
+
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

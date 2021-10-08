@@ -1,0 +1,181 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Employer income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'self-employment' | redirect | safe if data['been-employed'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="expenses">
+
+                <h1 class="govuk-heading-xl">Bobs Bakery</h1>
+
+                {{ govukRadios ({
+                    idPrefix: 'employer-pay-frequency',
+                    name: jobLoc + '[employer-pay-frequency]',
+                    fieldset: {
+                        legend: {
+                            text: 'How often are you paid?' if job['employment-finished-job'] == 'No' else 'How often were you paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Weekly',
+                            value: 'Weekly',
+                            checked: true if job['employer-pay-frequency'] == 'Weekly'
+                        },
+                        {
+                            text: 'Fortnightly',
+                            value: 'Fortnightly',
+                            checked: true if job['employer-pay-frequency'] == 'Fortnightly'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if job['employer-pay-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Monthly',
+                            value: 'Monthly',
+                            checked: true if job['employer-pay-frequency'] == 'Monthly'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if job['employer-pay-frequency'] == 'Other'
+                        }
+                    ]
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-pay-date',
+                    name: jobLoc + '[employer-pay-date]',
+                    value: job['employer-pay-date'] if job['employer-pay-date'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'When do you get paid?' if job['employment-finished-job'] == 'No' else 'When did you get paid?',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    },
+                    hint: {
+                        text: 'For example, day of the month.'
+                    }
+                }) }}
+
+                {{ govukDateInput ({
+                    id: 'employment-last-pay-date',
+                    namePrefix: jobLoc + '[employment-last-pay-date',
+                    fieldset: {
+                        legend: {
+                            text: 'When were you last paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, 19 1 2020'
+                    },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'day]',
+                            value: job['employment-last-pay-date-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'month]',
+                            value: job['employment-last-pay-date-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'year]',
+                            value: job['employment-last-pay-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employment-last-pay-amount',
+                    name: jobLoc + '[employment-last-pay-amount]',
+                    value: job['employment-last-pay-amount'] if job['employment-last-pay-amount'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'What were you paid in your last wage?',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    },
+                    hint: {
+                        text: 'This is the amount you received before tax and deductions.'
+                    }
+                }) }}
+
+                {{ govukCharacterCount ({
+                    id: 'employment-pay-includes',
+                    name: jobLoc + '[employment-pay-includes]',
+                    value: job['employment-pay-includes'] if job['employment-pay-includes'] else '',
+                    maxlength: 300,
+                    label: {
+                        text: 'What was included in this pay? (Optional)',
+                        classes: 'app-bold-label'
+                    },
+                    hint: {
+                        text: 'For example, holiday, sick or any redundancy pay.'
+                    }
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-same-amount',
+                    name: jobLoc + '[employment-same-amount]',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you get the same amount each time?' if job['employment-finished-job'] == 'No' else 'Did you get the same amount each time?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if job['employment-same-amount'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if job['employment-same-amount'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

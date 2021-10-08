@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Can we contact you about your claim by telephone?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="email">
+
+                {% set phoneHTML %}
+
+                    {{ govukInput ({
+                        id: 'contact--phone',
+                        name: 'contact--phone',
+                        value: data['contact--phone'],
+                        classes: 'govuk-input--width-20',
+                        type: 'tel',
+                        label: {
+                            text: 'Telephone number',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'contact--phone-bool',
+                    name: 'contact--phone-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Can we contact you about your claim by telephone?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'We might be able to process your claim faster if we can contact you by telephone.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~textphone',
+                            conditional: {
+                                html: phoneHTML
+                            }
+                        },
+                        {
+                            text: 'No, contact me only by post',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

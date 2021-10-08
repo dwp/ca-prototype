@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    ROUTER PAGE - NOT USER ACCESSIBLE
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">ROUTER PAGE - NOT USER ACCESSIBLE</h1>
+
+                {% if data.time | isWithinThreeMonths(
+                    data['claim-date--qb-date-day'],
+                    data['claim-date--qb-date-month'],
+                    data['claim-date--qb-date-year']
+                ) %}
+
+                    {{ 'qb-backdate' | redirect | safe }}
+
+                {% else %}
+
+                    {{ 'care-start-date' | redirect | safe }}
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

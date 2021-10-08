@@ -1,0 +1,328 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="declaration">
+
+                <h1 class="govuk-heading-l">Check your answers</h1>
+
+                {% set bankDetailsHTML %}
+
+                    {% if data['bank--type'] == 'bank' %}
+
+                        <p>
+                            Account holder name:<br>
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
+                        </p>
+
+                        <p>
+                            Sort code:<br>
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
+                        </p>
+
+                        <p>
+                            Account number:<br>
+                            {{ data['pay-details--account-number'] | default('54112144') }}
+                        </p>
+
+                        <p>
+                            Building society roll number:<br>
+                            {{ data['pay-details--roll-number'] | default('Not applicable') }}
+                        </p>
+
+                    {% elseif data['bank--type'] == 'po-card' %}
+
+                        <p>
+                            Account holder name:<br>
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
+                        </p>
+
+                        <p>
+                            Sort code:<br>
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
+                        </p>
+
+                        <p>
+                            Account number:<br>
+                            {{ data['pay-details--account-number'] | default('54112144') }}
+                        </p>
+
+                    {% else %}
+
+                        <p>
+                            I don’t have a bank account or Post Office card account
+                        </p>
+
+                    {% endif %}
+
+                {% endset %}
+
+                <p><h2 class="govuk-heading-m">About you - the carer</h2></p>
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+
+
+                        {key: {text: 'Claim date'}, value: {text: '10 January 2020'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Name'}, value: {text: 'Mr John Smith'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'National Insurance Number'}, value: {text: 'PB903561C'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Date of birth'}, value: {text: '10 January 1990'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Status'}, value: {text: 'Single'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Address'}, value: {text: '10 Park Avenue, 10 Park Avenue, 10 Park Avenue , 10 Park Avenue , 10 Park Avenue, 10 Park Avenue'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+
+                        {key: {text: 'Telephone number (optional)'}, value: {text: 'Not given'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+                                    
+                        {key: {text: 'Do you want an email to confirm we have received your application?'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }
+                    }
+                }) }}
+
+                <p><h2 class="govuk-heading-m">Nationality and where you've lived</h2></p>
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+
+
+                        {key: {text: 'Your nationality'}, value: {text: 'British'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Have you always lived in England, Scotland or Wales?'}, value: {text: 'Yes'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Have you been away from England, Scotland or Wales for more than 52 weeks in the 3 years before your claim date?'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Have you or any of your close family worked abroad or been paid benefits from outside the United Kingdom since your claim date?'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }
+                    }
+                }) }}
+
+
+                <p><h2 class="govuk-heading-m">About your partner</h2></p>
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+                        {key: {text: 'Have you lived with a partner at any time since your claim date'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }
+                    }
+                }) }}
+
+
+                <p><h2 class="govuk-heading-m">About the person you provide care for</h2></p>
+                
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+
+
+                        {key: {text: 'Date of birth'}, value: {text: '10 January 1910'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Name'}, value: {text: 'Mr Harry Potter'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'What is their relationship to you'}, value: {text: 'Friend'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Do they live at the same address as you?'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'What is Harry Potter`s address'}, value: {text: '10 Park Avenue, 10 Park Avenue, 10 Park Avenue , 10 Park Avenue , 10 Park Avenue, 10 Park Avenue'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Do you spend 35 hours or more each week providing care for Harry Potter?'}, value: {text: 'Yes'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Does anyone else spend 35 hours or more each week providing care for Harry Potter?'}, value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }                          
+                    }
+                }) }}
+                
+                <p><h2 class="govuk-heading-m">About the care you provide</h2></p>
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+
+
+                        {key: {text: 'Since 10 January 2020 have there been any times you or Harry Potter have been in hospital, respite or care home for at least a week?'}, 
+                        value: {text: 'Yes'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Hospital'}, 
+                        value: {text: 'Yes - details provided'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Respite or care home'}, 
+                        value: {text: 'Yes - details provided'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Have there been any other times you`ve not provided care for Harry Potter for 35 hours a week?'}, 
+                        value: {text: 'Yes - details provided'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }                          
+                    }
+                }) }}
+
+                <p><h2 class="govuk-heading-m">Education</h2></p>                
+
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+
+
+                        {key: {text: 'Have you been on a course of education since your claim date?'}, 
+                        value: {text: 'Yes'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Are you studying with the Open University?'}, 
+                        value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Course title'}, 
+                        value: {text: 'Potions'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Where are you studying?'}, 
+                        value: {text: 'Hogwarts'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },     
+
+                        {key: {text: 'Name of main teacher or tutor'}, 
+                        value: {text: 'Snape'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+
+                        {key: {text: 'Course contact number (optional)'}, 
+                        value: {text: '  '},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Start/end dates'}, 
+                        value: {text: '10 January 2019 - 1 January 2022'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },
+
+                        {key: {text: 'Is this a university course?'}, 
+                        value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} },     
+
+                        {key: {text: 'Does your course of education involve 21 hours or more of supervised study each week?'}, 
+                        value: {text: 'No'},
+                            actions: {items: [
+                                    {text: 'Change', href: 'review', 
+                                    visuallyHiddenText: 'No text'}]} }                                    
+
+
+                    }
+                }) }}
+
+</br>
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

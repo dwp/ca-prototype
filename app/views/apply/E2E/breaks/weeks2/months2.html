@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What month did you temporarily stop providing care?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="january">
+
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'month-select',
+                    name: 'month-select',
+                    fieldset: {
+                        legend: {
+                            text: 'What month did you temporarily stop providing care?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'You can select more than one month if you need to tell us about more than one period.'
+                    },
+                    items: [
+     
+                        {
+                            text: 'February 2021',
+                            value: 'February',
+                            checked: true if data['month-select'] | includes('February')
+                        },
+                        {
+                            text: 'March 2021',
+                            value: 'March',
+                            checked: true if data['month-select'] | includes('March')
+                        },
+                        {
+                            text: 'April 2021',
+                            value: 'April',
+                            checked: true if data['month-select'] | includes('April')
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

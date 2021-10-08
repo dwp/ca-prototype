@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
+{% block pageTitle %}
+    Confirm you want to remove this income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Confirm you want to remove this income</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Income type'
+                            },
+                            value: {
+                                text: income['type-details'] if income['type'] == 'Other' else income['type']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'End date'
+                            },
+                            value: {
+                                text: (income['end-date-day'] + ' ' + income['end-date-month'] | month + ' ' + income['end-date-year']) if income['ongoing'] == 'No' else 'Ongoing'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Paid by'
+                            },
+                            value: {
+                                text: income['fostering-org']
+                            }
+                        } if income['type'] == 'Money for fostering a child',
+                        {
+                            key: {
+                                text: 'Frequency'
+                            },
+                            value: {
+                                text: income['frequency-details'] if income['frequency'] == 'Other' else income['frequency']
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Amount'
+                            },
+                            value: {
+                                text: '£' + income['amount']
+                            }
+                        }
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Remove',
+                    classes: 'govuk-button--warning',
+                    href: 'list?' + incomeLoc + '='
+                }) }}
+
+                <p>
+                    <a href="list">Cancel and go back</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

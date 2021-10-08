@@ -1,0 +1,209 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="disallow">
+
+                <h1 class="govuk-heading-l">Check the information you have given</h1>
+
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Name of the person you care for'
+                            },
+                            value: {
+                                text: data['dp--name'] | default(data['dummy-dp-name'])
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/name?from-check=true',
+                                        visuallyHiddenText: 'the name of the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do they have a National Insurance number?'
+                            },
+                            value: {
+                                text: data['dp--ni-bool'] | default('No')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/ni?from-check=true',
+                                        visuallyHiddenText: 'the person you care for has a National Insurance number'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Their National Insurance number'
+                            },
+                            value: {
+                                text: data['dp--ni'] | default('KM 83 44 23 C')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/ni?from-check=true',
+                                        visuallyHiddenText: 'the name of the person you care for'
+                                    }
+                                ]
+                            }
+                        } if data['dp--ni-bool'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Their date of birth'
+                            },
+                            value: {
+                                text: data['dp--dob-day'] | default('14') + ' ' + data['dp--dob-month'] | default('4') | month + ' ' + data['dp--dob-year'] | default('1971')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/dob?from-check=true',
+                                        visuallyHiddenText: 'the date of birth of the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Do they live at the same address?'
+                            },
+                            value: {
+                                text: data['dp--same-address'] | default('Yes')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/same-address?from-check=true',
+                                        visuallyHiddenText: 'whether the person you care for lives at the same address'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Their address'
+                            },
+                            value: {
+                                text: data.dummyAddresses[8].value
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../dp/postcode?from-check=true',
+                                        visuallyHiddenText: 'the address of the person you care for'
+                                    }
+                                ]
+                            }
+                        } if data['dp--same-address'] == 'No',
+                        {
+                            key: {
+                                text: 'Do you provide care for at least 35 hours a week?'
+                            },
+                            value: {
+                                text: data['elig--35-hours'] | default('Yes')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/35-hours?from-check=true',
+                                        visuallyHiddenText: 'whether you spend 35 hours or more each week providing care for the person receiving this benefit'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'When did you start caring for the person for 35 hours a week or more?'
+                            },
+                            value: {
+                                text: data['claim-date--care-start-date-day'] + ' ' + data['claim-date--care-start-date-month'] | month + ' ' + data['claim-date--care-start-date-year']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/care-start-date?from-check=true',
+                                        visuallyHiddenText: 'the date you started caring for the person for more than 35 hours a week'
+                                    }
+                                ]
+                            }
+                        } if data['elig--35-hours'] != 'No',
+                        {
+                            key: {
+                                text: 'When did you stop providing care for the person for at least 35 hours a week?'
+                            },
+                            value: {
+                                text: data['elig--stop-date-day'] + ' ' + data['elig--stop-date-month'] | month + ' ' + data['elig--stop-date-year']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../eligibility/care-ongoing?from-check=true',
+                                        visuallyHiddenText: 'the date you stop providing care for the person for at least 35 hours a week'
+                                    }
+                                ]
+                            }
+                        } if data['elig--35-hours'] == 'No, but I have in the past'
+                    }
+                }) }}
+
+                <p>
+                    We will use the information you have provided to check whether you can apply for Carer’s Allowance.
+                </p>
+
+                <p>
+                    You will not be able to change these answers after you continue.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Submit and continue'
+                }) }}
+
+                <p>
+                    <a href="../claim-date/claim-date-auto" style="color: white !important;">Allow path</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

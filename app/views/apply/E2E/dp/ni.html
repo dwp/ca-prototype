@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Does the person you care for have a National Insurance number?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-check'] != 'true' %}
+                <form action="dob">
+            {% else %}
+                <form action="../checkpoint/cya">
+            {% endif %}
+
+                {% set DpNiHTML %}
+
+                    {{ govukInput({
+                        id: 'dp--ni',
+                        name: 'dp--ni',
+                        value: data['dp--ni'],
+                        classes: 'govuk-input--width-20',
+                        hint: {
+                            text: 'For example, ‘QQ 12 34 56 C’.'
+                        },
+                        label: {
+                            text: 'What is their National Insurance number?',
+                            classes: 'govuk-input--width-20'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'dp--ni-bool',
+                    name: 'dp--ni-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Does ' + data['dp--name'] | default('the person you care for') + ' have a National Insurance number?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['dp--ni-bool'] == 'Yes',
+                            conditional: {
+                                html: DpNiHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['dp--ni-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

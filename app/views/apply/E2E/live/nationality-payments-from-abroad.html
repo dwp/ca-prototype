@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Payments from abroad
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="about-you-telephone">
+
+                <h1 class="govuk-heading-l">Payments from abroad</h1>
+
+                {% set paymentsFromAbroadHTML %}
+                    {{ govukRadios ({
+                    idPrefix: 'granted-exeptions--education',
+                    name: 'granted-exeptions--education',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been granted any exemptions from any part of the course?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                            conditional: {
+                                html: approvedBreakHTML
+                                                
+                            },
+                            checked: true if break['granted-exeptions--education'] == 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'no',
+                            checked: true if break['granted-exeptions--education'] == 'no'
+                        }
+                    ]
+                }) }}
+                    {{ govukRadios ({
+                    idPrefix: 'break-agreed--education',
+                    name: 'break-agreed--education',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you on an approved break agreed by your school or college?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                            conditional: {
+                                html: approvedBreakHTML
+                                                
+                            },
+                            checked: true if break['break-agreed--education'] == 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'no',
+                            checked: true if break['approved-break'] == 'no'
+                        }
+                    ]
+                }) }}
+
+
+
+                {% endset %}    
+
+
+                {{ govukRadios ({
+                    idPrefix: 'applicant-payments-from-abroad',
+                    name: 'applicant-payments-from-abroad',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you or any of your close family worked abroad or been paid benefits from outside the United Kingdom since your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This means your partner, parents or children and includes state pensions.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: paymentsFromAbroadHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

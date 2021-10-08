@@ -1,0 +1,239 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    April 2021: select any weeks you did not provide care for 35 hours or more
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+{{ 'list' | redirect | safe if not data['month-select'] | includes('April') }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list" method="post">
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                    {% set marchcare4 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-march-care4',
+                                name: breakLoc + '[medical-march-care4]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                              
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-march-care4'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-march-care4'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
+
+                {% set aprilcare1 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-april-care1',
+                                name: breakLoc + '[medical-april-care1]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                                
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-april-care1'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-april-care1'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
+
+                {% set aprilcare2 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-april-care2',
+                                name: breakLoc + '[medical-april-care2]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                                
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-april-care2'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-april-care2'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
+                {% set aprilcare3 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-april-care3',
+                                name: breakLoc + '[medical-april-care3]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                               
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-april-care3'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-april-care3'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
+                {% set aprilcare4 %}
+                                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                idPrefix: 'breaks--medical-april-care4',
+                                name: breakLoc + '[medical-april-care4]',
+                                fieldset: {
+                                    legend: {
+                                    text: "Were you or the person you care for in hospital, or receiving medical treatment in a respite or care home??",
+                                    classes: "govuk-fieldset__legend--s"
+                                    }
+                                },
+                        
+                                    items: [
+                                        {
+                                            text: 'Yes',
+                                            value: 'Yes',
+                                            checked: true if break['medical-april-care4'] == 'Yes'
+                                        },
+                                        {
+                                            text: 'No',
+                                            value: 'No',
+                                            checked: true if break['medical-april-care4'] == 'No'
+                                        }
+                                    ]
+                                }) }}
+                {% endset -%}
+
+                {{ govukCheckboxes ({
+
+                    fieldset: {
+                        legend: {
+                            text: 'April 2021: select any weeks you did not provide care for 35 hours or more',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Weeks are shown from Sunday to Saturday.'
+                    },
+                    items: [
+                        {
+                            idPrefix: '28 March 2021 to 3 April 2021',
+                            name: '28 March 2021 to 3 April 2021',
+                            text: '28 March 2021 to 3 April 2021',
+                            value: '28 March 2021 to 3 April 2021',
+                            checked: true if data['28 March 2021 to 3 April 2021'] | includes('28 March 2021 to 3 April 2021'),
+                            conditional: {
+                                html: marchcare4
+                            }
+                        },
+                        {
+                            idPrefix: '4 April 2021 to 10 April 2021',
+                            name: '4 April 2021 to 10 April 2021',
+                            text: '4 April 2021 to 10 April 2021',
+                            value: '4 April 2021 to 10 April 2021',
+                            checked: true if data['4 April 2021 to 10 April 2021'] | includes('4 April 2021 to 10 April 2021'),
+                            conditional: {
+                                html: aprilcare1
+                            }
+                        },
+                        {
+                            idPrefix: '11 April 2021 to 17 April 2021',
+                            name: '11 April 2021 to 17 April 2021',
+                            text: '11 April 2021 to 17 April 2021',
+                            value: '11 April 2021 to 17 April 2021',
+                            checked: true if data['11 April 2021 to 17 April 2021'] | includes('11 April 2021 to 17 April 2021'),
+                            conditional: {
+                                html: aprilcare2
+                            }
+                        },
+                        {
+                            idPrefix: '18 April 2021 to 24 April 2021',
+                            name: '18 April 2021 to 24 April 2021',
+                            text: '18 April 2021 to 24 April 2021',
+                            value: '18 April 2021 to 24 April 2021',
+                            checked: true if data['18 April 2021 to 24 April 2021'] | includes('18 April 2021 to 24 April 2021'),
+                            conditional: {
+                                html: aprilcare3
+                            }
+                        },
+                        {
+                            idPrefix: '25 April 2021 to 1 May 2021',
+                            name: '25 April 2021 to 1 May 2021',
+                            text: '25 April 2021 to 1 May 2021',
+                            value: '25 April 2021 to 1 May 2021',
+                            checked: true if data['25 April 2021 to 1 May 2021'] | includes('25 April 2021 to 1 May 2021'),
+                            conditional: {
+                                html: aprilcare4
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

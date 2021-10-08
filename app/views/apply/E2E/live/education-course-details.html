@@ -1,0 +1,175 @@
+{% extends 'layout.html' %}
+
+{% set jobIndex = data['selectedJob'] | uuid %}
+{% set jobLoc = 'jobStore[' + jobIndex + ']' %}
+{% set job = data.jobStore[jobIndex] %}
+
+{% block pageTitle %}
+    Course details
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="education-university-details">
+
+                <h1 class="govuk-heading-xl">Course details</h1>
+
+                {{ govukCharacterCount ({
+                    id: 'employment-pay-includes',
+                    name: jobLoc + '[employment-pay-includes]',
+                    value: job['employment-pay-includes'] if job['employment-pay-includes'] else '',
+                    maxlength: 75,
+                    label: {
+                        text: 'Course title',
+                        classes: 'app-bold-label'
+                    }
+                }) }}
+                {{ govukCharacterCount ({
+                    id: 'employment-pay-includes',
+                    name: jobLoc + '[employment-pay-includes]',
+                    value: job['employment-pay-includes'] if job['employment-pay-includes'] else '',
+                    maxlength: 60,
+                    label: {
+                        text: 'Where are you studying?',
+                        classes: 'app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-pay-date',
+                    name: jobLoc + '[employer-pay-date]',
+                    value: job['employer-pay-date'] if job['employer-pay-date'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Name of main teacher or tutor',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'employer-pay-date',
+                    name: jobLoc + '[employer-pay-date]',
+                    value: job['employer-pay-date'] if job['employer-pay-date'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Course contact number (optional)',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    },
+                    hint: {
+                        text: 'Include if you know the number for your department'
+                    }
+                }) }}
+
+                {{ govukDateInput ({
+                    id: 'employment-last-pay-date',
+                    namePrefix: jobLoc + '[employment-last-pay-date',
+                    fieldset: {
+                        legend: {
+                            text: 'When did you start the course?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, 27 9 2017'
+                    },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'day]',
+                            value: job['employment-last-pay-date-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'month]',
+                            value: job['employment-last-pay-date-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'year]',
+                            value: job['employment-last-pay-date-year']
+                        }
+                    ]
+                }) }}
+                {{ govukDateInput ({
+                    id: 'employment-last-pay-date',
+                    namePrefix: jobLoc + '[employment-last-pay-date',
+                    fieldset: {
+                        legend: {
+                            text: 'When did the course end or when will you finish?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, 27 6 2018'
+                    },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'day]',
+                            value: job['employment-last-pay-date-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'month]',
+                            value: job['employment-last-pay-date-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'year]',
+                            value: job['employment-last-pay-date-year']
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'education--non-university',
+                    name: 'education--non-university',
+                    fieldset: {
+                        legend: {
+                            text: 'Is this a university course?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~education-university-details',
+                            checked: true if job['education--non-university'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~education-non-university-course',
+                            checked: true if job['education--non-university'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

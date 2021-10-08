@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is the postcode of the person you care for?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="select-address">
+
+                <h1 class="govuk-heading-l">What is your address?</h1>
+
+                {{ govukInput({
+                    id: 'applicant-find-postcode',
+                    name: 'applicant-find-postcode',
+                    value: data['applicant-find-postcode'] if data['applicant-find-postcode'] else '',
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Postcode',
+                        classes: 'govuk-input--width-10'
+                    }
+                }) }}
+
+                <p>
+                    <a href="manual-address">Enter address manually</a>
+                </p>
+
+                {{ govukButton({
+                    html: 'Find address'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

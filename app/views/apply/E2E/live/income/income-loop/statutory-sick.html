@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Statutory Sick Pay
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'statutory-maternity' | redirect | safe if not data['other-income'] | includes('Statutory Sick Pay') }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="statutory-maternity">
+
+                <h1 class="govuk-heading-l">Statutory Sick Pay</h1>
+
+                {% set lastPaidHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'sick-last-paid',
+                        namePrefix: 'sick-last-paid',
+                        fieldset: {
+                            legend: {
+                                text: 'When were you last paid?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['sick-last-paid-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['sick-last-paid-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['sick-last-paid-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'sick-still-paid',
+                    name: 'sick-still-paid',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still being paid Statutory Sick Pay?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['sick-still-paid'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['sick-still-paid'] == 'No',
+                            conditional: {
+                                html: lastPaidHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukInput ({
+                    id: 'sick-who-paid',
+                    name: 'sick-who-paid',
+                    value: data['sick-who-paid'] if data['sick-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Who paid you Statutory Sick Pay?',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'sick-amount',
+                    name: 'sick-amount',
+                    value: data['sick-who-paid'] if data['sick-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Amount paid',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {% set frequencyDetailsHTML %}
+
+                    {{ govukInput ({
+                        id: 'sick-frequency-details',
+                        name: 'sick-frequency-details',
+                        value: data['sick-frequency-details'] if data['sick-frequency-details'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'How often are you paid?',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'sick-frequency',
+                    name: 'sick-frequency',
+                    fieldset: {
+                        legend: {
+                            text: 'How often are you paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Weekly',
+                            value: 'Weekly',
+                            checked: true if data['sick-frequency'] == 'Weekly'
+                        },
+                        {
+                            text: 'Fortnightly',
+                            value: 'Fortnightly',
+                            checked: true if data['sick-frequency'] == 'Fortnightly'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if data['sick-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Monthly',
+                            value: 'Monthly',
+                            checked: true if data['sick-frequency'] == 'Monthly'
+                        },
+                        {
+                            text: 'It varies',
+                            value: 'It varies',
+                            checked: true if data['sick-frequency'] == 'It varies',
+                            conditional: {
+                                html: frequencyDetailsHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

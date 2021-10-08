@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Are you still paid Fostering Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="fostering-frequency">
+
+                {% set endDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'income--fostering-end-date',
+                        namePrefix: 'income--fostering-end-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you stop getting paid Fostering Allowance?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--m'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 14 7 2020'
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--fostering-end-date-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--fostering-end-date-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['income--fostering-end-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'income--fostering-ongoing',
+                    name: 'income--fostering-ongoing',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still paid Fostering Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['income--fostering-ongoing'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            conditional: {
+                                html: endDateHTML
+                            },
+                            checked: true if data['income--fostering-ongoing'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

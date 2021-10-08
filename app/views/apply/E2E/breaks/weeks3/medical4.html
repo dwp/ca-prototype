@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
 {% block pageTitle %}
-    Are you studying at a university?
+    Were you or the person you care for getting care from a medical professional during this time?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,28 +25,31 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="list5">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'breaks--medical-care',
+                    name: breakLoc + '[medical-care]',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Were you or ' + data['dp--name'] | default('the person you care for') + ' in the care of medical professionals during this time?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'For example, if either of you were in hospital or a nursing home where they were providing medical treatment'
+                    },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',
+                            checked: true if break['medical-care'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            checked: true if break['medical-care'] == 'No'
                         }
                     ]
                 }) }}

@@ -1,0 +1,176 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">Apply for Carer’s Allowance</h1>
+
+                <p>
+                    You must complete all sections before you can send your application.
+                </p>
+
+                <ol class="app-task-list">
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">1. </span> Check your information
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Your address',
+                                url: 'idv/check',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Complete',
+                                    color: 'blue'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2. </span> Tell us about the person you care for
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Their name',
+                                url: 'dp/name',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Their National Insurance number',
+                                url: 'dp/ni',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Their date of birth',
+                                url: 'dp/dob',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Their address',
+                                url: 'dp/same-address',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Other people that care for this person',
+                                url: 'dp/other-carers',
+                                isActive: 'true'
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3. </span> The care you provide
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'The time you spend caring for this person',
+                                url: 'eligibility/35-hours',
+                                isActive: 'true'
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">4. </span> Your income outside of employment
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Types of income you get',
+                                url: 'income/fostering',
+                                isActive: 'true'
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">5. </span> The date you want to start claiming Carer’s Allowance
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Claim start date',
+                                url: 'claim-date/claim-date-manual',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Times you have not provided care',
+                                url: 'breaks/any',
+                                isActive: 'false',
+                                tag: {
+                                    text: 'Can’t start this yet',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">6. </span> Your payment details
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'How often you will be paid',
+                                url: 'bank/pay-frequency',
+                                isActive: 'true'
+                            })}}
+                            {{ taskListItem({
+                                name: 'Bank account details',
+                                url: 'bank/account-type',
+                                isActive: 'true'
+                            })}}
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">7. </span> Check and send
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Check your answers',
+                                url: 'check-send/cya',
+                                isActive: 'false',
+                                tag: {
+                                    text: 'Can’t do this yet',
+                                    color: 'grey'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Send your application',
+                                url: 'check-send/cya',
+                                isActive: 'false',
+                                tag: {
+                                    text: 'Do this last',
+                                    color: 'grey'
+                                }
+                            })}}
+                        </ul>
+                    </li>
+                </ol>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

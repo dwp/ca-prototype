@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you know the date the person you care for was awarded {{ data['elig--qb'] | default('their qualifying benefit') }}?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="qb-date-router">
+
+                {% set qbDateHTML %}
+
+                    {{ govukDateInput({
+                        id: 'claim-date--qb-date',
+                        namePrefix: 'claim-date--qb-date',
+                        hint: {
+                            text: 'For example, 18 8 2019'
+                        },
+                        fieldset: {
+                            legend: {
+                                text: 'When was ' + ( data['dp--name'] | default('the person you care for') ) + ' awarded ' + data['elig--qb'] | default('their qualifying benefit') + '?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend'
+                            }
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['claim-date--qb-date-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['claim-date--qb-date-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['claim-date--qb-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'claim-date--qb-date-bool',
+                    name: 'claim-date--qb-date-bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you know the date ' + ( data['dp--name'] | default('the person you care for') ) + ' was awarded ' + data['elig--qb'] | default('their qualifying benefit') + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This is the date the decision was made and will be on letters we have sent. If their claim was backdated do not use the earlier date.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['claim-date--qb-date-bool'] == 'Yes',
+                            conditional: {
+                                html: qbDateHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~claim-date-manual',
+                            checked: true if data['claim-date--qb-date-bool'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,10 +1,14 @@
 {% extends 'layout.html' %}
 
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+
 {% block pageTitle %}
-    Are you studying at a university?
+    Were you or the person you care for getting care from a medical professional during this time?
 {% endblock %}
 
-{% block beforeContent %}
+{% block beforeContent %} 
 
     {{ super() }}
 
@@ -21,28 +25,32 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="list">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'breaks--medical-care',
+                    name: breakLoc + '[medical-care]',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Did you or ' + data['dp--name'] | default('Emily Marsden') + ' stay somewhere that provided medical care during this time?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'For example, staying overnight in hospital, or a respite or care home that provided medical treatment.'
+                    },
                     items: [
+                        
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',
+                            checked: true if break['medical-care'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            checked: true if break['medical-care'] == 'No'
                         }
                     ]
                 }) }}

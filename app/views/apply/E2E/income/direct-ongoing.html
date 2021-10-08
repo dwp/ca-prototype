@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you still get direct payments for caring for people?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct-frequency">
+
+                {% set endDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'income--direct-end-date',
+                        namePrefix: 'income--direct-end-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you stop getting direct payments for caring for people?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--m'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 14 7 2020'
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--direct-end-date-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['income--direct-end-date-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['income--direct-end-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'income--direct-ongoing',
+                    name: 'income--direct-ongoing',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you still get direct payments for caring for people?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['income--direct-ongoing'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            conditional: {
+                                html: endDateHTML
+                            },
+                            checked: true if data['income--direct-ongoing'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

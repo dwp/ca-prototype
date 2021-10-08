@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ 'allowance-approve-less-than-35-hours' | redirect | safe if data['elig--35-hours'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="disclaimer">
+
+   
+                    <p class="govuk-fieldset__legend--l">
+                        You may be eligible for Carer’s Allowance
+                    </p>
+                    <p>
+                        You could get Carer’s Allowance if:
+                    </p>
+
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>your income is £128 or less a week (after tax and certain expenses)</li>
+                        <li>you study less than 21 hours a week</li>
+                    </ul>
+
+           
+
+   
+                    <p class="govuk-fieldset__legend--m">
+                        To make your application you'll need:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>National Insurance numbers for you and your partner if you have one</li>
+                        <li>bank details if you're not receiving State Pension</li>
+                        <li>your latest payslip or P45 if you’ve recently finished working</li>
+                        <li>the National Insurance number of the person you care for, if they have one</li>
+                    </ul>
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

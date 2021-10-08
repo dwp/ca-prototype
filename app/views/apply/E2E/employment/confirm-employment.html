@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Our records show you are receiving employment income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="earnings-limit">
+
+                <h1 class="govuk-heading-l">Our records show you are getting income from employment</h1>
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Employer'
+                            },
+                            value: {
+                                text: 'Otterbank Centre Limited'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Average weekly pay'
+                            },
+                            value: {
+                                text: '£16.45'
+                            }
+                        }
+                    }
+                }) }}
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Employer'
+                            },
+                            value: {
+                                text: 'TESCO PLC'
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Average weekly pay'
+                            },
+                            value: {
+                                text: '£88.24'
+                            }
+                        }
+                    }
+                }) }}
+
+                <p>Your average weekly earnings from employment total £104.69.</p>
+
+                {{ govukRadios ({
+                    idPrefix: 'employment--confirm',
+                    name: 'employment--confirm',
+                    fieldset: {
+                        legend: {
+                            text: 'Is this information correct?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~employment/legacy'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    You cannot claim Carer’s Allowance while you’re at university
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot claim Carer’s Allowance while you are at university</h1>
+
+                <p>
+                    You may be able to apply for a grant or bursary as a student carer.
+                </p>
+
+                <p>
+                    <a href="https://www.ucas.com/finance/scholarships-grants-and-bursaries/scholarships-grants-and-bursaries-carefoyer-leaver-estranged-students-and-carers#carers">Find out how to get extra funding on the UCAS website</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

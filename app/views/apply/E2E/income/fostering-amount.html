@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% set isPastTense = data['income--fostering-ongoing'] == 'No' %}
+{% set questionText = 'How much Fostering Allowance ' + ('did' if isPastTense else 'do') + ' you get paid ' + data['income--fostering-frequency'] | frequencySuffix + (' on average' if data['income--fostering-frequency'] == 'Other') + '?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="rental">
+
+                <h1 class="govuk-heading-l">{{ questionText }}</h1>
+
+                {{ govukInput ({
+                    id: 'income--fostering-amount',
+                    name: 'income--fostering-amount',
+                    value: data['income--fostering-amount'] if data['income--fostering-amount'] else '',
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Amount in pounds',
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
+                    },
+                    hint: {
+                        text: 'If the amount varies, give an average.'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: data['income--fostering-frequency'] | frequencySuffix
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

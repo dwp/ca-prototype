@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
+{% set isPastTense = income['ongoing'] == 'No' %}
+{% set questionText = 'How much ' + ('did' if isPastTense else 'do') + ' you get ' + income['frequency'] | frequencySuffix + ' from these earnings?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="list">
+
+                <h1 class="govuk-heading-l">{{ questionText }}</h1>
+
+                {{ govukInput ({
+                    id: 'income--other-amount',
+                    name: incomeLoc + '[amount]',
+                    value: income['amount'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Amount in pounds',
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
+                    },
+                    hint: {
+                        text: 'If the amount varies, give an average'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: income['frequency'] | frequencySuffix
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

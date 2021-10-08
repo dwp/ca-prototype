@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is your address? – Apply for Carer’s Allowance – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="legacy-pages/nationality">
+
+                {% call govukFieldset({
+                legend: {
+                    text: 'What is your address?',
+                    classes: 'govuk-fieldset__legend--l govuk-!-margin-bottom-8',
+                    isPageHeading: true
+                }
+                }) %}
+
+                    {% set applicantAddress = data['applicant-manual-address'] %}
+
+                    {{ govukInput({
+                        label: {
+                            html: 'Address'
+                        },
+                        id: 'address-line-1',
+                        name: 'applicant-manual-address[address-line-1]',
+                        value: applicantAddress['address-line-1'],
+                        autocomplete: 'address-line1'
+                    }) }}
+
+                    {{ govukInput({
+                        
+                        id: 'address-line-2',
+                        name: 'applicant-manual-address[address-line-2]',
+                        value: applicantAddress['address-line-2'],
+                        autocomplete: 'address-line2'
+                    }) }}
+
+                    {{ govukInput({
+                        
+                        id: 'address-line-3',
+                        name: 'applicant-manual-address[address-line-3]',
+                        value: applicantAddress['address-line-3'],
+                        autocomplete: 'address-line3'
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: 'Country'
+                        },
+                        classes: 'govuk-!-width-two-thirds',
+                        id: 'address-country',
+                        name: 'applicant-manual-address[address-country]',
+                        value: applicantAddress['address-country']
+                    }) }}
+
+                {% endcall %}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Bank details
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../check-send/cya">
+
+                <h1 class="govuk-heading-l">
+                    Bank or building society account details
+                </h1>
+
+                <p>You can use someone else’s account if they agree to let you use it and use your money how you tell them to.</p>
+
+                {{ govukInput ({
+                    id: 'pay-details--account-holder-name',
+                    name: 'pay-details--account-holder-name',
+                    value: data['pay-details--account-holder-name'] if data['pay-details--account-holder-name'] else '',
+                    label: {
+                        text: 'Account holder name'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'pay-details--sort-code',
+                    name: 'pay-details--sort-code',
+                    value: data['pay-details--sort-code'] if data['pay-details--sort-code'] else '',
+                    classes: 'govuk-input--width-5',
+                    label: {
+                        text: 'Sort code'
+                    },
+                    hint: {
+                        text: 'Must be 6 digits long'
+                    },
+                    pattern: "[0-9]*",
+                    attributes: {
+                        spellcheck: "false"
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'pay-details--account-number',
+                    name: 'pay-details--account-number',
+                    value: data['pay-details--account-number'] if data['pay-details--account-number'] else '',
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Account number'
+                    },
+                    hint: {
+                        text: 'Must be between 6 and 8 digits long' 
+                    },
+                    pattern: "[0-9]*",
+                    attributes: {
+                        spellcheck: "false"
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'pay-details--roll-number',
+                    name: 'pay-details--roll-number',
+                    value: data['pay-details--roll-number'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Building society roll number (if you have one)'
+                    },
+                    hint: {
+                        text: 'You can find it on your card, statement or passbook' 
+                    },
+                    pattern: "[0-9]*",
+                    attributes: {
+                        spellcheck: "false"
+                    }
+                }) }}
+                
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

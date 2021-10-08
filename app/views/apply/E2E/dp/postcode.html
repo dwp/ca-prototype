@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What is the postcode of the person you care for?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="select-address">
+
+                <h1 class="govuk-heading-l">What is {{ data['dp--name'] }}’s address?</h1>
+
+                <p>
+                    We will use this to let them know about your Carer’s Allowance claim.
+                </p>
+
+                {{ govukInput({
+                    id: 'applicant-find-postcode',
+                    name: 'applicant-find-postcode',
+                    value: data['applicant-find-postcode'] if data['applicant-find-postcode'] else '',
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Postcode',
+                        classes: 'govuk-input--width-10'
+                    }
+                }) }}
+
+
+                {% if data['from-check'] == 'true' %}
+                    <input type="hidden" name="from-check" value="true">
+                {% endif %}
+
+                <p>
+                    <a href="manual-address{{ '?from-check=true' if data['from-check'] == 'true' }}">Enter address manually</a>
+                </p>
+
+                {{ govukButton({
+                    html: 'Find address'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

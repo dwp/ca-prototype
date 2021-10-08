@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Other income
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ '/apply/E2E/live/pay-details' | redirect | safe if not data['other-income'] | includes('Any other income') }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../end">
+
+                <h1 class="govuk-heading-l">Other income</h1>
+
+                {{ govukCharacterCount ({
+                    name: 'other-info',
+                    id: 'other-info',
+                    value: data['other-info'],
+                    maxlength: '3000',
+                    label: {
+                        text: 'What other income have you had since 2 February 2020?',
+                        classes: 'app-bold-label'
+                    },
+                    hint: {
+                        text: 'Give full details of how often and how much you’re paid. You do not need to tell us about any benefits that you may be receiving as we already hold that information.'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

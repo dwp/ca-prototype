@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    JOB ROUTER
+{% endblock %}
+
+{% block content %}
+
+    {% if data['employment-add'] == 'Yes' %}
+        {{ 'employer-details?selectedJob=' | redirect | safe }}
+    {% else %}
+        {{ 'self-employment' | redirect | safe }}
+    {% endif %}
+
+{% endblock %}

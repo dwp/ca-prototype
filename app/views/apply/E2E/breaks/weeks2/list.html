@@ -1,0 +1,305 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Weeks you did not provide care for 35 hours or more
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+
+
+{{ govukTable({
+  caption: "Weeks since 1 February 2021 where you did not provide care for at least 35 hours",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Week"
+    },
+    {
+      text: "Action"
+    }
+  ],
+  rows: [
+    
+    [
+      {
+          text: data['3 January 2021 to 9 January 2021']
+      },
+      {
+          html: '<a href="january.html">Change</a>'
+      }
+    ]if data['3 January 2021 to 9 January 2021'] == '3 January 2021 to 9 January 2021',
+
+
+
+
+
+
+
+
+
+
+    [
+      {
+          text: data['10 January 2021 to 16 January 2021']
+      },
+
+      {
+        html: '<a href="january">Change</a>'
+      }
+    ]if data['10 January 2021 to 16 January 2021'] == '10 January 2021 to 16 January 2021',
+
+
+
+
+    [
+      {
+          text: data['17 January 2021 to 23 January 2021']     
+      },
+
+            {
+          html: '<a href="january.html">Change</a>'
+      }
+    ]if data['17 January 2021 to 23 January 2021'] == '17 January 2021 to 23 January 2021',
+
+
+
+
+    [
+    {
+        text: data['24 January 2021 to 30 January 2021']
+        
+    },
+    {
+        html: '<a href="january.html">Change</a>'
+    }
+    ]if data['24 January 2021 to 30 January 2021'] == '24 January 2021 to 30 January 2021',
+
+
+
+
+    [
+    {
+        text: data['31 January 2021 to 6 February 2021']
+        
+    },
+    {
+        html: '<a href="january.html">Change</a>'
+    }
+    ]if data['31 January 2021 to 6 February 2021'] == '31 January 2021 to 6 February 2021',
+
+
+
+
+    [
+      {
+          text: data['7 February 2021 to 13 February 2021']
+      },
+      {
+          html: '<a href="february.html">Change</a>'
+      }
+    ]if data['7 February 2021 to 13 February 2021'] == '7 February 2021 to 13 February 2021',
+
+
+
+
+
+    [
+      {
+          text: data['14 February 2021 to 20 February 2021']     
+      },
+      {
+          html: '<a href="february.html">Change</a>'
+      }
+    ]if data['14 February 2021 to 20 February 2021'] == '14 February 2021 to 20 February 2021',
+
+
+
+
+    [
+    {
+        text: data['21 February 2021 to 27 February 2021']
+        
+    },
+    {
+        html: '<a href="february.html">Change</a>'
+    }
+    ]if data['21 February 2021 to 27 February 2021'] == '21 February 2021 to 27 February 2021',
+
+
+
+
+    [
+    {
+        text: data['28 February 2021 to 6 March 2021']
+        
+    },
+    {
+        html: '<a href="february.html">Change</a>'
+    }
+    ]if data['28 February 2021 to 6 March 2021'] == '28 February 2021 to 6 March 2021',
+    
+    
+    [
+    {
+        text: data['7 March 2021 to 13 March 2021']
+        
+    },
+    {
+        html: '<a href="march.html">Change</a>'
+    }
+    ]if data['7 March 2021 to 13 March 2021'] == '7 March 2021 to 13 March 2021',
+    
+     [
+    {
+        text: data['14 March 2021 to 20 March 2021']
+        
+    },
+    {
+        html: '<a href="march.html">Change</a>'
+    }
+    ]if data['14 March 2021 to 20 March 2021'] == '14 March 2021 to 20 March 2021', 
+
+     [
+    {
+        text: data['21 March 2021 to 27 March 2021']
+        
+    },
+    {
+        html: '<a href="march.html">Change</a>'
+    }
+    ]if data['21 March 2021 to 27 March 2021'] == '21 March 2021 to 27 March 2021', 
+
+     [
+    {
+        text: data['28 March 2021 to 3 April 2021']  
+    },
+    {
+        html: '<a href="march.html">Change</a>'
+    }
+    ]if data['28 March 2021 to 3 April 2021'] == '28 March 2021 to 3 April 2021',
+
+
+     [
+    {
+        text: data['4 April 2021 to 10 April 2021']  
+    },
+    {
+        html: '<a href="april.html">Change</a>'
+    }
+    ]if data['4 April 2021 to 10 April 2021'] == '4 April 2021 to 10 April 2021',
+
+
+     [
+    {
+        text: data['11 April 2021 to 17 April 2021']  
+    },
+    {
+        html: '<a href="april.html">Change</a>'
+    }
+    ]if data['11 April 2021 to 17 April 2021'] == '11 April 2021 to 17 April 2021',
+
+     [
+    {
+        text: data['18 April 2021 to 24 April 2021']  
+    },
+    {
+        html: '<a href="april.html">Change</a>'
+    }
+    ]if data['18 April 2021 to 24 April 2021'] == '18 April 2021 to 24 April 2021',
+
+     [
+    {
+        text: data['25 April 2021 to 1 May 2021']  
+    },
+    {
+        html: '<a href="april.html">Change</a>'
+    }
+    ]if data['25 April 2021 to 1 May 2021'] == '25 April 2021 to 1 May 2021'
+
+
+
+
+  ]
+
+}) }}
+
+
+
+{#  Old radio question iwith link using months2?selectedBreak to reference breakLoc code at top of destination page - but not added as these pages work differently
+
+                {{ govukRadios ({
+                    idPrefix: 'breaks--add',
+                    name: 'breaks--add',
+                    fieldset: {
+                        legend: {
+                            text: 'Were there any more weeks you did not provided care for ' + ( data['dp--name'] | default('the person') ) + ' for at least 35 hours since 23 June 2020?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    hint: {
+                        text: 'Caring weeks start on midnight on Saturday until the next midnight on Saturday.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~months2?selectedBreak='
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~../contact/phone'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+#}
+
+
+{#  button destination to add new break just takes user back to month page - no breakLoc uuid code added to month2 page yet as this may not work for checkbox journey - we may not need an add another break button for this journey with it allowing multiple entries in flow #}
+                <div>
+
+                {{ govukButton({
+                     text: "Add another week",
+                     classes: "govuk-button--secondary",
+                     href: "months2" 
+                }) }}  
+
+                </div>
+
+                <div>
+                {{ govukButton({
+                    text: "Continue",
+                    href: "education"
+                }) }}
+                              
+                </div>                     
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,337 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="declaration">
+
+                <h1 class="govuk-heading-l">Check your answers</h1>
+
+                {% set bankDetailsHTML %}
+
+                    {% if data['bank--type'] == 'bank' %}
+
+                        <p>
+                            Account holder name:<br>
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
+                        </p>
+
+                        <p>
+                            Sort code:<br>
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
+                        </p>
+
+                        <p>
+                            Account number:<br>
+                            {{ data['pay-details--account-number'] | default('54112144') }}
+                        </p>
+
+                        <p>
+                            Building society roll number:<br>
+                            {{ data['pay-details--roll-number'] | default('Not applicable') }}
+                        </p>
+
+                    {% elseif data['bank--type'] == 'po-card' %}
+
+                        <p>
+                            Account holder name:<br>
+                            {{ data['pay-details--account-holder-name'] | default(data['dummy-applicant-name']) }}
+                        </p>
+
+                        <p>
+                            Sort code:<br>
+                            {{ data['pay-details--sort-code'] | default('01-14-74') }}
+                        </p>
+
+                        <p>
+                            Account number:<br>
+                            {{ data['pay-details--account-number'] | default('54112144') }}
+                        </p>
+
+                    {% else %}
+
+                        <p>
+                            I don’t have a bank account or Post Office card account
+                        </p>
+
+                    {% endif %}
+
+                {% endset %}
+
+                {{ govukSummaryList ({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+                        {
+                            key: {
+                                text: 'Claim date'
+                            },
+                            value: {
+                                text: (data | getClaimDate)
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../claim-date/claim-date-manual',
+                                        visuallyHiddenText: 'whether someone else claims benefits for caring for the person you care for'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Since ' + data | getClaimDate + ' have there been any times you have not provided care for Testing this for at least 35 hours a week?'
+                            },
+                            value: {
+                                text: data['breaks--any']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../breaks/any',
+                                        visuallyHiddenText: 'whether there were any times you have not provided care for Testing this for at least 35 hours a week since ' + data | getClaimDate + ''
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }) }}
+
+                {% if data['breaks--any'] == 'Yes' %}
+
+                    <h2 class="govuk-heading-m govuk-!-margin-top-5">
+                        Times you have not provided care for more than 35 hours a week since {{ data | getClaimDate }}
+                    </h2>
+
+                    {% for id, break in data.breaksStore %}
+
+                        {% if break != '' %}
+
+                            {% set breakCount = breakCount + 1 %}
+
+                            {% if break.reason == 'applicant-hospital' %}
+                                {% set reasonText = 'I was in hospital' %}
+                            {% elseif break.reason == 'dp-hospital' %}
+                                {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in hospital' %}
+                            {% elseif break.reason == 'applicant-respite' %}
+                                {% set reasonText = 'I was in respite or a care home' %}
+                            {% elseif break.reason == 'dp-respite' %}
+                                {% set reasonText = data['dp--name'] | default('The person I care for') + ' was in respite or a care home' %}
+                            {% elseif break.reason == 'applicant-holiday' %}
+                                {% set reasonText = 'I was on holiday' %}
+                            {% elseif break.reason == 'dp-holiday' %}
+                                {% set reasonText = data['dp--name'] | default('The person I care for') + ' was on holiday' %}
+                            {% else %}
+                                {% set reasonText = 'Other' %}
+                            {% endif %}
+
+                            {{ govukSummaryList ({
+                                classes: 'govuk-!-margin-bottom-8',
+                                rows: [
+                                    {
+                                        key: {
+                                            text: 'Reason'
+                                        },
+                                        value: {
+                                            text: reasonText
+                                        }
+                                    },
+                                    {
+                                        key: {
+                                            text: 'Start date'
+                                        },
+                                        value: {
+                                            text: break['start-date-day'] + ' ' + 
+                                            break['start-date-month'] | month + ' ' + 
+                                            break['start-date-year']
+                                        }
+                                    },
+                                    {
+                                        key: {
+                                            text: 'End date'
+                                        },
+                                        value: {
+                                            text: (break['end-date-day'] + ' ' + 
+                                            break['end-date-month'] | month + ' ' + 
+                                            break['end-date-year']) if break['did-end'] == 'Yes' else 'Ongoing'
+                                        }
+                                    },
+                                    {
+                                        key: {
+                                            text: 'Received care from medical professional'
+                                        },
+                                        value: {
+                                            text: break['medical-care']
+                                        }
+                                    } if break.reason == 'applicant-respite' or break.reason == 'dp-respite',
+                                    {
+                                        key: {
+                                            text: 'Actions'
+                                        },
+                                        value: {
+                                            html: '<a href="../breaks/type?selectedBreak=' + id + '">Change</a> <a href="../breaks/elete?selectedBreak=' + id + '" class="app-destructive-label govuk-!-margin-left-2 ">Remove</a>'
+                                        }
+                                    }
+                                }
+                            }) }}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+                {{ govukSummaryList ({
+                    rows: [
+                        {
+                            key: {
+                                text: 'Do you want us to contact you by telephone about your claim?'
+                            },
+                            value: {
+                                text: data['contact--phone-bool'] | default('No')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '..contact/phone',
+                                        visuallyHiddenText: 'whether you want us to contact you by telephone about your claim'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Telephone number'
+                            },
+                            value: {
+                                text: data['contact--phone']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '..contact/phone',
+                                        visuallyHiddenText: 'your telephone number'
+                                    }
+                                ]
+                            }
+                        } if data['contact--phone-bool'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Do you use a textphone because you have hearing difficulties?'
+                            },
+                            value: {
+                                text: data['contact--textphone'] | default('No')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '..contact/textphone',
+                                        visuallyHiddenText: 'whether you use a textphone'
+                                    }
+                                ]
+                            }
+                        } if data['contact--phone-bool'] == 'Yes',
+                        {
+                            key: {
+                                text: 'Do you want an email to confirm we have received your application?'
+                            },
+                            value: {
+                                text: data['contact--email-bool'] | default('No')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '..contact/email',
+                                        visuallyHiddenText: 'whether you want us to contact you by telephone about your claim'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Email address'
+                            },
+                            value: {
+                                text: data['contact--email']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../contact/email',
+                                        visuallyHiddenText: 'your email address'
+                                    }
+                                ]
+                            }
+                        } if data['contact--email-bool'] == 'Yes',
+                        {
+                            key: {
+                                text: 'How often would you like to be paid Carer’s Allowance?'
+                            },
+                            value: {
+                                text: data['bank--frequency'] | default('Every week')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../bank/frequency',
+                                        visuallyHiddenText: 'how often would you like to be paid Carer’s Allowance'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            key: {
+                                text: 'Bank details'
+                            },
+                            value: {
+                                html: bankDetailsHTML
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        text: 'Change',
+                                        href: '../bank/account-type',
+                                        visuallyHiddenText: 'the bank details'
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

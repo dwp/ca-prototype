@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you studying at a university?
+    Were you paid by someone renting a room in your home since {{ data | getClaimDate }}?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="rental-ongoing">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'income--rental-bool',
+                    name: 'income--rental-bool',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Were you paid by someone renting a room in your home since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,13 +36,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',
+                            checked: true if data['income--rental-bool'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            value: 'No~direct',
+                            checked: true if data['income--rental-bool'] == 'No'
                         }
                     ]
                 }) }}

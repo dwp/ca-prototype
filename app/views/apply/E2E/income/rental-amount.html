@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% set isPastTense = data['income--rental-ongoing'] == 'No' %}
+{% set questionText = 'How much ' + ('were you' if isPastTense else 'are') + ' you paid ' + data['income--rental-frequency'] | frequencySuffix + ' from someone renting a room in your home' + (' on average' if data['income--rental-frequency'] == 'Other') +'?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct">
+
+                <h1 class="govuk-heading-l">{{ questionText }}</h1>
+
+                {{ govukInput ({
+                    id: 'income--rental-amount',
+                    name: 'income--rental-amount',
+                    value: data['income--rental-amount'],
+                    classes: 'govuk-input--width-10',
+                    label: {
+                        text: 'Amount in pounds',
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
+                    },
+                    hint: {
+                        text: 'If the amount varies, give an average.'
+                    },
+                    prefix: {
+                        text: '£'
+                    },
+                    suffix: {
+                        text: data['income--rental-frequency'] | frequencySuffix
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you studying at a university?
+    Do you use a textphone because you have hearing difficulties?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,28 +21,28 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="email">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'contact--textphone',
+                    name: 'contact--textphone',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Do you use a textphone because you have hearing difficulties?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            text: 'Yes, contact me by textphone',
+                            value: 'Yes',
+                            checked: true if data['contact--textphone'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            checked: true if data['contact--textphone'] == 'No'
                         }
                     ]
                 }) }}

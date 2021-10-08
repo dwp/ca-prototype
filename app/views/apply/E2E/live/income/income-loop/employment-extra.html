@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you want to add anything about your business or work?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'statutory-sick' | redirect | safe if (data['been-self-employed'] != 'Yes' and data['been-employed'] != 'Yes') }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="statutory-sick">
+
+                {% set extraDetailsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'employment-extra-details',
+                        id: 'employment-extra-details',
+                        value: data['employment-extra-details'],
+                        maxlength: '3000',
+                        label: {
+                            text: 'Tell us more',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'employment-extra',
+                    name: 'employment-extra',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want to add anything about your business or work?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Don’t include any information about your pension, if you get one.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['employment-extra'] == 'Yes',
+                            conditional: {
+                                html: extraDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['employment-extra'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you studying at a university?
+    Have you had any direct payments for caring for people since {{ data | getClaimDate }}?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,28 +21,31 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="direct-ongoing">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'income--direct-bool',
+                    name: 'income--direct-bool',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Have you had any direct payments for caring for people since ' + data | getClaimDate + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'Direct payments usually come from a local council or trust.'
+                    },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',
+                            checked: true if data['income--direct-bool'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            value: 'No~list',
+                            checked: true if data['income--direct-bool'] == 'No'
                         }
                     ]
                 }) }}

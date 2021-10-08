@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Sorry, you'll have to start again
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="allowance-benefits">
+
+                <h1 class="govuk-heading-xl">Sorry, you'll have to start again</h1>
+
+                <p>
+                   You haven't entered any details for 90 minutes, so we've cleared your information to keep it secure.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Start again'
+                }) }}
+                <p>
+                   <a href="https://www.gov.uk/done/apply-carers-allowance" target="_blank">What did you think of this service? </a>(Takes 30 seconds.)
+                </p>                
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

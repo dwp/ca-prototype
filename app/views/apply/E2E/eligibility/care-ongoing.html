@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Do you still provide care for the person for at least 35 hours a week?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../checkpoint/cya">
+
+                    {{ govukDateInput ({
+                        id: 'elig--stop-date',
+                        namePrefix: 'elig--stop-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you stop providing care for ' + data['dp--name'] | default(data['dummy-dp-name']) + ' for at least 35 hours a week?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--l'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 14 7 2020'
+                        },
+                        items: [
+                            {
+                                name: 'day',
+                                classes: 'govuk-input--width-2',
+                                value: data['elig--stop-date-day']
+                            },
+                            {
+                                name: 'month',
+                                classes: 'govuk-input--width-2',
+                                value: data['elig--stop-date-month']
+                            },
+                            {
+                                name: 'year',
+                                classes: 'govuk-input--width-4',
+                                value: data['elig--stop-date-year']
+                            }
+                        ]
+                    }) }}
+
+               
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

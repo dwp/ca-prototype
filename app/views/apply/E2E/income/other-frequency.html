@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% set incomeIndex = data['selectedIncome'] | uuid %}
+{% set incomeLoc = 'incomeStore[' + incomeIndex + ']' %}
+{% set income = data.incomeStore[incomeIndex] %}
+
+{% set isPastTense = income['ongoing'] == 'No' %}
+{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + '  you get these earnings?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="other-amount">
+
+
+                {{ govukRadios ({
+                    idPrefix: 'income--other-frequency',
+                    name: incomeLoc + '[frequency]',
+                    fieldset: {
+                        legend: {
+                            text: questionText,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Once a week',
+                            value: 'Once a week',
+                            checked: true if income['frequency'] == 'Once a week'
+                        },
+                        {
+                            text: 'Every 2 weeks',
+                            value: 'Every 2 weeks',
+                            checked: true if income['frequency'] == 'Every 2 weeks'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if income['frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Every month',
+                            value: 'Every month',
+                            checked: true if income['frequency'] == 'Every month'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if income['frequency'] == 'Other'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

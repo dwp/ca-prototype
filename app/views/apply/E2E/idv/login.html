@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Log in to your account
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="check">
+
+                <h1 class="govuk-heading-xl">Sign in</h1>
+
+                {{ govukInput({
+                    id: 'idv--email',
+                    name: 'idv--email',
+                    value: data['idv--email'] if data['idv--email'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Email address',
+                        classes: 'govuk-input--width-20'
+                    },
+                    type: 'email'
+                }) }}
+
+                {{ govukInput({
+                    id: 'idv--password',
+                    name: 'idv--password',
+                    value: data['idv--password'] if data['idv--password'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Password',
+                        classes: 'govuk-input--width-20'
+                    },
+                    type: 'password'
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+                <p><a href="#">Register now</a> if you have not used this service before.</p>
+
+                <h2 class="govuk-heading-m">
+                    Problems signing in
+                </h2>
+
+                <p><a href="#">I forgot my password</a></p>
+
+                {% set detailsContentHTML %}
+                    <p>
+                        Email <a href="#">DWP sign in support</a> if you have got a problem signing in that is not a forgotten password.
+                    </p>
+                {% endset %}
+                
+                {{ govukDetails({
+                    summaryText: 'Other problems',
+                    html: detailsContentHTML
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

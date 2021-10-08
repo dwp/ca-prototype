@@ -1,18 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Are you studying at a university?
+    How often would you like to be paid Carer’s Allowance?
 {% endblock %}
 
 {% block beforeContent %}
-
     {{ super() }}
-
-    {{ govukBackLink ({
+    {{ govukBackLink({
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -21,33 +18,32 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="account-type">
 
-                {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                {{ govukRadios({
+                    idPrefix: 'bank--frequency',
+                    name: 'bank--frequency',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'How often would you like to be paid Carer’s Allowance?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            text: 'Every week',
+                            value: 'Every week'
                         },
                         {
-                            text: 'No',
-                            value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks'
                         }
                     ]
                 }) }}
 
-                {{ govukButton ({
+
+                {{ govukButton({
                     html: 'Continue'
                 }) }}
 

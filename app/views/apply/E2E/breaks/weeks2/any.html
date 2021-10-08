@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+
 {% block pageTitle %}
-    Are you studying at a university?
+   Since 1 February 2021, were there any times you did not care for at least 35 hours a week?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,28 +25,31 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="full-time">
+            <form action="months2">
 
                 {{ govukRadios ({
-                    idPrefix: 'education--university',
-                    name: 'education--university',
+                    idPrefix: 'breaks--any',
+                    name: 'breaks--any',
                     fieldset: {
                         legend: {
-                            text: 'Are you studying at a university?',
+                            text: 'Since 1 February 2021, were there any times you did not care for ' + ( data['dp--name'] | default('Emily Marsden') ) + ' for at least 35 hours a week?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'Caring weeks run from Sunday to Saturday.'
+                    },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~university-exit',
-                            checked: true if data['education--  '] == 'Yes'
+                            value: 'Yes',   
+                            checked: true if data['breaks--any'] == 'Yes'
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['education--university'] == 'No'
+                            value: 'No~education',
+                            checked: true if data['breaks--any'] == 'No'
                         }
                     ]
                 }) }}

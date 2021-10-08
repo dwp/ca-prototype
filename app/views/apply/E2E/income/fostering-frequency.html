@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% set isPastTense = data['income--fostering-ongoing'] == 'No' %}
+{% set questionText = 'How often ' + ('did' if isPastTense else 'do') + ' you get paid Fostering Allowance?' %}
+
+{% block pageTitle %}
+    {{ questionText }}
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="fostering-amount">
+
+                {{ govukRadios ({
+                    idPrefix: 'income--fostering-frequency',
+                    name: 'income--fostering-frequency',
+                    fieldset: {
+                        legend: {
+                            text: questionText,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Once a week',
+                            value: 'Once a week',
+                            checked: true if data['income--fostering-frequency'] == 'Once a week'
+                        },
+                        {
+                            text: 'Every 2 weeks',
+                            value: 'Every 2 weeks',
+                            checked: true if data['income--fostering-frequency'] == 'Every 2 weeks'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if data['income--fostering-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Every month',
+                            value: 'Every month',
+                            checked: true if data['income--fostering-frequency'] == 'Every month'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if data['income--fostering-frequency'] == 'Other'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
