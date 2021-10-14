@@ -18,7 +18,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="nationality3">
+            <form method="post" action="pay-frequency">
 
 
             {{ govukRadios({
@@ -27,17 +27,17 @@
             name: "changed-name",
             fieldset: {
                 legend: {
-                text: "Do you live in the United Kingdom?",
+                text: "Have you lived in the United Kingdom for at least 2 of the past 3 years?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
                 }
             },
             hint: {
-                text: "Select 'Yes' if you consider England, Scotland, Wales or Northern Ireland to be your home."
+                text: "The 2 years do not need to be continuous. You should select 'Yes' if your time spent in the United Kingdom over the past 36 months (3 years) adds up to at least 24 months."
             },
             items: [
                 {
-                value: "yes",
+                value: "yes~../bank/pay-frequency",
                 text: "Yes"
                 },
                 {
