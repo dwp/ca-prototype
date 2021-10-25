@@ -47,21 +47,33 @@
                         },
                          {
                         value: "another~another-nationality",
-                        text: "Another nationality"
+                        text: "Another nationality",
+                        hint: {
+                            text: "You’ll tell us your nationality on the next page."
+                        }
                         }
                     ]
                     }) }}
 
         <br>
+         {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+    <h2 class="govuk-heading-m">More information</h2>
+
         <div class="govuk-body">
-            If you hold a permanent British passport, you're a Briish national. 
-            If you're not sure whether you qualify, <a href="https://www.gov.uk/types-of-british-nationality">find out if you're a British national</a>
+            <a href="https://www.gov.uk/government/publications/common-travel-area-guidance">Your rights as an Irish citizen</a>
+        </div>
+        <div class="govuk-body">
+            Find out about types of <a href="https://www.gov.uk/types-of-british-nationality">British nationality</a>
         </div>
 
           <details class="govuk-details govuk-!-margin-top-7" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">
-                    I have dual citizenship
+                    What to do if you have dual nationality.
+
                     </span>
                 </summary>
                     <div class="govuk-details__text">
@@ -69,10 +81,7 @@
                     </div>
         </details>
 
-                {{ govukButton({
-                    html: 'Continue'
-                }) }}
-
+               
             </form>
 
         </div>
