@@ -1,0 +1,229 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% set titleText = 'Date of the first break in care' %}
+{% block pageTitle %}
+{{ titleText }}
+{% endblock %}
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="medical">
+        
+            {# If there are any existing breaks, overrides isFirstBreak to false #}
+            {% set isFirstBreak = true %}
+            {% for id, break in data.breaksStore %}
+                {% if break != '' %}
+                    {% set isFirstBreak = false %}
+                {% endif %}
+            {% endfor %}
+
+            {# If this is the first break and we're not changing an existing break #}
+            {% if isFirstBreak and not break %}
+                <h1 class="govuk-heading-l">
+                    {{ titleText }}
+                </h1>
+                <p class="govuk-hint">
+                    If there has been more than one break in care, just tell us about the first one. You
+                    can tell us about other breaks in care later.
+                </p>
+                <br>
+            {# Else if we're editing an existing break #}
+            {% elif break %}
+                <h1 class="govuk-heading-l">
+                    Date of the break in care
+                </h1>
+               
+              
+            {# Else must be a new break #}
+            {% else %}
+                <h1 class="govuk-heading-l">
+                    Date of the next break in care
+                </h1>
+                <p class="govuk-hint">
+                    Tell us about the next break in care. If you need to tell us about any more breaks, you can do this later.
+                </p>
+                <br>
+            {% endif%}
+            
+            {{ govukDateInput ({
+                id: 'stop-care',
+                namePrefix: breakLoc + '[stop-care',
+                fieldset: {
+                    legend: {
+                        text: 'When did you stop providing care?',
+                        isPageHeading: false,
+                        classes: 'govuk-fieldset__legend--s'
+                    }
+                },
+                hint: {
+                    text: 'For example, 12 3 2021'
+                },
+                items: [
+                    {
+                        classes: 'govuk-input--width-2',
+                        name: 'day]',
+                        value: break['stop-care-day']
+                    },
+                    {
+                        classes: 'govuk-input--width-2',
+                        name: 'month]',
+                        value: break['stop-care-month']
+                    },
+                    {
+                        classes: 'govuk-input--width-4',
+                        name: 'year]',
+                        value: break['stop-care-year']
+                    }
+                ]
+            }) }}
+            {# <div class="govuk-form-group">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h1 class="govuk-fieldset__heading">
+                        When did you stop providing care?
+                    </h1>
+                </legend>
+                <div class="govuk-hint">
+                    For example, 12 3 2021
+                </div>
+                <div class="govuk-date-input" id="stop-care">
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="stopcareday">
+                                Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="stopcareday"
+                                name="stopcareday" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="stopcaremonth">
+                                Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="stopcaremonth"
+                                name="stopcaremonth" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="stopcareyear">
+                                Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="stopcareyear"
+                                name="stopcareyear" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                </div>
+            </div> #}
+            </br>
+            {{ govukDateInput ({
+                id: 'start-care',
+                namePrefix: breakLoc + '[start-care',
+                fieldset: {
+                    legend: {
+                        text: 'When did you start providing care again?',
+                        isPageHeading: false,
+                        classes: 'govuk-fieldset__legend--s'
+                    }
+                },
+                hint: {
+                    text: 'For example, 12 3 2021'
+                },
+                items: [
+                    {
+                        classes: 'govuk-input--width-2',
+                        name: 'day]',
+                        value: break['start-care-day']
+                    },
+                    {
+                        classes: 'govuk-input--width-2',
+                        name: 'month]',
+                        value: break['start-care-month']
+                    },
+                    {
+                        classes: 'govuk-input--width-4',
+                        name: 'year]',
+                        value: break['start-care-year']
+                    }
+                ]
+            }) }}
+            {# <div class="govuk-form-group">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h1 class="govuk-fieldset__heading">
+                        When did you start providing care again?
+                    </h1>
+                </legend>
+                <div class="govuk-hint">
+                    For example, 21 4 2021
+                </div>
+                <div class="govuk-date-input" id="stop-care">
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="startcareday">
+                                Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startcareday"
+                                name="startcareday" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="startcaremonth">
+                                Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startcaremonth"
+                                name="startcaremonth" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="startcareyear">
+                                Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="startcareyear"
+                                name="startcareyear" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                    </div>
+                </div>
+            </div> #}
+            <p>or</p>
+            {{ govukCheckboxes({
+                idPrefix: "not-started",
+                name: breakLoc + '[not-started]',
+                items: [
+                    {
+                    value: "not-started",
+                    text: "I have not started providing care again"
+                    }
+                ]
+            }) }}
+            {# <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="not-started" name="not-started" type="checkbox"
+                        value="not-started">
+                    <label class="govuk-label govuk-checkboxes__label" for="not-started">
+                        I have not started providing care again
+                    </label>
+                </div>
+            </div> #}
+            <br>
+            <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
+            <button class="govuk-button" data-module="govuk-button" href="medical">
+                {# If editing a break, show save instead of continue #}
+               
+                    Continue
+                
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

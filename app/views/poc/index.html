@@ -7,31 +7,9 @@
 
 {% block header %}
 
-  <div class="prototype-remove-blue-border-from-header">
 
     {{ super() }}
 
-    <div class="prototype-home-top">
-
-      <div class="govuk-width-container">
-
-        <div class="govuk-grid-row">
-
-          <div class="govuk-grid-column-two-thirds">
-
-            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Carer’s Allowance</h1>
-
-            <h2 class="govuk-heading-l govuk-!-font-weight-regular  govuk-!-margin-bottom-2">Pathfinder</h2>
-
-          </div>
-
-        </div>
-      
-      </div>
-
-    </div>
-  
-  </div>
 
 {% endblock %}
 
@@ -47,18 +25,13 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
+   <div class="govuk-width-container">
 
-  {{ prototypeVersionCard({
-        ticket: 'E2E',
-        description: 'End-to-end journey for simple allow.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Currently in UR'
-        ]
-      }) }}
+    
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Pre</h1>
+
+<br><br>
+
       
       {{ prototypeVersionCard({
         ticket: 'E2E-old',
@@ -69,58 +42,7 @@
         }
       }) }}
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-728',
-        description: 'Scottish devolution',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        }
-      }) }}
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-724',
-        description: 'As-is income journey',
-        statusTag: {
-            text: 'Live', 
-            classes: 'govuk-tag--blue'
-        }
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'Agents',
-        description: 'Agent service and screens.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        }
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'ACA-468',
-        description: 'Bank details flat data capture.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Based on live service capture',
-          'Split into one-thing-per-page'
-        ]
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'ACA-462',
-        description: 'Partner details flat data capture.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Based on live service capture',
-          'Split into one-thing-per-page'
-        ]
-      }) }}
       
     </div>
   </div>

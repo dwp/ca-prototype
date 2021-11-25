@@ -2,36 +2,16 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Prototypes: Report a change to Carer's Allowance
+  Prototypes: Apply for Carer's Allowance
 {% endblock %}
 
 {% block header %}
 
-  <div class="prototype-remove-blue-border-from-header">
 
     {{ super() }}
 
-    <div class="prototype-home-top">
 
-      <div class="govuk-width-container">
-
-        <div class="govuk-grid-row">
-
-          <div class="govuk-grid-column-two-thirds">
-
-            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Carer’s Allowance</h1>
-
-            <h1 class="govuk-heading-l govuk-!-font-weight-regular  govuk-!-margin-bottom-2">'Apply' prototype</h1>
-
-          </div>
-
-        </div>
-      
-      </div>
-
-    </div>
-  
-  </div>
+        
 
 {% endblock %}
 
@@ -46,152 +26,115 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-two-thirds">
+
+ <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Improvements to existing service</h1>
+<br><br>
 
 
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-1038',
-        description: 'Breaks in care - new claim journey redesign',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Currently in UR'
-        ]
-      }) }}
-
-           {{ prototypeVersionCard({
-        ticket: 'ACA-906',
-        description: 'Scottish devolution CADS pages – Child Disability Payment added as a QB',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Currently in UR'
-        ]
-      }) }}
-     
-      {{ prototypeVersionCard({
-        ticket: 'ACA-728',
-        description: 'Scottish devolution letters – Child Disability Payment changes',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Currently in UR'
-        ]
-      }) }}     
-     
-     
-      {{ prototypeVersionCard({
-        ticket: 'ACA-901',
-        description: 'Amendments to income journey',
-        statusTag: {
-            text: 'Draft', 
-            classes: 'govuk-tag--grey'
-        },
-        researchNotes: [
-          'UR needed'
-        ]
-      }) }}
+     <div class="app-most-recent">
+            <h2 class="govuk-heading-m">Breaks in care - iteration 3</h2>
+              {# <strong class="govuk-tag govuk-tag--red">Experimental</strong> #}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of design</dt>
+              <dd class="govuk-body" style="margin-left:0%">September 2021</dd>
+            </dl>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Designers</dt>
+              <dd class="govuk-body" style="margin-left:0%">Emily Wilkinson and Colin Jones</dd>
+            </dl>
+          </div>
+        </div>
+        <h3 class="govuk-heading-s">Business requirement</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Journey includes, ID&T data capture and date of claim</li>
+            <li>Only asking for the dates of breaks in care if after date of claim</li>
+            <li>Scenario: 20 September 2021 date of claim, 1 August 2021 date started caring
+          </ul>
+          <h3 class="govuk-heading-s">Related story</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            <a href="https://dwpdigital.atlassian.net/browse/ACA-1285">ACA-1285</a> - BIC UI improvements
+            </li>
+          </ul>
+             <a href="/apply/ACA-1285/ACA-1285-2/start-page" class="govuk-button govuk-button--start">Start now</a><br>
+      </div>  
 
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-651',
-        description: 'CA517 Northern Ireland letter to DP',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--grey'
-        }
-      }) }}
+     <div class="app-most-recent">
+            <h2 class="govuk-heading-m">Breaks in care - iteration 2</h2>
+              {# <strong class="govuk-tag govuk-tag--red">Experimental</strong> #}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of design</dt>
+              <dd class="govuk-body" style="margin-left:0%">August 2021</dd>
+            </dl>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Designers</dt>
+              <dd class="govuk-body" style="margin-left:0%">Emily Wilkinson and Colin Jones</dd>
+            </dl>
+          </div>
+        </div>
+        <h3 class="govuk-heading-s">Business requirement</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Updated to GDS style one thing per page for removing a break in care from check your answers</li>
+          </ul>
+          <h3 class="govuk-heading-s">Related story</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            <a href="https://dwpdigital.atlassian.net/browse/ACA-1088">ACA-1088</a> - Add new page for removing a break in care entry from the summary page
+            </li>
+          </ul>
+             <a href="/apply/ACA-1038/ACA-1088/first" class="govuk-button govuk-button--start">Start now</a><br>
+      </div>   
 
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-408',
-        description: 'Accessibility statement',
-        statusTag: {
-            text: 'In service', 
-            classes: 'govuk-tag--grey'
-        }
-      }) }}
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-380',
-        description: 'Changes to pay details page to address accessibility issues with sort code fields.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Fields changed to follow GDS design pattern'
-        ]
-      }) }}
+        <div class="app-most-recent">
+            <h2 class="govuk-heading-m">Breaks in care - iteration 1</h2>
+      {# <strong class="govuk-tag govuk-tag--red">Experimental</strong> #}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of design</dt>
+              <dd class="govuk-body" style="margin-left:0%">July 2021</dd>
+            </dl>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Designers</dt>
+              <dd class="govuk-body" style="margin-left:0%">Emily Wilkinson and Colin Jones</dd>
+            </dl>
+          </div>
+        </div>
+        <h3 class="govuk-heading-s">Business requirement</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Must capture all hospital, care home and respite care stays</li>
+          </ul>
+          <h3 class="govuk-heading-s">Related story</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            <a href="https://dwpdigital.atlassian.net/browse/ACA-1038">ACA-1038</a> - Improve BIC journey 
+            </li>
+          </ul>
+      <a href="/apply/ACA-1038/ACA-1088-new/first" class="govuk-button govuk-button--start">Start now</a><br>
+          </div>   
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-299',
-        description: 'Changes to declaration page.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Amendments to link text to be more descriptive to resolve accessibility issue.'
-        ]
-      }) }}
+          <h2 class="govuk-heading-m">
+     <a href="/apply/index-older" class="govuk-link--no-visited-state">
+          Older prototypes
+        </a><h2>
+   </div>
 
-      {{ prototypeVersionCard({
-        ticket: 'ACA-284',
-        description: 'Changes to content on claim date page.',
-        statusTag: {
-            text: 'Experimental', 
-            classes: 'govuk-tag--red'
-        },
-        researchNotes: [
-          'Adapt content to remove reliance on separate page of guidance.'
-        ]
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'ACA-202',
-        description: 'Link to changes service removed from confirmation page.',
-        statusTag: {
-            text: 'In service', 
-            classes: 'govuk-tag--green'
-        },
-        researchNotes: [
-          'Link to changes service was used by only 0.4% of users, based on a sample from June 2019 to November 2019',
-          'UR happy to remove this link, hypothesised to be in wrong place in the journey',
-          'Thematic analysis of feedback showed no evidence of users need for link'
-        ]
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'ACA-111',
-        description: 'Changes to address lookup journey for applicant.',
-        statusTag: {
-            text: 'In service', 
-            classes: 'govuk-tag--green'
-        },
-        researchNotes: [
-          'New journey added to follow GDS design pattern'
-        ]
-      }) }}
-
-      {{ prototypeVersionCard({
-        ticket: 'ACA-118',
-        description: 'Changes to address lookup journey for DP.',
-        statusTag: {
-            text: 'In service', 
-            classes: 'govuk-tag--green'
-        },
-        researchNotes: [
-          'New journey added to follow GDS design pattern'
-        ]
-      }) }}
+  
       
     </div>
   </div>

@@ -1,0 +1,184 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prototypes: Apply for Carer's Allowance
+{% endblock %}
+
+{% block header %}
+
+
+    {{ super() }}
+
+
+        
+
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: '/'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+
+ <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Older prototypes</h1>
+<br><br>
+
+           {{ prototypeVersionCard({
+        ticket: 'ACA-906',
+        description: 'Scottish devolution CADS pages – Child Disability Payment added as a QB',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Currently in UR'
+        ]
+      }) }}
+
+     
+     
+      {{ prototypeVersionCard({
+        ticket: 'ACA-901',
+        description: 'Amendments to income journey',
+        statusTag: {
+            text: 'Draft', 
+            classes: 'govuk-tag--grey'
+        },
+        researchNotes: [
+          'UR needed'
+        ]
+      }) }}
+
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-728',
+        description: 'Scottish devolution',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        }
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-468',
+        description: 'Bank details flat data capture.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Based on live service capture',
+          'Split into one-thing-per-page'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-462',
+        description: 'Partner details flat data capture.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Based on live service capture',
+          'Split into one-thing-per-page'
+        ]
+      }) }}
+      
+
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-408',
+        description: 'Accessibility statement',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--grey'
+        }
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-380',
+        description: 'Changes to pay details page to address accessibility issues with sort code fields.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Fields changed to follow GDS design pattern'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-299',
+        description: 'Changes to declaration page.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Amendments to link text to be more descriptive to resolve accessibility issue.'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-284',
+        description: 'Changes to content on claim date page.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Adapt content to remove reliance on separate page of guidance.'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-202',
+        description: 'Link to changes service removed from confirmation page.',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        },
+        researchNotes: [
+          'Link to changes service was used by only 0.4% of users, based on a sample from June 2019 to November 2019',
+          'UR happy to remove this link, hypothesised to be in wrong place in the journey',
+          'Thematic analysis of feedback showed no evidence of users need for link'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-111',
+        description: 'Changes to address lookup journey for applicant.',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        },
+        researchNotes: [
+          'New journey added to follow GDS design pattern'
+        ]
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-118',
+        description: 'Changes to address lookup journey for DP.',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        },
+        researchNotes: [
+          'New journey added to follow GDS design pattern'
+        ]
+      }) }}
+      
+    </div>
+  </div>
+
+{% endblock %}

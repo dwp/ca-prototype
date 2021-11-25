@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prototypes: Apply for Carer's Allowance
+{% endblock %}
+
+{% block header %}
+
+
+    {{ super() }}
+
+
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back to prototype home',
+    href: '/'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   <div class="govuk-width-container">
+
+    
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">New service journeys</h1>
+
+<br><br>
+
+  <div class="app-most-recent">
+            <h2 class="govuk-heading-m">Iteration 1</h2>
+      {# <strong class="govuk-tag govuk-tag--red">Experimental</strong> #}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of design</dt>
+              <dd class="govuk-body" style="margin-left:0%">September 2021</dd>
+            </dl>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Designers</dt>
+              <dd class="govuk-body" style="margin-left:0%">Emily Wilkinson and Colin Jones</dd>
+            </dl>
+          </div>
+        </div>
+        <h3 class="govuk-heading-s">Business requirement</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>We need to siphon out users early on in the journey who won’t be eligible for ‘simple allow’</li>
+            <li>We need to integrate with ID&V and residency ‘green zone’ service UI</li>
+            <li>For MVP, we will not be including breaks in care, as we’re only accepting claims dated on the date the user applies (no back-dating or future-dating)</li>
+            <li>For MVP we will only accept claims from the carer – no third party applications</li>
+          </ul>
+          {# <h3 class="govuk-heading-s">Related story</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            </li>
+          </ul> #}
+      <a href="E2E/index" class="govuk-button govuk-button--start">Start now</a><br>
+          </div>   
+   </div>
+
+
+  </div>
+
+{% endblock %}
