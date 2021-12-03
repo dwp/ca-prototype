@@ -27,31 +27,34 @@
             name: "changed-name",
             fieldset: {
                 legend: {
-                text: "Have you spent more than a year abroad in the past 3 years?",
+                text: "Have you been out of the United Kingdom in the past 2 years?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
                 }
             },
-            hint: {
-                text: "Select 'Yes' if you've spent more than 12 months outside the United Kingdom, the Republic of Ireland, the Isle of Man, or the Channel Isles in the past 36 months."
-            },
+           
             items: [
                 {
-                value: "Yes",
-                text: "Yes"
+                value: "Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance",
+                text: "Yes, for less than 2 weeks"
                 },
                 {
-                value: "no",
-                text: "No"
+                value: "Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance",
+                text: "Yes, for 2 to 4 weeks"
                 },
                 {
-                value: "no",
-                text: "Not sure"
-                }
-            ]
-
-
-
+                value: "Yes~https://dth-prototype.herokuapp.com/auth/v8/register/start-rmd?service-name=Apply%20for%20Carer%27s%20Allowance",
+                text: "Yes, for more than 4 weeks"
+                },
+                    {
+                      divider: "or"
+                    },
+                    {
+                      value: "no",
+                      text: "No"
+                    }
+                  ]
+  
             }) }}
         
                 {{ govukButton({

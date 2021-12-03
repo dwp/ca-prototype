@@ -20,19 +20,16 @@
 
             <form method="post" action="nationality2">
 
-           
+
+        <h1 class="govuk-heading-l">What is your nationality?</h1>
+
+           <p>Select if you are British, Irish or a citizen of a different country.</p>
+
+
               
                     {{ govukRadios({
                     idPrefix: "nationality",
                     name: "nationality",
-                    fieldset: {
-                        legend: {
-                        text: "What is your nationality?",
-                        isPageHeading: true,
-                        classes: "govuk-fieldset__legend--l"
-                        }
-                    },
-                    
                     items: [
                         {
                         value: "british",
@@ -43,11 +40,17 @@
                         },
                         {
                         value: "irish",
-                        text: "Irish"
+                        text: "Irish",
+                         hint: {
+                            text: "Select if you're from the Republic of Ireland."
+                         }
                         },
-                         {
+                        {
+                        divider: "or"
+                        },
+                        {
                         value: "another~another-nationality",
-                        text: "Another nationality",
+                        text: "Citizen of another country",
                         hint: {
                             text: "You’ll tell us your nationality on the next page."
                         }
@@ -63,10 +66,10 @@
     <h2 class="govuk-heading-m">More information</h2>
 
         <div class="govuk-body">
-            <a href="https://www.gov.uk/government/publications/common-travel-area-guidance">Your rights as an Irish citizen</a>
+            <a href="https://www.gov.uk/types-of-british-nationality.asp">Find out about types of British nationality</a>
         </div>
         <div class="govuk-body">
-            Find out about types of <a href="https://www.gov.uk/types-of-british-nationality">British nationality</a>
+        <a href="https://www.gov.uk/government/publications/common-travel-area-guidance.asp">Your rights as an Irish citizen</a>
         </div>
 
           <details class="govuk-details govuk-!-margin-top-7" data-module="govuk-details">
@@ -77,7 +80,8 @@
                     </span>
                 </summary>
                     <div class="govuk-details__text">
-                        If you have dual citizenship, select the nationality on the identity documents you're using to make this application.
+                        If you have dual nationality, select the nationality on the identity documents you're using to make this application.
+
                     </div>
         </details>
 
