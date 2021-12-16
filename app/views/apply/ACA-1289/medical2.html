@@ -15,20 +15,18 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form action="medical2">
+            <form action="list">
                 {{ govukRadios({
                     idPrefix: 'medical',
                     name: breakLoc + '[medical]',
                     fieldset: {
                         legend: {
-                        text: "Did you or John Smith receive medical care during this time?",
+                        text: "Did you or John Smith receive medical care in a hospital?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }
                     },
-                  hint: {
-                        text: 'For example, any form of medical treatment in hospital, respite or a care home.'
-                    },
+                
                     items: [
                         {
                             value: "Yes",
@@ -68,7 +66,7 @@
                     <button class="govuk-button" data-module="govuk-button" href="medical">
                 {# If editing a break, show save instead of continue #}
                 {% if break.medical %}
-                    Save
+                    Continue
                 {% else %}
                     Continue
                 {% endif%}
