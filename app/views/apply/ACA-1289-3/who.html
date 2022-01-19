@@ -16,57 +16,41 @@
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <form action="list">
+               
+
+
+               
                 {{ govukRadios({
                     idPrefix: 'medical',
                     name: breakLoc + '[medical]',
                     fieldset: {
                         legend: {
-                        text: "Did you or John Smith receive this medical care in hospital?",
+                        text: "Did you receive this medical care in hospital?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }
                     },
-                
+                  
                     items: [
                         {
                             value: "Yes",
                             text: "Yes",
-                            checked: true if break['medical'] == 'Yes'
+                            conditional: {
+                                html: yesHtml
+                            }
                         },
                         {
                             value: "No",
-                            text: "No, it was somewhere else",
+                            text: "No",
                             checked: true if break['medical'] == 'No'
                         }
                     ]
                 }) }}
-                {# <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            Did you or John Smith stay somewhere that provided medical care during this time?
-                        </h1>
-                    </legend>
-                    <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="medical-yes" name="medical" type="radio" value="Yes">
-                        <label class="govuk-label govuk-radios__label" for="medical-yes">
-                            Yes
-                        </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="medical-no" name="medical" type="radio" value="No">
-                        <label class="govuk-label govuk-radios__label" for="medical-no">
-                            No
-                        </label>
-                        </div>
-                    </div>
-                    </fieldset>
-                </div> #}
+               
                     <button class="govuk-button" data-module="govuk-button" href="medical">
                 {# If editing a break, show save instead of continue #}
                 {% if break.medical %}
-                    Continue
+                    Save
                 {% else %}
                     Continue
                 {% endif%}

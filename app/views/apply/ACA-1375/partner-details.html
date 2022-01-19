@@ -1,0 +1,232 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            
+<form method="post">
+                {% set hintHTML %}
+
+                    <p>
+                        We look at any money your partner gets from benefits when we work out if you can get Carer's Allowance.
+                    </p>
+                    <p>
+                        Your claim date is 1 January 2021. By partner we mean:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a person you are married to or live with as if you are married</li>
+                        <li>a civil partner or a person you live with as if you are civil partners</li>
+                    </ul>
+
+                {% endset %}
+
+                {% set partnerInfo %}
+                {{ govukInput ({
+                    id: 'dp-name-title',
+                    name: 'dp-name-title',
+                    value: data['dp-name-title'] if data['dp-name-title'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Title',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-first',
+                    name: 'dp-name-first',
+                    value: data['dp-name-first'] if data['dp-name-first'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'First name',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-middle',
+                    name: 'dp-name-middle',
+                    value: data['dp-name-middle'] if data['dp-name-middle'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Middle name(s)',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-last',
+                    name: 'dp-name-last',
+                    value: data['dp-name-last'] if data['dp-name-last'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Last name',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'dp-name-other',
+                    name: 'dp-name-other',
+                    value: data['dp-name-other'] if data['dp-name-other'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Other surname or maiden name (optional)',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+               
+
+                
+
+
+                {{ govukDateInput ({
+                    id: 'dp-dob',
+                    name: 'dp-dob',
+                    fieldset: {
+                        legend: {
+                            text: 'Date of birth',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'dp-dob-day',
+                            label: 'Day',
+                            value: data['dp-dob-day']
+                        },
+                        {
+                            classes: 'govuk-input--width-2',
+                            name: 'dp-dob-month',
+                            label: 'Month',
+                            value: data['dp-dob-month']
+                        },
+                        {
+                            classes: 'govuk-input--width-4',
+                            name: 'dp-dob-year',
+                            label: 'Year',
+                            value: data['dp-dob-year']
+                        }
+                    ],
+                    hint: {
+                        text: 'For example, 1 6 1980'
+                    }
+                }) }}
+
+ 
+                {{ govukInput ({
+                    id: 'dp-nationality',
+                    name: 'dp-nationality',
+                    value: data['dp-nationality'] if data['dp-nationality'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Nationality',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+                {{ govukRadios ({
+                    idPrefix: 'dp-separated',
+                    name: 'dp-separated',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you separated since your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ],
+                    hint: {
+                        text: 'Your claim date is 10 January 1980'
+                    }
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'dp-cared-for-person',
+                    name: 'dp-cared-for-person',
+                    fieldset: {
+                        legend: {
+                            text: 'Is this the person you provide care for?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~/apply/ACA-1375/nino1'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~/apply/ACA-1375/dp-details'
+                        }
+                    ]
+                }) }}
+                {% endset %}
+
+                {{ govukRadios({
+                    idPrefix: 'partner--bool',
+                    name: 'partner--bool',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you lived with a partner at any time since your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHTML
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            conditional: {
+                                html: partnerInfo
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+           </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you been on a course of education since your claim date?
+{% endblock %}
+
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            
+            <form action="#">
+
+                {{ govukRadios({
+                    idPrefix: 'breaks--education',
+                    name: 'breaks--education',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you been on a course of education since your claim date?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+
+                    hint: {
+                        text: 'Your claim date is ' + ( data['claim--date'] | default('20 September 2021') ) + '.'
+                    },
+
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['breaks--education'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['breaks--education'] == 'No'
+                        }
+                    ]
+
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

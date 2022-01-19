@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You may be eligible for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-details">
+
+   
+                    <p class="govuk-fieldset__legend--l">
+                        What is the National Insurance number of the person you care for?
+                    </p>
+                    <p>
+                        If you enter this you could get:
+                    </p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a super speedy claim</li>
+                        <li>a sticker for providing it</li>
+                    </ul>
+            
+                {{ govukInput ({
+                        id: 'dp-ni',
+                        name: 'dp-ni',
+                        
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'National Insurance number',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        },
+                        hint: {
+                            text: 'For example, QQ123456C'
+                        }
+                    }) }}
+
+        
+
+              
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
