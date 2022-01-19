@@ -22,15 +22,13 @@ You may be eligible for Carer’s Allowance
 
    
                     <p class="govuk-fieldset__legend--l">
-                        What is the National Insurance number of the person you care for?
+                        What is Carol Webber's National Insurance number?
                     </p>
                     <p>
-                        If you enter this you could get:
+                        
+                        If they do not have a National Insurance number, or you are unable to find out what it is, you can leave it blank.
                     </p>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>a super speedy claim</li>
-                        <li>a sticker for providing it</li>
-                    </ul>
+                   
             
                 {{ govukInput ({
                         id: 'dp-ni',
@@ -46,7 +44,17 @@ You may be eligible for Carer’s Allowance
                         }
                     }) }}
 
-        
+                    <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                        Why we ask for the National Insurance number
+                        </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            By telling us the National Insurance number of the person you care for, we are able to easily identify them and progress your claim quicker. 
+                            
+                        </div>
+                        </details>
 
               
 
