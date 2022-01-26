@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You may be eligible for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-details">
+
+   
+                <p class="govuk-fieldset__legend--l">
+                    What is John Smith's National Insurance number?
+                </p>
+                <p>
+                    
+                    If they do not have a National Insurance number, or you are unable to find out what it is, you can leave it blank.
+                </p>
+            
+                {{ govukInput ({
+                        id: 'dp-ni',
+                        name: 'dp-ni',
+                        
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'National Insurance number',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        },
+                        hint: {
+                            text: 'For example, QQ123456C'
+                        }
+                    }) }}
+
+                    <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                        Why we ask for the National Insurance number
+                        </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            By telling us the National Insurance number of the person you care for, we are able to easily identify them and progress your claim quicker. 
+                            
+                        </div>
+                        </details>
+
+              
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
