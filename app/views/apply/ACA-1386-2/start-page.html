@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+{% block pageTitle %}
+Carer's Allowance
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+ 
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post">
+                <h1 class="govuk-heading-xl">Carer's Allowance
+                </h1>
+
+                 <h1 class="govuk-heading-m">Make a claim
+                </h1>
+        
+        <p>Before you apply make sure you have your:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>National Insurance number (if you have a partner you’ll need theirs too)</li>
+            <li>bank or building society details (unless you get your State Pension)</li>
+            <li>employment details and latest payslip if you’re working</li>
+            <li>P45 if you’ve recently finished work</li>
+            <li>course details if you’re studying</li>
+            <li>details of any expenses, for example pension contributions or the cost of caring for your children or the disabled person while you’re at work</li>
+            </ul>
+
+            <p>You also need details of the person you care for. You need their:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>date of birth and address</li>
+                <li>National Insurance number if they’re 16 or over</li>
+                <li>Disability Living Allowance reference if they’re under 16</li>
+                </ul>
+            <br>
+
+                {{ govukButton({
+                text: "Apply now",
+                href: "claim-date",
+                isStartButton: true
+                }) }}
+
+                    <h1 class="govuk-heading-m">Other ways to apply</h1>
+                    <p>If you cannot apply online, you can <a href="/government/publications/carers-allowance-claim-form">apply by post</a>. The address to send your application to is at the end of the form.</p>
+                    <h1 class="govuk-heading-m">If you disagree with a decision</h1>
+                    <p>You can <a href="/mandatory-reconsideration">challenge a decision</a> about your claim. This is called asking for mandatory reconsideration.</p>
+
+                
+
+            </form>
+        </div>
+</div>
+{% endblock %}

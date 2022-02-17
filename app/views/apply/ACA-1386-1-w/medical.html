@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% block pageTitle %}
+    Were you or the person you care for getting care from a medical professional during this time?
+{% endblock %}
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="who">
+               
+{% set yesHtml %}
+
+                    {{ govukRadios({
+                    classes: "govuk-radios",
+                    idPrefix: "medical-hospital",
+                    name: "medical-hospital",
+                    fieldset: {
+                        legend: {
+                        text: "Who received medical care?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--s"
+                        }
+                    },
+                    
+                    items: [
+                        {
+                        value: "you",
+                        text: "You"
+                        },
+                        {
+                        value: "johnsmith",
+                        text: "John Smith"
+                        }
+                    ]
+                    }) }}
+{% endset -%}
+
+               
+                {{ govukRadios({
+                    idPrefix: 'medical',
+                    name: breakLoc + '[medical]',
+                    fieldset: {
+                        legend: {
+                        text: "Did you or John Smith receive medical care during this time?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--l"
+                        }
+                    },
+                  hint: {
+                        text: 'For example, any form of medical treatment in hospital, respite or a care home.'
+                    },
+                    items: [
+                        {
+                            value: "Yes",
+                            text: "Yes",
+                            conditional: {
+                                html: yesHtml
+                            }
+                        },
+                        {
+                            value: "No",
+                            text: "No",
+                            checked: true if break['medical'] == 'No'
+                        }
+                    ]
+                }) }}
+               
+                    <button class="govuk-button" data-module="govuk-button" href="medical">
+                {# If editing a break, show save instead of continue #}
+                {% if break.medical %}
+                    Save
+                {% else %}
+                    Continue
+                {% endif%}
+            </button>
+            <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
+            </form>
+        </div>
+</div>
+{% endblock %}

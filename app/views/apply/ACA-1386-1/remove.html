@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% block pageTitle %}
+    Confirm you want to remove this
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="list">    
+                <h1 class="govuk-heading-l">Confirm you want to remove this</h1>
+                <table class="govuk-table">
+                   <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Date of break</b>
+                              </td>
+                              {# {% if break['started-caring-again'] === "No" %}
+                                <td class="govuk-table__cell">
+                                  Not restarted care
+                                </td>
+                              {% else %}
+                                <td class="govuk-table__cell">
+                                  {{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }} to
+                                  {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
+                                </td>
+                              {% endif%} #}
+                              <td class="govuk-table__cell"> 11 Jan 2022 to 26 Jan 2022</td>
+                             
+                              </tr>
+
+                                <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Medical care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              {% if break['medical'] === 'Yes' %}
+                                Yes - John Smith <br>
+                              
+                              {% else %}
+                                No
+                              {% endif %}
+                            </td>
+
+                            
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Hospital</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                                Yes<br>
+                              
+                            </td>
+
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Other weeks you did not <br>provide 35 hours of care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              23 Jan 2022 to 29 Jan 2022
+                            </td>
+
+                              
+                              </tr>
+                             
+                  </table>
+                  {{ govukButton ({
+                      html: 'Remove',
+                      classes: 'govuk-button--warning'
+                  }) }}
+                <p>
+                    <a href="list-2">Cancel and go back</a>
+                </p>
+            </form>
+        </div>
+</div>
+{% endblock %}

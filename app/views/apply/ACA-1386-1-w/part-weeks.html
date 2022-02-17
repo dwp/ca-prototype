@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% block pageTitle %}
+    Which of the following weeks did you not provide at least 35 hours of care for John Smith?
+{% endblock %}
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="list-2">
+               
+               <h1 class="govuk-heading-l">Which of the following weeks did you not provide at least 35 hours of care for John Smith?</h1>
+                        {{ govukDetails({
+                        summaryText: "Why we ask this question",
+                        text: "For Carer’s Allowance, a week runs from Sunday morning to Saturday night. The date range you entered for the break in care starts and ends part-way through a caring week, so we need to know if you still provided care for 35 hours in those weeks."
+                        }) }}
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+  
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="partweeks" name="partweeks" type="checkbox" value="9Jan">
+        <label class="govuk-label govuk-checkboxes__label" for="partweeks">
+          Sunday 9 January 2022 to Saturday 15 January 2022
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="partweeks-2" name="partweeks" type="checkbox" value="23Jan">
+        <label class="govuk-label govuk-checkboxes__label" for="partweeks-2">
+          Sunday 23 January 2022 to Saturday 29 January 2022
+        </label>
+      </div>
+   
+      <p class="govuk-checkboxes__divider">or</p>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="partweeks-3" name="partweeks" type="checkbox" value="none" data-behaviour="exclusive">
+        <label class="govuk-label govuk-checkboxes__label" for="partweeks-3">
+          I provided at least 35 hours of care in both of these weeks
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+               
+                    <button class="govuk-button" data-module="govuk-button" href="medical">
+                    Continue
+                     </button>
+            <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
+            </form>
+        </div>
+</div>
+{% endblock %}

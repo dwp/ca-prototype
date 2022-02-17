@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+Details of break
+{% endblock %}
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+            <h1 class="govuk-heading-l">Details of the break in care</h1>
+         
+                <!-- We can use this for debugging (just uncomment it) -->
+                {# {% for id, break in data.breaksStore %}
+                      <p>{{ id }}</p>
+                      <p>{{ break | dump }}</p>
+                {% endfor %} #}
+
+                <table class="govuk-table">
+                  
+                    <tbody class="govuk-table__body">
+                     
+                          {% set breakCount = breakCount + 1 %}
+                          <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Date of break</b>
+                              </td>
+                              {# {% if break['started-caring-again'] === "No" %}
+                                <td class="govuk-table__cell">
+                                  Not restarted care
+                                </td>
+                              {% else %}
+                                <td class="govuk-table__cell">
+                                  {{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }} to
+                                  {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
+                                </td>
+                              {% endif%} #}
+                              <td class="govuk-table__cell"> 11 Jan 2022 to 26 Jan 2022</td>
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                                <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Medical care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                             
+                                Yes - John Smith <br>
+                             
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Hospital</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                                Yes<br>
+                              
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Other weeks you did not <br>provide 35 hours of care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              23 Jan 2022 to 29 Jan 2022
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+                             
+                            
+                        
+                    </tbody>
+                  </table>
+                  
+                  <a href="list-2" class="govuk-button">Save</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+Details of break
+{% endblock %}
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+            <h1 class="govuk-heading-l">Details of break in care</h1>
+         
+                <!-- We can use this for debugging (just uncomment it) -->
+                {# {% for id, break in data.breaksStore %}
+                      <p>{{ id }}</p>
+                      <p>{{ break | dump }}</p>
+                {% endfor %} #}
+
+                <table class="govuk-table">
+                  
+                    <tbody class="govuk-table__body">
+                      <!-- We get the ID of the break (so we can pre fill the data if we click edit) and the break itself which contains all the info about it -->
+                      <!-- For each break that's been added, we need a new row -->
+                      {% set breakCount = 0 %}
+                      {% for id, break in data.breaksStore %}
+                        {% if break != '' %}
+                          <!-- Increment breakCount by 1 -->
+                          {% set breakCount = breakCount + 1 %}
+                          <tr class="govuk-table__row">
+                              <td class="govuk-table__cell" style="width: 40%" >
+                                <b>Date of the break</b>
+                              </td>
+                              {# {% if break['started-caring-again'] === "No" %}
+                                <td class="govuk-table__cell">
+                                  Not restarted care
+                                </td>
+                              {% else %}
+                                <td class="govuk-table__cell">
+                                  {{ break['stop-care-day'] }} {{ break['stop-care-month'] | month }} {{ break['stop-care-year'] }} to
+                                  {{ break['start-care-day'] }} {{ break['start-care-month'] | month }} {{ break['start-care-year'] }}
+                                </td>
+                              {% endif%} #}
+                              <td class="govuk-table__cell"> 11 Jan 2022 to 26 Jan 2022</td>
+                              <td class="govuk-table__cell">
+                              <a href="details?selectedBreak={{ id }}">Change</a>
+                            </td>
+                              </tr>
+
+                                <tr class="govuk-table__row" >
+                              <td class="govuk-table__cell">
+                                <b>Medical care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              {% if break['medical'] === 'Yes' %}
+                                Yes - John Smith <br>
+                              
+                              {% else %}
+                                No
+                              {% endif %}
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="medical">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Hospital</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                                Yes<br>
+                              
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="who">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Did you provide care for at least 35 hours between Sunday 9 January 2022 and Saturday 15 January 2022?</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              Yes
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="part-weeks1">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Did you provide care for at least 35 hours between Sunday 23 January 2022 and Saturday 29 January 2022?</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              No
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="part-weeks2">Change</a>
+                            </td>
+                              </tr>
+                             
+                            
+                          
+                        {% endif %}
+                      {% endfor %}
+                      <!-- If there are no breaks, redirect back to the 'any' page -->
+                      {% if breakCount == 0 %}
+                        {{ 'any' | redirect | safe }}
+                      {% endif %}
+                    </tbody>
+                  </table>
+                  
+                  <a href="list-2" class="govuk-button">Save</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

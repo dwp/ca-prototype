@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+Details of break
+{% endblock %}
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+            <h1 class="govuk-heading-l">Details of the break in care</h1>
+         
+
+                <table class="govuk-table">
+                  
+                    <tbody class="govuk-table__body">
+                 
+                          <tr class="govuk-table__row">
+                              <td class="govuk-table__cell" style="width: 40%" >
+                                <b>Date of break</b>
+                              </td>
+                             
+                              <td class="govuk-table__cell"> 11 Jan 2022 to 26 Jan 2022</td>
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                                <tr class="govuk-table__row" >
+                              <td class="govuk-table__cell">
+                                <b>Medical care</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              
+                                Yes - John Smith <br>
+                             
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Hospital</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                                Yes<br>
+                              
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Did you provide care for at least 35 hours between Sunday 9 January 2022 and Saturday 15 January 2022?</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              Yes
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+
+                               <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">
+                                <b>Did you provide care for at least 35 hours between Sunday 23 January 2022 and Saturday 29 January 2022?</b>
+                              </td>
+                            
+                            <td class="govuk-table__cell">
+                              No
+                            </td>
+
+                              <td class="govuk-table__cell">
+                              <a href="#">Change</a>
+                            </td>
+                              </tr>
+                          
+                  
+                    </tbody>
+                  </table>
+                  
+                  <a href="list-2" class="govuk-button">Save</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

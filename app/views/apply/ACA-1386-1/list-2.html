@@ -21,7 +21,9 @@ href: 'javascript:history.back()'
                       <p>{{ id }}</p>
                       <p>{{ break | dump }}</p>
                 {% endfor %} #}
-                <table class="govuk-table">
+
+
+                {# <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Stop date</th>
@@ -66,15 +68,29 @@ href: 'javascript:history.back()'
                             </td>
                           </tr>
                         {% endif %}
-                      {% endfor %}
-                      <!-- If there are no breaks, redirect back to the 'any' page -->
-                      {% if breakCount == 0 %}
-                        {{ 'any' | redirect | safe }}
-                      {% endif %}
+                      {% endfor %} #}
+
+<table class="govuk-table">
+
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Date of the break in care</th>
+      <td class="govuk-table__cell">11 Jan 2022 to 26 Jan 2022</td>
+      <td class="govuk-table__cell"><a class="govuk-link" href="list"> Change </a></td>
+      <td class="govuk-table__cell"><a class="govuk-link" href="#">Remove</a></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
                     </tbody>
                   </table>
                   <br>
-                  <a href="details?selectedBreak=" class="govuk-button govuk-button--secondary">Add another break in care</a>
+                  <a href="#" class="govuk-button govuk-button--secondary">Add another break in care</a>
                   <br>
                   <a href="education" class="govuk-button">Continue</a>
         </form>

@@ -1,0 +1,189 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% set titleText = 'Date of the first break in care' %}
+{% block pageTitle %}
+{{ titleText }}
+{% endblock %}
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink ({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="medical">
+        
+            {# If there are any existing breaks, overrides isFirstBreak to false #}
+            {% set isFirstBreak = true %}
+            {% for id, break in data.breaksStore %}
+                {% if break != '' %}
+                    {% set isFirstBreak = false %}
+                {% endif %}
+            {% endfor %}
+
+            {# If this is the first break and we're not changing an existing break #}
+            {% if isFirstBreak and not break %}
+                <h1 class="govuk-heading-l">
+                    {{ titleText }}
+                </h1>
+                <p>
+
+                We need to know about all breaks in care from 1 August 2021. <br><br>
+                    If there has been more than one break in care, just tell us about the first one. You
+                    can tell us about other breaks in care later.
+                </p>
+                <br>
+            {# Else if we're editing an existing break #}
+            {% elif break %}
+                <h1 class="govuk-heading-l">
+                    Date of the next break in care
+                </h1>
+               <p class="govuk-hint">
+                    If there has been more than one break in care, just tell us about the first one. You
+                    can tell us about other breaks in care later.
+                </p>
+              <br>
+            {# Else must be a new break #}
+            {% else %}
+                <h1 class="govuk-heading-l">
+                    Date of the next break in care
+                </h1>
+                <p class="govuk-hint">
+                    Tell us about the next break in care. If you need to tell us about any more breaks, you can do this later.
+                </p>
+                <br>
+            {% endif%}
+            
+        
+
+              {{ govukDateInput ({
+                        id: 'stop-care',
+                        namePrefix: breakLoc + '[stop-care',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you stop providing care?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--m'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 24 3 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: break['stop-care-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: break['stop-care-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: break['stop-care-year']
+                            }
+                        ]
+                    }) }}
+
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+             
+
+ {# you hospital ended conditional radio #}
+       
+                                                                 
+                {# you radio #}
+
+                {% set yesHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'start-care',
+                        namePrefix: breakLoc + '[start-care',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you start providing care again?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'For example, 24 3 2021'
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day]',
+                                value: break['start-care-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month]',
+                                value: break['start-care-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year]',
+                                value: break['start-care-year']
+                            }
+                        ]
+                    }) }}
+
+
+                {% endset %}
+                 
+
+              
+
+
+                {# has hosp ended radios #}
+
+                   {{ govukRadios ({
+                    idPrefix: 'started-caring-again',
+                    name: breakLoc + '[started-caring-again]',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you started providing care again?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: "Yes",
+                            conditional: {
+                                html: yesHTML
+                            },
+                            checked: true if break['started-caring-again'] == 'yes'
+                        },
+                        {
+                            text: 'No',
+                            value: "No",
+                            conditional: {
+                                html: johnSmithHTML
+                            },
+                            checked: true if break['started-caring-again'] == 'no'
+                        }
+                    ]
+                }) }}
+
+
+
+            <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
+            <button class="govuk-button" data-module="govuk-button" href="medical">
+                {# If editing a break, show save instead of continue #}
+               
+                    Continue
+                
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
