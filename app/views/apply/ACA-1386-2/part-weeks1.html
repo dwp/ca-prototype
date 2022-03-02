@@ -17,12 +17,21 @@
         <div class="govuk-grid-column-two-thirds">
             <form action="part-weeks2">
                
-               <h1 class="govuk-heading-l">Did you provide care for at least 35 hours between Sunday 9 January 2022 and Saturday 15 January 2022?</h1>
-                        {{ govukDetails({
-                        summaryText: "Why we ask this question",
-                        text: "For Carer’s Allowance, a week runs from Sunday morning to Saturday night. The date range you entered for the break in care starts part-way through a caring week, so we need to know if you still provided care for 35 hours in that week."
-                        }) }}
+               <h1 class="govuk-heading-l">Did you provide care for at least 35 hours between Sunday 9 January 2022 and Tuesday 11 January 2022?</h1>
+              
 
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Why we ask this question
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    For Carer’s Allowance, a week runs from Sunday to Saturday.<br><br> The date you stopped providing care is part-way through a week. We need to know if you still provided at least 35 hours of care in that week.
+
+
+  </div>
+</details> 
 
 {{ govukRadios({
   idPrefix: "first-part-week",
