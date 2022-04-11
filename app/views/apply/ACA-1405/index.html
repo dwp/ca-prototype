@@ -1,0 +1,107 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  End to end simple allow journey
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Income redesign
+      </h1>
+
+   <ol class="app-task-list">
+
+     <li>
+                        
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Have you been an employee?',
+                                url: 'employee',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Have you been self-employed?',
+                                url: 'self-employed',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Are you receiving State Pension?',
+                                url: 'state-pension',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Have you had any of these?',
+                                url: 'any',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Have you had any of other income?',
+                                url: 'other-income',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'What other income?',
+                                url: 'other-income2',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                }
+                            })}}
+                            {{ taskListItem({
+                                name: 'Check your answers',
+                                url: 'check-answers',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'live',
+                                    color: 'blue'
+                                }
+                            })}}
+                          
+                        </ul>
+                    </li>
+
+                    <li>
+                  
+                        </ul>
+                    </li>
+                  
+                </ol>
+    
+    </div>
+</div>
+
+{% endblock %}

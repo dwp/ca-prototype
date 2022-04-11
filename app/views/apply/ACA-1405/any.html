@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="other-income">
+           
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Have you received any of the these since 10 January 2020?
+                        </h1>
+                      </legend>
+                      <div id="countries-hint" class="govuk-hint">
+                        Select all that apply.
+                      </div>
+                      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="countries" name="countries" type="checkbox" value="france">
+                          <label class="govuk-label govuk-checkboxes__label" for="countries">
+                            Statutory Sick Pay
+                          </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="countries-2" name="countries" type="checkbox" value="portugal">
+                          <label class="govuk-label govuk-checkboxes__label" for="countries-2">
+                            Statutory Paternity, Maternity or Adoption Pay
+                          </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="countries-3" name="countries" type="checkbox" value="spain">
+                          <label class="govuk-label govuk-checkboxes__label" for="countries-3">
+                            Fostering Allowance
+                          </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="countries-3" name="countries" type="checkbox" value="spain">
+                            <label class="govuk-label govuk-checkboxes__label" for="countries-3">
+                                Direct payment for caring for someone
+                            </label>
+                          </div>
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="countries-3" name="countries" type="checkbox" value="spain">
+                            <label class="govuk-label govuk-checkboxes__label" for="countries-3">
+                                Rental income
+                            </label>
+                          </div>
+                        <p>or</p>
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="countries-5" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
+                          <label class="govuk-label govuk-checkboxes__label" for="countries-5">
+                            No, I have not recevied any of these
+                          </label>
+                        </div>
+                      </div>
+                  
+                    </fieldset>
+                  </div>
+
+                  {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+                
+            </form>
+        </div>
+</div>
+{% endblock %}
