@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+​
+{% block pageTitle %}
+    Enter your nationality
+{% endblock %}
+​
+{% block beforeContent %}
+​
+    {{ super() }}
+​
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+​
+{% endblock %}
+​
+{% block content %}
+​
+{% if data['nationality'] == 'british' %}
+  {{ '/residency/presence.html' | redirect | safe }}
+{% endif %}
+​
+{% if data['nationality'] == 'irish' %}
+  {{ '/residency/presence.html' | redirect | safe }}
+{% endif %}
+​
+​
+​
+<div class="govuk-grid-row">
+​
+        <div class="govuk-grid-column-two-thirds">
+​
+            <form action="/residency/presence.html" class="form">
+​
+                <h1 class="govuk-heading-xl">Enter your nationality</h1>
+​
+              <label class="govuk-body" for="f-nationality">Start typing your nationality, then select from the list</label>
+              <div class="govuk-body" id="f-nationality"></div>
+​
+​
+  <details class="govuk-details govuk-!-margin-top-8" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      I have dual citizenship
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    If you have dual citizenship, select the nationality on the identity documents you're using to make this application.
+  </div>
+</details>
+​
+        <div class="casa-form-control-block">
+​
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+​
+            </form>
+​
+        </div>
+​
+</div>
+​
+{% endblock %}
+​
+{% block pageScripts %}
+<link href="https://dwp-residency-test.herokuapp.com/public/stylesheets/accessible-autocomplete.min.css" rel="stylesheet" type="text/css">
+<script src="https://dwp-residency-test.herokuapp.com/public/javascripts/accessible-autocomplete.min.js" rel="stylesheet" type="text/javascript"></script>
+<script src="https://dwp-residency-test.herokuapp.com/public/javascripts/assets_js_auto-complete.js" rel="stylesheet" type="text/javascript"></script>
+{% endblock %}  

@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="declaration">
+
+                <h1 class="govuk-heading-l">Check the information you have given</h1>
+
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of the person you care for	
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Jenny Smith	
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do they have a National Insurance number?	
+            </dt>
+            <dd class="govuk-summary-list__value">
+              IQ987654Q
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Their date of birth	 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              13 November 1950
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do they live at the same address?	
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Bank details	
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Account holder name:<br>
+            Jenny Smith
+
+            <br>Sort code:
+            <br>01-14-74
+
+           <br> Account number:
+           <br> 54112144
+
+            <br>Building society roll number:
+           <br> Not applicable
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+          
+            
+            
+      
+        </dl>
+                
+
+                <p>
+                    We will use the information you have provided to check whether you can apply for Carer’s Allowance.
+                </p>
+
+                <p>
+                    You will not be able to change these answers after you continue.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Submit and continue'
+                }) }}
+
+                <p>
+                    <a href="../claim-date/claim-date-auto" style="color: white !important;">Allow path</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

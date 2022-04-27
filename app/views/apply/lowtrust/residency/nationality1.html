@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    When do you want Carer’s Allowance to start?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="nationality2">
+
+           
+              
+                    {{ govukRadios({
+                    idPrefix: "nationality",
+                    name: "nationality",
+                    fieldset: {
+                        legend: {
+                        text: "What is your nationality?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    
+                    items: [
+                        {
+                        value: "british",
+                        text: "British",
+                        hint: {
+                            text: "select if you're from England, Scotland, Wales or Northern Ireland"
+                        }
+                        },
+                        {
+                        value: "irish",
+                        text: "Irish"
+                        },
+                         {
+                        value: "another~another-nationality",
+                        text: "Another nationality"
+                        }
+                    ]
+                    }) }}
+
+        <br>
+        <div class="govuk-body">
+            If you hold a permanent British passport, you're a Briish national. 
+            If you're not sure whether you qualify, <a href="https://www.gov.uk/types-of-british-nationality">find out if you're a British national</a>
+        </div>
+
+          <details class="govuk-details govuk-!-margin-top-7" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                    I have dual citizenship
+                    </span>
+                </summary>
+                    <div class="govuk-details__text">
+                        If you have dual citizenship, select the nationality on the identity documents you're using to make this application.
+                    </div>
+        </details>
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

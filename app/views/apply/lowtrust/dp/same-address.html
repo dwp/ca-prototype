@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Does the person you care for live at the same address as you?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios({
+                    idPrefix: 'dp--same-address',
+                    name: 'dp--same-address',
+                    fieldset: {
+                        legend: {
+                            text: 'Does ' + data['dp--name'] | default('the person you care for') + ' live at the same address as you?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~../bank/pay-frequency' if data['from-check'] != 'true' else 'Yes~../checkpoint/cya',
+                            checked: true if data['dp--same-address'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~postcode' if data['from-check'] != 'true' else 'No~postcode?fromCheck=true',
+                            checked: true if data['dp--same-address'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

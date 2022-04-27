@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    How often would you like to be paid Carer’s Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="account-type">
+
+                {{ govukRadios({
+                    idPrefix: 'bank--frequency',
+                    name: 'bank--frequency',
+                    fieldset: {
+                        legend: {
+                            text: 'How often would you like to be paid Carer’s Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Every week',
+                            value: 'Every week'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks'
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

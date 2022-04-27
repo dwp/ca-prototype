@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+{% block pageTitle %}
+    Since 24 May 2021, have there been any times you or John Smith have been in hospital, respite care or a care home for a week or more?
+
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post">
+                <h1 class="govuk-heading-l">Since 24 May 2021, have you or John Smith stayed overnight in hospital, respite care or a care home?
+                </h1>
+            
+        
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+                {{ govukRadios({
+                    idPrefix: "breaks-in-care",
+                    name: "breaks-in-care",
+                    items: [
+                        {
+                            value: "Yes~legacy",
+                            text: "Yes"
+                        },
+                        {
+                            value: "No~other-times",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

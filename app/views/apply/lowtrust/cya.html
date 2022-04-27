@@ -1,0 +1,244 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="dp/name">
+
+                <h1 class="govuk-heading-l">Check the information you have given so far</h1>
+
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the person you care for get PIP?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you get State Pension?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Are you 16 or over? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you provide care for 35 hours a week?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             When do you want to receive your Carer's Allowance from?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Today
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+      
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Have you been employed in the last 6 months?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Have you been self-employed in the last week?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          Are you receiving any other income?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Are you receiving any other benefits?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Do you receive any payments from abroad?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Are you in full or part-time education?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Nationality
+            </dt>
+            <dd class="govuk-summary-list__value">
+            British
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you live in the UK?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Have you lived in the UK for 24 of the last 36 months?
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change
+              </a>
+            </dd>
+          </div>
+            
+            
+      
+        </dl>
+                
+
+                <p>
+                    We will use the information you have provided to check whether you can apply for Carer’s Allowance.
+                </p>
+
+                <p>
+                    You will not be able to change these answers after you continue.
+                </p>
+
+                {{ govukButton ({
+                    html: 'Submit and continue'
+                }) }}
+
+                <p>
+                    <a href="../claim-date/claim-date-auto" style="color: white !important;">Allow path</a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
