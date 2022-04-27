@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    What benefit does the person you provide care for get?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="allowance-eligibility">
+
+                {% set careStartDateHTML %}
+
+                    {{ govukRadios ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'You will only get Carers Allowance if the person you provide care for gets one of these benefits.',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        }
+
+                    }) }}
+
+                {% endset %}
+
+
+               
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you still want to apply for Carer's Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~/apply/lowtrust/16'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~~/apply/lowtrust/start-page'
+                        }
+                     
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
