@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="self-employed">
+                <h1 class="govuk-heading-l">Employment summary</h1>
+            <div class="govuk-hint">
+                    Check the employment information you have entered. If you need to, you can add another job.
+                </div>
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Employer</th>
+                            <th scope="col" class="govuk-table__header">Start date</th>
+                            
+                            <th scope="col" class="govuk-table__header"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">Natwest</td>
+                            <td class="govuk-table__cell">Before 10 July 2019</td>
+                            
+                             <td class="govuk-table__cell">
+                              <a href="">Change</a>
+                              <a href=""" class="govuk-!-margin-left-4">Remove</a>
+                            </td>
+                        </tr>
+                       
+                       
+                    </tbody>
+                </table>
+
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Add another job
+                </button>
+                <br>
+                    {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+                </form>
+            </div>
+        </div>
+    {% endblock %}

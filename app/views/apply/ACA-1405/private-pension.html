@@ -20,18 +20,22 @@
                     name: "employment",
                     fieldset: {
                     legend: {
-                        text: "Have you been self-employed at any time since 3 January 2020?",
+                        text: "Have you paid into a personal or private pension scheme since [specific date]?",
                         isPageHeading: false,
                         classes: "govuk-fieldset__legend--l"
                     }
-                    },
+                },
+                    hint: {
+                        text: "This does not include any workplace pensions you have already told us about."
+                      },
+                    
                     items: [
                         {
-                            value: "Yes~/apply/ACA-1405/self-employed-type",
+                            value: "Yes~/apply/ACA-1405/private-pension-details",
                             text: "Yes"
                         },
                         {
-                            value: "No~/apply/ACA-1405/state-pension",
+                            value: "No~/apply/ACA-1405/check-answers",
                             text: "No"
                         }
                     ]

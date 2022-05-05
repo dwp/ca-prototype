@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="employer-start">
+        <h1 class="govuk-heading-l">Employer details</h1>
+
+        <div class="govuk-hint">
+          If you have worked for more than one employer since 10 July 2019, just tell us about the first one. You can add other employment details later.
+        </div>
+
+        <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+        {{ govukInput({
+                    label: {
+                      text: "Name",
+                      classes: "govuk-label--m",
+                      isPageHeading: true
+                    },
+                    id: "event-name",
+                    name: "event-name"
+                  }) }}
+        {{ govukInput({
+                    label: {
+                      text: "Contact number",
+                      classes: "govuk-label--m",
+                      isPageHeading: true
+                    },
+                    id: "event-name",
+                    name: "event-name"
+                  }) }}
+        {% call govukFieldset({
+  legend: {
+    text: "Address",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+        {{ govukInput({
+    label: {
+      html: 'Address line 1'
+    },
+    id: "address-line-1",
+    name: "address-line-1",
+    autocomplete: "address-line1"
+  }) }}
+        {{ govukInput({
+    label: {
+      html: 'Address line 2 (optional)'
+    },
+    id: "address-line-2",
+    name: "address-line-2",
+    autocomplete: "address-line2"
+  }) }}
+        {{ govukInput({
+    label: {
+      text: "Town or city"
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "address-town",
+    name: "address-town",
+    autocomplete: "address-level2"
+  }) }}
+        {{ govukInput({
+    label: {
+      text: "Postcode (optional)"
+    },
+    classes: "govuk-input--width-10",
+    id: "address-postcode",
+    name: "address-postcode",
+    autocomplete: "postal-code"
+  }) }}
+        {% endcall %}
+        {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

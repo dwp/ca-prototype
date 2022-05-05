@@ -12,27 +12,49 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="post">
+            <form method="post" action="employer-amount">
            
                 <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+
+                {% set otherHtml %}
+                {{ govukInput({
+                    label: {
+                      text: "Tell us how often"
+                    },
+                    classes: "govuk-input--width-20",
+                    id: "width-20",
+                    name: "width-20"
+                  }) }}
+                    {% endset -%}
+
                 {{ govukRadios({
                     idPrefix: "employment",
                     name: "employment",
                     fieldset: {
                     legend: {
-                        text: "Have you been self-employed at any time since 3 January 2020?",
+                        text: "How often did you get paid at Natwest?",
                         isPageHeading: false,
                         classes: "govuk-fieldset__legend--l"
                     }
                     },
                     items: [
                         {
-                            value: "Yes~/apply/ACA-1405/self-employed-type",
-                            text: "Yes"
+                            text: "Every week"
                         },
                         {
-                            value: "No~/apply/ACA-1405/state-pension",
-                            text: "No"
+                            text: "Every 2 weeks"
+                        },
+                        {
+                            text: "Every 4 weeks"
+                        },
+                        {
+                            text: "Every month"
+                        },
+                        {
+                            text: "Other",
+                            conditional: {
+                                html: otherHtml
+                              }
                         }
                     ]
                 }) }}
