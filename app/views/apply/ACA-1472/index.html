@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+End to end simple allow journey
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Date of claim redesign
+        </h1>
+
+        <ol class="app-task-list">
+
+            <li>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">1. </span> Employment
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                    name: 'What qualifying benefit',
+                    url: 'qb',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                     {{ taskListItem({
+                    name: '35 hours',
+                    url: '35hours',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+                 
+                  {{ taskListItem({
+                    name: 'qb start date',
+                    url: '35hours',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+                 
+
+                              
+                              
+                </ul>
+                </li>
+
+
+               
+          
+
+        </ol>
+
+    </div>
+</div>
+
+{% endblock %}

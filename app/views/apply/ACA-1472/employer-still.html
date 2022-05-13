@@ -20,25 +20,23 @@
                     name: "employment",
                     fieldset: {
                     legend: {
-                        text: "Do you want to tell us anything else about your work?",
+                        text: "Do you still work at Natwest?",
                         isPageHeading: false,
                         classes: "govuk-fieldset__legend--l"
                     }
                     },
-                    hint: {
-                         text: "You do not need to tell us anything about workplace pensions, if you pay into one. We are able to get this information from HMRC."
-                         },
                     items: [
                         {
-                            value: "Yes~/apply/ACA-1405/employed-anythingelse-details",
+                            value: "Yes~/apply/ACA-1405/employer-frequency",
                             text: "Yes"
                         },
                         {
-                            value: "No~/apply/ACA-1405/any",
+                            value: "No~/apply/ACA-1405/employer-stopdate",
                             text: "No"
                         }
                     ]
                 }) }}
+                
                 {{ govukButton ({
                     html: 'Continue',
                     classes: 'govuk-button'

@@ -51,15 +51,17 @@
                   }) }}
 
                   {% set otherHtml %}
-                  {{ govukTextarea({
-                    name: "more-detail",
-                    id: "more-detail",
-                    label: {
-                      text: "Tell us what else was included",
-                      classes: "govuk-label--s",
-                      isPageHeading: true
-                    }
-                  }) }}
+                 
+
+                  {{ govukCharacterCount({
+                      name: "more-detail",
+                      id: "more-detail",
+                      maxlength: 200,
+                      label: {
+                        text: "Tell us what else was included"
+                      }
+                    }) }}
+
                       {% endset -%}
 
                     {{ govukRadios({
