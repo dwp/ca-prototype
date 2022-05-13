@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you provide care for 35 hours or more a week?
+Are you age 16 or over?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,20 +18,17 @@ Do you provide care for 35 hours or more a week?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="claim-date">
+            <form action="carer-name">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you provide care for 35 hours or more a week?',
+                            text: 'Are you the carer?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
-                    },
-                     hint: {
-                        text: 'For Carers Allowance, the week runs from Sunday to Saturday.'
                     },
                     
                     items: [
@@ -40,8 +37,8 @@ Do you provide care for 35 hours or more a week?
                             value: 'Yes'
                         },
                         {
-                            text: 'No',
-                            value: 'No~siphoning/legacy.html'
+                            text: 'No, I am making a claim on behalf of the carer',
+                            value: 'No'
                         }
                      
                     ]

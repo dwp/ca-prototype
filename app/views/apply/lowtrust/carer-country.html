@@ -18,14 +18,14 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours">
+            <form action="carer-name">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Are you 16 or over?',
+                            text: 'What country do you live in?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -33,13 +33,25 @@ Are you age 16 or over?
                     
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes'
+                            text: 'England',
+                            value: 'England'
                         },
                         {
-                            text: 'No',
-                            value: 'No~/poc/E2E/legacy'
-                        }
+                            text: 'Scotland',
+                            value: 'Scotland'
+                        },
+                         {
+                            text: 'Wales',
+                            value: 'Wales'
+                        },
+                         {
+                            text: 'Scotland',
+                            value: 'Scotland'
+                        },
+                         {
+                            text: 'Scotland',
+                            value: 'Scotland'
+                        },
                      
                     ]
                 }) }}
