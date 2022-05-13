@@ -18,40 +18,32 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="dp-name">
+            <form action="qb">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'What country do you live in?',
+                            text: 'Is John Smith your partner?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: "By partner we mean.."
+                    },
                     
                     items: [
                         {
-                            text: 'England',
-                            value: 'England'
+                            text: 'Yes',
+                            value: 'yes'
                         },
                         {
-                            text: 'Scotland',
-                            value: 'Scotland'
-                        },
-                         {
-                            text: 'Wales',
-                            value: 'Wales'
-                        },
-                         {
-                            text: 'Northern Ireland',
-                            value: 'Northern Ireland'
-                        },
-                         {
-                            text: 'Somewhere else',
-                            value: 'Somewhere else'
+                            text: 'No',
+                            value: 'no'
                         }
+                         
                      
                     ]
                 }) }}
