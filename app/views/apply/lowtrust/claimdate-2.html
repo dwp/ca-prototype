@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you age 16 or over?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="dp-name">
+
+              
+
+                      <h1 class="govuk-heading-l">Carer's Allowance claim start date</h1>
+
+                        <p>Based on the date you told us you started providing 35 hours of care a week, the earliest we can consider your Carer’s Allowance claim from is [date started caring]. <br><br>
+                        We can only consider your claim from this date if John Smith’s disability benefit started on or before then. 
+
+                        <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                            Rules about the Carer's Allowance claim date
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week.<br><br>
+                            You can only backdate your claim for more than 3 months if:<br><br>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>the person you care for was awarded their disability benefit in the last 3 months</li>
+                                <li>the backdated start date of that benefit was more than 3 months ago</li>
+                            </ul>
+                                <p>In this scenario, your claim date can be backdated to either: <br>
+                                <ul class="govuk-list govuk-list--bullet">
+                                <li>their benefit start date - if you were providing care for 35 hours a week from then</li>
+                                <li>the date you started to provide care - if this was after their benefit start date</li>
+                            </ul>
+                            <p>Your claim date cannot be more than 3 months in the future.
+                        </div>
+                        </details>
+
+                  {{ govukDateInput({
+                    id: "providing-care",
+                    namePrefix: "providing-care",
+                    fieldset: {
+                        legend: {
+                        text: "When do you want your Carer's Allowance to start?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                        text: "For example, 27 3 2021"
+                    }
+                   
+                    }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

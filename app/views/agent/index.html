@@ -1,3 +1,4 @@
+
 {% set resetServiceName = true %}
 
 {% extends "layout.html" %}
@@ -32,8 +33,8 @@
       <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation" aria-expanded="false">Menu</button>
       <nav>
         <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
-          <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
-            <a class="govuk-header__link" href="index">
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <a class="govuk-header__link" href="/index">
               Apply
             </a>
           </li>
@@ -44,7 +45,7 @@
           </li>
 
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <a class="govuk-header__link" href="changes/index">
+            <a class="govuk-header__link" href="/changes/index">
               Changes
             </a>
           </li>
@@ -54,18 +55,18 @@
             </a>
           </li>
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <a class="govuk-header__link" href="content/index">
+            <a class="govuk-header__link" href="/content/index">
               Content testing
             </a>
           </li>
-           <li class="govuk-header__navigation-item">
+          <li class="govuk-header__navigation-item">
             <a class="govuk-header__link" href="#">
 
             </a>
           </li>
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="agent/index">
-                Agent
+           <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+            <a class="govuk-header__link" href="/agent/index">
+              Agent
             </a>
           </li>
          
@@ -84,50 +85,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-<h1 class="govuk-heading-xl" style="margin-bottom: 3%;">Apply for Carer's Allowance prototypes</h1>
+<h1 class="govuk-heading-xl" style="margin-bottom: 3%;">Agent claim management prototypes</h1>
 <br><br>
+    
+   <div class="app-most-recent">
+     <h2 class="govuk-heading-m">Iteration 1</h2>
+      {# <strong class="govuk-tag govuk-tag--red">Experimental</strong> #}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of design</dt>
+              <dd class="govuk-body" style="margin-left:0%">May 2022</dd>
+            </dl>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Designers</dt>
+              <dd class="govuk-body" style="margin-left:0%">Emily Wilkinson</dd>
+            </dl>
+          </div>
+        </div>
+        <h3 class="govuk-heading-s">Requirements</h3>
+       
+          {# <h3 class="govuk-heading-s">Related story</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            </li>
+          </ul> #}
+      <a href="lowtrust/index" class="govuk-button govuk-button--start">Start now</a><br>
+          </div>   
+   </div>
 
-<h2 class="govuk-heading-m">
-  <a href="apply/low-trust" class="govuk-link--no-visited-state">
-    End to end designs for low trust service
-     </a><h2>
-   <p>Improving the live end to end service to create a low trust journey. Includes basic design principle improvements (one thing per page).</p>
-  
+    </div>
+  </div>
 
-     <h2 class="govuk-heading-m">
-     <a href="apply/newservice" class="govuk-link--no-visited-state">
-          End to end designs for new medium trust service
-        </a><h2>
-      <p>The new service allowing citizens to apply for Carer’s Allowance. This includes early siphoning questions for ‘simple allow’ and relevant ‘common components’ (green zone) UI.</p>
-     
-     <h2 class="govuk-heading-m">
-        <a href="apply/index" class="govuk-link--no-visited-state">
-          Improvements to the existing service
-        </a>
-      </h2>
-      <p>Designs for any improvements or changes to the existing live service, for example, the breaks in care journey.</p>
-
-
-     <h2 class="govuk-heading-m">
-        <a href="apply/live/index.html" class="govuk-link--no-visited-state">
-          What's in live
-        </a>
-      </h2>
-      <p>End to end prototype of the live service (as at November 2021).</p>
-
-<br>
-     
-      <h2 class="govuk-heading-m">
-        <a href="poc/E2E-old/index" class="govuk-link--no-visited-state">
-          'Pathfinder’ project'
-        </a>
-      </h2>
-      <p>Potential designs for a new service, integrating with relevant ‘common component’ services for the ARA. (Pre-June 2021).
-
-</p>
-
-
-      
     </div>
   </div>
 

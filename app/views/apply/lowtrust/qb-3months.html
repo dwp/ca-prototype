@@ -18,14 +18,14 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="dp-name">
+            <form method="post" action="claimdate-1">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'What country do you live in?',
+                            text: "Was John's Attendance Allowance claim awarded before [today - 3 month]?",
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -33,17 +33,17 @@ Are you age 16 or over?
                     
                     items: [
                         {
-                            text: 'England, Scotland or Wales',
-                            value: 'England'
+                            text: 'Yes',
+                            value: 'Yes'
                         },
                       
                          {
-                            text: 'Northern Ireland',
-                            value: 'Northern Ireland'
+                            text: 'No',
+                            value: 'No'
                         },
                          {
-                            text: 'Another country',
-                            value: 'Another country'
+                            text: 'Not sure',
+                            value: 'Not sure'
                         }
                     ]
                 }) }}
