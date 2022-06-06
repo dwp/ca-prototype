@@ -18,20 +18,20 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="qb-3months">
+            <form method="post" action="carer-country">
 
                     {{ govukDateInput({
                     id: "providing-care",
                     namePrefix: "providing-care",
                     fieldset: {
                         legend: {
-                        text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance start?',
+                        text: "What is your date of birth?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }
                     },
                     hint: {
-                        text: "For example, 27 3 2021"
+                        text: "For example, 27 3 1966"
                     }
                    
                     }) }}

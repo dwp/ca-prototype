@@ -18,31 +18,33 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
+            <form method="post" action="dp-name">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
+                            text: 'What country do you live in?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                            text: "This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel."
-                        },
+                    
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes'
+                            text: 'England, Scotland or Wales',
+                            value: 'England'
                         },
-                        {
-                            text: 'No',
-                            value: 'No'
+                      
+                         {
+                            text: 'Northern Ireland',
+                            value: 'Northern Ireland'
+                        },
+                         {
+                            text: 'Another country',
+                            value: 'Another country'
                         }
-                     
                     ]
                 }) }}
 

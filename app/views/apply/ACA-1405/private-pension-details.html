@@ -15,14 +15,14 @@
             <form method="post" action="check-answers">
            
                 <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
-        <h1 class="govuk-heading-l">What personal pensions have you paid into since [date]?</h1>
+        <h1 class="govuk-heading-l">Details of personal pensions you have paid into since [date of claim - 26 weeks]</h1>
 
 
                 {{ govukTextarea({
                   name: "more-detail",
                   id: "more-detail",
                   label: {
-                    text: "Include details of each pension you paid into, including how much and how often you paid into them.",
+                    text: "Tell us about each pension you paid into, including how much and how often you paid into them.",
                     
                     isPageHeading: true
                   }

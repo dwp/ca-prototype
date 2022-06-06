@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Claim date
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="/apply/ACA-1472/start-page">
+
+                <h1 class="govuk-heading-xl">Stop for discussion</h1>
+
+                <p>
+                    
+                </p>
+
+               
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

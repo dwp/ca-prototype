@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are you age 16 or over?
+    What benefit does the person you provide care for get?
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,6 +10,7 @@ Are you age 16 or over?
         text: 'Back',
         href: 'javascript:history.back()'
     }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -18,33 +19,51 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
+            <form action="allowance-eligibility">
 
+                {% set careStartDateHTML %}
+
+                    {{ govukRadios ({
+                        id: 'care-start-date',
+                        name: 'care-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'You will only get Carers Allowance if the person you provide care for gets one of these benefits.',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s app-normal-label'
+                            }
+                        }
+
+                    }) }}
+
+                {% endset %}
+
+
+               
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
+                            text: 'Do you still want to apply for Carer's Allowance?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                            text: "This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel."
-                        },
+                    
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'Yes~/apply/lowtrust/16'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'No~~/apply/lowtrust/start-page'
                         }
                      
                     ]
                 }) }}
+
 
                 {{ govukButton({
                     html: 'Continue'

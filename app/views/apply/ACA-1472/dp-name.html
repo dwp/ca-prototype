@@ -26,6 +26,8 @@ Are you age 16 or over?
                
 
                     {{ govukInput({
+                    name: 'dp-first-name',
+                    value: data['dp-first-name'],
                     label: {
                         text: "First name",
                         isPageHeading: true
@@ -39,6 +41,8 @@ Are you age 16 or over?
                     }
                     }) }}
                      {{ govukInput({
+                     name: 'dp-last-name',
+                    value: data['dp-last-name'],
                     label: {
                         text: "Last name",
                         isPageHeading: true

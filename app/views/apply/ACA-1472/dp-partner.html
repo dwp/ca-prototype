@@ -18,30 +18,32 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
+            <form action="qb">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
+                            text: 'Is John Smith your partner?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                            text: "This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel."
-                        },
+                        text: "By partner we mean.."
+                    },
+                    
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes'
+                            value: 'yes'
                         },
                         {
                             text: 'No',
-                            value: 'No'
+                            value: 'no'
                         }
+                         
                      
                     ]
                 }) }}

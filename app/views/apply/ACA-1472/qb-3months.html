@@ -18,31 +18,33 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
+            <form method="post" action="claimdate-1">
 
                 {{ govukRadios({
                     idPrefix: 'elig--qb',
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
+                            text: 'Was ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance claim awarded before 1 March 2022?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                            text: "This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel."
-                        },
+                    
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes'
                         },
-                        {
+                      
+                         {
                             text: 'No',
                             value: 'No'
+                        },
+                         {
+                            text: 'Not sure',
+                            value: 'Not sure'
                         }
-                     
                     ]
                 }) }}
 

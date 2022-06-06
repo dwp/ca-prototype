@@ -1,75 +1,183 @@
+
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-End to end simple allow journey
+  End to end simple allow journey
 {% endblock %}
 
 {% block beforeContent %}
-{{ super() }}
-{{ govukBackLink({
-text: 'Back',
-href: 'javascript:history.back()'
-}) }}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">
-            Date of claim redesign
-        </h1>
+      <h1 class="govuk-heading-xl">
+        Date of claim redesign
+      </h1>
 
-        <ol class="app-task-list">
+   <ol class="app-task-list">
 
-            <li>
-                <h2 class="app-task-list__section">
-                    <span class="app-task-list__section-number">1. </span> Employment
-                </h2>
-                <ul class="app-task-list__items">
-                    {{ taskListItem({
-                    name: 'What qualifying benefit',
-                    url: 'qb',
-                    isActive: 'true',
-                    tag: {
-                    text: 'new page',
-                    color: 'green'
-                    }
-                    })}}
+     <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">1. </span> Start
+                        </h2>
+                        <ul class="app-task-list__items">
+                            {{ taskListItem({
+                                name: 'Start page',
+                                url: 'start-page',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'in live',
+                                    color: 'green'
+                                }
+                            })}}
+                               {{ taskListItem({
+                                name: 'Disclaimer',
+                                url: 'disclaimer',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'in live',
+                                    color: 'green'
+                                }
+                            })}}
+                            {# {{ taskListItem({
+                                name: 'Check address',
+                                url: 'idv/check',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Investigation Needed',
+                                    color: 'purple'
+                                }
+                            })}} #}
+                        </ul>
+                    </li>
 
-                     {{ taskListItem({
-                    name: '35 hours',
-                    url: '35hours',
-                    isActive: 'true',
-                    tag: {
-                    text: 'new page',
-                    color: 'green'
-                    }
-                    })}}
-                 
-                  {{ taskListItem({
-                    name: 'qb start date',
-                    url: '35hours',
-                    isActive: 'true',
-                    tag: {
-                    text: 'new page',
-                    color: 'green'
-                    }
-                    })}}
-                 
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2. </span> Eligibility questions
+                        </h2>
+                        <ul class="app-task-list__items">
+                       
 
-                              
-                              
-                </ul>
-                </li>
+                          {{ taskListItem({
+                                name: 'Are you the carer?',
+                                url: 'carer',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'Validated',
+                                        color: 'blue'
+                                    }
+                                ]
+                            })}}
+
+                          
 
 
-               
-          
+                            {{ taskListItem({
+                                name: 'Carer name',
+                                url: 'carer-name',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
 
-        </ol>
+                             {{ taskListItem({
+                                name: 'Carer date of birth',
+                                url: 'carer-dob',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+                            
+                              {{ taskListItem({
+                                name: 'Carer country',
+                                url: 'carer-country',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
 
+                              {{ taskListItem({
+                                name: 'Disabled person name',
+                                url: 'dp-name',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                              {{ taskListItem({
+                                name: 'Is DP your partner',
+                                url: 'dp-partner',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                             {{ taskListItem({
+                                name: 'Qualifying benefit',
+                                url: 'qb',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}                          
+
+                              {{ taskListItem({
+                                name: '35 hours',
+                                url: '35hours',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+
+
+                                
+                        
+                        </ul>
+                    </li>
+                    
+                    <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3. </span> Date of claim
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                              {{ taskListItem({
+                                name: '35 hours',
+                                url: '35hours',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+                    
+                    </ul>
+                    </li>
+                  
+                </ol>
+    
     </div>
 </div>
 
