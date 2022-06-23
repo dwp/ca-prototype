@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+      <form class="form" action="how-do-you-want-to-complete-tell-us-once" method="post">
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Death registration number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            587456778
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="">Change</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Where was the death registered?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            North Tyneside Council
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When was the death registered?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 January 2021
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+
+        <br> <br> 
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sarah Phillips
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 July 1949
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of death
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2021
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            14 MILL LANE, ARLESTON, TF1 2HN
+           
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <a href="">Change</a>
+          </dd>
+        </div>
+
+        <br><br>
+
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Confirm and send
+        </button>
+      
+        {# <a class="govuk-link" href="#">Change your answers</a> #}
+      </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

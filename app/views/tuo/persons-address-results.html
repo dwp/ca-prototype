@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+   
+ <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      
+        <form method="post" action="persons-address-manual">
+{# 
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Confirm full address
+                </h1>
+              </legend>
+
+              <br>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-results" name="address-results" type="radio" value="england">
+                  <label class="govuk-label govuk-radios__label" for="address-results">
+                    {% if data['nino'] === 'XX89161B' %}
+                    63 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% elseif data['nino'] === 'xx89161b' %}
+                    63 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% else %}
+                    14 MILL LANE, ARLESTON, TF1 2HN
+                    {% endif %}
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-results-2" name="address-results" type="radio" value="scotland">
+                  <label class="govuk-label govuk-radios__label" for="address-results-2">
+                    {% if data['nino'] === 'XX89161B' %}
+                    3 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% elseif data['nino'] === 'xx89161b' %}
+                    3 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% else %}
+                    4 MILL LANE, ARLESTON, TF1 2HN
+                    {% endif %}
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-results-3" name="address-results" type="radio" value="wales">
+                  <label class="govuk-label govuk-radios__label" for="address-results-3">
+                    {% if data['nino'] === 'XX89161B' %}
+                    1 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% elseif data['nino'] === 'xx89161b' %}
+                    1 SEAFIELD PLACE, FOSTEN, YO6 4HN
+                    {% else %}
+                    1 MILL LANE, ARLESTON, TF1 2HN
+                    {% endif %}
+                  </label>
+                </div>
+                <div class="govuk-radios__divider">or</div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-results-4" name="address-results" type="radio" value="address-not-found">
+                  <label class="govuk-label govuk-radios__label" for="address-results-4">
+                  Address not found
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+          </div> #}
+
+
+           {{ govukRadios({
+                    idPrefix: 'death-registered',
+                    name: 'death-registered',
+                    fieldset: {
+                        legend: {
+                            text: 'Confirm address',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--xl'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: '14 MILL LANE, ARLESTON, TF1 2HN',
+                            value: 'England~/tuo/check-answers'
+                        },
+                      
+                         {
+                            text: '4 MILL LANE, ARLESTON, TF1 2HN',
+                            value: 'Scotland~/tuo/check-answers'
+                        },
+                         {
+                            text: '4 MILL LANE, ARLESTON, TF1 2HN',
+                            value: 'Wales~/tuo/check-answers'
+                        }
+                    ]
+                }) }}
+                <div class="govuk-body"> or </div>
+
+                 {{ govukRadios({
+                   
+                    
+                    items: [
+                       
+                         {
+                            text: 'Address not found',
+                            value: 'p~/tuo/persons-address-manual'
+                        }
+                    ]
+                }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+{% endblock %}

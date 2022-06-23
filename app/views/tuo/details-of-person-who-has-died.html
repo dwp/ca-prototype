@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Details of the person who has died</h1>
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            First name
+          </label>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            Last name
+          </label>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend">
+              What was their date of birth?
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example, 19 8 1985
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                <legend class="govuk-fieldset__legend">
+                  When did they die?
+                </legend>
+                <div id="passport-issued-hint" class="govuk-hint">
+                  For example, 15 8 2021
+                </div>
+                <div class="govuk-date-input" id="passport-issued">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+          </fieldset>
+          <br>
+          <br>
+        <fieldset class="govuk-fieldset">
+        
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-postcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+          </div>
+
+          <br>
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Find address
+          </button>
+        
+        </fieldset>
+
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        <br>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Report a problem
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <h3 class="govuk-heading-s">Telephone</h3>
+
+          <p>Telephone: 0191 218 3184</p>
+          <p>Monday to Friday, 8am to 6pm</p>
+    
+          <h3 class="govuk-heading-s">Email</h3>
+    
+          <p><a class="govuk-link" href="#">tell-us-once.servicedesk@dwp.gov.uk</a></p>
+    
+        </div>
+        </div>
+      </details>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

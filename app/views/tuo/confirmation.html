@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Capture complete</h1>
+        <div class="govuk-panel__body">
+          Tell Us Once reference number<br><strong>F4DD11378E88</strong>
+        </div>
+      </div>
+      <p>You will need this to complete Tell Us Once.</p>
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>The registrar or citizen must complete the enrichment part of Tell Us Once.</p>
+
+      <p>If Tell Us Once is not completed within 28 days from today, we will delete the death registration details you have given us.</p>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Registrars must have consent from the citizen to complete enrichment for them.
+        </strong>
+      </div>
+
+      <h2 class="govuk-heading-m">How to complete Tell Us Once</h2>
+
+      <p>You can <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">complete Tell Us Once online</a> or by telephone, free of charge.</p>
+
+      <ul class="govuk-list">
+        <li>Telephone: 0800 085 7308</li>
+        <li>Textphone: 0800 141 2218</li>
+        <li>Monday to Friday, 8am to 5pm</li>
+      </ul>
+
+      <p>If you choose to report the death by telephone, you can find more information at <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">https://www.gov.uk/after-a-death/organisations-you-need-to-contact-and-tell-us-once</a></p>
+
+      <p>There is also a <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">video relay service </a> for British Sign Language (BSL) users and <a href="https://service.signvideo.uk/webrtc//#/oneclickcall?dD1kd3AudGVsbHVzb25jZUBzaWdudmlkZW8udWsmdT1hbm9ueW1vdXMmcD1hbm9ueW1vdXM=">Relay UK</a> if you cannot hear or speak on the phone.</p>
+
+
+<div class="govuk-button-group">
+  <button class="govuk-button" data-module="govuk-button">
+    Continue to enrichment
+  </button>
+
+  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Translate to Welsh
+  </button>
+
+  <a class="govuk-link" href="#">Print</a>
+</div>
+</div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

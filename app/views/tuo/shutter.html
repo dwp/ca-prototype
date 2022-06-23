@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+        <p class="govuk-body">
+          You will be able to use the service later.
+        </p>
+        <p>If you started your application but did not finish it, your answers have not been saved. Wehen the service is available, you will have to start again.</p>
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">Contact Carer's Allowance</a> if you need to make changes to your claim or speak to someone.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

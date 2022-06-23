@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+      <form class="form" action="registration-details" method="post">
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        How was the death registered?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Civil Aviation Authority
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+          FER
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-6" name="where-do-you-live" type="radio" value="abroad">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+          FER Manual
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-6" name="where-do-you-live" type="radio" value="abroad">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+         Ministry of Defence
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-6" name="where-do-you-live" type="radio" value="abroad">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+         Registrar General of Shipping and Seamen
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-6" name="where-do-you-live" type="radio" value="abroad">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+          Scottish Executive Health Department
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

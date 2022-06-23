@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+<div class="govuk-form-group">
+      <div class="govuk-grid-column-two-thirds">
+
+     {{ govukRadios({
+                    idPrefix: 'death-registered',
+                    name: 'death-registered',
+                    fieldset: {
+                        legend: {
+                            text: 'How do you want to complete Tell Us Once?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--xl'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Registrar to complete Tell Us Once',
+                            value: 'England~/tuo/confirmation'
+                        },
+                      
+                         {
+                            text: 'Online',
+                            value: 'Scotland~/tuo/confirmation-online'
+                        },
+                         {
+                            text: 'By telephone',
+                            value: 'Wales~/tuo/confirmation-citizen-telephone'
+                        }
+                    ]
+                }) }}
+                <br>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </div>
+  </fieldset>
+</div>
+
+{% endblock %}
