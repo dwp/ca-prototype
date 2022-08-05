@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+{% block pageTitle %}
+Carer's Allowance
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+ 
+ {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="start-page">
+                <h1 class="govuk-heading-l">You may not be able to get Carer’s Allowance
+                </h1>
+                
+                  <p>You must normally live in England, Scotland or Wales to be eligible for Carer’s Allowance.
+
+                    <br><br>You might be eligible if you live in the European Economic Area (EEA) or Switzerland, but you must apply to find out.
+
+                    <br><br>If you are not eligible for Carer’s Allowance, you may be able to get <a href="#"">Carer’s Credit</a>.</p>
+       
+         {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: "Do you still want to apply for Carer's Allowance?",
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    hint: {
+                            text: "You are still legally allowed to apply for Carer’s Allowance, even though you may not be eligible."
+                        },
+                    items: [
+                        {
+                            text: "Yes, continue applying for Carer's Allowance",
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No, end the application',
+                            value: 'no'
+                        }
+                     
+                    ]
+                }) }}
+              
+
+                   
+                {{ govukButton({
+                    text: "Continue",
+                    classes: "govuk-button"
+                    }) }}
+
+                   
+            </form>
+        </div>
+</div>
+{% endblock %}

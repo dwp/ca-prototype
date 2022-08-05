@@ -20,21 +20,53 @@
 
             <form method="post" action="qb-3months">
 
+            {% set dateHtml %}
+
                     {{ govukDateInput({
                     id: "providing-care",
                     namePrefix: "providing-care",
                     fieldset: {
                         legend: {
-                        text: "When did John Smith's Attendance Allowance start?",
+                        text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance start?',
                         isPageHeading: true,
-                        classes: "govuk-fieldset__legend--l"
+                        classes: "govuk-fieldset__legend--m"
                         }
                     },
                     hint: {
                         text: "For example, 27 3 2021"
                     }
-                   
                     }) }}
+
+            {% endset -%}
+
+            {{ govukRadios({
+  idPrefix: "contact",
+  name: "contact",
+  fieldset: {
+    legend: {
+      text:'Do you know when ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance started?',
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "This is the date which the Attendance Allowance was paid from, including if it was backdated. You can find this information on the Attendance Allowance award letter."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: dateHtml
+      }
+    },
+     {
+      value: "no",
+      text: "No"
+    }
+
+  ]
+}) }}
 
                 {{ govukButton({
                     html: 'Continue'

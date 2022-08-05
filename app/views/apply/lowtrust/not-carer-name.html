@@ -18,16 +18,11 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours">
+            <form action="not-carer-dob">
 
-               <h1 class="govuk-heading-l">What is the name of the person you provide care for?</h1>
-
-
-               
+               <h1 class="govuk-heading-l">What is the carer's name?</h1>
 
                     {{ govukInput({
-                    name: 'dp-first-name',
-                    value: data['dp-first-name'],
                     label: {
                         text: "First name",
                         isPageHeading: true
@@ -41,8 +36,6 @@ Are you age 16 or over?
                     }
                     }) }}
                      {{ govukInput({
-                     name: 'dp-last-name',
-                    value: data['dp-last-name'],
                     label: {
                         text: "Last name",
                         isPageHeading: true

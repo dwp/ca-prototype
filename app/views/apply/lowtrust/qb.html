@@ -19,7 +19,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours">
+            <form action="qb-startdate">
 
                 {% set careStartDateHTML %}
 
@@ -85,7 +85,7 @@
                         },
                         {
                             text: 'None of these benefits',
-                            value: 'None of these benefits',
+                            value: 'None of these benefits~/apply/lowtrust/qb-kickout',
                             checked: true if data['elig--qb'] == 'None of these benefits',
                             conditional : {
                                 html: careStartDateHTML

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="check-answers4">
+           
+                   <h1 class="govuk-heading-l">This will remove the information you entered about other income types</h1>
+<p class="govuk-body">If you continue, this will remove all the information you entered about:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>Statutory sick pay</li>
+<li>Statutory Paternity, Maternity or Adoption Pay</li>
+</ul>
+       
+                
+                {{ govukButton ({
+                    html: 'Remove',
+                    classes: 'govuk-button--warning'
+                }) }}
+                                                <p><a href="check-answers" class="govuk-link">Cancel and go back</a>
+
+            </form>
+        </div>
+</div>
+{% endblock %}
