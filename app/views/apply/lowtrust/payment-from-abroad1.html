@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your National Insurance number?
+Are you age 16 or over?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,23 +18,14 @@ What is your National Insurance number?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="carers-address">
-
-              
-              <h1 class="govuk-heading-l">What is your National Insurance number?</h1>
+            <form action="carers-telephone">
 
 
-              {{ govukInput({
- 
-  hint: {
-    text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-  },
-  classes: "govuk-input--width-10",
-  id: "national-insurance-number",
-  name: "national-insurance-number",
-  spellcheck: false
-}) }}
+ <h1 class="govuk-heading-l">Payments from abroad screens tbc
+                </h1>
 
+
+          
 
                 {{ govukButton({
                     html: 'Continue'

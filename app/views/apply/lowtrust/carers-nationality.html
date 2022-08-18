@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you age 16 or over?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="carers-nationality1">
+
+
+             {% set nationalityHtml %}
+
+                  {{ govukInput({
+                        label: {
+                            text: "Your nationality",
+                            classes: "govuk-label--s"
+                        },
+                        classes: "govuk-!-width-one-half",
+                        id: "one-half",
+                        name: "one-half"
+                        }) }}
+
+            {% endset -%}
+
+
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: 'What is your nationality?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'British',
+                            value: 'British'
+                        },
+                        {
+                            text: 'Another nationality',
+                            value: 'Another~/apply/lowtrust/35-kickout',
+                              conditional: {
+                              html: nationalityHtml
+                                }
+                           
+                        }
+                     
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

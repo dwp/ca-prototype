@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you age 16 or over?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="payment-from-abroad1">
+
+                {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: 'Since [date of claim] have you or any of your close family worked abroad or been paid benefits from outside the United Kingdom?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                     hint: {
+                        text: 'This means your partner, parents or children and includes state pensions.'
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~/apply/lowtrust/payment-from-abroad1'
+                             
+                           
+                        }
+                     
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

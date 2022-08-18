@@ -78,8 +78,17 @@
                                 ]
                             })}}
 
-                          
-
+                            {{ taskListItem({
+                                name: 'Not carer name',
+                                url: 'not-carer-name',
+                                isActive: 'true',
+                                tags: [
+                                    {
+                                        text: 'to test',
+                                        color: 'orange'
+                                    }
+                                ]
+                            })}}
 
                             {{ taskListItem({
                                 name: 'Carer name',
@@ -100,6 +109,16 @@
                                     color: 'blue'
                                 }
                             })}}
+
+                            {{ taskListItem({
+                                name: '16 or under drop out',
+                                url: '16-kickout',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'drop out',
+                                    color: 'red'
+                                }
+                            })}}
                             
                               {{ taskListItem({
                                 name: 'Carer country',
@@ -108,6 +127,16 @@
                                 tag: {
                                     text: 'Validated',
                                     color: 'blue'
+                                }
+                            })}}
+
+                             {{ taskListItem({
+                                name: 'Another country drop out',
+                                url: 'country-kickout',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'drop out',
+                                    color: 'red'
                                 }
                             })}}
 
@@ -120,18 +149,7 @@
                                     color: 'blue'
                                 }
                             })}}
-
                               {{ taskListItem({
-                                name: 'Is DP your partner',
-                                url: 'dp-partner',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
-                                }
-                            })}}
-
-                             {{ taskListItem({
                                 name: 'Qualifying benefit',
                                 url: 'qb',
                                 isActive: 'true',
@@ -141,7 +159,17 @@
                                 }
                             })}}                          
 
-                              {{ taskListItem({
+                                {{ taskListItem({
+                                name: 'Qualifying benefit drop out',
+                                url: 'qb-kickout',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'drop out',
+                                    color: 'red'
+                                }
+                            })}}     
+
+                               {{ taskListItem({
                                 name: '35 hours',
                                 url: '35hours',
                                 isActive: 'true',
@@ -151,9 +179,16 @@
                                 }
                             })}}
 
-
-
-                                
+                              {{ taskListItem({
+                                name: '35 hours drop out',
+                                url: '35hours-kickout',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'drop out',
+                                    color: 'red'
+                                }
+                            })}}
+       
                         
                         </ul>
                     </li>
@@ -163,19 +198,165 @@
                         </h2>
                         <ul class="app-task-list__items">
 
-                              {{ taskListItem({
-                                name: '35 hours',
-                                url: '35hours',
+                            {{ taskListItem({
+                                name: 'Date started caring',
+                                url: '35hours-date',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Validated',
                                     color: 'blue'
                                 }
                             })}}
+
+                              {{ taskListItem({
+                                name: 'Qualifying benefit start date',
+                                url: 'qb-startdate',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                             {{ taskListItem({
+                                name: 'Qualifying benefit 3 months',
+                                url: 'qb-startdate',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                                 {{ taskListItem({
+                                name: 'Date of claim result 1',
+                                url: 'claimdate-1',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                                   {{ taskListItem({
+                                name: 'Date of claim result 2',
+                                url: 'claimdate-2',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                                 {{ taskListItem({
+                                name: 'Date of claim result 3',
+                                url: 'claimdate-3',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
                     
                     </ul>
-                    </li>
-                  
+                    
+
+                     <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">4. </span> About the carer
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                            {{ taskListItem({
+                                name: "Carer's National Insurance number",
+                                url: 'carer-ni',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                                 {{ taskListItem({
+                                name: "Carer's address",
+                                url: 'carers-address',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                                  {{ taskListItem({
+                                name: "Carer's address results",
+                                url: 'carers-address-manual',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                               {{ taskListItem({
+                                name: "Carer's address manual input",
+                                url: 'carers-address-manual',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                               {{ taskListItem({
+                                name: "Carer's nationality",
+                                url: 'carers-nationality',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                          
+
+                            </ul>
+
+               <h2 class="app-task-list__section">
+               <span class="app-task-list__section-number">5. </span>Payments from abroad
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                                  {{ taskListItem({
+                                name: "Payments from abroad",
+                                url: 'payment-from-abroad',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'Validated',
+                                    color: 'blue'
+                                }
+                            })}}
+
+                        </ul>
+
+
+             <h2 class="app-task-list__section">
+               <span class="app-task-list__section-number">6. </span>Optional contact info from carer
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                                  {{ taskListItem({
+                                name: "Carer's telephone number",
+                                url: 'carers-telephone',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to look at',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                        </ul>
+
+
+                  </li>
                 </ol>
     
     </div>
