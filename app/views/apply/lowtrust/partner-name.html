@@ -18,13 +18,16 @@ Are you age 16 or over?
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="carer-dob">
+            <form action="qb">
 
-               <h1 class="govuk-heading-l">What is your name?</h1>
+               <h1 class="govuk-heading-l">What is your partner's name?</h1>
+
+
+               
 
                     {{ govukInput({
-                    name: 'carer-first-name',
-                    value: data['carer-first-name'],
+                    name: 'partner-first-name',
+                    value: data['dp-first-name'],
                     label: {
                         text: "First name",
                         isPageHeading: true
@@ -33,15 +36,26 @@ Are you age 16 or over?
 
                      {# {{ govukInput({
                     label: {
+                     name: 'partner-middle-name',
+                    value: data['partner-middle-name'],
                         text: "Middle names",
                         isPageHeading: true
                     }
                     }) }} #}
                      {{ govukInput({
-                     name: 'carer-last-name',
-                    value: data['carer-last-name'],
+                     name: 'partner-last-name',
+                    value: data['dp-last-name'],
                     label: {
                         text: "Last name",
+                        isPageHeading: true
+                    }
+                    }) }}
+
+                     {{ govukInput({
+                     name: 'previous-partner-last-name',
+                    value: data['dprevious-partner-last-name'],
+                    label: {
+                        text: "Previous last name or maiden name",
                         isPageHeading: true
                     }
                     }) }}

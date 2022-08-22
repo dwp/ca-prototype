@@ -22,35 +22,22 @@
 
             {% set dateHtml %}
 
-                    {{ govukDateInput({
-                    id: "qb-start-date",
-                    namePrefix: "qb-start-date",
-                    fieldset: {
-                        legend: {
-                        text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance start?',
-                        isPageHeading: true,
-                        classes: "govuk-fieldset__legend--m"
-                        }
-                    },
-                    hint: {
-                        text: "For example, 27 3 2021"
-                    }
-                    }) }}
+                   <p>Call Carer's Allowance unit </p>
 
             {% endset -%}
 
             {{ govukRadios({
-  idPrefix: "qb-start",
-  name: "cqb-start",
+  idPrefix: "contact",
+  name: "contact",
   fieldset: {
     legend: {
-      text:'Do you know when ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance started?',
+      text:'Is ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\ terminally ill?',
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
   hint: {
-    text: "This is the date which the Attendance Allowance was paid from, including if it was backdated. You can find this information on the Attendance Allowance award letter."
+    text: "By terminally ill we mean.."
   },
   items: [
     {

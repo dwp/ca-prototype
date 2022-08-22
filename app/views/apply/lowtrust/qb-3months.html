@@ -21,11 +21,11 @@ Are you age 16 or over?
             <form method="post" action="claimdate-1">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'qb-3months',
+                    name: 'qb-3months',
                     fieldset: {
                         legend: {
-                            text: "Was John Smith's Attendance Allowance claim awarded before [today - 3 month]?",
+                            text: 'Was ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance claim awarded before [today - 3 month]?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

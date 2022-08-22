@@ -21,11 +21,11 @@ Are you age 16 or over?
             <form action="35hours-date">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: '35-hours',
+                    name: '35-hours',
                     fieldset: {
                         legend: {
-                            text: 'Do you spend at least 35 hours a week caring for John Smith?',
+                            text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

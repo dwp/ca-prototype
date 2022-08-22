@@ -343,12 +343,51 @@
                         </h2>
                         <ul class="app-task-list__items">
 
-                                  {{ taskListItem({
+                             {{ taskListItem({
                                 name: "Carer's telephone number",
                                 url: 'carers-telephone',
                                 isActive: 'true',
                                 tag: {
                                     text: 'to look at',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                             {{ taskListItem({
+                                name: "Carer's email address",
+                                url: 'carers-email',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to look at',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                        </ul>
+
+                          <h2 class="app-task-list__section">
+               <span class="app-task-list__section-number">7. </span>Partner's details
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                        
+
+                             {{ taskListItem({
+                                name: "Lived with partner?",
+                                url: 'partner-lived',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            })}}
+
+                               {{ taskListItem({
+                                name: "Partner's name",
+                                url: 'partner-name',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
                                     color: 'orange'
                                 }
                             })}}
