@@ -40,11 +40,11 @@
 
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'qb',
+                    name: 'qb',
                     fieldset: {
                         legend: {
-                            text: 'What benefit is John Smith receiving?',
+                            text: 'What benefit is ' + data['dp-first-name'] +' '+ data['dp-last-name'] + ' receiving?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
