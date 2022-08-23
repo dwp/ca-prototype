@@ -19,6 +19,15 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form method="post" action="qb-3months">
+             
+              {% set benefits = {
+                'PIP': 'Personal Independance Payment',
+                'DLA': 'Disability Living Allowance',
+                'AA': 'Attendance Allowance',
+                'CAA': 'Constant Attendance Allowance',
+                'AFIP': 'Armed Forces Independence Payment',
+                'EU': 'A disability benefit paid by a country in the EU'
+              }%}
 
             {% set dateHtml %}
 
@@ -27,7 +36,7 @@
                     namePrefix: "providing-care",
                     fieldset: {
                         legend: {
-                        text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance start?',
+                        text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + benefits[data['elig--qb']] + ' start?',
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--m"
                         }
@@ -44,7 +53,7 @@
   name: "contact",
   fieldset: {
     legend: {
-      text:'Do you know when ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance started?',
+      text:'Do you know when ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + benefits[data['elig--qb']] + ' started?',
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }

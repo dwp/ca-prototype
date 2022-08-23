@@ -55,38 +55,38 @@
                     items: [
                         {
                             text: 'Personal Independence Payment (PIP) daily living component',
-                            value: 'Personal Independence Payment (PIP) daily living component',
-                            checked: true if data['elig--qb'] == 'Personal Independence Payment (PIP) daily living component'
+                            value: 'PIP',
+                            checked: true if data['elig--qb'] == 'PIP'
                         },
                         {
                             text: 'Disability Living Allowance (DLA) - middle or highest care rate',
-                            value: 'Disability Living Allowance (DLA) - middle or highest care rate',
-                            checked: true if data['elig--qb'] == 'Disability Living Allowance (DLA) - middle or highest care rate'
+                            value: 'DLA',
+                            checked: true if data['elig--qb'] == 'DLA'
                         },
                         {
                             text: 'Attendance Allowance (AA)',
-                            value: 'Attendance Allowance (AA)',
-                            checked: true if data['elig--qb'] == 'Attendance Allowance (AA)'
+                            value: 'AA',
+                            checked: true if data['elig--qb'] == 'AA'
                         },
                         {
                             text: 'Constant Attendance Allowance (CAA)',
-                            value: 'Constant Attendance Allowance (CAA)',
-                            checked: true if data['elig--qb'] == 'Constant Attendance Allowance (CAA)'
+                            value: 'CAA',
+                            checked: true if data['elig--qb'] == 'CAA'
                         },
                         {
                             text: 'Armed Forces Independence Payment (AFIP)',
-                            value: 'Armed Forces Independence Payment (AFIP)',
-                            checked: true if data['elig--qb'] == 'Armed Forces Independence Payment (AFIP)'
+                            value: 'AFIP',
+                            checked: true if data['elig--qb'] == 'AFIP'
                         },
                         {
                             text: 'A disability benefit paid by a country in the EU',
-                            value: 'a disability benefit paid by a country in the EU',
-                            checked: true if data['elig--qb'] == 'a disability benefit paid by a country in the EU'
+                            value: 'EU',
+                            checked: true if data['elig--qb'] == 'EU'
                         },
                         {
                             text: 'None of these benefits',
-                            value: 'None of these benefits',
-                            checked: true if data['elig--qb'] == 'None of these benefits',
+                            value: 'None',
+                            checked: true if data['elig--qb'] == 'None',
                             conditional : {
                                 html: careStartDateHTML
                             }
