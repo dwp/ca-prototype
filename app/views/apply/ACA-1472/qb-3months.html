@@ -1,4 +1,6 @@
 {% extends 'layout.html' %}
+{% import 'macros/data-helpers.njk' as helpers %}
+
 
 {% block pageTitle %}
 Qualifying benefit awarded 
@@ -25,14 +27,14 @@ Qualifying benefit awarded
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Was the Attendance Allowance claim awarded before 30 May 2022?',
+                            text: 'Was the ' + helpers.getQualifyingBenefit(data) + ' claim awarded before 30 May 2022?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
 
                      hint: {
-                        text: 'This is the date a decision was made to award ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s Attendance Allowance claim, even if this was after an appeal. You can find this date on the Attendance Allowance award letter.'
+                        text: 'This is the date a decision was made to award ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + helpers.getQualifyingBenefit(data) + ' claim, even if this was after an appeal. You can find this date on the award letter.'
                     },
                     
                     items: [
