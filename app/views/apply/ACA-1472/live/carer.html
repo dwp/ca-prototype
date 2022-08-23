@@ -21,8 +21,8 @@ Are you age 16 or over?
             <form action="claim-date">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'are-you-carer',
+                    name: 'are-you-carer',
                     fieldset: {
                         legend: {
                             text: 'Are you the carer?',
@@ -30,7 +30,7 @@ Are you age 16 or over?
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    
+
                     items: [
                         {
                             text: 'Yes',
@@ -40,7 +40,7 @@ Are you age 16 or over?
                             text: 'No, I am making a claim on behalf of the carer',
                             value: 'No'
                         }
-                     
+
                     ]
                 }) }}
 

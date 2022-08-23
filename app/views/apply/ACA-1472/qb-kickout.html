@@ -39,10 +39,10 @@
                 {% endset %}
 
 
-               
+
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'still-apply',
+                    name: 'still-apply',
                     fieldset: {
                         legend: {
                             text: 'Do you still want to apply for Carer's Allowance?',
@@ -50,7 +50,7 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    
+
                     items: [
                         {
                             text: 'Yes',
@@ -60,7 +60,7 @@
                             text: 'No',
                             value: 'No~~/apply/lowtrust/start-page'
                         }
-                     
+
                     ]
                 }) }}
 

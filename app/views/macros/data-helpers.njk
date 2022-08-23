@@ -1,0 +1,13 @@
+{% macro getQualifyingBenefit(data) %}
+
+  {% set benefits = {
+    'PIP': 'Personal Independance Payment',
+    'DLA': 'Disability Living Allowance',
+    'AA': 'Attendance Allowance',
+    'CAA': 'Constant Attendance Allowance',
+    'AFIP': 'Armed Forces Independence Payment',
+    'EU': 'disability benefit paid by a country in the EU'
+  } %}
+
+  {{ benefits[data['elig--qb']] }}
+{% endmacro %}

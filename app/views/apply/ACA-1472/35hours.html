@@ -21,8 +21,8 @@ Do you spend at least 35 hours a week caring for
             <form action="35hours-date">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'caring-thirty-five-hours',
+                    name: 'caring-thirty-five-hours',
                     fieldset: {
                         legend: {
                             text: 'Do you spend at least 35 hours a week caring for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
@@ -42,7 +42,7 @@ Do you spend at least 35 hours a week caring for
                             text: 'No',
                             value: 'No'
                         }
-                     
+
                     ]
                 }) }}
 

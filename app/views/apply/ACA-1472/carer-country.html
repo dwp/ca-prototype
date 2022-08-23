@@ -21,8 +21,8 @@ What country do you live in?
             <form method="post" action="dp-name">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'country',
+                    name: 'country',
                     fieldset: {
                         legend: {
                             text: 'What country do you live in?',
@@ -30,13 +30,13 @@ What country do you live in?
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    
+
                     items: [
                         {
                             text: 'England, Scotland or Wales',
                             value: 'England'
                         },
-                      
+
                          {
                             text: 'Northern Ireland',
                             value: 'Northern Ireland'

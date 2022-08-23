@@ -48,8 +48,8 @@ Carer's Allowance claim start date
                         </details>
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'backdate-claim',
+                    name: 'backdate-claim',
                     fieldset: {
                         legend: {
                             text: 'Do you want us to consider your Carer’s Allowance claim from 30 May 2022?',
@@ -57,14 +57,14 @@ Carer's Allowance claim start date
                             classes: 'govuk-fieldset__legend--m'
                         }
 },
-                    
-                    
+
+
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes'
                         },
-                      
+
                          {
                             text: 'No, I want to choose a different date',
                             value: 'No'

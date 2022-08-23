@@ -21,8 +21,8 @@ Are you age 16 or over?
             <form action="qb">
 
                 {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
+                    idPrefix: 'dp-partner',
+                    name: 'dp-partner',
                     fieldset: {
                         legend: {
                             text: 'Is John Smith your partner?',
@@ -33,7 +33,7 @@ Are you age 16 or over?
                     hint: {
                         text: "By partner we mean.."
                     },
-                    
+
                     items: [
                         {
                             text: 'Yes',
@@ -43,8 +43,8 @@ Are you age 16 or over?
                             text: 'No',
                             value: 'no'
                         }
-                         
-                     
+
+
                     ]
                 }) }}
 
