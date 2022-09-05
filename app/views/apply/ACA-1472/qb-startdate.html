@@ -17,12 +17,12 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="qb-3months">
+      <form method="post">
         {% set dateHtml %}
 
           {{ govukDateInput({
-            id: "providing-care",
-            namePrefix: "providing-care",
+            id: "qb-start",
+            namePrefix: "qb-start",
             fieldset: {
               legend: {
                 text:'When did ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + helpers.getQualifyingBenefit(data) + ' start?',

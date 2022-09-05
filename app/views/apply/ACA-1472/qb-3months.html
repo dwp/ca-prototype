@@ -3,65 +3,58 @@
 
 
 {% block pageTitle %}
-Qualifying benefit awarded 
+  Qualifying benefit awarded
 {% endblock %}
 
 {% block beforeContent %}
-    {{ super() }}
-    {{ govukBackLink({
-        text: 'Back',
-        href: 'javascript:history.back()'
-    }) }}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 {% endblock %}
 
+{% set threeMonthsAgo = data | dateThreeMonthsAgo %}
+
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
 
-<div class="govuk-grid-row">
+        {{ govukRadios({
+          idPrefix: 'qb-awarded-last-three-months',
+          name: 'qb-awarded-last-three-months',
+          fieldset: {
+            legend: {
+              text: 'Was the ' + helpers.getQualifyingBenefit(data) + ' claim awarded before ' + threeMonthsAgo + '?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            text: 'This is the date a decision was made to award ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + helpers.getQualifyingBenefit(data) + ' claim, even if this was after an appeal. You can find this date on the award letter.'
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No'
+            },
+            {
+              text: 'Not sure',
+              value: 'Not sure'
+            }
+          ]
+        }) }}
 
-        <div class="govuk-grid-column-two-thirds">
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
 
-            <form method="post" action="claimdate-1">
-
-                {{ govukRadios({
-                    idPrefix: 'elig--qb',
-                    name: 'elig--qb',
-                    fieldset: {
-                        legend: {
-                            text: 'Was the ' + helpers.getQualifyingBenefit(data) + ' claim awarded before 30 May 2022?',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
-                        }
-                    },
-
-                     hint: {
-                        text: 'This is the date a decision was made to award ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '\'s ' + helpers.getQualifyingBenefit(data) + ' claim, even if this was after an appeal. You can find this date on the award letter.'
-                    },
-                    
-                    items: [
-                        {
-                            text: 'Yes',
-                            value: 'Yes'
-                        },
-                      
-                         {
-                            text: 'No',
-                            value: 'No'
-                        },
-                         {
-                            text: 'Not sure',
-                            value: 'Not sure'
-                        }
-                    ]
-                }) }}
-
-                {{ govukButton({
-                    html: 'Continue'
-                }) }}
-
-            </form>
-
-        </div>
-
-</div>
-
+      </form>
+    </div>
+  </div>
 {% endblock %}
