@@ -16,7 +16,35 @@
            
                 <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
              
-<h1 class="govuk-heading-l">poca</h1>
+<h1 class="govuk-heading-l">We cannot pay Carer's Allowance into a Post Office card account</h1>
+
+<p>The payment details you entered are for a Post Office card account. We cannot pay Carer's Allowance into this account.</p>
+<p>You can have your Carer's Allowance paid into a UK bank or building society account, either belonging to you or someone else.</p>
+
+
+   {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
+                    fieldset: {
+                        legend: {
+                            text: "Do you have another account we can pay your Carer's Allowance into?",
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Yes, I have another account',
+                            value: 'another~/apply/aca-1515/bank-details'
+                        },
+                        {
+                            text: 'No, I do not have access to another account',
+                            value: 'No~/apply/aca-1515/no-account'
+                        }
+                     
+                    ]
+                }) }}
 
 
 
