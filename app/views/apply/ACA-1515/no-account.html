@@ -23,15 +23,36 @@
                 <h1 class="govuk-heading-l">We need to pay your Carer's Allowance into a bank or
                     building society account</h1>
 
-                <p>You will not be paid Carer's Allowance without a bank or building society account.</p> 
-
+                
                     <p>
-                    If you do not have access to a bank or building society account, after you apply,
-                    you will need to <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in new tab)</a>. 
+                    If you do not have access to a bank or building society account, you can still apply for Carer's Allowance 
+                    but you will need to contact the Carer's Allowance Unit after you apply. 
 
                 
                    
                 </p>
+
+                 {{ govukRadios({
+                    idPrefix: 'bank--noaccount',
+                    name: 'bank--noaccount',
+                    fieldset: {
+                        legend: {
+                            text: "Do you have access to a bank or building society account?",
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'goback'
+                        },
+                        {
+                            text: 'No, continue applying without payment details',
+                            value: 'Continue'
+                        }
+                    ]
+                }) }}
 
                 {{ govukButton({
                     html: 'Continue'
