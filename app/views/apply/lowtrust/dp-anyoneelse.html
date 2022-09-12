@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="35hours-date">
+
+                {{ govukRadios({
+                    idPrefix: '35-hours',
+                    name: '35-hours',
+                    fieldset: {
+                        legend: {
+                            text: 'Does anyone else spend at least 35 hours a week caring for Susan Grainger?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                            text: "This can be any provided in person, including helping with things like washing, cooking, household tasks, shopping, or travel."
+                        },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes~/apply/lowtrust/dp-carer-uc'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~/apply/lowtrust/bic/any'
+                        }
+                     
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

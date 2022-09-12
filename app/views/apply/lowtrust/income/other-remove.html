@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="check-answers5">
+           
+                   <h1 class="govuk-heading-l">This will remove any information you entered about other income</h1>
+
+<p> If you continue, this will remove the following information you entered about other income:</p>
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+            <div class="govuk-inset-text">
+I received money from my friend for walking their dog for 3 days a week from 13 September to 12 October 2021. I got £30 a week. I also received £250 as a gift on 14 November. I also get £20 a month from dividends on shares that I own in my local football club. I sell scented candles from my car boot at local car boot sales every month. I make about £50 a week in total. I do not pay tax on this.
+I received money from my friend for walking their dog for 3 days a week from 13 September to 12 October 2021. I got £30 a week. I also received £250 as a gift on 14 November. I also get £20 a month from dividends on shares that I own in my local football club. I sell scented candles from my car boot at local car boot sales every month. I make about £50 a week in total. I do not pay tax on this.
+I received money from my friend for walking their dog for 3 days a week from 13 September to 12 October 2021. I got £30 a week. I also received £250 as a gift on 14 November. I also get £20 a month from dividends on shares that I own in my local football club. I sell scented candles from my car boot at local car boot sales every month. I make about £50 a week in total. I do not pay tax on this.
+I received money from my friend for walking their dog for 3 days a week from 13 September to 12 October 2021. I got £30 a week. I also received £250 as a gift on 14 November. I also get £20 a month from dividends on shares that I own in my local football club. I sell scented candles from my car boot at local car boot sales every month. I make about £50 a week in total. I do not pay tax on this.
+I received money from my friend for walking their dog for 3 days a week from 13 September to 12 October 2021. I got £30 a week. I also received £250 as a gift on 14 November. I also get £20 a month from dividends on shares that I own in my local football club. I sell scented candles from my car boot at local car boot sales every month. I make about £50 a week in total. I do not pay tax on this.
+
+
+
+
+
+                </div>
+              
+               {{ govukButton ({
+                    html: 'Remove',
+                    classes: 'govuk-button--warning'
+                }) }}
+
+                <p><a href="check-answers" class="govuk-link">Cancel and go back</a>
+
+            </form>
+        </div>
+</div>
+{% endblock %}

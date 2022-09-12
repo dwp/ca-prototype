@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="self-employed-start">
+           
+
+                {{ govukDateInput({
+                  id: "passport-issued",
+                  namePrefix: "passport-issued",
+                  fieldset: {
+                    legend: {
+                      text: "When did you finish this work?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--l"
+                    }
+                  },
+                  hint: {
+                    text: "For example, 27 3 2021"
+                  }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

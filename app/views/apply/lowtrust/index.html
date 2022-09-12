@@ -1,35 +1,29 @@
-
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  End to end low trust journey
+    End to end low trust journey
 {% endblock %}
-
 {% block beforeContent %}
-  {{ super() }}
-  {{ govukBackLink({
+    {{ super() }}
+    {{ govukBackLink({
     text: 'Back',
     href: 'javascript:history.back()'
   }) }}
 {% endblock %}
-
 {% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-xl">
-        End to end low trust journey
-      </h1>
-
-   <ol class="app-task-list">
-
-     <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">1. </span> Start
-                        </h2>
-                        <ul class="app-task-list__items">
-                            {{ taskListItem({
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+                End to end low trust journey
+            </h1>
+            <ol class="app-task-list">
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">1.
+                        </span>
+                        Start
+                    </h2>
+                    <ul class="app-task-list__items">
+                        {{ taskListItem({
                                 name: 'Start page',
                                 url: 'start-page',
                                 isActive: 'true',
@@ -37,8 +31,8 @@
                                     text: 'in live',
                                     color: 'green'
                                 }
-                            })}}
-                               {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Disclaimer',
                                 url: 'disclaimer',
                                 isActive: 'true',
@@ -46,27 +40,26 @@
                                     text: 'in live',
                                     color: 'green'
                                 }
-                            })}}
-                            {# {{ taskListItem({
-                                name: 'Check address',
-                                url: 'idv/check',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'Investigation Needed',
-                                    color: 'purple'
-                                }
-                            })}} #}
-                        </ul>
-                    </li>
-
-                    <li>
-                        <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">2. </span> Eligibility questions
-                        </h2>
-                        <ul class="app-task-list__items">
-                       
-
-                          {{ taskListItem({
+                            }) }}
+                        {# {{ taskListItem({
+                                                        name: 'Check address',
+                                                        url: 'idv/check',
+                                                        isActive: 'true',
+                                                        tag: {
+                                                            text: 'Investigation Needed',
+                                                            color: 'purple'
+                                                        }
+                                                    })}} #}
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">2.
+                        </span>
+                        Eligibility questions
+                    </h2>
+                    <ul class="app-task-list__items">
+                        {{ taskListItem({
                                 name: 'Are you the carer?',
                                 url: 'carer',
                                 isActive: 'true',
@@ -76,9 +69,8 @@
                                         color: 'blue'
                                     }
                                 ]
-                            })}}
-
-                            {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Not carer name',
                                 url: 'not-carer-name',
                                 isActive: 'true',
@@ -88,9 +80,8 @@
                                         color: 'orange'
                                     }
                                 ]
-                            })}}
-
-                            {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Carer name',
                                 url: 'carer-name',
                                 isActive: 'true',
@@ -98,9 +89,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                             {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Carer date of birth',
                                 url: 'carer-dob',
                                 isActive: 'true',
@@ -108,9 +98,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                            {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: '16 or under drop out',
                                 url: '16-kickout',
                                 isActive: 'true',
@@ -118,9 +107,8 @@
                                     text: 'drop out',
                                     color: 'red'
                                 }
-                            })}}
-                            
-                              {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Carer country',
                                 url: 'carer-country',
                                 isActive: 'true',
@@ -128,9 +116,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                             {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Another country drop out',
                                 url: 'country-kickout',
                                 isActive: 'true',
@@ -138,9 +125,8 @@
                                     text: 'drop out',
                                     color: 'red'
                                 }
-                            })}}
-
-                              {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Disabled person name',
                                 url: 'dp-name',
                                 isActive: 'true',
@@ -148,8 +134,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-                              {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Qualifying benefit',
                                 url: 'qb',
                                 isActive: 'true',
@@ -157,9 +143,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}                          
-
-                                {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: 'Qualifying benefit drop out',
                                 url: 'qb-kickout',
                                 isActive: 'true',
@@ -167,9 +152,8 @@
                                     text: 'drop out',
                                     color: 'red'
                                 }
-                            })}}     
-
-                               {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: '35 hours',
                                 url: '35hours',
                                 isActive: 'true',
@@ -177,9 +161,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                              {{ taskListItem({
+                            }) }}
+                        {{ taskListItem({
                                 name: '35 hours drop out',
                                 url: '35hours-kickout',
                                 isActive: 'true',
@@ -187,18 +170,16 @@
                                     text: 'drop out',
                                     color: 'red'
                                 }
-                            })}}
-       
-                        
-                        </ul>
-                    </li>
-                    
-                    <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">3. </span> Date of claim
-                        </h2>
-                        <ul class="app-task-list__items">
-
-                            {{ taskListItem({
+                            }) }}
+                    </ul>
+                </li>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">3.
+                    </span>
+                    Date of claim
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: 'Date started caring',
                                 url: '35hours-date',
                                 isActive: 'true',
@@ -206,9 +187,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                              {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: 'Qualifying benefit start date',
                                 url: 'qb-startdate',
                                 isActive: 'true',
@@ -216,9 +196,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                             {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: 'Qualifying benefit 3 months',
                                 url: 'qb-startdate',
                                 isActive: 'true',
@@ -226,9 +205,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                                 {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: 'Date of claim result 1',
                                 url: 'claimdate-1',
                                 isActive: 'true',
@@ -236,9 +214,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                                   {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: 'Date of claim result 2',
                                 url: 'claimdate-2',
                                 isActive: 'true',
@@ -246,9 +223,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                                 {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: 'Date of claim result 3',
                                 url: 'claimdate-3',
                                 isActive: 'true',
@@ -256,17 +232,15 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-                    
-                    </ul>
-                    
-
-                     <h2 class="app-task-list__section">
-                            <span class="app-task-list__section-number">4. </span> About the carer
-                        </h2>
-                        <ul class="app-task-list__items">
-
-                            {{ taskListItem({
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">4.
+                    </span>
+                    About the carer
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: "Carer's National Insurance number",
                                 url: 'carer-ni',
                                 isActive: 'true',
@@ -274,9 +248,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                                 {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Carer's address",
                                 url: 'carers-address',
                                 isActive: 'true',
@@ -284,9 +257,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                                  {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Carer's address results",
                                 url: 'carers-address-manual',
                                 isActive: 'true',
@@ -294,9 +266,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                               {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Carer's address manual input",
                                 url: 'carers-address-manual',
                                 isActive: 'true',
@@ -304,9 +275,8 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                               {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Carer's nationality",
                                 url: 'carers-nationality',
                                 isActive: 'true',
@@ -314,18 +284,14 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                          
-
-                            </ul>
-
-               <h2 class="app-task-list__section">
-               <span class="app-task-list__section-number">5. </span>Payments from abroad
-                        </h2>
-                        <ul class="app-task-list__items">
-
-                                  {{ taskListItem({
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">5.
+                    </span>Payments from abroad
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: "Payments from abroad",
                                 url: 'payment-from-abroad',
                                 isActive: 'true',
@@ -333,17 +299,14 @@
                                     text: 'Validated',
                                     color: 'blue'
                                 }
-                            })}}
-
-                        </ul>
-
-
-             <h2 class="app-task-list__section">
-               <span class="app-task-list__section-number">6. </span>Optional contact info from carer
-                        </h2>
-                        <ul class="app-task-list__items">
-
-                             {{ taskListItem({
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">6.
+                    </span>Optional contact info from carer
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: "Carer's telephone number",
                                 url: 'carers-telephone',
                                 isActive: 'true',
@@ -351,9 +314,8 @@
                                     text: 'to look at',
                                     color: 'orange'
                                 }
-                            })}}
-
-                             {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Carer's email address",
                                 url: 'carers-email',
                                 isActive: 'true',
@@ -361,18 +323,14 @@
                                     text: 'to look at',
                                     color: 'orange'
                                 }
-                            })}}
-
-                        </ul>
-
-                          <h2 class="app-task-list__section">
-               <span class="app-task-list__section-number">7. </span>Partner's details
-                        </h2>
-                        <ul class="app-task-list__items">
-
-                        
-
-                             {{ taskListItem({
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">7.
+                    </span>Partner's details
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: "Lived with partner?",
                                 url: 'partner-lived',
                                 isActive: 'true',
@@ -380,9 +338,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                               {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Partner's name",
                                 url: 'partner-name',
                                 isActive: 'true',
@@ -390,9 +347,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                                 {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Partner's date of birth",
                                 url: 'partner-name',
                                 isActive: 'true',
@@ -400,9 +356,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                               {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Partner's NI number",
                                 url: 'partner-nino',
                                 isActive: 'true',
@@ -410,10 +365,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-
-                               {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Partner's nationality",
                                 url: 'partner-nationality',
                                 isActive: 'true',
@@ -421,10 +374,8 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-
-                         {{ taskListItem({
+                            }) }}
+                    {{ taskListItem({
                                 name: "Separated from partner?",
                                 url: 'partner-separated',
                                 isActive: 'true',
@@ -432,33 +383,418 @@
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                        </ul>
-
-                         <h2 class="app-task-list__section">
-               <span class="app-task-list__section-number">8. </span>DP's details
-                        </h2>
-                        <ul class="app-task-list__items">
-
-
-                         {{ taskListItem({
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">8.
+                    </span>DP's details
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
                                 name: "DP date of birth",
-                                url: 'partner-separated',
+                                url: 'dp-dob',
                                 isActive: 'true',
                                 tag: {
                                     text: 'to test',
                                     color: 'orange'
                                 }
-                            })}}
-
-                        </ul>
-
-
-                  </li>
-                </ol>
-    
+                            }) }}
+                    {{ taskListItem({
+                                name: "DP National Insurance number",
+                                url: 'dp-nino',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "DP same address as carer?",
+                                url: 'dp-address1',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">9.
+                    </span>Anyone else caring for disabled person
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                                name: "Does anyone else care for DP?",
+                                url: 'dp-anyoneelse',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Other carer UC?",
+                                url: 'dp-carer-uc',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Other carer name",
+                                url: 'other-carer-name',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Other carer date of birth",
+                                url: 'other-carer-dob',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Other carer National Insurance number",
+                                url: 'other-carer-nino',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Other carer same address?",
+                                url: 'other-carer-address',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">10.
+                    </span>Breaks in care
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                                name: "Any breaks in care?",
+                                url: 'bic/any',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Break in care after date of claim?",
+                                url: 'bic/bic-after-doc',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Dates of break in care?",
+                                url: 'bic/details',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Was break medical?",
+                                url: 'bic/medical',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Was break in hospital?",
+                                url: 'bic/who',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "Breaks summary",
+                                url: 'bic/list',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                </ul>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">11.
+                    </span>Education
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                                name: "Education since claim date?",
+                                url: 'education',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                </ul>
+             
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">12.
+                    </span>Income
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                    name: 'Have you been an employee?',
+                    url: 'income/employee',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Employer name',
+                    url: 'income/employer-name',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                        name: 'Employer contact',
+                        url: 'income/employer-contact',
+                        isActive: 'true',
+                        tag: {
+                        text: 'new page',
+                        color: 'green'
+                        }
+                        }) }}
+                    {{ taskListItem({
+                            name: 'Employer address',
+                            url: 'income/employer-address',
+                            isActive: 'true',
+                            tag: {
+                            text: 'new page',
+                            color: 'green'
+                            }
+                            }) }}
+                    {{ taskListItem({
+                                name: 'Employer start date',
+                                url: 'income/employer-start',
+                                isActive: 'true',
+                                tag: {
+                                text: 'new page',
+                                color: 'green'
+                                }
+                                }) }}
+                    {{ taskListItem({
+                                    name: 'Still work for employer?',
+                                    url: 'income/employer-still',
+                                    isActive: 'true',
+                                    tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                    }
+                                    }) }}
+                    {{ taskListItem({
+                                        name: 'Employer stop date',
+                                        url: 'income/employer-stopdate',
+                                        isActive: 'true',
+                                        tag: {
+                                        text: 'new page',
+                                        color: 'green'
+                                        }
+                                        }) }}
+                    {{ taskListItem({
+                                            name: 'Pay frequency',
+                                            url: 'income/employer-frequency',
+                                            isActive: 'true',
+                                            tag: {
+                                            text: 'new page',
+                                            color: 'green'
+                                            }
+                                            }) }}
+                    {{ taskListItem({
+                                                name: 'Pay amount',
+                                                url: 'income/employer-amount',
+                                                isActive: 'true',
+                                                tag: {
+                                                text: 'new page',
+                                                color: 'green'
+                                                }
+                                                }) }}
+                    {{ taskListItem({
+                                                    name: 'About last pay',
+                                                    url: 'income/employer-finalpay',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    }) }}
+                    {{ taskListItem({
+                                                    name: 'Pay for anything',
+                                                    url: 'income/employer-needs',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    }) }}
+                    {{ taskListItem({
+                                                    name: 'Care costs',
+                                                    url: 'income/employer-carecosts',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    }) }}
+                    {{ taskListItem({
+                                                    name: 'Summary',
+                                                    url: 'income/employer-summary',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    }) }}
+                    {{ taskListItem({
+                    name: 'Have you been self-employed?',
+                    url: 'income/self-employed',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Type of work',
+                    url: 'income/self-employed-type',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Still working',
+                    url: 'income/self-employed-still',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Start working',
+                    url: 'income/self-employed-start',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Accounts',
+                    url: 'income/self-employed-accounts',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Trading year',
+                    url: 'income/self-employed-tradingyear',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Care costs',
+                    url: 'income/self-employed-carecosts',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Anything else about your work',
+                    url: 'income/employed-anythingelse',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Are you receiving State Pension?',
+                    url: 'income/state-pension',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Have you had any of these?',
+                    url: 'income/any',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Have you had any of other income?',
+                    url: 'income/other-income',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'What other income?',
+                    url: 'income/other-income2',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                    {{ taskListItem({
+                    name: 'Private pension',
+                    url: 'income/private-pension',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    }) }}
+                </ul>
+            </li>
+        </ol>
     </div>
-</div>
-
-{% endblock %}
+</div>{% endblock %}

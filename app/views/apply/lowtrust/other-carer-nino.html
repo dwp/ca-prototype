@@ -18,34 +18,20 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="dp-anyoneelse">
+            <form action="other-carer-address">
 
-       
+              
+              <h1 class="govuk-heading-l">What is [other carer's name] National Insurance number?</h1>
 
-            {{ govukRadios({
-  idPrefix: "contact",
-  name: "contact",
-  fieldset: {
-    legend: {
-      text:'Does Susan Grainger live at the same address as you?',
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
+
+              {{ govukInput({
  
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-     
-    },
-     {
-      value: "no",
-      text: "No"
-    }
-
-  ]
+  classes: "govuk-input--width-10",
+  id: "national-insurance-number",
+  name: "national-insurance-number",
+  spellcheck: false
 }) }}
+
 
                 {{ govukButton({
                     html: 'Continue'

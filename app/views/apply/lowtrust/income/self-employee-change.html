@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post">
+           
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+                {{ govukRadios({
+                    idPrefix: "employment",
+                    name: "employment",
+                    fieldset: {
+                    legend: {
+                        text: "Have you been self-employed at any time since 3 January 2020?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--l"
+                    }
+                    },
+                    items: [
+                        {
+                            value: "Yes~/apply/ACA-1405/employer-details",
+                            text: "Yes"
+                        },
+                        {
+                            value: "No~/apply/ACA-1405/self-employee-remove",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

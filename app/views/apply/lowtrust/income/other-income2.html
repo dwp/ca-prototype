@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="private-pension">
+           
+             
+
+                  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="3000">
+                    <div class="govuk-form-group">
+                      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="with-hint">
+                        What other income have you received since 10 January 2020?
+                        </label>
+                      </h1>
+                      <div id="with-hint-hint" class="govuk-hint">
+                        Give full details of how often and how much you're paid.
+                      </div>
+                      <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="with-hint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+                    </div>
+                  
+                    <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                      You have 3000 characters remaining
+                    </div>
+                  
+                  </div>
+
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

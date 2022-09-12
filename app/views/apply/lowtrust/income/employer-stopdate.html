@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="employer-p45">
+           
+
+        <h1 class="govuk-heading-l">Your leaving date</h1>
+
+
+                {{ govukDateInput({
+                  id: "passport-issued",
+                  namePrefix: "passport-issued",
+                  fieldset: {
+                    legend: {
+                      text: "What was your last working day at Natwest?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  hint: {
+                    text: "For example, 27 3 2021"
+                  }
+                }) }}
+
+               {{ govukRadios({
+                    idPrefix: "employment",
+                    name: "employment",
+                    fieldset: {
+                    legend: {
+                        text: "Is this the same as the leaving date on your P45?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--m"
+                    }
+                    },
+                    items: [
+                        {
+                            value: "Yes~/apply/ACA-1405/employer-frequency",
+                            text: "Yes"
+                        },
+                        {
+                            value: "No~/apply/ACA-1405/employer-p45",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton ({
+                    html: 'Continue',
+                    classes: 'govuk-button'
+                }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

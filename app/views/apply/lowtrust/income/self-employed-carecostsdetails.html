@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="employed-anythingelse">
+           
+                <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
+        <h1 class="govuk-heading-l">Details of your care costs</h1>
+
+
+                {{ govukTextarea({
+                  name: "more-detail",
+                  id: "more-detail",
+                  label: {
+                    text: "If you claimed Tax-Free Childcare, tell us here.",
+                    
+                    isPageHeading: true
+                  }
+                }) }}
+                    
+
+                 
+
+              {{ govukButton ({
+                  html: 'Continue',
+                  classes: 'govuk-button'
+              }) }}
+            </form>
+        </div>
+</div>
+{% endblock %}

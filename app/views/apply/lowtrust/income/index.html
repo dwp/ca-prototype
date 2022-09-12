@@ -1,0 +1,354 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+End to end simple allow journey
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{{ govukBackLink({
+text: 'Back',
+href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Income redesign
+        </h1>
+
+        <ol class="app-task-list">
+
+            <li>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">1. </span> Employment
+                </h2>
+                <ul class="app-task-list__items">
+                    {{ taskListItem({
+                    name: 'Have you been an employee?',
+                    url: 'employee',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+                    {{ taskListItem({
+                    name: 'Employer name',
+                    url: 'employer-name',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+                    {{ taskListItem({
+                        name: 'Employer contact',
+                        url: 'employer-contact',
+                        isActive: 'true',
+                        tag: {
+                        text: 'new page',
+                        color: 'green'
+                        }
+                        })}}
+                        {{ taskListItem({
+                            name: 'Employer address',
+                            url: 'employer-address',
+                            isActive: 'true',
+                            tag: {
+                            text: 'new page',
+                            color: 'green'
+                            }
+                            })}}
+                         
+                            {{ taskListItem({
+                                name: 'Employer start date',
+                                url: 'employer-start',
+                                isActive: 'true',
+                                tag: {
+                                text: 'new page',
+                                color: 'green'
+                                }
+                                })}}
+
+                                {{ taskListItem({
+                                    name: 'Still work for employer?',
+                                    url: 'employer-still',
+                                    isActive: 'true',
+                                    tag: {
+                                    text: 'new page',
+                                    color: 'green'
+                                    }
+                                    })}}
+                              
+                                    {{ taskListItem({
+                                        name: 'Employer stop date',
+                                        url: 'employer-stopdate',
+                                        isActive: 'true',
+                                        tag: {
+                                        text: 'new page',
+                                        color: 'green'
+                                        }
+                                        })}}
+                                   
+                                        {{ taskListItem({
+                                            name: 'Pay frequency',
+                                            url: 'employer-frequency',
+                                            isActive: 'true',
+                                            tag: {
+                                            text: 'new page',
+                                            color: 'green'
+                                            }
+                                            })}}
+                                            
+                                            {{ taskListItem({
+                                                name: 'Pay amount',
+                                                url: 'employer-amount',
+                                                isActive: 'true',
+                                                tag: {
+                                                text: 'new page',
+                                                color: 'green'
+                                                }
+                                                })}}
+
+                                                {{ taskListItem({
+                                                    name: 'About last pay',
+                                                    url: 'employer-finalpay',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    })}}
+
+                                                {{ taskListItem({
+                                                    name: 'Pay for anything',
+                                                    url: 'employer-needs',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    })}}
+                                       
+                                                 {{ taskListItem({
+                                                    name: 'Care costs',
+                                                    url: 'employer-carecosts',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    })}}
+
+                                                    {{ taskListItem({
+                                                    name: 'Summary',
+                                                    url: 'employer-summary',
+                                                    isActive: 'true',
+                                                    tag: {
+                                                    text: 'new page',
+                                                    color: 'green'
+                                                    }
+                                                    })}}
+                              
+                              
+                </ul>
+                </li>
+
+
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">2. </span> Self employment
+                    </h2>
+                    <ul class="app-task-list__items">
+
+                    {{ taskListItem({
+                    name: 'Have you been self-employed?',
+                    url: 'self-employed',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                    {{ taskListItem({
+                    name: 'Type of work',
+                    url: 'self-employed-type',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                    {{ taskListItem({
+                    name: 'Still working',
+                    url: 'self-employed-still',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                      {{ taskListItem({
+                    name: 'Start working',
+                    url: 'self-employed-start',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                     {{ taskListItem({
+                    name: 'Accounts',
+                    url: 'self-employed-accounts',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                      {{ taskListItem({
+                    name: 'Trading year',
+                    url: 'self-employed-tradingyear',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                     {{ taskListItem({
+                    name: 'Care costs',
+                    url: 'self-employed-carecosts',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                     {{ taskListItem({
+                    name: 'Anything else about your work',
+                    url: 'employed-anythingelse',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+
+                </ul>                           
+                </li>
+
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">3. </span> State Pension
+                    </h2>
+                    <ul class="app-task-list__items">
+
+                    {{ taskListItem({
+                    name: 'Are you receiving State Pension?',
+                    url: 'state-pension',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                    </ul>
+                    </li>
+
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">5.</span> </span> Any other income
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                    {{ taskListItem({
+                    name: 'Have you had any of these?',
+                    url: 'any',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                    {{ taskListItem({
+                    name: 'Have you had any of other income?',
+                    url: 'other-income',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+                    {{ taskListItem({
+                    name: 'What other income?',
+                    url: 'other-income2',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                        </ul></li>
+
+                         <li>     
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">6.</span> </span> Private pension
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                    {{ taskListItem({
+                    name: 'Private pension',
+                    url: 'private-pension',
+                    isActive: 'true',
+                    tag: {
+                    text: 'new page',
+                    color: 'green'
+                    }
+                    })}}
+
+                </ul>
+            </li>
+
+                   <li>     
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">7.</span> </span> Check your answers
+                        </h2>
+                        <ul class="app-task-list__items">
+
+                    {{ taskListItem({
+                    name: 'Check your answers',
+                    url: 'check-answers',
+                    isActive: 'true',
+                    tag: {
+                    text: 'live',
+                    color: 'blue'
+                    }
+                    })}}
+
+                </ul>
+            </li>
+
+          
+
+        </ol>
+
+    </div>
+</div>
+
+{% endblock %}
