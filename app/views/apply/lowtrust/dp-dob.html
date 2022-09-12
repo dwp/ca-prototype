@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    When do you want Carer’s Allowance to start?
+Carer's Allowance prototype
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,14 +18,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="carer-country">
+            <form method="post" action="dp-nino">
 
                     {{ govukDateInput({
                     id: "providing-care",
                     namePrefix: "providing-care",
                     fieldset: {
                         legend: {
-                        text: "What is John Smith's date of birth?",
+                        text: "What is Susan Grainger's date of birth?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }

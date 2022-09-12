@@ -1,5 +1,4 @@
 {% extends 'layout.html' %}
-
 {% block pageTitle %}
 Carer's Allowance prototype
 {% endblock %}
@@ -18,14 +17,24 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="carers-telephone">
+            <form action="partner-separated">
 
+   
+                <p class="govuk-fieldset__legend--l">
+                    What is Karen Mcdonald's nationality?
+                </p>
+               
+            
+                {{ govukInput ({
+                        id: 'partner-nationality',
+                        name: 'partner-nationality',
+                        classes: 'govuk-!-width-full'
+                        
+                    }) }}
 
- <h1 class="govuk-heading-l">Payments from abroad screens tbc
-                </h1>
+                 
 
-
-          
+              
 
                 {{ govukButton({
                     html: 'Continue'

@@ -18,14 +18,34 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="carers-telephone">
+            <form method="post" action="qb-3months">
 
+       
 
- <h1 class="govuk-heading-l">Payments from abroad screens tbc
-                </h1>
+            {{ govukRadios({
+  idPrefix: "contact",
+  name: "contact",
+  fieldset: {
+    legend: {
+      text:'Does Susan Grainger live at the same address as you?',
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+ 
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+     
+    },
+     {
+      value: "no",
+      text: "No"
+    }
 
-
-          
+  ]
+}) }}
 
                 {{ govukButton({
                     html: 'Continue'

@@ -18,20 +18,20 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="qb-startdate">
+            <form method="post" action="partner-nino">
 
                     {{ govukDateInput({
-                    id: "providing-care",
-                    namePrefix: "providing-care",
+                    id: "partner-dob",
+                    namePrefix: "partner-dob",
                     fieldset: {
                         legend: {
-                        text: 'When did you start providing 35 hours of care for ' + data['dp-first-name'] +' '+ data['dp-last-name'] + '?',
+                        text: "What is Karen Mcdonald's date of birth?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }
                     },
                     hint: {
-                        text: "For example, 27 3 2021"
+                        text: "For example, 27 3 1966"
                     }
                    
                     }) }}

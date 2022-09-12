@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="partner-nationality">
+
+   
+                <p class="govuk-fieldset__legend--l">
+                    What is Karen Mcdonald's National Insurance number?
+                </p>
+                <p>
+                    If they do not have a National Insurance number, or you are unable to find out what it is, you can leave it blank.
+                </p>
+            
+                {{ govukInput ({
+                        id: 'dp-ni',
+                        name: 'dp-ni',
+                        
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'National Insurance number',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        },
+                        hint: {
+                            text: 'For example, QQ123456C'
+                        }
+                    }) }}
+
+                  {{ govukInsetText({
+                        text: "By providing their National Insurance number, we may be able to process your claim quicker."
+                        }) }}
+
+              
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
