@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% block pageTitle %}
+    Confirm you want to remove this
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="list">    
+                <h1 class="govuk-heading-l">Remove this break in care</h1>
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                      <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Stop date</th>
+                        <td class="govuk-table__cell">
+                          {% if break['who-was-in-hospital'] == "you" %}
+                            {{ break['you-hospital-admitted-day'] }} {{ break['you-hospital-admitted-month'] | month }} {{ break['you-hospital-admitted-year'] }}
+                          {% else %} <!-- If not, pull the john smith details -->
+                            {{ break['js-hospital-admitted-day'] }} {{ break['js-hospital-admitted-month'] | month }} {{ break['js-hospital-admitted-year'] }}
+                          {% endif %}
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Start date</th>
+                          {% if break['you-hospital-ended'] == "no" or not break['js-hospital-ended-day'] %}
+                                <td class="govuk-table__cell">
+                                  Not restarted care
+                                </td>
+                          {% else %}
+                            <td class="govuk-table__cell">
+                              {% if break['who-was-in-hospital'] == "you" %}
+                                {{ break['you-hospital-ended-day'] }} {{ break['you-hospital-ended-month'] | month }} {{ break['you-hospital-ended-year'] }}
+                              {% else %} <!-- If not, pull the john smith details -->
+                                {{ break['js-hospital-ended-day'] }} {{ break['js-hospital-ended-month'] | month }} {{ break['js-hospital-ended-year'] }}
+                              {% endif %}
+                            </td>
+                          {% endif%}
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Where</th>
+                        <td class="govuk-table__cell">
+                          {% if break['breakType'] === 'hospital' %}
+                            Hospital
+                          {% elif break['breakType'] === 'respite' %}
+                            Respite
+                          {% elif break['breakType'] === 'other' %}
+                            Other
+                          {% endif %}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <input type="hidden" name="{{ breakLoc }}" value="">
+                  {{ govukButton ({
+                      html: 'Remove',
+                      classes: 'govuk-button--warning'
+                  }) }}
+                <p>
+                    <a href="list">Cancel and go back</a>
+                </p>
+            </form>
+        </div>
+</div>
+{% endblock %}

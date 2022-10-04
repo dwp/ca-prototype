@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Select your address – Apply for Carer’s Allowance – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data.error %}
+                {{ govukErrorSummary({
+                    'titleText': 'There is a problem',
+                    'errorList': [
+                        {
+                            'text': 'Select an address',
+                            'href': '#applicant-address-selected'
+                        }
+                    ]
+                }) }}
+            {% endif %}
+
+            <form action="nationality-where-you-live">
+
+                <h1 class="govuk-heading-l">Select your address</h1>
+
+                <p class="govuk-!-margin-bottom-8">
+                    <b>Postcode:</b><BR> {{ data['applicant-find-postcode'] | default('AB12 3CD')}}
+                    <br> <a href="postcode">Change</a>
+                </p>
+
+                {{ govukSelect({
+                    id: 'applicant-address-selected',
+                    name: 'applicant-address-selected',
+                    items: data.dummyAddresses | addressOptions(data['applicant-address-selected']),
+                    label: {
+                        text: 'Select an address'
+                    },
+                    errorMessage: {
+                        text: 'Select an address'
+                    } if data.error
+                }) }}
+
+                {# Change the dummy addresses in app/data/session-data-defaults.js if needed #}
+
+                <p>
+                    <a href="about-you-address-manual">Enter your address manually</a>
+                </p>
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,208 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Payment details
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="information-additional-information">
+
+                <h1 class="govuk-heading-xl">Your bank details</h1>
+
+                <p>
+                    Carer's Allowance can be paid into a UK bank account, either your own or someone else's, or your own Post Office card account.
+                </p>
+
+                <p>
+                    You're responsible for repaying any overpayments, even if the money is paid into someone else's account.
+                </p>
+
+                <p>
+                    You can use someone else’s account if:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>their account allows it</li>
+                    <li>they agree to let you use it</li>
+                    <li>they will use your money how you tell them to</li>
+                </ul>
+
+                {% set bankDetailsHTML %}
+
+                    {{ govukInput ({
+                        id: 'pay-details--account-holder-name',
+                        name: 'pay-details--account-holder-name',
+                        value: data['pay-details--account-holder-name'] if data['pay-details--account-holder-name'] else '',
+                        label: {
+                            text: 'Account holder name',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'pay-details--name-of-bank',
+                        name: 'pay-details--name-of-bank',
+                        value: data['pay-details--name-of-bank'] if data['pay-details--name-of-bank'] else '',
+                        label: {
+                            text: 'Name of bank or building society',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'pay-details--sort-code',
+                        name: 'pay-details--sort-code',
+                        value: data['pay-details--sort-code'] if data['pay-details--sort-code'] else '',
+                        classes: 'govuk-input--width-5',
+                        label: {
+                            text: 'Sort code',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Must be 6 digits long'
+                        },
+                        pattern: "[0-9]*",
+                        attributes: {
+                            spellcheck: "false"
+                        }
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'pay-details--account-number',
+                        name: 'pay-details--account-number',
+                        value: data['pay-details--account-number'] if data['pay-details--account-number'] else '',
+                        classes: 'govuk-input--width-10',
+                        label: {
+                            text: 'Account number',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Must be between 6 and 8 digits long'
+                        },
+                        pattern: "[0-9]*",
+                        attributes: {
+                            spellcheck: "false"
+                        }
+                    }) }}
+
+                    {% set detailsContentHTML %}
+
+                        <p>
+                            If you're using a Post Office card account, your account number isn't the number on your card.
+                        </p>
+                        
+                        <p>
+                            Find the correct number on any letter you've had from the Post Office about your account.
+                        </p>
+
+                    {% endset %}
+                    
+                    {{ govukDetails({
+                        summaryText: 'Post Office card account numbers',
+                        html: detailsContentHTML
+                    }) }}
+
+                    {{ govukInput ({
+                        id: 'pay-details--roll-ref',
+                        name: 'pay-details--roll-ref',
+                        value: data['pay-details--roll-ref'] if data['pay-details--roll-ref'] else '',
+                        label: {
+                            text: 'Building society roll number (if you have one)',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'You can find it on your card, statement or passbook'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {% set noBankHTML %}
+
+                    <p>
+                        You won't be paid Carer's Allowance without a bank account.
+                    </p>
+
+                    <p>
+                        You can add bank details after you apply by contacting the Carer's Allowance Unit.
+                    </p>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'pay-details--has-bank',
+                    name: 'pay-details--has-bank',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have a bank account?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                            conditional: {
+                                html: bankDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'no',
+                            conditional: {
+                                html: noBankHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'pay-details--frequency',
+                    name: 'pay-details--frequency',
+                    fieldset: {
+                        legend: {
+                            text: 'How often do you want to be paid Carer’s Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Every week',
+                            value: 'Every week'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

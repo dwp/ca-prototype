@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Pension contributions or care costs
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'employment-extra' | redirect | safe if data['been-self-employed'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="employment-extra">
+
+                <h1 class="govuk-heading-l">Pension contributions or care costs</h1>
+
+                {% set pensionDetailsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'self-pension-details',
+                        id: 'self-pension-details',
+                        value: data['self-pension-details'],
+                        maxlength: '300',
+                        label: {
+                            text: 'Give details of each pension you pay into, including how much and how often you pay.',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'self-pensions',
+                    name: 'self-pensions',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you pay into a pension?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-pensions'] == 'Yes',
+                            conditional: {
+                                html: pensionDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-pensions'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {% set careCostsDetailsHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'self-care-costs-details',
+                        id: 'self-care-costs-details',
+                        value: data['self-care-costs-details'],
+                        maxlength: '300',
+                        label: {
+                            text: 'If you pay a family member let us know their relationship to you and the person you provide care for.',
+                            classes: 'app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'self-care-costs',
+                    name: 'self-care-costs',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have any care costs because of this work?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    hint: {
+                        text: 'This includes childcare costs as well as costs for looking after the person you provide care for. Tell us here if you are claiming Tax-Free Childcare.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-care-costs'] == 'Yes',
+                            conditional: {
+                                html: careCostsDetailsHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-care-costs'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Have you been in full-time or part-time education since you started caring?
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="education-course-details">
+
+                {% set openUniversityHTML %}
+                    {{ govukRadios ({
+                        idPrefix: 'siphoning--education-open',
+                        name: 'siphoning--education-open',
+                        fieldset: {
+                            legend: {
+                                html: 'Are you studying with the Open University',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'Yes~income/your-income',
+                                checked: true if data['siphoning--education-open'] == 'Yes'
+                            },
+                            {
+                                text: 'No',
+                                value: 'No',
+                                checked: true if data['siphoning--education-open'] == 'No'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+
+                {{ govukRadios ({
+                    idPrefix: 'siphoning--education',
+                    name: 'siphoning--education',
+                    fieldset: {
+                        legend: {
+                            html: 'Have you been in <span style="white-space: nowrap;">full-time</span> or <span style="white-space: nowrap;">part-time</span> education since you started caring?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['siphoning--education'] == 'Yes',
+                                conditional: {
+                                    html: openUniversityHTML
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No~income/your-income',
+                            checked: true if data['siphoning--education'] == 'No'
+                        }
+                    ] 
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

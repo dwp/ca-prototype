@@ -23,11 +23,8 @@ Carer's Allowance prototype
                <h1 class="govuk-heading-l">Have you lived with a partner at any time since [claim date]?</h1>
 
         <div class="govuk-hint"> We look at any money your partner gets from benefits when we work out if you can get Carer's Allowance.
-        <br><br>By partner we mean:
-            <ul class="govuk-list govuk-list--bullet govuk-hint">
-            <li>a person you're married to or live with as if you are married</li>
-            <li>a civil partner or a person you live with as if you're civil partners</li>
-            </ul>
+        <br><br>A partner is a husband, wife, civil partner or someone that you are in a relationship with.
+
 
         </div>
                 {{ govukRadios({
@@ -41,7 +38,7 @@ Carer's Allowance prototype
                         },
                         {
                             text: 'No',
-                            value: 'no~/apply/lowtrust/partner-name'
+                            value: 'no~/apply/lowtrust/dp-anyoneelse'
                         }
                          
                      

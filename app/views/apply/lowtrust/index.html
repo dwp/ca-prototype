@@ -260,7 +260,7 @@
                             }) }}
                     {{ taskListItem({
                                 name: "Carer's address results",
-                                url: 'carers-address-manual',
+                                url: 'carers-address-results',
                                 isActive: 'true',
                                 tag: {
                                     text: 'Validated',
@@ -325,11 +325,73 @@
                                 }
                             }) }}
                 </ul>
+
+                   <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">7.
+                    </span>DP's details
+                </h2>
+                <ul class="app-task-list__items">
+
+                     {{ taskListItem({
+                                name: "What is the DP's relationship to you?",
+                                url: 'dp-relationship',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    
+                     {{ taskListItem({
+                                name: "Does DP live with you?",
+                                url: 'dp-live',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+
+                             {{ taskListItem({
+                                name: "Have you lived with DP/ Partner at any time since DOC?",
+                                url: 'dp-lived',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+
+                             {{ taskListItem({
+                                name: "DP date of birth",
+                                url: 'dp-dob',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                    {{ taskListItem({
+                                name: "DP National Insurance number",
+                                url: 'dp-nino',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+                  
+
+
+
+                </ul>
+
                 <h2 class="app-task-list__section">
                     <span class="app-task-list__section-number">7.
                     </span>Partner's details
                 </h2>
                 <ul class="app-task-list__items">
+                    
                     {{ taskListItem({
                                 name: "Lived with partner?",
                                 url: 'partner-lived',
@@ -385,39 +447,7 @@
                                 }
                             }) }}
                 </ul>
-                <h2 class="app-task-list__section">
-                    <span class="app-task-list__section-number">8.
-                    </span>DP's details
-                </h2>
-                <ul class="app-task-list__items">
-                    {{ taskListItem({
-                                name: "DP date of birth",
-                                url: 'dp-dob',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'to test',
-                                    color: 'orange'
-                                }
-                            }) }}
-                    {{ taskListItem({
-                                name: "DP National Insurance number",
-                                url: 'dp-nino',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'to test',
-                                    color: 'orange'
-                                }
-                            }) }}
-                    {{ taskListItem({
-                                name: "DP same address as carer?",
-                                url: 'dp-address1',
-                                isActive: 'true',
-                                tag: {
-                                    text: 'to test',
-                                    color: 'orange'
-                                }
-                            }) }}
-                </ul>
+           
                 <h2 class="app-task-list__section">
                     <span class="app-task-list__section-number">9.
                     </span>Anyone else caring for disabled person

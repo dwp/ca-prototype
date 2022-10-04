@@ -1,0 +1,226 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Fostering Allowance
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'direct-payments' | redirect | safe if not data['other-income'] | includes('Fostering Allowance') }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="direct-payments">
+
+                <h1 class="govuk-heading-l">Fostering Allowance</h1>
+
+                {% set whoPaidHTML %}
+
+                    {{ govukInput ({
+                        id: 'fostering-org-details',
+                        name: 'fostering-org-details',
+                        value: data['fostering-org-details'] if data['fostering-org-details'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'Who paid you Fostering Allowance?',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'fostering-org',
+                    name: 'fostering-org',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of organisation pays you Fostering Allowance?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Local Authority',
+                            value: 'Local Authority',
+                            checked: true if data['fostering-org'] == 'Local Authority'
+                        },
+                        {
+                            text: 'Fostering Agency',
+                            value: 'Fostering Agency',
+                            checked: true if data['fostering-org'] == 'Fostering Agency'
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if data['fostering-org'] == 'Other',
+                            conditional: {
+                                html: whoPaidHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {% set lastPaidHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'fostering-last-paid',
+                        namePrefix: 'fostering-last-paid',
+                        fieldset: {
+                            legend: {
+                                text: 'When were you last paid?',
+                                isPageHeading: true,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['fostering-last-paid-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['fostering-last-paid-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['fostering-last-paid-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'fostering-still-paid',
+                    name: 'fostering-still-paid',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still being paid this?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['fostering-still-paid'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['fostering-still-paid'] == 'No',
+                            conditional: {
+                                html: lastPaidHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukInput ({
+                    id: 'fostering-who-paid',
+                    name: 'fostering-who-paid',
+                    value: data['fostering-who-paid'] if data['fostering-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Who paid you this?',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {{ govukInput ({
+                    id: 'fostering-amount',
+                    name: 'fostering-amount',
+                    value: data['fostering-who-paid'] if data['fostering-who-paid'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Amount paid',
+                        classes: 'govuk-input--width-20 app-bold-label'
+                    }
+                }) }}
+
+                {% set frequencyDetailsHTML %}
+
+                    {{ govukInput ({
+                        id: 'fostering-frequency-details',
+                        name: 'fostering-frequency-details',
+                        value: data['fostering-frequency-details'] if data['fostering-frequency-details'] else '',
+                        classes: 'govuk-input--width-20',
+                        label: {
+                            text: 'How often are you paid?',
+                            classes: 'govuk-input--width-20 app-bold-label'
+                        }
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'fostering-frequency',
+                    name: 'fostering-frequency',
+                    fieldset: {
+                        legend: {
+                            text: 'How often are you paid?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Weekly',
+                            value: 'Weekly',
+                            checked: true if data['fostering-frequency'] == 'Weekly'
+                        },
+                        {
+                            text: 'Fortnightly',
+                            value: 'Fortnightly',
+                            checked: true if data['fostering-frequency'] == 'Fortnightly'
+                        },
+                        {
+                            text: 'Every 4 weeks',
+                            value: 'Every 4 weeks',
+                            checked: true if data['fostering-frequency'] == 'Every 4 weeks'
+                        },
+                        {
+                            text: 'Monthly',
+                            value: 'Monthly',
+                            checked: true if data['fostering-frequency'] == 'Monthly'
+                        },
+                        {
+                            text: 'It varies',
+                            value: 'It varies',
+                            checked: true if data['fostering-frequency'] == 'It varies',
+                            conditional: {
+                                html: frequencyDetailsHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

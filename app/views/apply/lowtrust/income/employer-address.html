@@ -12,7 +12,7 @@
 {% block content %}
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="post" action="employer-start">
+            <form method="post" action="employer-address-results">
            
 
                 <!-- To redirect to a different page based on radio selected use: ~/poc/E2E/breaks/dates2-html2/PAGE_TO_GO_TO -->
@@ -23,13 +23,19 @@
                   If you have had more than one employment, just tell us about the first one, you can tell us about more later.
                 </div> -->
 
-                {{ govukInput({
-                    label: {
-                      text: "Postcode",
-                      classes: "govuk-label--m",
-                      isPageHeading: true
-                    }   
-                  }) }}
+ <div class="govuk-form-group">
+        <label class="govuk-label" for="postcode">
+          Property number or name
+        </label>
+        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="postcode" aria-describedby="postcode-hint">
+        <br><br>
+        <label class="govuk-label" for="postcode">
+          UK postcode
+        </label>
+        <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="postcode" aria-describedby="postcode-hint">
+      </div>             
+      <p>
+<a href="carers-address-manual" class="govuk-link">Enter address manually</a></p>  
 
                 {{ govukButton ({
                     html: 'Find address',

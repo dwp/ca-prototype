@@ -1,15 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Carer's Allowance prototype
+  What is your address? – Apply for Carer’s Allowance – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-    {{ super() }}
-    {{ govukBackLink({
-        text: 'Back',
-        href: 'javascript:history.back()'
-    }) }}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -18,20 +18,34 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="qb">
+            <form action="about-you-address-select">
 
+                {% if data.error %}
+                    {{ govukErrorSummary({
+                        'titleText': 'There is a problem',
+                        'errorList': [
+                            {
+                                'text': 'We could not f x   ind this postcode, enter your address manually or try again',
+                                'href': '#applicant-find-postcode'
+                            }
+                        ]
+                    }) }}
+                {% endif %}
 
-               <h1 class="govuk-heading-l">What is the John Smith's address?</h1>
+                <h1 class="govuk-heading-l">What is your address?</h1>
 
+                <p>
+                    We will use this to send you any letters about your Carer’s Allowance claim.
+                </p>
 
-             {{ govukInput({
+                {{ govukInput({
                     id: 'applicant-find-postcode',
                     name: 'applicant-find-postcode',
                     value: data['applicant-find-postcode'] if data['applicant-find-postcode'] else '',
                     classes: 'govuk-input--width-10',
                     label: {
                         text: 'Postcode',
-                        classes: 'govuk-input--width-10 app-bold-label'a~
+                        classes: 'govuk-input--width-10 app-bold-label'
                     },
                     errorMessage: {
                         text: 'We could not find this postcode, enter your address manually or try again'

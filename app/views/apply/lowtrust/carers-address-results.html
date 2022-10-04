@@ -14,53 +14,39 @@ Carer's Allowance prototype
  <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
       
-        <form method="post" action="carers-address-manual">
+        <form method="post" action="carers-nationality">
+             
+                <h1 class="govuk-heading-l">Select your address</h1>
 
-
+<p> 3 addresses found for <b>4</b> and <b>TF1 2HN</b> &nbsp <a href="carers-address">Change</a></p><br>
 
            {{ govukRadios({
-                    idPrefix: 'death-registered',
-                    name: 'death-registered',
-                    fieldset: {
-                        legend: {
-                            text: 'Confirm address',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
-                        }
-                    },
+                    idPrefix: 'carer-address',
+                    name: 'carer-address',
+                    
                     
                     items: [
                         {
-                            text: '14 MILL LANE, ARLESTON, TF1 2HN',
+                            text: '4 MILL LANE, ARLESTON, TF1 2HN',
                             value: 'England~/apply/lowtrust/carers-nationality'
                         },
                       
                          {
-                            text: '4 MILL LANE, ARLESTON, TF1 2HN',
+                            text: '14 MILL LANE, ARLESTON, TF1 2HN',
                             value: 'Scotland~/apply/lowtrust/carers-nationality'
                         },
                          {
-                            text: '4 MILL LANE, ARLESTON, TF1 2HN',
+                            text: '41 MILL LANE, ARLESTON, TF1 2HN',
                             value: 'Wales~/apply/lowtrust/carers-nationality'
                         }
                     ]
                 }) }}
-                <div class="govuk-body"> or </div>
-
-                 {{ govukRadios({
-                   
-                    
-                    items: [
-                       
-                         {
-                            text: 'Address not found',
-                            value: 'p~apply/lowtrust/carers-address-manual'
-                        }
-                    ]
-                }) }}
+               
 
       <button type="submit" class="govuk-button">
         Continue
       </button>
+
+                <p><a href="carers-address-manual">Enter address manually</a></p>
 
 {% endblock %}

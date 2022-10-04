@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+   
+ <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      
+        <form method="post" action="employer-start">
+
+
+
+           {{ govukRadios({
+                    idPrefix: 'death-registered',
+                    name: 'death-registered',
+                    fieldset: {
+                        legend: {
+                            text: 'Confirm address',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'Natwest, Park Lane Retail Park, TR5 9UD ',
+                            value: 'England~/apply/lowtrust/carers-nationality'
+                        }
+                    ]
+                }) }}
+                <div class="govuk-body"> or </div>
+
+                 {{ govukRadios({
+                   
+                    
+                    items: [
+                       
+                         {
+                            text: 'Address not found',
+                            value: 'p~apply/lowtrust/carers-address-manual'
+                        }
+                    ]
+                }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+{% endblock %}

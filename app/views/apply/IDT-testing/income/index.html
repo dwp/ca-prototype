@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ACA-724
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        ACA-724 
+      </h1>
+
+      <p>
+        As-is income journey from the live service for user research purposes.
+      </p>
+
+      <h2 class="govuk-heading-m">Prototypes for this ticket</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="your-income.html">Your income</a>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              If nothing is selected
+              <br>
+              <b class="govuk-error-message">Select if you would like to be paid Carer’s Allowance every week or every 4 weeks</b>
+            </li>
+          </ul>
+
+        </li>
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

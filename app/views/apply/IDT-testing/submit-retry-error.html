@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    There's a problem
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">There's a problem</h1>
+
+                <p>
+                   This application hasn't been sent.
+                </p>
+                <p>
+                   If this is the second time that you have seen this message then there may be a temporary problem with the service.
+                </p>
+                <p>
+                   You'll have to return later and send your information again. Sorry for the inconvenience
+                </p>
+                {{ govukButton ({
+                    html: 'Try again'
+                }) }}
+                <p>
+                   <a href="https://www.gov.uk">Go to GOV.UK</a>
+                </p>                
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,342 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Self-employment
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{{ 'employment-extra' | redirect | safe if data['been-self-employed'] != 'Yes' }}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="self-expenses">
+
+                <h1 class="govuk-heading-l">Self-employment</h1>
+
+                {{ govukInput ({
+                    id: 'self-business-type',
+                    name: 'self-business-type',
+                    value: data['self-business-type'] if data['self-business-type'] else '',
+                    classes: 'govuk-input--width-20',
+                    label: {
+                        text: 'Type of business or work',
+                        classes: 'govuk-input--width-20'
+                    },
+                    hint: {
+                        text: 'For example: joiner, childminder'
+                    }
+                }) }}
+
+                {% set workFinishDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'self-work-finish-date',
+                        namePrefix: 'self-work-finish-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you finish this work?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['self-work-finish-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['self-work-finish-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['self-work-finish-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'self-still-doing-work',
+                    name: 'self-still-doing-work',
+                    fieldset: {
+                        legend: {
+                            text: 'Are you still doing this work?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-still-doing-work'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-still-doing-work'] == 'No',
+                            conditional: {
+                                html: workFinishDateHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {% set tradingStartDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'self-trading-start-date',
+                        namePrefix: 'self-trading-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'Trading year start date',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['self-trading-start-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['self-trading-start-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['self-trading-start-date-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {% set tradingYearHTML %}
+
+                    {{ govukRadios ({
+                        idPrefix: 'self-trading-year',
+                        name: 'self-trading-year',
+                        fieldset: {
+                            legend: {
+                                text: 'Do you know your trading year?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'This is the date you do your accounts to each year - it’s often the same as the tax year, but it doesn’t have to be.'
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'Yes',
+                                checked: true if data['self-trading-year'] == 'Yes',
+                                conditional: {
+                                    html: tradingStartDateHTML
+                                }
+                            },
+                            {
+                                text: 'No',
+                                value: 'No',
+                                checked: true if data['self-trading-year'] == 'No'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {% set tradingYearHTML %}
+
+                    {{ govukRadios ({
+                        idPrefix: 'self-accounts',
+                        name: 'self-accounts',
+                        fieldset: {
+                            legend: {
+                                text: 'Do you have accounts?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'Yes',
+                                checked: true if data['self-accounts'] == 'Yes',
+                                conditional: {
+                                    html: '<p class="govuk-body govuk-!-font-weight-bold">You must send a copy of your most recent accounts to the Carer’s Allowance Unit.</p>'
+                                }
+                            },
+                            {
+                                text: 'No',
+                                value: 'No',
+                                checked: true if data['self-accounts'] == 'No',
+                                conditional: {
+                                    html: tradingYearHTML
+                                }
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {% set firstMoneyDateHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'self-first-money',
+                        namePrefix: 'self-first-money',
+                        fieldset: {
+                            legend: {
+                                text: 'Date money first received by the business',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['self-first-money-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['self-first-money-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['self-first-money-year']
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {% set beenPaidYetHTML %}
+
+                    {{ govukDateInput ({
+                        id: 'self-start-date',
+                        namePrefix: 'self-start-date',
+                        fieldset: {
+                            legend: {
+                                text: 'When did you start this work?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'day',
+                                value: data['self-start-date-day']
+                            },
+                            {
+                                classes: 'govuk-input--width-2',
+                                name: 'month',
+                                value: data['self-start-date-month']
+                            },
+                            {
+                                classes: 'govuk-input--width-4',
+                                name: 'year',
+                                value: data['self-start-date-year']
+                            }
+                        ]
+                    }) }}
+
+                    {{ govukRadios ({
+                        idPrefix: 'self-been-paid-yet',
+                        name: 'self-been-paid-yet',
+                        fieldset: {
+                            legend: {
+                                text: 'Has your self-employed business been paid any money yet?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        hint: {
+                            text: 'This includes money paid directly to you or into a business account.'
+                        },
+                        items: [
+                            {
+                                text: 'Yes',
+                                value: 'Yes',
+                                checked: true if data['self-been-paid-yet'] == 'Yes',
+                                conditional: {
+                                    html: firstMoneyDateHTML
+                                }
+                            },
+                            {
+                                text: 'No',
+                                value: 'No',
+                                checked: true if data['self-been-paid-yet'] == 'No'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+
+                {{ govukRadios ({
+                    idPrefix: 'self-year-ago',
+                    name: 'self-year-ago',
+                    fieldset: {
+                        legend: {
+                            text: 'Did you start this work more than a year ago?',
+                            isPageHeading: false,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['self-year-ago'] == 'Yes',
+                            conditional: {
+                                html: tradingYearHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['self-year-ago'] == 'No',
+                            conditional: {
+                                html: beenPaidYetHTML
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

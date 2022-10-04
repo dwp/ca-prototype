@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Additional information
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ super() }}
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">Additional information</h1>
+
+                <p>
+                <b>
+                    Do you want to tell us any additional information about your claim?
+                </b>
+                </p>
+
+                <p>
+                    Don't include any medical information or details about care.
+                </p>
+
+                {% set additionalInfoHTML %}
+
+                    {{ govukCharacterCount ({
+                        name: 'additional-info--details',
+                        id: 'additional-info--details',
+                        value: data['additional-info--details'],
+                        maxlength: '3000',
+                        label: {
+                            text: 'Tell us anything else you think we should know about your claim',
+                            classes: 'app-bold-label'
+                        },
+                        hint: {
+                            text: 'Give full details of how often and how much you are paid. You do not need to tell us about any benefits that you may be receiving as we already hold that information.'
+                        }
+                    }) }}
+
+                {% endset %}
+
+
+                {{ govukRadios ({
+                    idPrefix: 'additional-info',
+                    name: 'additional-info',
+
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'yes',
+                            conditional: {
+                                html: additionalInfoHTML
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'no'
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios ({
+                    idPrefix: 'welsh-comms',
+                    name: 'welsh-comms',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want to receive future communications in Welsh?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

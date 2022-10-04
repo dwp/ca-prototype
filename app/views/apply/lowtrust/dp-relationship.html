@@ -19,69 +19,64 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours">
+            <form action="dp-address1">
 
-                {% set careStartDateHTML %}
-
-                    {{ govukRadios ({
-                        id: 'care-start-date',
-                        name: 'care-start-date',
-                        fieldset: {
-                            legend: {
-                                text: 'You will only get Carers Allowance if the person you provide care for gets one of these benefits.',
-                                isPageHeading: false,
-                                classes: 'govuk-fieldset__legend--s app-normal-label'
-                            }
-                        }
-
-                    }) }}
-
-                {% endset %}
+           {% set otherHtml %}
+                {{ govukInput({
+            
+                classes: "govuk-!-width-two-thirds",
+                label: {
+                    text: "Relationship"
+                }
+                }) }}
+                {% endset -%}
 
 
-                {{ govukRadios({
-                    idPrefix: 'parter-relationship',
-                    name: 'parter-relationship',
+       {{ govukRadios({
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: "What benefit Susan Granger's relationship to you?",
+                            text: "Is Susan Grainger your:",
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    {# hint: {
-                        text: 'Do not include any benefits they have applied for if they have not got a decision yet.'
-                    }, #}
+                    
                     items: [
                         {
-                            text: 'Personal Independence Payment (PIP) daily living component',
-                            value: 'Personal Independence Payment (PIP) daily living component'
+                            text: 'Partner',
+                            value: 'Yes',
+                            hint: {
+                                    text:'A partner is a husband, wife, civil partner or someone that you are in a relationship with.'}
                         },
                         {
-                            text: 'Disability Living Allowance (DLA) - middle or highest care rate',
-                            value: 'Disability Living Allowance (DLA) - middle or highest care rate'
+                            text: 'Son or daughter',
+                            value: 'sondaughter'
                         },
                         {
-                            text: 'Attendance Allowance (AA)',
-                            value: 'Attendance Allowance (AA)'
+                            text: 'Parent',
+                            value: 'parent'
                         },
                         {
-                            text: 'Constant Attendance Allowance (CAA)',
-                            value: 'Constant Attendance Allowance (CAA)'
+                            text: 'Other family member',
+                            value: 'family',
+                            hint: {
+                                    text:'For example, grandparent, brother, sister, aunt, uncle or cousin.'}
+                        },
+                    
+                        {
+                            text: 'Friend',
+                            value: 'friend'
                         },
                         {
-                            text: 'Armed Forces Independence Payment (AFIP)',
-                            value: 'Armed Forces Independence Payment (AFIP)'
-                        },
-                        {
-                            text: 'A disability benefit paid by a country in the EU',
-                            value: 'a disability benefit paid by a country in the EU'
-                        },
-                        {
-                            text: 'None of these benefits',
-                            value: 'None of these benefits~/apply/lowtrust/qb-kickout'
-                            
+                            text: 'Other',
+                            value: 'other',
+                            conditional: {
+                                html: otherHtml
+                            }
                         }
+                     
                     ]
                 }) }}
 
