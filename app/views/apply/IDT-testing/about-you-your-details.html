@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Your details
+  Your details
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,117 +13,111 @@
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="about-you-marital-status">
 
-<div class="govuk-grid-row">
+        <h1 class="govuk-heading-l">Your name, National Insurance number and date of birth</h1>
 
-        <div class="govuk-grid-column-two-thirds">
+        {{ govukInput ({
+          id: 'carerTitle',
+          name: 'carerTitle',
+          value: data.carerTitle,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'Title',
+            classes: 'govuk-input--width-20 app-bold-label'
+          }
+        }) }}
 
-            <form action="about-you-marital-status">
+        {{ govukInput ({
+          id: 'carerFirstName',
+          name: 'carerFirstName',
+          value: data.carerFirstName,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'First name',
+            classes: 'govuk-input--width-20 app-bold-label'
+          }
+        }) }}
 
-                <h1 class="govuk-heading-l">Your name, National Insurance number and date of birth</h1>
+        {{ govukInput ({
+          id: 'carerMiddleName',
+          name: 'carerMiddleName',
+          value: data.carerMiddleName,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'Middle name(s)',
+            classes: 'govuk-input--width-20 app-bold-label'
+          }
+        }) }}
 
-                {{ govukInput ({
-                    id: 'applicant-name-title',
-                    name: 'applicant-name-title',
-                    value: data['applicant-name-title'] if data['applicant-name-title'] else '',
-                    classes: 'govuk-input--width-20',
-                    label: {
-                        text: 'Title',
-                        classes: 'govuk-input--width-20 app-bold-label'
-                    }
-                }) }}
+        {{ govukInput ({
+          id: 'carerLastName',
+          name: 'carerLastName',
+          value: data.carerLastName,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'Last name',
+            classes: 'govuk-input--width-20 app-bold-label'
+          }
+        }) }}
 
-                {{ govukInput ({
-                    id: 'applicant-name-first',
-                    name: 'applicant-name-first',
-                    value: data['applicant-name-first'] if data['applicant-name-first'] else '',
-                    classes: 'govuk-input--width-20',
-                    label: {
-                        text: 'First name',
-                        classes: 'govuk-input--width-20 app-bold-label'
-                    }
-                }) }}
+        {{ govukInput ({
+          id: 'carerNationalInsuranceNumber',
+          name: 'carerNationalInsuranceNumber',
+          value: data.carerNationalInsuranceNumber,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'National Insurance number',
+            classes: 'govuk-input--width-20 app-bold-label'
+          },
+          hint: {
+            text: 'This is on your NI number card, benefit letter, payslip or P60. For example, QQ123456C'
+          }
+        }) }}
 
-                {{ govukInput ({
-                    id: 'applicant-name-middle',
-                    name: 'applicant-name-middle',
-                    value: data['applicant-name-middle'] if data['applicant-name-middle'] else '',
-                    classes: 'govuk-input--width-20',
-                    label: {
-                        text: 'Middle name(s)',
-                        classes: 'govuk-input--width-20 app-bold-label'
-                    }
-                }) }}
+        {{ govukDateInput ({
+          id: 'carerDateOfBirth',
+          namePrefix: 'carerDateOfBirth',
+          fieldset: {
+            legend: {
+              text: 'Date of birth',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              label: 'Day',
+              value: data['carerDateOfBirth-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              label: 'Month',
+              value: data['carerDateOfBirth-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              label: 'Year',
+              value: data['carerDateOfBirth-year']
+            }
+          ],
+          hint: {
+            text: 'For example, 27 5 1980'
+          }
+        }) }}
 
-                {{ govukInput ({
-                    id: 'applicant-name-last',
-                    name: 'applicant-name-last',
-                    value: data['applicant-name-last'] if data['applicant-name-last'] else '',
-                    classes: 'govuk-input--width-20',
-                    label: {
-                        text: 'Last name',
-                        classes: 'govuk-input--width-20 app-bold-label'
-                    }
-                }) }}
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
 
-                {{ govukInput ({
-                    id: 'applicant-ni',
-                    name: 'applicant-ni',
-                    value: data['applicant-ni'] if data['applicant-ni'] else '',
-                    classes: 'govuk-input--width-20',
-                    label: {
-                        text: 'National Insurance number',
-                        classes: 'govuk-input--width-20 app-bold-label'
-                    },
-                    hint: {
-                        text: 'This is on your NI number card, benefit letter, payslip or P60. For example, QQ123456C'
-                    }
-                }) }}
-
-                {{ govukDateInput ({
-                    id: 'applicant-dob',
-                    name: 'applicant-dob',
-                    fieldset: {
-                        legend: {
-                            text: 'Date of birth',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--s'
-                        }
-                    },
-                    items: [
-                        {
-                            classes: 'govuk-input--width-2',
-                            name: 'applicant-dob-day',
-                            label: 'Day',
-                            value: data['applicant-dob-day']
-                        },
-                        {
-                            classes: 'govuk-input--width-2',
-                            name: 'applicant-dob-month',
-                            label: 'Month',
-                            value: data['applicant-dob-month']
-                        },
-                        {
-                            classes: 'govuk-input--width-4',
-                            name: 'applicant-dob-year',
-                            label: 'Year',
-                            value: data['applicant-dob-year']
-                        }
-                    ],
-                    hint: {
-                        text: 'For example, 27 5 1980'
-                    }
-                }) }}
-
-
-                {{ govukButton({
-                    html: 'Continue'
-                }) }}
-
-            </form>
-
-        </div>
-
-</div>
+      </form>
+    </div>
+  </div>
 
 {% endblock %}
