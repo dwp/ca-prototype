@@ -49,23 +49,23 @@
         </p>
 
         {{ govukDateInput ({
-          id: 'claim-date',
-          namePrefix: 'claim-date',
+          id: 'carerClaimStart',
+          namePrefix: 'carerClaimStart',
           items: [
             {
               classes: 'govuk-input--width-2',
               name: 'day',
-              value: data['claim-date-day']
+              value: data['carerClaimStart-day']
             },
             {
               classes: 'govuk-input--width-2',
               name: 'month',
-              value: data['claim-date-month']
+              value: data['carerClaimStart-month']
             },
             {
               classes: 'govuk-input--width-4',
               name: 'year',
-              value: data['claim-date-year']
+              value: data['carerClaimStart-year']
             }
           ],
           fieldset: {
@@ -83,23 +83,23 @@
         {% set careStartDateHTML %}
 
           {{ govukDateInput ({
-            id: 'care-start-date',
-            namePrefix: 'care-start-date',
+            id: 'backDatedCarerClaimStart',
+            namePrefix: 'backDatedCarerClaimStart',
             items: [
               {
                 classes: 'govuk-input--width-2',
                 name: 'day',
-                value: data['care-start-date-day']
+                value: data['backDatedCarerClaimStart-day']
               },
               {
                 classes: 'govuk-input--width-2',
                 name: 'month',
-                value: data['care-start-date-month']
+                value: data['backDatedCarerClaimStart-month']
               },
               {
                 classes: 'govuk-input--width-4',
                 name: 'year',
-                value: data['care-start-date-year']
+                value: data['backDatedCarerClaimStart-year']
               }
             ],
             fieldset: {
@@ -117,8 +117,8 @@
         {% endset %}
 
         {{ govukRadios ({
-          idPrefix: 'care-early-start',
-          name: 'care-early-start',
+          idPrefix: 'beforeClaimStart',
+          name: 'beforeClaimStart',
           fieldset: {
             legend: {
               text: 'Were you providing care for the person for more than 35 hours a week before this date?',
@@ -129,16 +129,16 @@
           items: [
             {
               text: 'Yes',
-              value: 'yes',
-              checked: true if data['care-early-start'] === 'yes',
+              value: 'Yes',
+              checked: true if data.beforeClaimStart === 'yes',
               conditional : {
                 html: careStartDateHTML
               }
             },
             {
               text: 'No',
-              value: 'no',
-              checked: true if data['care-early-start'] === 'no'
+              value: 'No',
+              checked: true if data.beforeClaimStart === 'no'
             }
           ]
         }) }}

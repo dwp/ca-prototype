@@ -1,91 +1,89 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-    Have you been in full-time or part-time education since you started caring?
+  Have you been in full-time or part-time education since you started caring?
 {% endblock %}
 
 {% block beforeContent %}
 
-    {{ super() }}
+  {{ super() }}
 
-    {{ govukBackLink ({
-        text: 'Back',
-        href: 'javascript:history.back()'
-    }) }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="education-course-details">
 
-<div class="govuk-grid-row">
+        {% set openUniversityHTML %}
+          {{ govukRadios ({
+            idPrefix: 'isOpenUniversityCourse',
+            name: 'isOpenUniversityCourse',
+            fieldset: {
+              legend: {
+                html: 'Are you studying with the Open University',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes~income/your-income',
+                checked: true if data.isOpenUniversityCourse == 'Yes'
+              },
+              {
+                text: 'No',
+                value: 'No~education-course-details',
+                checked: true if data.isOpenUniversityCourse == 'No'
+              }
+            ]
+          }) }}
 
-        <div class="govuk-grid-column-two-thirds">
-
-            <form action="education-course-details">
-
-                {% set openUniversityHTML %}
-                    {{ govukRadios ({
-                        idPrefix: 'siphoning--education-open',
-                        name: 'siphoning--education-open',
-                        fieldset: {
-                            legend: {
-                                html: 'Are you studying with the Open University',
-                                isPageHeading: true,
-                                classes: 'govuk-fieldset__legend--s'
-                            }
-                        },
-                        items: [
-                            {
-                                text: 'Yes',
-                                value: 'Yes~income/your-income',
-                                checked: true if data['siphoning--education-open'] == 'Yes'
-                            },
-                            {
-                                text: 'No',
-                                value: 'No',
-                                checked: true if data['siphoning--education-open'] == 'No'
-                            }
-                        ]
-                    }) }}
-
-                {% endset %}
+        {% endset %}
 
 
-                {{ govukRadios ({
-                    idPrefix: 'siphoning--education',
-                    name: 'siphoning--education',
-                    fieldset: {
-                        legend: {
-                            html: 'Have you been in <span style="white-space: nowrap;">full-time</span> or <span style="white-space: nowrap;">part-time</span> education since you started caring?',
-                            isPageHeading: true,
-                            classes: 'govuk-fieldset__legend--l'
-                        }
-                    },
-                    items: [
-                        {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['siphoning--education'] == 'Yes',
-                                conditional: {
-                                    html: openUniversityHTML
-                                }
-                        },
-                        {
-                            text: 'No',
-                            value: 'No~income/your-income',
-                            checked: true if data['siphoning--education'] == 'No'
-                        }
-                    ] 
-                }) }}
+        {{ govukRadios ({
+          idPrefix: 'beenInEducationSinceClaimDate',
+          name: 'beenInEducationSinceClaimDate',
+          fieldset: {
+            legend: {
+              text: "Have you been on a course of education since your claim date?",
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            text: "Your claim date is " + data | getClaimStartDate + "."
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.beenInEducationSinceClaimDate == 'Yes',
+              conditional: {
+              html: openUniversityHTML
+            }
+            },
+            {
+              text: 'No',
+              value: 'No~income/your-income',
+              checked: true if data.beenInEducationSinceClaimDate == 'No'
+            }
+          ]
+        }) }}
 
-                {{ govukButton ({
-                    html: 'Continue'
-                }) }}
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
 
-            </form>
-
-        </div>
-
-</div>
+      </form>
+    </div>
+  </div>
 
 {% endblock %}

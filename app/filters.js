@@ -316,6 +316,37 @@ module.exports = function (env) {
     return `${data.careeFirstName} ${data.careeLastName}`
   }
 
+  filters.getClaimStartDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
+  filters.getBackdatedClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const twentySixWeeksAgo = DateTime.now().minus({ weeks: 26 })
+
+    // If claim is being backdated, proceed with that date for calculations
+    if (data.beforeClaimStart === 'Yes') {
+      const backDatedClaimDate = `${data['backDatedCarerClaimStart-day']} ${data['backDatedCarerClaimStart-month']} ${data['backDatedCarerClaimStart-year']}`
+      const parsedStartDate = DateTime.fromFormat(backDatedClaimDate, 'd M yyyy')
+      // If the backdated claim date is more than 26 weeks ago, return 26 weeks ago from current date
+      if (parsedStartDate < twentySixWeeksAgo) {
+        return twentySixWeeksAgo.toFormat(outputDateFormat)
+      }
+      // Else return backdated claim date as is.
+      return parsedStartDate.toFormat(outputDateFormat)
+    }
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    const parsedStartDate = DateTime.fromFormat(claimStartDate, 'd M yyyy')
+    // If the claim start date is more than 26 weeks ago, return 26 weeks ago from current date
+    if (parsedStartDate < twentySixWeeksAgo) {
+      return twentySixWeeksAgo.toFormat(outputDateFormat)
+    }
+    // Else return claim start date as is.
+    return parsedStartDate.toFormat(outputDateFormat)
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
