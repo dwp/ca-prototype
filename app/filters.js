@@ -309,6 +309,13 @@ module.exports = function (env) {
     return dateStartedCaring.toFormat(dateDisplayFormat)
   }
 
+  filters.getDpName = (data) => {
+    if (data.isPersonYouProvideCareFor === 'Yes') {
+      return `${data.partnerFirstName} ${data.partnerLastName}`
+    }
+    return `${data.careeFirstName} ${data.careeLastName}`
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
