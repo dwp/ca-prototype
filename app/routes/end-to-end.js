@@ -67,8 +67,20 @@ router.post('/employment', (req, res) => {
   if (data.employeeSince !== 'Yes') {
     return res.redirect('self-employment')
   }
-  // TODO: More logic
+  // Existing employments so redirect to summary page
+  if (data.employmentStore && Object.keys(data.employmentStore).length > 0) {
+    return res.redirect('employment-summary')
+  }
   return res.redirect('employment-details')
+})
+
+router.post('/employment-remove-confirm', (req, res) => {
+  const { data } = req.session
+
+  if (data.selectedEmployment) {
+    delete data.employmentStore[data.selectedEmployment]
+  }
+  return res.redirect('employment-summary')
 })
 
 module.exports = router

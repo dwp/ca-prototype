@@ -52,6 +52,10 @@
             {% set employmentRows = (employmentRows.push(employmentRow), employmentRows) %}
           {% endfor %}
 
+        {% if employmentRows.length == 0 %}
+          {{ 'employment' | redirect | safe }}
+        {% endif %}
+
         {{ govukTable({
           firstCellIsHeader: false,
           head: [
