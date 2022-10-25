@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Direct Payments for caring for people
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set lastPaidDetails %}
+          {{ govukDateInput ({
+            id: 'dateLastPaidDP',
+            namePrefix: 'dateLastPaidDP',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['dateLastPaidDP-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['dateLastPaidDP-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['dateLastPaidDP-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When were you last paid?',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {% set howOftenDetails %}
+          {{ govukInput({
+            label: {
+              text: 'How often are you paid?',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: "howOftenDP",
+            value: data.howOftenDP
+          }) }}
+        {% endset -%}
+
+        <h1 class="govuk-heading-l">
+          Direct Payments for caring for people
+        </h1>
+
+        {{ govukRadios({
+          value: data.stillBeingPaidDP,
+          name: 'stillBeingPaidDP',
+          fieldset: {
+            legend: {
+              text: 'Are you still being paid this?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if data.stillBeingPaidDP == "Yes"
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if data.stillBeingPaidDP == "No",
+            conditional: {
+              html: lastPaidDetails
+            }
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Who paid you this?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "whoPaidDP",
+          value: data.whoPaidDP
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Amount paid',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "amountPaidDP",
+          value: data.amountPaidDP
+        }) }}
+
+        {{ govukRadios({
+          value: data.paymentFrequencyDP,
+          name: 'paymentFrequencyDP',
+          fieldset: {
+            legend: {
+              text: 'How often are you paid?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Weekly',
+            value: 'weekly',
+            checked: true if data.paymentFrequencyDP == "weekly"
+          },{
+            text: 'Fortnightly',
+            value: 'fortnightly',
+            checked: true if data.paymentFrequencyDP == "fortnightly"
+          },{
+            text: 'Every 4 weeks',
+            value: 'fourWeekly',
+            checked: true if data.paymentFrequencyDP == "fourWeekly"
+          },{
+            text: 'Monthly',
+            value: 'monthly',
+            checked: true if data.paymentFrequencyDP == "monthly"
+          },{
+            text: 'It varies',
+            value: 'varies',
+            checked: true if data.paymentFrequencyDP == "varies",
+            conditional: {
+              html: howOftenDetails
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

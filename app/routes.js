@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { DateTime } = require('luxon');
+const { DateTime } = require('luxon')
 
 const config = require('./config')
+
+const idtE2ERoutes = require('./routes/end-to-end')
 
 // Route to allow radio options to route to a given next page
 
@@ -91,6 +93,8 @@ router.post('/apply/ACA-1472/qb-3months', (req, res, next) => {
   }
 })
 
+router.use('/apply/IDT-testing', idtE2ERoutes)
+
 router.get('/apply/*', (req, _, next) => {
   req.session.data.headerTitle = config.applyServiceName
   next()
@@ -105,6 +109,7 @@ router.get('/changes/*', (req, _, next) => {
   req.session.data.headerTitle = config.changesServiceName
   next()
 })
+
 
 // Reset all one-time values
 
