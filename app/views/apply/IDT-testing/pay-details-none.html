@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  We need to pay your Carer's Allowance into a bank or building society account
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          We need to pay your Carer's Allowance into a bank or building society account
+        </h1>
+
+        <p class='govuk-body'>
+          If you do not have access to a bank or building society account, you can still apply for Carer's Allowance but you will need to contact the Carer's Allowance Unit after you apply.
+        </p>
+
+        {{ govukRadios({
+          name: 'haveBankAccount',
+          fieldset: {
+            legend: {
+              text: 'Do you have access to a bank or building society account?',
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~pay-details',
+            checked: true if data.haveBankAccount === "Yes"
+          }, {
+            text: "No, continue applying without entering payment details",
+            value: 'No~pay-frequency',
+            checked: true if data.haveBankAccount === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
