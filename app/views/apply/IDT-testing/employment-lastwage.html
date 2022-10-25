@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+
+{% set employmentIndex = data['selectedEmployment'] | uuid %}
+{% set employmentLoc = 'employmentStore[' + employmentIndex + ']' %}
+{% set employment = data.employmentStore[employmentIndex] %}
+
+{% block pageTitle %}
+  Employment income
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="employment-expenses">
+
+        <h1 class="govuk-heading-l">
+          {{ employment.employerName }}
+        </h1>
+
+        {% set howOftenDetails %}
+          {{ govukInput({
+            label: {
+              text: 'Tell us how often',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: employmentLoc + "[howOften]",
+            value: employment.howOften
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          value: employment.howOftenAreYouPaid,
+          name: employmentLoc + '[howOftenAreYouPaid]',
+          idPrefix: 'howOftenAreYouPaid',
+          fieldset: {
+            legend: {
+              text: 'How often are you paid?',
+              classes: "govuk-!-font-weight-bold"
+            }
+          },
+          items: [{
+            text: 'Weekly',
+            value: 'weekly',
+            checked: true if employment.howOftenAreYouPaid == 'weekly'
+          }, {
+            text: 'Fortnightly',
+            value: 'fortnightly',
+            checked: true if employment.howOftenAreYouPaid == 'fortnightly'
+          }, {
+            text: 'Every 4 weeks',
+            value: 'fourWeekly',
+            checked: true if employment.howOftenAreYouPaid == 'fourWeekly'
+          }, {
+            text: 'Monthly',
+            value: 'monthly',
+            checked: true if employment.howOftenAreYouPaid == 'monthly'
+          }, {
+            text: 'Other',
+            value: 'other',
+            checked: true if employment.howOftenAreYouPaid == 'other',
+            conditional: {
+              html: howOftenDetails
+            }
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'When do you get paid?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          hint: {
+            text: 'For example, day of the month.'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: employmentLoc + "[whenDoYouGetPaid]",
+          value: employment.whenDoYouGetPaid
+        }) }}
+
+        {{ govukDateInput ({
+          namePrefix: employmentLoc + "[whenWereYouLastPaid",
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day]',
+              value: employment['whenWereYouLastPaid-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month]',
+              value: employment['whenWereYouLastPaid-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year]',
+              value: employment['whenWereYouLastPaid-year']
+            }
+          ],
+          fieldset: {
+            legend: {
+              text: 'When were you last paid?',
+              isPageHeading: false,
+              classes: 'govuk-!-font-weight-bold'
+            }
+          },
+          hint: {
+            text: 'For example, 28 11 2021'
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'What were you paid in your last wage?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          hint: {
+            text: 'For example, day of the month.'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: employmentLoc + "[amountPaid]",
+          value: employment.amountPaid
+        }) }}
+
+        {{ govukCharacterCount({
+          label: {
+            text: 'What was included in this pay? (Optional)',
+            classes: "govuk-!-font-weight-bold"
+          },
+          hint: {
+            text: 'For example, holiday, sick or any redundancy pay.'
+          },
+          maxlength: 3000,
+          name: employmentLoc + "[whatWasIncluded]",
+          value: employment.whatWasIncluded
+        }) }}
+
+        {{ govukRadios({
+          value: employment.sameAmount,
+          name: employmentLoc + '[sameAmount]',
+          fieldset: {
+            legend: {
+              text: 'Do you get the same amount each time?',
+              classes: "govuk-!-font-weight-bold"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if employment.sameAmount == 'Yes'
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if employment.sameAmount == 'No'
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

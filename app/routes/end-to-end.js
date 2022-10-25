@@ -62,4 +62,13 @@ router.post('/other-income-details', (req, res) => {
   return res.redirect('pay-details')
 })
 
+router.post('/employment', (req, res) => {
+  const { data } = req.session
+  if (data.employeeSince !== 'Yes') {
+    return res.redirect('self-employment')
+  }
+  // TODO: More logic
+  return res.redirect('employment-details')
+})
+
 module.exports = router
