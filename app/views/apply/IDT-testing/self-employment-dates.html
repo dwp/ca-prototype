@@ -1,0 +1,301 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Self-employment
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="self-employment-expenses">
+
+        <h1 class="govuk-heading-l">
+          Self-employment
+        </h1>
+
+        {% set paidMoneyYesDetails %}
+          {{ govukDateInput ({
+            namePrefix: 'paidMoneyDateSE',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['paidMoneyDateSE-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['paidMoneyDateSE-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['paidMoneyDateSE-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'Date money first received by the business',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {% set haveAcctYesDetails %}
+          <p class="govuk-body govuk-!-font-weight-bold">
+            You must send a copy of your most recent accounts to the Carer's Allowance Unit.
+          </p>
+        {% endset -%}
+
+        {% set knowYearYesDetails %}
+          {{ govukDateInput ({
+            namePrefix: 'tradingYearDateSE',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['tradingYearDateSE-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['tradingYearDateSE-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['tradingYearDateSE-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'Trading year start date',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {% set haveAcctNoDetails %}
+          {{ govukRadios({
+            value: data.knowTradingYearSE,
+            name: 'knowTradingYearSE',
+            fieldset: {
+              legend: {
+                text: 'Do you know your trading year?',
+                classes: "govuk-!-font-weight-bold"
+              }
+            },
+            hint: {
+              text: "This is the date you do your accounts to each year - it's often the same as the tax year, but it doesn't have to be."
+            },
+            items: [{
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.knowTradingYearSE == 'Yes',
+              conditional: {
+                html: knowYearYesDetails
+              }
+            }, {
+              text: 'No',
+              value: 'No',
+              checked: true if data.knowTradingYearSE == 'No'
+            }]
+          }) }}
+        {% endset -%}
+
+        {% set moreThanYesDetails %}
+          {{ govukRadios({
+            value: data.haveAccountsSE,
+            name: 'haveAccountsSE',
+            fieldset: {
+              legend: {
+                text: 'Do you have accounts?',
+                classes: "govuk-!-font-weight-bold"
+              }
+            },
+            items: [{
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.haveAccountsSE == 'Yes',
+              conditional: {
+                html: haveAcctYesDetails
+              }
+            }, {
+              text: 'No',
+              value: 'No',
+              checked: true if data.haveAccountsSE == 'No',
+              conditional: {
+                html: haveAcctNoDetails
+              }
+            }]
+          }) }}
+        {% endset -%}
+
+        {% set moreThanNoDetails %}
+          {{ govukDateInput ({
+            namePrefix: 'dateStartedWorkSE',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['dateStartedWorkSE-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['dateStartedWorkSE-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['dateStartedWorkSE-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When did you start this work?',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+
+          {{ govukRadios({
+            value: formData.paidMoneySE,
+            name: "paidMoneySE",
+            fieldset: {
+              legend: {
+                text: 'Has your self-employed business been paid any money yet?',
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: 'This includes money paid directly to you or into a business account.'
+            },
+            items: [{
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.paidMoneySE == 'Yes',
+              conditional: {
+                html: paidMoneyYesDetails
+              }
+            }, {
+              text: 'No',
+              value: 'No',
+              checked: true if data.paidMoneySE == 'No'
+            }]
+          }) }}
+        {% endset -%}
+
+        {% set dateFinishedDetails %}
+          {{ govukDateInput ({
+            namePrefix: 'dateFinishedWorkSE',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['dateFinishedWorkSE-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['dateFinishedWorkSE-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['dateFinishedWorkSE-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When did you finish this work?',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {{ govukInput({
+          label: {
+            text: 'Type of business or work',
+            classes: "govuk-!-font-weight-bold"
+          },
+          hint: {
+            text: 'For example: joiner, childminder'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'typeOfBusiness',
+          value: data.typeOfBusiness
+        }) }}
+
+        {{ govukRadios({
+          name: 'selfEmployedSince',
+          fieldset: {
+            legend: {
+              text: "Are you still doing this work?",
+              isPageHeading: false,
+              classes: "govuk-!-font-weight-bold"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if data.stillSelfEmployed === "Yes"
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if data.stillSelfEmployed === "No",
+            conditional: {
+              html: dateFinishedDetails
+            }
+          }]
+        }) }}
+
+        {{ govukRadios({
+          value: data.moreThanYearAgoSE,
+          name: 'moreThanYearAgoSE',
+          fieldset: {
+            legend: {
+              text: 'Did you start this work more than a year ago?',
+              classes: "govuk-!-font-weight-bold"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if data.moreThanYearAgoSE == 'Yes',
+            conditional: {
+              html: moreThanYesDetails
+            }
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if data.moreThanYearAgoSE == 'No',
+            conditional: {
+              html: moreThanNoDetails
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

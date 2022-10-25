@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Have you been self-employed at any time since {{ data | oneWeekBeforeClaimDate }}?
+  Do you have any care costs because of this work?
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,24 +16,28 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="self-employment">
+      <form action="self-employment-expenses">
         {{ govukRadios({
-          name: 'selfEmployedSince',
+          name: 'haveCareCostsSE',
+          value: data.haveCareCostsSE,
           fieldset: {
             legend: {
-              text: "Have you been self-employed at any time since " + data | oneWeekBeforeClaimDate + "?",
+              text: "Do you have any care costs because of this work?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "Don't include any information about your pension, if you get one."
+          },
           items: [{
             text: "Yes",
-            value: 'Yes~self-employment-dates',
-            checked: true if data.selfEmployedSince === "Yes"
+            value: 'Yes~self-employment-expenses-details',
+            checked: true if data.haveCareCostsSE === "Yes"
           }, {
             text: "No",
-            value: 'No~additional-income-types',
-            checked: true if data.selfEmployedSince === "No"
+            value: 'No~employment-additional-information',
+            checked: true if data.haveCareCostsSE === "No"
           }]
         }) }}
 
