@@ -359,6 +359,12 @@ module.exports = function (env) {
     return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ weeks: 1 }).toFormat(outputDateFormat)
   }
 
+  filters.twentySixWeeksBeforeClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ weeks: 26 }).toFormat(outputDateFormat)
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

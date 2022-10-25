@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  What other income have you received since {{ data | getClaimStartDate }}?
+  Details of personal or private pensions you have paid into since {{ data | twentySixWeeksBeforeClaimDate }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,18 +15,17 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post">
+      <form action="pay-details">
         {{ govukCharacterCount({
-          name: 'otherIncome',
-          value: data.otherIncome,
-          maxlength: 3000,
+          name: 'paidIntoPersonalPrivatePension',
           label: {
-            text: "What other income have you received since " + data | getClaimStartDate + "?",
+            text: "Details of personal or private pensions you have paid into since " + data | twentySixWeeksBeforeClaimDate,
             isPageHeading: true,
             classes: "govuk-label--l"
           },
+          maxlength: 3000,
           hint: {
-            text: 'Give full details of how often and how much you are paid.'
+            text: 'Tell us about each pension you paid into, including how much and how often you paid into them.'
           }
         }) }}
 

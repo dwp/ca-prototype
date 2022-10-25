@@ -36,4 +36,30 @@ router.post('/fostering-allowance', getNextIncomeRoute)
 router.post('/direct-payment', getNextIncomeRoute)
 router.post('/rental-income', getNextIncomeRoute)
 
+const hasIncomeSource = (data) => {
+  return data.employeeSince === 'Yes' ||
+   data.selfEmployedSince === 'Yes' ||
+   (data.otherIncomeSince?.length > 0 && !data.otherIncomeSince?.includes('None')) ||
+   data.otherIncome === 'Yes'
+}
+
+router.post('/other-income', (req, res) => {
+  const { data } = req.session
+  if (data.otherIncome === 'Yes') {
+    return res.redirect('other-income-details')
+  }
+  if (hasIncomeSource(data)) {
+    return res.redirect('personal-pension')
+  }
+  return res.redirect('pay-details')
+})
+
+router.post('/other-income-details', (req, res) => {
+  const { data } = req.session
+  if (hasIncomeSource(data)) {
+    return res.redirect('personal-pension')
+  }
+  return res.redirect('pay-details')
+})
+
 module.exports = router
