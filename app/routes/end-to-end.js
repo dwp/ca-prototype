@@ -83,4 +83,32 @@ router.post('/employment-remove-confirm', (req, res) => {
   return res.redirect('employment-summary')
 })
 
+router.get('/breaks-summary', (req, res, next) => {
+  const { data } = req.session
+  if (data.selectedBreak) {
+    delete data.selectedBreak
+  }
+  next()
+})
+
+router.post('/break-remove-confirm', (req, res) => {
+  const { data } = req.session
+
+  if (data.selectedBreak) {
+    delete data.breakStore[data.selectedBreak]
+  }
+  return res.redirect('breaks-summary')
+})
+
+router.post('/medical-break', (req, res) => {
+  const { data } = req.session
+
+  if (data.selectedBreak) {
+    if (data.breakStore[data.selectedBreak].medicalBreak === 'Yes') {
+      return res.redirect('hospital-stay')
+    }
+  }
+  return res.redirect('breaks-summary')
+})
+
 module.exports = router

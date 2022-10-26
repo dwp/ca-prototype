@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Remove this break in care
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breakStore[' + breakIndex + ']' %}
+{% set break = data.breakStore[breakIndex] %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {% set stopDate = break | breakStopDate %}
+        {% set startDate = break | breakStartDate if break.startedCaringAgain === 'Yes' else "Not restarted care" %}
+        {% set medicalCare = "Yes - details provided" if break.medicalBreak === "Yes" else "No" %}
+
+        {{ govukTable({
+          caption: 'Remove this break in care',
+          captionClasses: "govuk-heading-l",
+          firstCellIsHeader: true,
+          rows: [
+            [
+              {
+                text: 'Stop date'
+              },
+              {
+                text: stopDate
+              }
+            ],
+            [
+              {
+                text: 'Start date'
+              },
+              {
+                text: startDate
+              }
+            ],
+            [
+              {
+                text: 'Medical care'
+              },
+              {
+                text: medicalCare
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Remove',
+          classes: "govuk-button--warning",
+          name: 'breakRemove',
+          value: 'yes'
+        }) }}
+
+        <div class="govuk-button-group">
+          <a href="breaks-summary" id="break-remove-cancel" class="govuk-link">
+            Cancel and go back
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

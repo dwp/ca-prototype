@@ -371,6 +371,18 @@ module.exports = function (env) {
     return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ weeks: 26 }).toFormat(outputDateFormat)
   }
 
+  filters.breakStopDate = (breakData) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const breakStopDate = `${breakData['dateStoppedProvidingCare-day']} ${breakData['dateStoppedProvidingCare-month']} ${breakData['dateStoppedProvidingCare-year']}`
+    return DateTime.fromFormat(breakStopDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
+  filters.breakStartDate = (breakData) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const breakStopDate = `${breakData['dateStartedProvidingCareAgain-day']} ${breakData['dateStartedProvidingCareAgain-month']} ${breakData['dateStartedProvidingCareAgain-year']}`
+    return DateTime.fromFormat(breakStopDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
   filters.employmentStartDay = (employmentData) => {
     const outputDateFormat = 'd MMMM yyyy'
     const claimStartDate = `${employmentData['jobStartDate-day']} ${employmentData['jobStartDate-month']} ${employmentData['jobStartDate-year']}`
