@@ -4,10 +4,10 @@ router.post('/idt-filter', (req, res) => {
   const { data } = req.session
   // Comment out below if not wanting to filter
   if (data.haveDocuments?.includes('No')) {
-    res.redirect('disclaimer')
+    return res.redirect('third-party')
   }
   // Stop comment here
-  res.redirect('https://dth-prototype.herokuapp.com/auth/dev-ready/register/start')
+  return res.redirect('https://dth-prototype.herokuapp.com/auth/dev-ready/register/start')
 })
 
 const getNextIncomeRoute = (req, res, _next) => {
