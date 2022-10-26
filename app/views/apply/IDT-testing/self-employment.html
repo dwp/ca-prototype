@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you been self-employed at any time since {{ data | oneWeekBeforeClaimDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="self-employment">
+        {{ govukRadios({
+          name: 'selfEmployedSince',
+          fieldset: {
+            legend: {
+              text: "Have you been self-employed at any time since " + data | oneWeekBeforeClaimDate + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~self-employment-dates',
+            checked: true if data.selfEmployedSince === "Yes"
+          }, {
+            text: "No",
+            value: 'No~additional-income-types',
+            checked: true if data.selfEmployedSince === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

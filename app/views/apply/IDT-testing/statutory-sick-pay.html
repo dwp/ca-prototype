@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Statutory Sick Pay
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set lastPaidDetails %}
+          {{ govukDateInput ({
+            id: 'dateLastPaidSSP',
+            namePrefix: 'dateLastPaidSSP',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['dateLastPaidSSP-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['dateLastPaidSSP-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['dateLastPaidSSP-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When were you last paid?',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {% set howOftenDetails %}
+          {{ govukInput({
+            label: {
+              text: 'How often are you paid?',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: "howOftenSSP",
+            value: data.howOftenSSP
+          }) }}
+        {% endset -%}
+
+        <h1 class="govuk-heading-l">
+          Statutory Sick Pay
+        </h1>
+
+        {{ govukRadios({
+          value: data.stillBeingPaidSSP,
+          name: 'stillBeingPaidSSP',
+          fieldset: {
+            legend: {
+              text: 'Are you still being paid Statutory Sick Pay?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if data.stillBeingPaidSSP == "Yes"
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if data.stillBeingPaidSSP == "No",
+            conditional: {
+              html: lastPaidDetails
+            }
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Who paid you Statutory Sick Pay?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "whoPaidSSP",
+          value: data.whoPaidSSP
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Amount paid',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "amountPaidSSP",
+          value: data.amountPaidSSP
+        }) }}
+
+        {{ govukRadios({
+          value: data.paymentFrequencySSP,
+          name: 'paymentFrequencySSP',
+          fieldset: {
+            legend: {
+              text: 'How often are you paid?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Weekly',
+            value: 'weekly',
+            checked: true if data.paymentFrequencySSP == "weekly"
+          },{
+            text: 'Fortnightly',
+            value: 'fortnightly',
+            checked: true if data.paymentFrequencySSP == "fortnightly"
+          },{
+            text: 'Every 4 weeks',
+            value: 'fourWeekly',
+            checked: true if data.paymentFrequencySSP == "fourWeekly"
+          },{
+            text: 'Monthly',
+            value: 'monthly',
+            checked: true if data.paymentFrequencySSP == "monthly"
+          },{
+            text: 'It varies',
+            value: 'varies',
+            checked: true if data.paymentFrequencySSP == "varies",
+            conditional: {
+              html: howOftenDetails
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

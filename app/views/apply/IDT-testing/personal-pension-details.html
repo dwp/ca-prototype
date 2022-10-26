@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Details of personal or private pensions you have paid into since {{ data | twentySixWeeksBeforeClaimDate }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="pay-details">
+        {{ govukCharacterCount({
+          name: 'paidIntoPersonalPrivatePension',
+          label: {
+            text: "Details of personal or private pensions you have paid into since " + data | twentySixWeeksBeforeClaimDate,
+            isPageHeading: true,
+            classes: "govuk-label--l"
+          },
+          maxlength: 3000,
+          hint: {
+            text: 'Tell us about each pension you paid into, including how much and how often you paid into them.'
+          }
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

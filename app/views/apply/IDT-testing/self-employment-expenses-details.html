@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Details of your care costs
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="employment-additional-information">
+        {{ govukCharacterCount({
+          name: 'careCostsDetailsSE',
+          id: 'careCostsDetailsSE',
+          value: data.careCostsDetailsSE,
+          maxlength: 300,
+          label: {
+            text: 'Details of your care costs',
+            isPageHeading: true,
+            classes: "govuk-label--l"
+          },
+          hint: {
+            text: 'Tell us how much you pay, who you pay and their relationship to you, if applicable.'
+          }
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  We need to know about any breaks in care
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="any-breaks-in-care">
+        <h1 class="govuk-heading-l">We need to know about any breaks in care</h1>
+
+        <p>
+          A break in care is any time you have not provided care for at least 35 hours in a week. For Carer’s Allowance, a week is Sunday morning to Saturday night.
+        </p>
+
+        <p>
+          Breaks in care can include any times where you or {{ data | getDpName }} were:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>in hospital</li>
+          <li>in respite care or care home</li>
+          <li>on holiday</li>
+        </ul>
+
+        {{ govukRadios({
+          name: 'anyBreaksInCare',
+          fieldset: {
+            legend: {
+              text: "Since " + data | getBackdatedClaimDate + " have there been any breaks in care?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~break-in-care-date',
+            checked: true if data.anyBreaksInCare === "Yes"
+          }, {
+            text: "No",
+            value: 'No~education',
+            checked: true if data.anyBreaksInCare === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

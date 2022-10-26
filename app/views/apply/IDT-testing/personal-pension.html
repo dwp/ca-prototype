@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you paid into a personal or private pension scheme since {{ data | twentySixWeeksBeforeClaimDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukRadios({
+          name: 'paidIntoPersonalPrivatePension',
+          fieldset: {
+            legend: {
+              text: "Have you paid into a personal or private pension scheme since " + data | twentySixWeeksBeforeClaimDate + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'If you pay into a workplace pension, you do not need to tell us about this now, as we are able to get this information from HMRC. You will still need to tell us if anything changes with your workplace pension in the future.'
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~personal-pension-details',
+            checked: true if data.paidIntoPersonalPrivatePension === "Yes"
+          }, {
+            text: "No",
+            value: 'No~pay-details',
+            checked: true if data.paidIntoPersonalPrivatePension === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

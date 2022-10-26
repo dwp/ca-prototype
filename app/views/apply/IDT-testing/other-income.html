@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you received any other income since {{ data | getClaimStartDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukRadios({
+          name: 'otherIncome',
+          fieldset: {
+            legend: {
+              text: "Have you received any other income since " + data | getClaimStartDate + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'You do not need to tell us about any state pensions or benefits that you get.'
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if data.otherIncome === "Yes"
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if data.otherIncome === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

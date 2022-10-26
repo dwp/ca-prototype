@@ -309,6 +309,86 @@ module.exports = function (env) {
     return dateStartedCaring.toFormat(dateDisplayFormat)
   }
 
+  filters.getDpName = (data) => {
+    if (data.isPersonYouProvideCareFor === 'Yes') {
+      return `${data.partnerFirstName} ${data.partnerLastName}`
+    }
+    return `${data.careeFirstName} ${data.careeLastName}`
+  }
+
+  filters.getClaimStartDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
+  filters.getBackdatedClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const twentySixWeeksAgo = DateTime.now().minus({ weeks: 26 })
+
+    // If claim is being backdated, proceed with that date for calculations
+    if (data.beforeClaimStart === 'Yes') {
+      const backDatedClaimDate = `${data['backDatedCarerClaimStart-day']} ${data['backDatedCarerClaimStart-month']} ${data['backDatedCarerClaimStart-year']}`
+      const parsedStartDate = DateTime.fromFormat(backDatedClaimDate, 'd M yyyy')
+      // If the backdated claim date is more than 26 weeks ago, return 26 weeks ago from current date
+      if (parsedStartDate < twentySixWeeksAgo) {
+        return twentySixWeeksAgo.toFormat(outputDateFormat)
+      }
+      // Else return backdated claim date as is.
+      return parsedStartDate.toFormat(outputDateFormat)
+    }
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    const parsedStartDate = DateTime.fromFormat(claimStartDate, 'd M yyyy')
+    // If the claim start date is more than 26 weeks ago, return 26 weeks ago from current date
+    if (parsedStartDate < twentySixWeeksAgo) {
+      return twentySixWeeksAgo.toFormat(outputDateFormat)
+    }
+    // Else return claim start date as is.
+    return parsedStartDate.toFormat(outputDateFormat)
+  }
+
+  filters.sixMonthsBeforeClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ months: 6 }).toFormat(outputDateFormat)
+  }
+
+  filters.oneWeekBeforeClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ weeks: 1 }).toFormat(outputDateFormat)
+  }
+
+  filters.oneMonthBeforeClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ months: 1 }).toFormat(outputDateFormat)
+  }
+
+  filters.twentySixWeeksBeforeClaimDate = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${data['carerClaimStart-day']} ${data['carerClaimStart-month']} ${data['carerClaimStart-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').minus({ weeks: 26 }).toFormat(outputDateFormat)
+  }
+
+  filters.breakStopDate = (breakData) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const breakStopDate = `${breakData['dateStoppedProvidingCare-day']} ${breakData['dateStoppedProvidingCare-month']} ${breakData['dateStoppedProvidingCare-year']}`
+    return DateTime.fromFormat(breakStopDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
+  filters.breakStartDate = (breakData) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const breakStopDate = `${breakData['dateStartedProvidingCareAgain-day']} ${breakData['dateStartedProvidingCareAgain-month']} ${breakData['dateStartedProvidingCareAgain-year']}`
+    return DateTime.fromFormat(breakStopDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
+  filters.employmentStartDay = (employmentData) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const claimStartDate = `${employmentData['jobStartDate-day']} ${employmentData['jobStartDate-month']} ${employmentData['jobStartDate-year']}`
+    return DateTime.fromFormat(claimStartDate, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

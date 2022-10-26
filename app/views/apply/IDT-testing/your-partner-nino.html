@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="care-you-provide-their-personal-details">
+        <h1 class="govuk-heading-l">
+          What is {{ data | getDpName }}'s National Insurance Number?
+        </h1>
+
+        <p class="govuk-body">
+          If they do not have a National Insurance number, or you are unable to find out what it is, you can leave it blank.
+        </p>
+
+        {{ govukInput({
+          id: 'partnerNino',
+          name: 'partnerNino',
+          value: data.partnerNino,
+          fieldset: {
+            legend: {
+              text: 'National Insurance number',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'For example, QQ123456C'
+          },
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInsetText({
+          text: 'By providing their National Insurance number, we may be able to process your claim quicker.'
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

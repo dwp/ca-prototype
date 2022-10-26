@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breakStore[' + breakIndex + ']' %}
+{% set break = data.breakStore[breakIndex] %}
+
+{% set whoReceivedMedicalCare = 'you' if break.whoReceivedCare == 'You' else data | getDpName %}
+
+{% block pageTitle %}
+  Did {{ whoReceivedMedicalCare }} receive this medical care in hospital?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="breaks-summary">
+
+        {{ govukRadios({
+          name: breakLoc + '[receiveCareInHospital]',
+          idPrefix: 'receiveCareInHospital',
+          fieldset: {
+            legend: {
+              text: "Did " + whoReceivedMedicalCare + " receive this medical care in hospital?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if break.receiveCareInHospital === "Yes"
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if break.receiveCareInHospital === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

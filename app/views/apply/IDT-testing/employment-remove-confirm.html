@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Remove this employment
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% set employmentIndex = data['selectedEmployment'] | uuid %}
+{% set employmentLoc = 'employmentStore[' + employmentIndex + ']' %}
+{% set employment = data.employmentStore[employmentIndex] %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {% set employerName = employment.employerName %}
+        {% set startDate = employment | employmentStartDay if employment.jobStartedBefore === 'No' else "Before " + data | oneMonthBeforeClaimDate %}
+
+        {{ govukTable({
+          caption: 'Remove this employment',
+          captionClasses: "govuk-heading-l",
+          firstCellIsHeader: true,
+          rows: [
+            [
+              {
+                text: 'Employer'
+              },
+              {
+                text: employerName
+              }
+            ],
+            [
+              {
+                text: 'Start date'
+              },
+              {
+                text: startDate
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Remove',
+          classes: "govuk-button--warning",
+          name: 'breakRemove',
+          value: 'yes'
+        }) }}
+
+        <div class="govuk-button-group">
+          <a href="employment-summary" id="break-remove-cancel" class="govuk-link">
+            Cancel and go back
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

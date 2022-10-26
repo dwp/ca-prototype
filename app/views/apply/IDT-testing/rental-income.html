@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Rental income
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          Rental income
+        </h1>
+
+        {{ govukCharacterCount({
+          label: {
+            text: 'What rental income have you had since ' + data | getClaimStartDate + '?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          maxlength: 3000,
+          hint: {
+            text: "Give full details of how often and how much you're paid."
+          },
+          name: "rentalIncomeDetails",
+          value: data.rentalIncomeDetails
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
