@@ -18,22 +18,10 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="carers-nationality1">
+            <form action="payment-from-abroad">
 
 
-             {% set nationalityHtml %}
-
-                  {{ govukInput({
-                        label: {
-                            text: "Your nationality",
-                            classes: "govuk-label--s"
-                        },
-                        classes: "govuk-!-width-one-half",
-                        id: "one-half",
-                        name: "one-half"
-                        }) }}
-
-            {% endset -%}
+       
 
 
                 {{ govukRadios({
@@ -41,20 +29,24 @@ Carer's Allowance prototype
                     name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'What is your nationality?',
+                            text: 'Have you been away from England, Scotland or Wales for more than 52 weeks since (claim date - 3 years)?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+
+                    hint: {
+                        text: "This could be one trip, or a number of trips adding up to 52 weeks."
+                    },
                     
                     items: [
                         {
-                            text: 'British',
-                            value: 'British'
+                            text: 'Yes',
+                            value: 'yes~/apply/lowtrust/nationality-52weeks-details1'
                         },
                         {
-                            text: 'Another nationality',
-                            value: 'Another~/apply/lowtrust/35-kickout',
+                            text: 'No',
+                            value: 'no',
                               conditional: {
                               html: nationalityHtml
                                 }

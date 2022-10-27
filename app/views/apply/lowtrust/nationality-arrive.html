@@ -18,27 +18,35 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
+            <form action="nationality-country">
+
+
+       
+
 
                 {{ govukRadios({
-                    idPrefix: '35-hours',
-                    name: '35-hours',
+                    idPrefix: 'elig--qb',
+                    name: 'elig--qb',
                     fieldset: {
                         legend: {
-                            text: 'Are they getting the carer element of Universal Credit for Sarah Grainger?',
+                            text: 'When did you arrive in England, Scotland or Wales?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                
+                    
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes~/apply/lowtrust/other-carer-name'
+                            text: 'Less than 3 years ago',
+                            value: 'less~/apply/lowtrust/nationality-country'
                         },
                         {
-                            text: 'No',
-                            value: 'No~/apply/lowtrust/bic/any'
+                            text: 'More than 3 years ago',
+                            value: 'more~/apply/lowtrust/nationality-52weeks',
+                              conditional: {
+                              html: nationalityHtml
+                                }
+                           
                         }
                      
                     ]

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Carer's Allowance prototype
+    Where should we send your Carer’s Allowance?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,35 +18,35 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="35hours-date">
-
-                {{ govukRadios({
-                    idPrefix: '35-hours',
-                    name: '35-hours',
+            <form method="post" action="filter">
+            {{ govukRadios({
+                    idPrefix: 'mobile',
+                    name: 'mobile',
                     fieldset: {
                         legend: {
-                            text: 'Are they getting the carer element of Universal Credit for Sarah Grainger?',
+                            text: "Do you have access to a mobile phone and an email address while making this application?",
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes~/apply/lowtrust/other-carer-name'
+                            value: 'y'
                         },
                         {
                             text: 'No',
-                            value: 'No~/apply/lowtrust/bic/any'
+                            value: 'n'
                         }
-                     
                     ]
                 }) }}
+
 
                 {{ govukButton({
                     html: 'Continue'
                 }) }}
+
+
 
             </form>
 

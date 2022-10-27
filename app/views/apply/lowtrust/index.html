@@ -276,16 +276,36 @@
                                     color: 'blue'
                                 }
                             }) }}
+                 
+                </ul>
+
+                    <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number">5.
+                    </span>Nationality
+                </h2>
+                <ul class="app-task-list__items">
                     {{ taskListItem({
-                                name: "Carer's nationality",
-                                url: 'carers-nationality',
+                                name: "British national",
+                                url: 'nationality-option2',
                                 isActive: 'true',
                                 tag: {
-                                    text: 'Validated',
-                                    color: 'blue'
+                                    text: 'to test',
+                                    color: 'orange'
+                                }
+                            }) }}
+
+                                {{ taskListItem({
+                                name: "Another nationality",
+                                url: 'nationality-other',
+                                isActive: 'true',
+                                tag: {
+                                    text: 'to test',
+                                    color: 'orange'
                                 }
                             }) }}
                 </ul>
+
+
                 <h2 class="app-task-list__section">
                     <span class="app-task-list__section-number">5.
                     </span>Payments from abroad

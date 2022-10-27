@@ -18,34 +18,18 @@ Carer's Allowance prototype
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="dp-dob">
+            <form action="nationality-lived">
 
-       
 
-            {{ govukRadios({
-  idPrefix: "contact",
-  name: "contact",
-  fieldset: {
-    legend: {
-      text:'Does Susan Grainger live at the same address as you?',
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
- 
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-     
-    },
-     {
-      value: "no~/apply/lowtrust/dp-address2",
-      text: "No"
-    }
-
-  ]
-}) }}
+                {{ govukInput({
+                label: {
+                    text: "What is your nationality?",
+                    classes: "govuk-label--l",
+                    isPageHeading: true
+                },
+                id: "nationality-other",
+                name: "nationality-other"
+                }) }}
 
                 {{ govukButton({
                     html: 'Continue'

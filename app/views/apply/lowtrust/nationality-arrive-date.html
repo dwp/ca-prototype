@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="nationality-52weeks">
+
+
+       
+
+                        {{ govukDateInput({
+                        id: "nationality-arrive-date",
+                        namePrefix: "nationality-arrive-date",
+                        fieldset: {
+                            legend: {
+                            text: "What date did you arrive in England, Scotland or Wales?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--l"
+                            }
+                        },
+                        hint: {
+                            text: "For example, 27 3 2007"
+                        }
+                        }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
