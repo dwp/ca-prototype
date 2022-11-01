@@ -36,12 +36,13 @@
                     }) }}
                 {% endif %}
 
+                        <h1 class="govuk-heading-l">What is {{ data | getDpName }}'s address?</h1>
+
                 {% call govukFieldset({
-                legend: {
-                    text: 'What is John Doe`s address?',
-                    classes: 'govuk-fieldset__legend--l govuk-!-margin-bottom-8',
-                    isPageHeading: true
+                
+                
                 }
+                
                 }) %}
 
                     {% set applicantAddress = data['applicant-manual-address'] %}
