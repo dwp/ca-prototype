@@ -32,7 +32,7 @@
 
             <form action="care-you-provide-more-about-the-care">
 
-                <h1 class="govuk-heading-l">What is John Doe's address?</h1>
+                <h1 class="govuk-heading-l">What is {{ data | getDpName }}'s address?</h1>
 
                 <p class="govuk-!-margin-bottom-8">
                     <b>Postcode:</b> {{ data['applicant-find-postcode'] | default('AB12 3CD')}}
@@ -54,7 +54,7 @@
                 {# Change the dummy addresses in app/data/session-data-defaults.js if needed #}
 
                 <p>
-                    <a href="about-you-address-manual">Enter your address manually</a>
+                    <a href="#">Enter your address manually</a>
                 </p>
 
                 {{ govukButton({
