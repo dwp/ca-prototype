@@ -230,14 +230,15 @@
           items: [{
             text: 'Yes',
             value: 'Yes',
-            checked: true if employment.finishedThisJob == 'Yes'
-          }, {
-            text: 'No',
-            value: 'No',
-            checked: true if employment.finishedThisJob == 'No',
+            checked: true if employment.finishedThisJob == 'Yes',
             conditional: {
               html: jobLastDetails
             }
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if employment.finishedThisJob == 'No'
+            
           }]
         }) }}
 
