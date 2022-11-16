@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {# Can only be eligible if nin receipt of benefit, over 16, and caring more than 35 hours #}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="disclaimer">
+
+          <h1 class="govuk-heading-l">Based on this answer, you are not eligible for Carer’s Allowance</h1>
+
+         
+          <p>
+              You can only get it if the person you provide care for gets a qualifying benefit. If they have applied for one, wait until they get a decision before applying for Carer's Allowance.
+           
+          </p>
+
+          {{ govukRadios({
+            idPrefix: 'still--apply',
+            name: 'still--apply',
+            fieldset: {
+              legend: {
+                text: 'Do you still want to apply?',
+                isPageHeading: false,
+                classes: 'govuk-fieldset__legend--m'
+              }
+            },
+            hint: {
+              text: "You are still legally entitled to apply, even though you do not qualify and will not get Carer's Allowance."
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes'
+               
+              },
+              {
+                text: 'No',
+                value: 'No'
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

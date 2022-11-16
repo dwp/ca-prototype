@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% set carerName = 'Alice Walsh' %}
+{% set dpName = 'Emily Marsden' %}
+{% set claimDate = '1 February 2021' %}
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+ 
+ {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="start-page">
+                <h1 class="govuk-heading-l">You cannot get Carer’s Allowance if you do not provide care for someone for at least 35 hours a week
+                </h1>
+                
+                  <p>You told us you do not provide care for John Smith for at least 35 hours a week, which means you do not qualify for Carer's Allowance. You might still be able to get <a href="#">Carer’s Credit</a>.</p>
+       
+                {{ govukButton({
+                text: " End the application",
+                href: "start-page"
+                }) }}
+
+                    <h1 class="govuk-heading-m">If you still want to continue your application</h1>
+                    <p>You are still legally allowed to apply for Carer’s Allowance, even though you do not qualify for it based on your answers.</p>
+
+                {# {{ govukButton({
+                    text: "Continue to apply for Carer's Allowance",
+                    classes: "govuk-button--secondary"
+                    }) }} #}
+
+                    <p>
+                    <a href="carer-country"> Continue to apply for Carer's Allowance </a>
+
+            </form>
+        </div>
+</div>
+{% endblock %}
