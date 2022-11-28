@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you been in full-time or part-time education since you started caring?
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ super() }}
+
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="education-course-details">
+
+        {% set openUniversityHTML %}
+          {{ govukRadios ({
+            idPrefix: 'isOpenUniversityCourse',
+            name: 'isOpenUniversityCourse',
+            fieldset: {
+              legend: {
+                html: 'Are you studying with the Open University',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes~employment',
+                checked: true if data.isOpenUniversityCourse == 'Yes'
+              },
+              {
+                text: 'No',
+                value: 'No~education-course-details',
+                checked: true if data.isOpenUniversityCourse == 'No'
+              }
+            ]
+          }) }}
+
+        {% endset %}
+
+
+        {{ govukRadios ({
+          idPrefix: 'beenInEducationSinceClaimDate',
+          name: 'beenInEducationSinceClaimDate',
+          fieldset: {
+            legend: {
+              text: "Have you been on a course of education since your claim date?",
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            text: "Your claim date is " + data | getClaimStartDate + "."
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.beenInEducationSinceClaimDate == 'Yes',
+              conditional: {
+              html: openUniversityHTML
+            }
+            },
+            {
+              text: 'No',
+              value: 'No~employment',
+              checked: true if data.beenInEducationSinceClaimDate == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

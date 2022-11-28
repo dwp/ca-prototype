@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Claim date
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="national-insurance-number">
+        {{ govukDateInput ({
+          id: 'carerClaimStartCustom',
+          namePrefix: 'carerClaimStartCustom',
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              value: data['carerClaimStartCustom-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              value: data['carerClaimStartCustom-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              value: data['carerClaimStartCustom-year']
+            }
+          ],
+          fieldset: {
+            legend: {
+              text: 'What date do you want your claim start date to be?',
+              isPageHeading: true,
+              classes: 'govuk-label--l'
+            }
+          },
+          hint: {
+            text: 'This is the date you want your claim to start, for example 31 7 2020.'
+          }
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Employment summary
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% set employments = data.employmentStore %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="self-employment">
+
+        <h1 class="govuk-heading-l">
+          Employment summary
+        </h1>
+
+        <p class='govuk-hint'>
+          Check the employment information you have entered. If you need to, you can add another job.
+        </p>
+
+          {# Create empty array of employmentRows so we can push new ones into it as we iterate. #}
+          {% set employmentRows = [] %}
+
+          {% for id, employment in employments %}
+
+            {% set employerName = employment.employerName %}
+            {% set startDate = employment | employmentStartDay if employment.jobStartedBefore === 'No' else "Before " + data | oneMonthBeforeClaimDate %}
+            {% set changeLink %}
+              <a href="employment-details?selectedEmployment={{ id }}">Change</a>
+            {% endset %}
+            {% set removeLink %}
+              <a href="employment-remove-confirm?selectedEmployment={{ id }}">Remove</a>
+            {% endset %}
+
+            {% set employmentRow = [
+              { text: employerName },
+              { text: startDate },
+              { html: changeLink },
+              { html: removeLink }
+            ] %}
+
+            {# Build up the break rows to display in the table at the top of the page #}
+            {% set employmentRows = (employmentRows.push(employmentRow), employmentRows) %}
+          {% endfor %}
+
+        {% if employmentRows.length == 0 %}
+          {{ 'employment' | redirect | safe }}
+        {% endif %}
+
+        {{ govukTable({
+          firstCellIsHeader: false,
+          head: [
+            { text: 'Employer' },
+            { text: 'Start date' },
+            { text: '' },
+            { text: '' }
+          ],
+          rows: employmentRows
+        }) }}
+
+        {{ govukButton({
+          text: 'Add another job',
+          classes: "govuk-button--secondary",
+          href: 'employment-details'
+        }) }}
+
+        <br />
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

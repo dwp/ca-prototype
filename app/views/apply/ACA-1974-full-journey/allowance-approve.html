@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {# Can only be eligible if nin receipt of benefit, over 16, and caring more than 35 hours #}
+  {% set eligible = data['elig--qb'] !== 'None' and data['elig--35-hours'] === 'Yes' and data['elig--over-16-years'] === 'Yes' %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="disclaimer">
+
+        {% if eligible %}
+          <h1 class="govuk-heading-l">You may be eligible for Carer’s Allowance</h1>
+          <p>You could get Carer’s Allowance if:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your income is £132 or less a week (after tax and certain expenses)</li>
+            <li>you study less than 21 hours a week</li>
+          </ul>
+
+          <p class="govuk-fieldset__legend--m">
+            To make your application you'll need:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>National Insurance numbers for you and your partner if you have one</li>
+            <li>bank or building society details if you're not receiving State Pension</li>
+            <li>your latest payslip or P45 if you’ve recently finished working</li>
+            <li>the National Insurance number of the person you care for, if they are 16 or over and have one</li>
+            <li>the Disability Living Allowance reference number or child reference number of the person you care for, if
+              they are under 16
+            </li>
+          </ul>
+        {% else %}
+          <h1 class="govuk-heading-l">Based on your answers, you are not eligible for Carer’s Allowance</h1>
+
+          <p class="govuk-fieldset__legend--m">
+            You can only get it if:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            {% if data['elig--qb'] === 'None' %}
+              <li>the person you provide care for gets a qualifying benefit - if they've applied for one, wait until they get a decision before applying for Carer's Allowance</li>
+            {% endif %}
+
+            {% if data['elig--35-hours'] !== 'Yes' %}
+              <li>you provide care for someone at least 35 hours a week</li>
+            {% endif %}
+
+            {% if data['elig--over-16-years'] !== 'Yes' %}
+              <li>you're 16 or over</li>
+            {% endif %}
+
+            {% if data['elig--country'] === 'Another country' %}
+              <li>you normally live in England, Wales or Scotland - you might get it if you live in the EEA (European Economic Area) or Switzerland, but you must apply to find out</li>
+            {% endif %}
+          </ul>
+
+          {{ govukRadios({
+            idPrefix: 'still--apply',
+            name: 'still--apply',
+            fieldset: {
+              legend: {
+                text: 'Do you still want to apply?',
+                isPageHeading: false,
+                classes: 'govuk-fieldset__legend--m'
+              }
+            },
+            hint: {
+              text: "You're still legally entitled to apply even though you don't qualify and won't get Carer's Allowance."
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes',
+                checked: true if data['still--apply'] === 'Yes'
+              },
+              {
+                text: 'No',
+                value: 'No',
+                checked: true if data['still--apply'] === 'No'
+              }
+            ]
+          }) }}
+        {% endif %}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

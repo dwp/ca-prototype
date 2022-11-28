@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Before you start
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="mobile-filter">
+
+        <h1 class="govuk-heading-l">
+          Before you start
+        </h1>
+        <p>
+          When you claim Carer's Allowance the person you provide care for may stop getting:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a severe disability premium paid with their benefits, if they get one</li>
+          <li>an extra amount for severe disability paid with Pension Credit, if they get one</li>
+          <li>reduced Council Tax, if <a href="https://www.gov.uk/find-local-council">their local council</a> offers it
+          </li>
+        </ul>
+
+        <p>
+          Read more about <a href="https://www.gov.uk/carers-allowance/effect-on-other-benefits"> how Carer's Allowance
+            affects other benefits</a>
+        </p>
+
+        <p>
+          The Carer's Allowance Unit will check the record of the person you provide care for before making a decision
+          on your claim.
+        </p>
+
+        <p>
+          You <b>must</b> tell the person you provide care for about this information before you start your application.
+        </p>
+
+        {{ govukButton({
+          html: 'I agree - start my application'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="care-you-provide-their-personal-details">
+        {% set hintHTML %}
+          <p>
+            We look at any money your partner gets from benefits when we work out if you can get Carer's Allowance.
+          </p>
+          <p>
+            Your claim date is {{ data['claim-date-day'] }} {{ data['claim-date-month'] | month }} {{ data['claim-date-year'] }}. By partner we mean:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a person you are married to or live with as if you are married</li>
+            <li>a civil partner or a person you live with as if you are civil partners</li>
+          </ul>
+
+        {% endset %}
+
+        {% set partnerInfo %}
+          {{ govukInput ({
+            id: 'partnerTitle',
+            name: 'partnerTitle',
+            value: data.partnerTitle,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Title',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'partnerFirstName',
+            name: 'partnerFirstName',
+            value: data.partnerFirstName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'First name',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'partnerMiddleName',
+            name: 'partnerMiddleName',
+            value: data.partnerMiddleName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Middle name(s)',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'partnerLastName',
+            name: 'partnerLastName',
+            value: data.partnerLastName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Last name',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'partnerOtherName',
+            name: 'partnerOtherName',
+            value: data.partnerOtherName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Other surname or maiden name (optional)',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukDateInput ({
+            id: 'partnerDateOfBirth',
+            namePrefix: 'partnerDateOfBirth',
+            fieldset: {
+              legend: {
+                text: 'Date of birth',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                label: 'Day',
+                value: data['partnerDateOfBirth-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                label: 'Month',
+                value: data['partnerDateOfBirth-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                label: 'Year',
+                value: data['partnerDateOfBirth-year']
+              }
+            ],
+            hint: {
+              text: 'For example, 1 6 1980'
+            }
+          }) }}
+
+
+          {{ govukInput ({
+            id: 'partnerNationality',
+            name: 'partnerNationality',
+            value: data.partnerNationality,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Nationality',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+          {{ govukRadios ({
+            idPrefix: 'haveSeparatedSinceClaimDate',
+            name: 'haveSeparatedSinceClaimDate',
+            fieldset: {
+              legend: {
+                text: 'Have you separated since your claim date?',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes',
+                checked: true if data.haveSeparatedSinceClaimDate === 'Yes'
+              },
+              {
+                text: 'No',
+                value: 'No',
+                checked: true if data.haveSeparatedSinceClaimDate === 'No'
+              }
+            ],
+            hint: {
+              text: 'Your claim date is 10 January 1980'
+            }
+          }) }}
+
+          {{ govukRadios ({
+            idPrefix: 'isPersonYouProvideCareFor',
+            name: 'isPersonYouProvideCareFor',
+            fieldset: {
+              legend: {
+                text: 'Is this the person you provide care for?',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                text: 'Yes',
+                value: 'Yes',
+                checked: true if data.isPersonYouProvideCareFor === 'Yes'
+              },
+              {
+                text: 'No',
+                value: 'No',
+                checked: true if data.isPersonYouProvideCareFor === 'No'
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: 'hadPartnerSinceClaimDate',
+          name: 'hadPartnerSinceClaimDate',
+          fieldset: {
+            legend: {
+              text: 'Have you lived with a partner at any time since your claim date?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            html: hintHTML
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+                html: partnerInfo
+              },
+              checked: true if data.hadPartnerSinceClaimDate === 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No~care-you-provide-their-personal-details',
+              checked: true if data.hadPartnerSinceClaimDate === 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

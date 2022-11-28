@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Where should we pay your Carer's Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="pay-frequency">
+
+        <h1 class="govuk-heading-l">
+            Where should we pay your Carer's Allowance?
+        </h1>
+
+        <p>
+            You can have your Carer's Allowance paid into a UK bank or building society account, either belonging to you or someone else.
+        </p>
+
+        <p>
+            If you choose to have it paid into someone else's account:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>you are still responsible for repaying any overpayments</li>
+          <li>you must have their permission to be paid into their account</li>
+          <li>they must use your money how you tell them to</li>
+        </ul>
+
+          {{ govukInput({
+              label: {
+                text: 'Name on the account'
+              },
+              name: "accountHolderName",
+              value: data.accountHolderName,
+              autocomplete: "name",
+              spellcheck: false
+          }) }}
+
+          {{ govukInput({
+              label: {
+                  text: 'Name of the bank or building society'
+              },
+              name: "bankName",
+              value: data.bankName,
+              spellcheck: false
+          }) }}
+
+          {{ govukInput({
+              label: {
+                  text: 'Sort code'
+              },
+              hint: {
+                  text: 'Must be 6 digits long.'
+              },
+              name: "sortCode",
+              value: data.sortCode,
+              classes: "govuk-input--width-5",
+              inputmode: "numeric",
+              spellcheck: false
+          }) }}
+
+          {{ govukInput({
+              label: {
+                  text: 'Account number'
+              },
+              hint: {
+                  text: 'Must be between 6 and 8 digits long.'
+              },
+              name: "accountNumber",
+              value: data.accountNumber,
+              classes: "govuk-input--width-10",
+              inputmode: "numeric",
+              spellcheck: false
+          }) }}
+
+          {{ govukInput({
+              label: {
+                  text: 'Building society roll number (if you have one)'
+              },
+              hint: {
+                  text: 'You can find it on your card, statement or passbook.'
+              },
+              classes: "govuk-input--width-10",
+              name: "rollNumber",
+              value: data.rollNumber,
+              spellcheck: false
+          }) }}
+
+          <p class='govuk-body'>
+              <a href="pay-details-none" class="govuk-link">
+                  I do not have access to a bank or building society account
+              </a>
+          </p>
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

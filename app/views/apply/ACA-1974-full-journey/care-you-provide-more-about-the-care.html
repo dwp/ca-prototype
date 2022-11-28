@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  About the person you provide care for
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="any-breaks-in-care">
+
+        <h1 class="govuk-heading-l">About the person you provide care for</h1>
+
+        {% set otherCarerDetails %}
+          {{ govukCharacterCount ({
+            name: "otherCarerDetails",
+            id: "otherCarerDetails",
+            value: data.otherCarerDetails,
+            maxlength: 300,
+            label: {
+              text: "Tell us their name, address, date of birth and National Insurance number",
+              classes: "govuk-!-font-weight-bold"
+            }
+          }) }}
+        {% endset -%}
+
+        {% set ucDetails %}
+          {{ govukRadios ({
+            value: data.getUCCarerElement,
+            name: 'getUCCarerElement',
+            fieldset: {
+              legend: {
+                text: "Are they getting the carer element of Universal Credit for " + data | getDpName + "?",
+                classes: "govuk-!-font-weight-bold"
+              }
+            },
+            items: [{
+              text: "Yes",
+              value: 'Yes',
+              conditional: {
+                html: otherCarerDetails
+              },
+              checked: true if data.getUCCarerElement === "Yes"
+            }, {
+              text: "No",
+              value: 'No',
+              checked: true if data.getUCCarerElement === "No"
+            }]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios ({
+          idPrefix: 'spend35HoursCaring',
+          name: 'spend35HoursCaring',
+          fieldset: {
+            legend: {
+              text: 'Do you spend 35 hours or more each week providing care for ' + data | getDpName + '?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel.'
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.spend35HoursCaring == 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.spend35HoursCaring == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukRadios ({
+          idPrefix: 'otherCarerSpend35HoursCaring',
+          name: 'otherCarerSpend35HoursCaring',
+          fieldset: {
+            legend: {
+              text: 'Does anyone else spend 35 hours or more each week providing care for ' + data | getDpName + '?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.otherCarerSpend35HoursCaring == 'Yes',
+              conditional: {
+              html: ucDetails
+            }
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.otherCarerSpend35HoursCaring == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

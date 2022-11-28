@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% import 'macros/data-helpers.njk' as helpers %}
+
+{% block pageTitle %}
+  Do you know when qualifying benefit started
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set dateHtml %}
+          {{ govukDateInput ({
+            namePrefix: 'qbStart',
+            idPrefix: 'qbStart',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['qbStart-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['qbStart-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['qbStart-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When did ' + data | getDpName + '\'s ' + helpers.getQualifyingBenefit(data) + ' start?',
+                isPageHeading: false,
+                classes: 'govuk-fieldset__legend--m'
+              }
+            },
+            hint: {
+              text: 'For example, 26 10 2021'
+            }
+          }) }}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "knowWhenQbStarted",
+          name: "knowWhenQbStarted",
+          fieldset: {
+            legend: {
+              text:'Do you know when ' + data | getDpName + '\'s ' + helpers.getQualifyingBenefit(data) + ' started?',
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'This is the date which the ' + helpers.getQualifyingBenefit(data) + ' was paid from, including if it was backdated. You can find this information on the award letter.'
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+                conditional: {
+                html: dateHtml
+              },
+              checked: true if data.knowWhenQbStarted == "yes"
+            },
+            {
+              value: "no",
+              text: "No",
+              checked: true if data.knowWhenQbStarted == "no"
+            }
+
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

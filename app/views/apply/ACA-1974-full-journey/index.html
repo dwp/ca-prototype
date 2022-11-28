@@ -1,0 +1,438 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  POC end-to-end journey
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <h1 class="govuk-heading-xl">Testing OIDV</h1>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">1. </span> Eligibility
+            </h2>
+            <ul class="app-task-list__items">
+
+              {{ taskListItem({
+                name: 'Start page',
+                url: 'start-page',
+                isActive: 'true'
+              }) }}
+
+              {{ taskListItem({
+                name: 'Allowance elegibility',
+                url: 'allowance-eligibility',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Allowance approved',
+                url: 'allowance-approve',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Mobile and email filter',
+                url: 'mobile-filter',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'IDT filter',
+                url: 'idt-filter',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Allowance disapproved because of 35 hours',
+                url: 'allowance-approve-less-than-35-hours',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Allowance disapproved because of being outside UK',
+                url: 'allowance-approve-outside-uk',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Allowance disapproved because of being under 16',
+                url: 'allowance-approve-under-16',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> OIDT journey
+          </h2>
+
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">3. </span> Disclaimer, third party & DOC
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Disclaimer',
+                url: 'disclaimer',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Third party',
+                url: 'third-party',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Date of claim',
+                url: 'claim-date',
+                isActive: 'true'
+              }) }}
+
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">4. </span> About you
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Name, NINO & DOB',
+                url: 'about-you-your-details',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Marital status',
+                url: 'about-you-marital-status',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'What is your address?',
+                url: 'about-you-postcode-lookup',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Manual address entry',
+                url: 'about-you-address-manual',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Select your address from list',
+                url: 'about-you-address-select',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'International address',
+                url: 'about-you-international-address',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Nationality and where you live',
+                url: 'nationality-where-you-live',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Nationality and where you live',
+                url: 'nationality-where-you-live',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Payments from abroad',
+                url: 'nationality-payments-from-abroad',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'What`s your telephone number?',
+                url: 'about-you-telephone',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Email confirmation',
+                url: 'about-you-email-confirmation',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Your partner personal details',
+                url: 'your-partner-personal-details',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span> Dependant person
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Personal information about the person you provide care for',
+                url: 'care-you-provide-their-personal-details',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Postcode lookup',
+                url: 'care-you-provide-postcode-lookup',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Select address from list',
+                url: 'care-you-provide-address-select',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Select address manual',
+                url: 'care-you-provide-address-manual',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Hours of care you and others provide',
+                url: 'care-you-provide-more-about-the-care',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">6. </span> Breaks in Care
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Any breaks in care?',
+                url: 'breaks/any',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Hospital stays',
+                url: 'breaks/hospital',
+                isActive: 'true'
+              }) }}
+
+              {{ taskListItem({
+                name: 'Respite stays',
+                url: 'breaks/respite',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Summary list',
+                url: 'breaks/list',
+                isActive: 'true'
+              }) }}
+
+              {{ taskListItem({
+                name: 'Remove this break in care',
+                url: 'breaks/delete',
+                isActive: 'true'
+              }) }}
+
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">7. </span> Education
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Education',
+                url: 'education',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Course details',
+                url: 'education-course-details',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'University details',
+                url: 'education-course-details',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Non university course details',
+                url: 'education-course-details',
+                isActive: 'true'
+              }) }}
+            </ul>
+
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">8. </span> Income
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Your income',
+                url: 'income/your-income',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Employer details',
+                url: 'income/income-loop/employer-details',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Employer last wage',
+                url: 'income/income-loop/employer-details-2',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Pension contributions, employment expenses or care costs',
+                url: 'income/income-loop/expenses',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Employment summary',
+                url: 'income/income-loop/employment-list',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Self employment dates',
+                url: 'income/income-loop/self-employment',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Pension contributions or care costs',
+                url: 'income/income-loop/self-expenses',
+                isActive: 'true'
+              }) }}
+
+              {{ taskListItem({
+                name: 'Do you want to add anything about your business or work?',
+                url: 'income/income-loop/employment-extra',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Statutory sick pay',
+                url: 'income/income-loop/statutory-sick',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Statutory Paternity, Maternity or Adoption Pay',
+                url: 'income/income-loop/statutory-maternity',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Fostering allowance',
+                url: 'income/income-loop/fostering-allowance',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Direct payments',
+                url: 'income/income-loop/direct-payments',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Rental income',
+                url: 'income/income-loop/rental-income',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Other income',
+                url: 'income/income-loop/other-income',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">9. </span> Bank details
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Payment details',
+                url: 'pay-details',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">10. </span> Additional info
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Additional information',
+                url: 'information-additional-information',
+                isActive: 'true'
+              }) }}
+
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">11. </span> Check you answers & Declaration
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Review',
+                url: 'review',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Declaration',
+                url: 'declaration',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'There is a problem',
+                url: 'submit-retry-error',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Confirmation with no documents required',
+                url: 'confirmation-no-docs',
+                isActive: 'true'
+              }) }}
+              {{ taskListItem({
+                name: 'Confirmation with documents required',
+                url: 'confirmation-docs',
+                isActive: 'true'
+              }) }}
+            </ul>
+          </li>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">12. </span> Other
+            </h2>
+            <ul class="app-task-list__items">
+              {{ taskListItem({
+                name: 'Additional information',
+                url: 'time-out',
+                isActive: 'true'
+              }) }}
+
+            </ul>
+          </li>
+        </ol>
+
+        <!-- h2 class="govuk-heading-m">Possible questions for before sign in to improve usability</h2>
+
+        <ul class="govuk-list">
+            <li><a href="siphoning/possible/qb">DP qualifying benefit</a></li>
+            <li><a href="siphoning/possible/age">Under 16</a></li>
+        </ul -->
+
+
+      </form>
+    </div>
+
+    <!-- div class="govuk-grid-column-one-third">
+
+        <h2 class="govuk-heading-m">Prototype options</h2>
+
+        <ul class="govuk-list">
+            <li>
+                <a href="options/claim-date">
+                    Date of claim options
+                </a>
+            </li>
+        </ul>
+
+    </div -->
+
+  </div>
+{% endblock %}

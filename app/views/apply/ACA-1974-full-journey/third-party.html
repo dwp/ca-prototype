@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Third party - Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="name">
+
+        {% set thirdPartyName %}
+          <div id="third-party-name">
+            {{ govukInput({
+              label: {
+                text: 'Your name and organisation',
+                classes: "govuk-!-font-weight-bold"
+              },
+              hint: {
+                text: "Fill the rest of the form in as if you're the carer. For example, if asked for 'your address' put the address of the person doing the caring."
+              },
+              classes: "govuk-!-width-two-thirds",
+              name: "thirdPartyName",
+              value: data.thirdPartyName
+            }) }}
+          </div>
+        {% endset -%}
+
+        {{ govukRadios ({
+          idPrefix: 'areYouTheCarer',
+          name: 'areYouTheCarer',
+          fieldset: {
+            legend: {
+              text: 'Are you the carer?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: "Yes, you're the carer",
+              value: 'Yes',
+              checked: true if data.areYouTheCarer == 'Yes'
+            },
+            {
+              text: "No, you're filling this in on behalf of the carer",
+              value: "No",
+              checked: true if data.areYouTheCarer == 'No',
+              conditional: {
+                html: thirdPartyName
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

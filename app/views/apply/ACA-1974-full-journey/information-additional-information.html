@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Additional information
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="declaration">
+        {% set additionalDetails %}
+          {{ govukCharacterCount({
+            name: "tellUs",
+            id: "tellUs",
+            value: data.tellUs,
+            maxlength: 3000,
+            label: {
+              text: "Tell us anything else you think we should know about your claim",
+              classes: "govuk-!-font-weight-bold"
+            },
+            hint: {
+              text: "Don't include any medical information or details about care."
+            }
+          }) }}
+        {% endset -%}
+
+        <h1 class="govuk-heading-l">Additional information</h1>
+
+        {{ govukRadios ({
+          name: 'additionalInformation',
+          value: data.additionalInformation,
+          fieldset: {
+            legend: {
+              text: 'Do you want to tell us any additional information about your claim?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Don't include any medical information or details about care."
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.additionalInformation == 'Yes',
+              conditional: {
+                html: additionalDetails
+              }
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.additionalInformation == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukRadios ({
+          name: 'futureCommunicationsInWelsh',
+          value: data.futureCommunicationsInWelsh,
+          fieldset: {
+            legend: {
+              text: 'Do you want to receive future communications in Welsh?',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.futureCommunicationsInWelsh == 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.futureCommunicationsInWelsh == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

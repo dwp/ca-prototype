@@ -1,0 +1,164 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Course details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="education-university-details">
+
+        <h1 class="govuk-heading-xl">Course details</h1>
+
+        {{ govukCharacterCount ({
+          id: 'courseTitle',
+          name: 'courseTitle',
+          value: data.courseTitle,
+          maxlength: 75,
+          label: {
+            text: 'Course title',
+            classes: 'app-bold-label'
+          }
+        }) }}
+        {{ govukCharacterCount ({
+          id: 'whereAreYouStudying',
+          name: 'whereAreYouStudying',
+          value: data.whereAreYouStudying,
+          maxlength: 60,
+          label: {
+            text: 'Where are you studying?',
+            classes: 'app-bold-label'
+          }
+        }) }}
+
+        {{ govukInput ({
+          id: 'mainTeacherOrTutor',
+          name: 'mainTeacherOrTutor',
+          value: data.mainTeacherOrTutor,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'Name of main teacher or tutor',
+            classes: 'govuk-input--width-20 app-bold-label'
+          }
+        }) }}
+
+        {{ govukInput ({
+          id: 'contactNumber',
+          name: 'contactNumber',
+          value: data.contactNumber,
+          classes: 'govuk-input--width-20',
+          label: {
+            text: 'Course contact number (optional)',
+            classes: 'govuk-input--width-20 app-bold-label'
+          },
+          hint: {
+            text: 'Include if you know the number for your department'
+          }
+        }) }}
+
+        {{ govukDateInput ({
+          id: 'courseStartDate',
+          namePrefix: 'courseStartDate',
+          fieldset: {
+            legend: {
+              text: 'When did you start the course?',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'For example, 27 9 2017'
+          },
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              value: data['courseStartDate-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              value: data['courseStartDate-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              value: data['courseStartDate-year']
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput ({
+          id: 'courseEndDate',
+          namePrefix: 'courseEndDate',
+          fieldset: {
+            legend: {
+              text: 'When did the course end or when will you finish?',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'For example, 27 6 2018'
+          },
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              value: data['courseEndDate-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              value: data['courseEndDate-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              value: data['courseEndDate-year']
+            }
+          ]
+        }) }}
+
+        {{ govukRadios ({
+          idPrefix: 'isUniversityCourse',
+          name: 'isUniversityCourse',
+          fieldset: {
+            legend: {
+              text: 'Is this a university course?',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes~education-university-details',
+              checked: true if data.isUniversityCourse == 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No~education-non-university-course',
+              checked: true if data.isUniversityCourse == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Based on your answers, you are not eligible for Carer's Allowance - Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          Based on your answers, you are not eligible for Carer's Allowance
+        </h1>
+
+        <p class="govuk-body">
+          {{ data | getDpName }} must receive a benefit to be eligible for Carer's Allowance.
+        </p>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

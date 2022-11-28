@@ -1,0 +1,148 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Your details - About you - the carer
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="care-you-provide-more-about-the-care">
+
+        <h1 class="govuk-heading-l">About the person you provide care for</h1>
+
+        {% if data.isPersonYouProvideCareFor !== 'Yes' %}
+          {{ govukInput ({
+            id: 'careeTitle',
+            name: 'careeTitle',
+            value: data.careeTitle,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Title',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'careeFirstName',
+            name: 'careeFirstName',
+            value: data.careeFirstName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'First name',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'careeMiddleName',
+            name: 'careeMiddleName',
+            value: data.careeMiddleName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Middle name(s)',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'careeLastName',
+            name: 'careeLastName',
+            value: data.careeLastName,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Last name',
+              classes: 'govuk-input--width-20 app-bold-label'
+            }
+          }) }}
+
+          {{ govukDateInput ({
+            id: 'careeDateOfBirth',
+            namePrefix: 'careeDateOfBirth',
+            fieldset: {
+              legend: {
+                text: 'Date of birth',
+                isPageHeading: true,
+                classes: 'govuk-fieldset__legend--s'
+              }
+            },
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                label: 'Day',
+                value: data['careeDateOfBirth-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                label: 'Month',
+                value: data['careeDateOfBirth-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                label: 'Year',
+                value: data['careeDateOfBirth-year']
+              }
+            ],
+            hint: {
+              text: 'For example, 1 6 1980'
+            }
+          }) }}
+        {% endif %}
+
+        {% set helperText = "For example, husband, wife, partner, civil partner" if data.isPersonYouProvideCareFor === 'Yes'
+          else "For example, father, daughter, neighbour, friend" %}
+
+        {{ govukInput({
+          label: {
+            text: "What's their relationship to you?",
+            classes: "govuk-!-font-weight-bold"
+          },
+          hint: {
+            text: helperText
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "careeRelationship",
+          value: data.careeRelationship
+        }) }}
+
+        {{ govukRadios({
+          name: 'liveAtSameAddress',
+          fieldset: {
+            legend: {
+              text: "Do they live at the same address as you?",
+              classes: "govuk-!-font-weight-bold"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~care-you-provide-more-about-the-care',
+            checked: true if data.liveAtSameAddress === 'Yes'
+          }, {
+            text: "No",
+            value: 'No~care-you-provide-postcode-lookup',
+            checked: true if data.liveAtSameAddress === 'No'
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

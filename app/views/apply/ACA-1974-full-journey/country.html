@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Third party - Apply for Carer’s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukRadios ({
+          idPrefix: 'elig--country',
+          name: 'elig--country',
+          fieldset: {
+            legend: {
+              text: 'Which country do you live in?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: 'England, Scotland or Wales',
+              value: 'England, Scotland or Wales',
+              checked: true if data['elig--country'] == 'England, Scotland or Wales'
+            },
+            {
+              text: 'Northern Ireland',
+              value: 'Northern Ireland',
+              checked: true if data['elig--country'] == 'Northern Ireland'
+            },
+            {
+              text: 'Another country',
+              value: 'Another country',
+              checked: true if data['elig--country'] == 'Another country'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

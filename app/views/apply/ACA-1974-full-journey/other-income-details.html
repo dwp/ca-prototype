@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  What other income have you received since {{ data | getClaimStartDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukCharacterCount({
+          name: 'otherIncome',
+          value: data.otherIncome,
+          maxlength: 3000,
+          label: {
+            text: "What other income have you received since " + data | getClaimStartDate + "?",
+            isPageHeading: true,
+            classes: "govuk-label--l"
+          },
+          hint: {
+            text: 'Give full details of how often and how much you are paid.'
+          }
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

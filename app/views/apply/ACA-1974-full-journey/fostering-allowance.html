@@ -1,0 +1,190 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Fostering Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set lastPaidDetails %}
+          {{ govukDateInput ({
+            id: 'dateLastPaidFA',
+            namePrefix: 'dateLastPaidFA',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['dateLastPaidFA-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['dateLastPaidFA-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['dateLastPaidFA-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When were you last paid?',
+                isPageHeading: false,
+                classes: 'govuk-!-font-weight-bold'
+              }
+            }
+          }) }}
+        {% endset -%}
+
+        {% set howOftenDetails %}
+          {{ govukInput({
+            label: {
+              text: 'How often are you paid?',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: "howOftenFA",
+            value: data.howOftenFA
+          }) }}
+        {% endset -%}
+
+        {% set typeOfOrganisation %}
+          {{ govukInput({
+            label: {
+              text: 'Who paid you Fostering Allowance?',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: "whoPaidYouFA",
+            value: data.whoPaidYouFA
+          }) }}
+        {% endset -%}
+
+        <h1 class="govuk-heading-l">
+          Fostering Allowance
+        </h1>
+
+        {{ govukRadios({
+          value: data.typeOfOrganisationFA,
+          name: 'typeOfOrganisationFA',
+          fieldset: {
+            legend: {
+              text: 'What type of organisation pays you Fostering Allowance?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Local Authority',
+            value: 'LocalAuthority',
+            checked: true if data.typeOfOrganisationFA == "LocalAuthority"
+          }, {
+            text: 'Fostering Agency',
+            value: 'Agency',
+            checked: true if data.typeOfOrganisationFA == "Agency"
+          }, {
+            text: 'Other',
+            value: 'Other',
+            checked: true if data.typeOfOrganisationFA == "Other",
+            conditional: {
+              html: typeOfOrganisation
+            }
+          }]
+        }) }}
+
+        {{ govukRadios({
+          value: data.stillBeingPaidFA,
+          name: 'stillBeingPaidFA',
+          fieldset: {
+            legend: {
+              text: 'Are you still being paid this?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if data.stillBeingPaidFA == "Yes"
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if data.stillBeingPaidFA == "No",
+            conditional: {
+              html: lastPaidDetails
+            }
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Who paid you this?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "whoPaidFA",
+          value: data.whoPaidFA
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Amount paid',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "amountPaidFA",
+          value: data.amountPaidFA
+        }) }}
+
+        {{ govukRadios({
+          value: data.paymentFrequencyFA,
+          name: 'paymentFrequencyFA',
+          fieldset: {
+            legend: {
+              text: 'How often are you paid?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Weekly',
+            value: 'weekly',
+            checked: true if data.paymentFrequencyFA == "weekly"
+          },{
+            text: 'Fortnightly',
+            value: 'fortnightly',
+            checked: true if data.paymentFrequencyFA == "fortnightly"
+          },{
+            text: 'Every 4 weeks',
+            value: 'fourWeekly',
+            checked: true if data.paymentFrequencyFA == "fourWeekly"
+          },{
+            text: 'Monthly',
+            value: 'monthly',
+            checked: true if data.paymentFrequencyFA == "monthly"
+          },{
+            text: 'It varies',
+            value: 'varies',
+            checked: true if data.paymentFrequencyFA == "varies",
+            conditional: {
+              html: howOftenDetails
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

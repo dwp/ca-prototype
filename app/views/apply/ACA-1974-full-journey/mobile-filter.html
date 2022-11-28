@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Where should we send your Carer’s Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="idt-filter">
+        {{ govukRadios({
+          idPrefix: 'mobile',
+          name: 'mobile',
+          fieldset: {
+            legend: {
+              text: "Do you have access to a mobile phone and an email address while making this application?",
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.mobile == 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.mobile == 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you been an employee at any time since {{ data | sixMonthsBeforeClaimDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukRadios({
+          name: 'employeeSince',
+          fieldset: {
+            legend: {
+              text: "Have you been an employee at any time since " + data | sixMonthsBeforeClaimDate + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if data.employeeSince === "Yes"
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if data.employeeSince === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

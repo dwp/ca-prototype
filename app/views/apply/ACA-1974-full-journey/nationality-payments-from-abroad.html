@@ -1,0 +1,154 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Payments from abroad
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="about-you-telephone">
+
+        <h1 class="govuk-heading-l">Payments from abroad</h1>
+
+        {% set pensionsDetails %}
+          {{ govukCharacterCount({
+            name: "paymentDetails",
+            id: "paymentDetails",
+            value: data.paymentDetails,
+            maxlength: 3000,
+            label: {
+              text: "Give details",
+              classes: "govuk-!-font-weight-bold"
+            },
+            hint: {
+              text: "Include who was paid, the local name of the benefit, the amount and the dates of any payments."
+            }
+          }) }}
+        {% endset -%}
+
+        {% set niAbroadDetails %}
+          {{ govukCharacterCount({
+            name: "NIDetails",
+            id: "f-NIDetails",
+            value: data.NIDetails,
+            maxlength: 3000,
+            label: {
+              text: "Give details",
+              classes: "govuk-!-font-weight-bold"
+            },
+            hint: {
+              text: "Include who this applies to, when this happened and which country they worked or paid national insurance in."
+            }
+          }) }}
+        {% endset -%}
+
+        {% set paymentDetails %}
+          <p class="govuk-body">
+            The next two questions are about the following countries:
+          </p>
+          <p class="govuk-body">
+            Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany,
+            Gibraltar, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta,
+            Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and Switzerland.
+          </p>
+          {{ govukRadios({
+            value: data.pensionsFromAbroad,
+            name: 'pensionsFromAbroad',
+            fieldset: {
+              legend: {
+                text: "Have you or your close family claimed or been paid any benefits or pensions from any of these countries since your claim date?",
+                classes: "govuk-!-font-weight-bold"
+              }
+            },
+            hint: {
+              text: "This means your partner, parents or children."
+            },
+            items: [{
+              text: "Yes",
+              value: 'Yes',
+              conditional: {
+                html: pensionsDetails
+              },
+              checked: true if data.pensionsFromAbroad === 'Yes'
+            }, {
+              text: "No",
+              value: 'No',
+              checked: true if data.pensionsFromAbroad === 'No'
+            }]
+          }) }}
+          {{ govukRadios({
+            value: data.NIAbroad,
+            name: 'NIAbroad',
+            fieldset: {
+              legend: {
+                text: "Have you or your close family worked or paid national insurance in any of these countries since your claim date?",
+                classes: "govuk-!-font-weight-bold"
+              }
+            },
+            hint: {
+              text: "This means your partner, parents or children."
+            },
+            items: [{
+              text: "Yes",
+              value: 'Yes',
+              conditional: {
+                html: niAbroadDetails
+              },
+              checked: true if data.NIAbroad === 'Yes'
+            }, {
+              text: "No",
+              value: 'No',
+              checked: true if data.NIAbroad === 'No'
+            }]
+          }) }}
+        {% endset -%}
+
+
+        {{ govukRadios ({
+          idPrefix: 'payFromAbroad',
+          name: 'payFromAbroad',
+          fieldset: {
+            legend: {
+              text: 'Have you or any of your close family worked abroad or been paid benefits from outside the United Kingdom since your claim date?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'This means your partner, parents or children and includes state pensions.'
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+              html: paymentDetails
+            },
+              checked: true if data.payFromAbroad === 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.payFromAbroad === 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

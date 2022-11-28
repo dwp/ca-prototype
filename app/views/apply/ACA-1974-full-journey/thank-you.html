@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Declaration
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="#">
+        {{ govukPanel({
+          titleText: 'Your claim has been sent',
+          html: 'Your reference is your National Insurance number'
+        }) }}
+
+        <h1 class="govuk-heading-m">What happens next</h1>
+
+        <p>
+          You'll get a decision in 6 weeks, but this may take longer.
+        </p>
+        <p>
+          You will be notified by letter once a decision has been made. If any documents are required then you will be contacted by phone or letter.
+        </p>
+        <p>
+          You do not need to contact DWP.
+        </p>
+        <p class="govuk-body">
+          <a href="#" rel="noopener noreferrer"
+             class="govuk-link" target="_blank" aria-describedby="new-window-0">
+            What did you think of this service?
+          </a>
+          (Takes 30 seconds)
+        </p>
+        <p class="govuk-body">
+          <a href="#" rel="noopener noreferrer"
+             class="govuk-link" target="_blank" aria-describedby="new-window-0">
+            Volunteer to take part in research to help improve this service
+          </a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

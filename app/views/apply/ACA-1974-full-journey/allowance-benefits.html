@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  What benefit does the person you provide care for get?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="35-hours">
+
+        {% set noBenefitsWarning %}
+          <p>
+            You will only get Carers Allowance if the person you provide care for gets one of these benefits.
+          </p>
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: 'elig--qb',
+          name: 'elig--qb',
+          fieldset: {
+            legend: {
+              text: 'What benefit is ' + data | getDpName + ' receiving?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            text: 'Do not include any benefits they have applied for if they have not got a decision yet.'
+          },
+          items: [
+            {
+              text: 'Personal Independence Payment - daily living component',
+              value: 'PIP',
+              checked: true if data['elig--qb'] == 'PIP'
+            },
+            {
+              text: 'Adult Disability Payment - standard or enhanced rate of daily living component',
+              value: 'ADP',
+              checked: true if data['elig--qb'] == 'ADP'
+            },
+            {
+              text: 'Disability Living Allowance - middle or highest care rate',
+              value: 'DLA',
+              checked: true if data['elig--qb'] == 'DLA'
+            },
+            {
+              text: 'Child Disability Payment - middle or highest care rate',
+              value: 'CDP',
+              checked: true if data['elig--qb'] == 'CDP'
+            },
+            {
+              text: 'Attendance Allowance',
+              value: 'AA',
+              checked: true if data['elig--qb'] == 'AA'
+            },
+            {
+              text: 'Constant Attendance Allowance',
+              value: 'CAA',
+              checked: true if data['elig--qb'] == 'CAA'
+            },
+            {
+              text: 'Armed Forces Independence Payment',
+              value: 'AFIP',
+              checked: true if data['elig--qb'] == 'AFIP'
+            },
+            {
+              text: 'A disability benefit paid by a country in the EU',
+              value: 'EU',
+              checked: true if data['elig--qb'] == 'EU'
+            },
+            {
+              text: 'None of these benefits',
+              value: 'None~allowance-benefits-ineligible',
+              checked: true if data['elig--qb'] == 'None',
+              conditional : {
+                html: noBenefitsWarning
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

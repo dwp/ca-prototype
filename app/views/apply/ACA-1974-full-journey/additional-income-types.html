@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you received any of these since {{ data | getClaimStartDate }}?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukCheckboxes({
+          name: 'additionalIncomeTypes',
+          fieldset: {
+            legend: {
+              text: "Have you received any of these since " + data | getClaimStartDate + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          values: data.additionalIncomeTypes,
+          items: [
+            {
+              text: "Statutory Sick Pay",
+              value: 'StatutorySickPay',
+              checked: true if data.additionalIncomeTypes and "StatutorySickPay" in data.additionalIncomeTypes
+            },
+            {
+              text: "Statutory Maternity, Paternity or Adoption Pay",
+              value: 'MaternityPaternity',
+              checked: true if data.additionalIncomeTypes and "MaternityPaternity" in data.additionalIncomeTypes
+            },
+            {
+              text: "Fostering Allowance",
+              value: 'Fostering',
+              checked: true if data.additionalIncomeTypes and "Fostering" in data.additionalIncomeTypes
+            },
+            {
+              text: "Direct payment for caring for someone",
+              value: 'DirectPayment',
+              checked: true if data.additionalIncomeTypes and "DirectPayment" in data.additionalIncomeTypes
+            },
+            {
+              text: "Rental income",
+              value: 'Rental',
+              checked: true if data.additionalIncomeTypes and "Rental" in data.additionalIncomeTypes
+            },
+            {
+              divider: "or"
+            },
+            {
+              text: "No, I have not received any of these",
+              value: 'None',
+              checked: true if data.additionalIncomeTypes and "None" in data.additionalIncomeTypes,
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

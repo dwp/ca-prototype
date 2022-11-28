@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Do you want to add anything about your business or work?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="additional-income-types">
+        {% set additionalInformation %}
+          {{ govukCharacterCount({
+            name: 'additionalEmploymentInfo',
+            id: 'additionalEmploymentInfo',
+            value: data.additionalEmploymentInfo,
+            maxlength: 3000,
+            label: {
+              text: 'Tell us more',
+              isPageHeading: false,
+              classes: "govuk-label--s"
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          name: 'doYouWantToAddAnything',
+          value: data.doYouWantToAddAnything,
+          fieldset: {
+            legend: {
+              text: "Do you want to add anything about your business or work?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Don't include any information about your pension, if you get one."
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if data.doYouWantToAddAnything === "Yes",
+            conditional: {
+              html: additionalInformation
+            }
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if data.doYouWantToAddAnything === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

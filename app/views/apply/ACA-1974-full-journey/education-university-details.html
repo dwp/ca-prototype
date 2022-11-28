@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Is your university course full-time?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="employment">
+
+        {% set exemptionsMessageDetails %}
+          <p class="govuk-body govuk-!-font-weight-bold">
+            Send in a copy of your exemption agreement.
+          </p>
+        {% endset -%}
+
+        {% set approvedMessageDetails %}
+          <p class="govuk-body govuk-!-font-weight-bold">
+            Send in a copy of your agreement for an approved break.
+          </p>
+        {% endset -%}
+
+        {% set fullTimeDetails %}
+          {{ govukRadios({
+            name: 'universityExemption',
+            fieldset: {
+              legend: {
+                text: 'Have you been granted any exemptions from any part of the course?',
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: 'If this applies to you then you will have a written agreement.'
+            },
+            items: [{
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+                html: exemptionsMessageDetails
+              },
+              checked: true if data.universityExemption === 'Yes'
+            }, {
+              text: 'No',
+              value: 'No',
+              checked: true if data.universityExemption === 'No'
+            }]
+          }) }}
+
+          {{ govukRadios({
+            name: 'universityApprovedBreak',
+            fieldset: {
+              legend: {
+                text: 'Are you on an approved break agreed by your university?',
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [{
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+                html: approvedMessageDetails
+              },
+              checked: true if data.universityApprovedBreak === 'Yes'
+            }, {
+              text: 'No',
+              value: 'No',
+              checked: true if data.universityApprovedBreak === 'No'
+            }]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios ({
+          value: data.universityFullTime,
+          idPrefix: 'universityFullTime',
+          name: 'universityFullTime',
+          fieldset: {
+            legend: {
+              text: 'Is your university course full-time?',
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'Your admission letter from university may help with this.'
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+                html: fullTimeDetails
+              },
+              checked: true if data.universityFullTime === 'Yes'
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.universityFullTime === 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue',
+          classes: 'govuk-button'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

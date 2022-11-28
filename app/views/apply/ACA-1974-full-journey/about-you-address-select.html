@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Select your address – Apply for Carer’s Allowance – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="nationality-where-you-live">
+
+        <h1 class="govuk-heading-l">Select your address</h1>
+
+        <p class="govuk-body">5 addresses found for <b>Southland Street</b> and <b>NE1 4GB</b>. <a href="about-you-postcode-lookup">Search again</a></p>
+
+        {{ govukRadios({
+          name: "where-do-you-live",
+          fieldset: {
+            legend: {
+              text: "Confirm address",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "12345",
+              text: "14 High Road, Newcastle Upon Tyne, NE1 4BG"
+            },
+            {
+              value: "54321",
+              text: "4 High Road, Newcastle Upon Tyne, NE1 4BG"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

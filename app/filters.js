@@ -389,6 +389,12 @@ module.exports = function (env) {
     return DateTime.fromFormat(claimStartDate, 'd M yyyy').toFormat(outputDateFormat)
   }
 
+  filters.dpDateOfBirth = (data) => {
+    const outputDateFormat = 'd MMMM yyyy'
+    const dpDateOfBirth = `${data['carerDateOfBirth-day']} ${data['carerDateOfBirth-month']} ${data['carerDateOfBirth-year']}`
+    return DateTime.fromFormat(dpDateOfBirth, 'd M yyyy').toFormat(outputDateFormat)
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

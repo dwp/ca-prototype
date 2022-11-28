@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Claim date
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="about-you-your-details">
+
+        <h1 class="govuk-heading-l">When do you want Carer's Allowance to start?</h1>
+
+        <p>
+          The person you care for must get their disability benefit before your claim can start.
+        </p>
+
+        <p>
+          You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week.
+        </p>
+
+        {% set detailsContentHTML %}
+          <p>If the person you care for was awarded their disability benefit in the last 3 months with a backdated start
+            date of more than 3 months ago, you can claim from:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>their disability benefit start date – if you were proving care for at least 35 hours a week from that
+              date
+            </li>
+            <li>the date you started to provide care – if this was after their benefit start date</li>
+          </ul>
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: 'Claims that can be backdated for more than 3 months',
+          html: detailsContentHTML
+        }) }}
+
+        <p>
+          Your claim date cannot be more than 3 months in the future.
+        </p>
+
+        {{ govukDateInput ({
+          id: 'carerClaimStart',
+          namePrefix: 'carerClaimStart',
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              value: data['carerClaimStart-day']
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              value: data['carerClaimStart-month']
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              value: data['carerClaimStart-year']
+            }
+          ],
+          fieldset: {
+            legend: {
+              text: 'Claim date',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: 'This is the date you want your claim to start, for example 31 7 2020.'
+          }
+        }) }}
+
+        {% set careStartDateHTML %}
+
+          {{ govukDateInput ({
+            id: 'backDatedCarerClaimStart',
+            namePrefix: 'backDatedCarerClaimStart',
+            items: [
+              {
+                classes: 'govuk-input--width-2',
+                name: 'day',
+                value: data['backDatedCarerClaimStart-day']
+              },
+              {
+                classes: 'govuk-input--width-2',
+                name: 'month',
+                value: data['backDatedCarerClaimStart-month']
+              },
+              {
+                classes: 'govuk-input--width-4',
+                name: 'year',
+                value: data['backDatedCarerClaimStart-year']
+              }
+            ],
+            fieldset: {
+              legend: {
+                text: 'When did you start providing care?',
+                isPageHeading: false,
+                classes: 'govuk-fieldset__legend--s app-normal-label'
+              }
+            },
+            hint: {
+              text: 'For example, 23 7 2019'
+            }
+          }) }}
+
+        {% endset %}
+
+        {{ govukRadios ({
+          idPrefix: 'beforeClaimStart',
+          name: 'beforeClaimStart',
+          fieldset: {
+            legend: {
+              text: 'Were you providing care for the person for more than 35 hours a week before this date?',
+              isPageHeading: false,
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              checked: true if data.beforeClaimStart === 'yes',
+              conditional : {
+                html: careStartDateHTML
+              }
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.beforeClaimStart === 'no'
+            }
+          ]
+        }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

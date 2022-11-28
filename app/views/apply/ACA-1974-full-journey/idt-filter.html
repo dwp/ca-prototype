@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Where should we send your Carer’s Allowance?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {{ govukCheckboxes({
+          name: 'haveDocuments',
+          fieldset: {
+            legend: {
+              text: "Do you have any of the following documents or information?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'Select all that apply'
+          },
+          values: data.haveDocuments,
+          items: [
+            {
+              text: "A valid UK passport",
+              value: 'UKPassport',
+              hint: {
+                text: 'Your passport must not have expired.'
+              },
+              checked: true if data.haveDocuments and "UKPassport" in data.haveDocuments
+            },
+            {
+              text: "A recent payslip or P60",
+              value: 'payslip',
+              hint: {
+                text: 'You will need a payslip dated after 2 August 2022 and your most recent P60.'
+              },
+              checked: true if data.haveDocuments and "payslip" in data.haveDocuments
+            },
+            {
+              text: "Credit reference information",
+              value: 'creditRef',
+              hint: {
+                text: 'For example, the year you took out a credit card or mobile phone contract.'
+              },
+              checked: true if data.haveDocuments and "creditRef" in data.haveDocuments
+            },
+            {
+              text: "A recent Self Assessment return",
+              value: 'selfAssessment',
+              checked: true if data.haveDocuments and "selfAssessment" in data.haveDocuments
+            },
+            {
+              text: "Tax credit claim information",
+              hint: {
+                text: 'Including your Voice ID.'
+              },
+              value: 'taxCredit',
+              checked: true if data.haveDocuments and "taxCredit" in data.haveDocuments
+            },
+            {
+              divider: "or"
+            },
+            {
+              text: "No, I do not have access to any of this information",
+              value: 'No',
+              checked: true if data.haveDocuments and "No" in data.haveDocuments,
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Statutory Paternity, Maternity or Adoption Pay
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set lastPaidDetails %}
+          {{ govukDateInput({
+            namePrefix: "dateLastPaidMPA",
+            value: data.dateLastPaidMPA,
+            fieldset: {
+              legend: {
+                text: 'When were you last paid?',
+                classes: "govuk-!-font-weight-bold"
+              }
+            }
+          })
+          }}
+        {% endset -%}
+
+        {% set howOftenDetails %}
+          {{ govukInput({
+            label: {
+              text: 'How often are you paid?',
+              classes: "govuk-!-font-weight-bold"
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: "howOftenMPA",
+            value: data.howOftenMPA
+          }) }}
+        {% endset -%}
+
+        <h1 class="govuk-heading-l">
+          Statutory Paternity, Maternity or Adoption Pay
+        </h1>
+
+        {{ govukRadios({
+          value: data.whichAreYouPaidMPA,
+          name: 'whichAreYouPaidMPA',
+          fieldset: {
+            legend: {
+              text: 'Which are you paid?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Maternity or Paternity Pay',
+            value: 'MaternityPaternity',
+            checked: true if data.whichAreYouPaidMPA == "MaternityPaternity"
+          }, {
+            text: 'Adoption Pay',
+            value: 'Adoption',
+            checked: true if data.whichAreYouPaidMPA == "Adoption"
+          }]
+        }) }}
+
+        {{ govukRadios({
+          value: data.stillBeingPaidMPA,
+          name: 'stillBeingPaidMPA',
+          fieldset: {
+            legend: {
+              text: 'Are you still being paid this?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Yes',
+            value: 'Yes',
+            checked: true if data.stillBeingPaidMPA == "Yes"
+          }, {
+            text: 'No',
+            value: 'No',
+            checked: true if data.stillBeingPaidMPA == "No",
+            conditional: {
+              html: lastPaidDetails
+            }
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Who paid you Statutory Sick Pay?',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "whoPaidMPA",
+          value: data.whoPaidMPA
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Amount paid',
+            classes: "govuk-!-font-weight-bold"
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "amountPaidMPA",
+          value: data.amountPaidMPA
+        }) }}
+
+        {{ govukRadios({
+          value: data.paymentFrequencyMPA,
+          name: 'paymentFrequencyMPA',
+          fieldset: {
+            legend: {
+              text: 'How often are you paid?',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            text: 'Weekly',
+            value: 'weekly',
+            checked: true if data.paymentFrequencyMPA == "weekly"
+          },{
+            text: 'Fortnightly',
+            value: 'fortnightly',
+            checked: true if data.paymentFrequencyMPA == "fortnightly"
+          },{
+            text: 'Every 4 weeks',
+            value: 'fourWeekly',
+            checked: true if data.paymentFrequencyMPA == "fourWeekly"
+          },{
+            text: 'Monthly',
+            value: 'monthly',
+            checked: true if data.paymentFrequencyMPA == "monthly"
+          },{
+            text: 'It varies',
+            value: 'varies',
+            checked: true if data.paymentFrequencyMPA == "varies",
+            conditional: {
+              html: howOftenDetails
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Breaks in care summary
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% set breaks = data.breakStore %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="education">
+
+        <h1 class="govuk-heading-l">
+          Breaks in care summary
+        </h1>
+
+        <p class='govuk-hint'>
+          Check the breaks in care information you have entered. If you need to, you can add another break in care.
+        </p>
+
+          {# Create empty array of employmentRows so we can push new ones into it as we iterate. #}
+          {% set breaksRows = [] %}
+
+          {% for id, break in breaks %}
+
+            {% set stopDate = break | breakStopDate %}
+            {% set startDate = break | breakStartDate if break.startedCaringAgain === 'Yes' else "Not restarted care" %}
+            {% set medicalCare = "Yes - details provided" if break.medicalBreak === "Yes" else "No" %}
+            {% set changeLink %}
+              <a href="break-in-care-date?selectedBreak={{ id }}">Change</a>
+            {% endset %}
+            {% set removeLink %}
+              <a href="break-remove-confirm?selectedBreak={{ id }}">Remove</a>
+            {% endset %}
+
+            {% set breakRow = [
+              { text: stopDate },
+              { text: startDate },
+              { text: medicalCare },
+              { html: changeLink },
+              { html: removeLink }
+            ] %}
+
+            {# Build up the break rows to display in the table at the top of the page #}
+            {% set breaksRows = (breaksRows.push(breakRow), breaksRows) %}
+          {% endfor %}
+
+        {% if breaksRows.length == 0 %}
+          {{ 'any-breaks-in-care' | redirect | safe }}
+        {% endif %}
+
+        {{ govukTable({
+          firstCellIsHeader: false,
+          head: [
+            { text: 'Stop date' },
+            { text: 'Start date' },
+            { text: 'Medical care' },
+            { text: '' },
+            { text: '' }
+          ],
+          rows: breaksRows
+        }) }}
+
+        {{ govukButton({
+          text: 'Add another break in care',
+          classes: "govuk-button--secondary",
+          href: 'break-in-care-date'
+        }) }}
+
+        <br />
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

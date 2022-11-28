@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Did you or {{ data | getDpName  }} receive medical care during this time?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breakStore[' + breakIndex + ']' %}
+{% set break = data.breakStore[breakIndex] %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        {% set whoReceivedCare %}
+          {{ govukRadios({
+            name: breakLoc + '[whoReceivedCare]',
+            idPrefix: 'whoReceivedCare',
+            fieldset: {
+              legend: {
+                text: "Who received medical care?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [{
+              text: "You",
+              value: 'You',
+              checked: true if break.whoReceivedCare === "You"
+            }, {
+              text: data | getDpName,
+              value: 'DP',
+              checked: true if break.whoReceivedCare === "DP"
+            }]
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          name: breakLoc + '[medicalBreak]',
+          idPrefix: 'medicalBreak',
+          fieldset: {
+            legend: {
+              text: "Did you or " + data | getDpName + " receive medical care during this time?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'For example, any form of medical treatment in hospital, respite or a care home.'
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes',
+            checked: true if break.medicalBreak === "Yes",
+            conditional: {
+              html: whoReceivedCare
+            }
+          }, {
+            text: "No",
+            value: 'No',
+            checked: true if break.medicalBreak === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

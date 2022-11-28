@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Do you want a confirmation email when you send your application?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="your-partner-personal-details">
+
+        {% set emailAddressHTML %}
+
+          {{ govukInput ({
+            id: 'emailAddress',
+            name: 'emailAddress',
+            value: data.emailAddress,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Email address',
+              classes: 'app-bold-label'
+            },
+            type: 'email',
+            hint: {
+              text: 'We will only use this to send you a confirmation email'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'confirmEmailAddress',
+            name: 'confirmEmailAddress',
+            value: data.confirmEmailAddress,
+            classes: 'govuk-input--width-20',
+            label: {
+              text: 'Confirm email address',
+              classes: 'app-bold-label'
+            },
+            type: 'email'
+          }) }}
+
+        {% endset %}
+
+        {{ govukRadios ({
+          classes: 'govuk-radios--inline',
+          idPrefix: 'emailConfirmationWanted',
+          name: 'emailConfirmationWanted',
+          fieldset: {
+            legend: {
+              text: 'Do you want an email to confirm we have received your application?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            html: '<p>If we need more information about your application, we will contact you by phone or post.</p>'
+          },
+          items: [
+            {
+              text: 'Yes',
+              value: 'Yes',
+              conditional: {
+              html: emailAddressHTML
+            },
+              checked: true if data.emailConfirmationWanted === "Yes"
+            },
+            {
+              text: 'No',
+              value: 'No',
+              checked: true if data.emailConfirmationWanted === "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

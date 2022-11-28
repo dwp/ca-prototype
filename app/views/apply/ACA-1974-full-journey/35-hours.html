@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  We need to know about any breaks in care
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="35-hours">
+        {{ govukRadios({
+          name: 'thirtyFiveHoursCaring',
+          fieldset: {
+            legend: {
+              text: "Do you spend at least 35 hours a week caring for " + data | getDpName + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'This can be any care you provide in person, including helping with things like washing, cooking, household tasks, shopping, or travel.'
+          },
+          items: [{
+            text: "Yes",
+            value: 'Yes~35-hours-date',
+            checked: true if data.thirtyFiveHoursCaring === "Yes"
+          }, {
+            text: "No",
+            value: 'No~35-hours-ineligible',
+            checked: true if data.thirtyFiveHoursCaring === "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

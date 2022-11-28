@@ -1,13 +1,94 @@
 const router = require('express').Router()
+const { DateTime } = require('luxon')
 
 router.post('/idt-filter', (req, res) => {
   const { data } = req.session
-  // Comment out below if not wanting to filter
-  if (data.haveDocuments?.includes('No')) {
-    return res.redirect('third-party')
+  // As long as they have picked at least 2 documents send them to OIDV
+  if (data.haveDocuments?.length > 1) {
+    return res.redirect('https://dth-prototype.herokuapp.com/auth/dev-ready/register/start')
   }
-  // Stop comment here
-  return res.redirect('https://dth-prototype.herokuapp.com/auth/dev-ready/register/start')
+  return res.redirect('third-party')
+})
+
+router.post('/date-of-birth', (req, res, next) => {
+  const { data } = req.session
+  const sixteenYearsAgo = DateTime.now().minus({ years: 16 })
+  const dateOfBirth = `${data['carerDateOfBirth-day']} ${data['carerDateOfBirth-month']} ${data['carerDateOfBirth-year']}`
+  const parsedDateOfBirth = DateTime.fromFormat(dateOfBirth, 'd M yyyy')
+  // If they're older than 16 continue on with journey
+  if (parsedDateOfBirth < sixteenYearsAgo) {
+    return res.redirect('country')
+  }
+  // If they're younger than 16 show ineligible
+  return res.redirect('date-of-birth-ineligible')
+})
+
+router.post('/country', (req, res, next) => {
+  const { data } = req.session
+  if (data['elig--country'] === 'Another country') {
+    return res.redirect('country-ineligible')
+  }
+  return res.redirect('dp-name')
+})
+
+router.post('/qb-startdate', (req, res, _next) => {
+  const { data } = req.session
+
+  const dateFormat = 'd M yyyy' // e.g. 01 02 2022 or 5 11 2020
+
+  const dateCaringDay = data['thirtyFiveHoursCaringDate-day']
+  const dateCaringMonth = data['thirtyFiveHoursCaringDate-month']
+  const dateCaringYear = data['thirtyFiveHoursCaringDate-year']
+  const dateStartedCaring = DateTime.fromFormat(`${dateCaringDay} ${dateCaringMonth} ${dateCaringYear}`, dateFormat)
+
+  // Qualifying benefit start date
+  const qbStartDay = data['qbStart-day']
+  const qbStartMonth = data['qbStart-month']
+  const qbStartYear = data['qbStart-year']
+  const qbStartCaring = DateTime.fromFormat(`${qbStartDay} ${qbStartMonth} ${qbStartYear}`, dateFormat)
+
+  // Date three months ago
+  const threeMonthsAgo = DateTime.now().minus({ months: 3 })
+
+  // Is the date started caring before three months ago?
+  if (dateStartedCaring < threeMonthsAgo) {
+    // Has a qb start date been provided?
+    if (qbStartCaring.invalid !== null) {
+      // Manual entry page
+      return res.redirect('claimdate-3')
+    }
+
+    // Did the qb start longer than three months ago?
+    if (qbStartCaring < threeMonthsAgo) {
+      // Send to page to ask if benefit was awarded in last 3 months
+      return res.redirect('qb-3months')
+    }
+    // If qb started in last three months we can make confident recommendation
+    return res.redirect('claimdate-1')
+  }
+
+  // Date started caring must be in last three months at this point
+  // Has a qb start date been provided?
+  if (qbStartCaring.invalid !== null) {
+    // We can make an uncertain recommendation due to care start being in the last three months
+    return res.redirect('claimdate-2')
+  } else {
+    return res.redirect('claimdate-1')
+  }
+})
+
+router.post('/qb-3months', (req, res, _next) => {
+  const { data } = req.session
+
+  // Was QB awarded in the last 3 months?
+  const qbAwardedLastThreeMonths = data['qb-awarded-last-three-months']
+
+  if (qbAwardedLastThreeMonths === 'Not sure') {
+    // We can make an uncertain recommendation due to care start being in the last three months
+    return res.redirect('claimdate-3')
+  } else {
+    return res.redirect('claimdate-1')
+  }
 })
 
 const getNextIncomeRoute = (req, res, _next) => {
