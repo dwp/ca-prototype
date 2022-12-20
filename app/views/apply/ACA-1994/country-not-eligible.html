@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+    Based on your answers, you might not be able to get Carer's Allowance
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+            <form action="dp-name">
+
+   
+                    <p class="govuk-fieldset__legend--l">
+                        Based on the country you live in, you might not be eligible for Carer's Allowance
+                    </p>
+                    <p>
+                        You must normally live in England, Scotland or Wales to be eligible for Carer's Allowance.
+                        <br><br>
+                        You might be eligible if you live in the European Economic Area (EEA) or Switzerland, but you must apply to find out.
+                        <br><br>
+                        You might be eligible for <a href="..">Carer's credit</a>.
+                    </p>
+
+
+           
+
+
+                {{ govukRadios({
+                    idPrefix: 'partner--bool',
+                    name: 'partner--bool',
+                    fieldset: {
+                        legend: {
+                            text: "Do you still want to apply for Carer's Allowance?",
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+                    hint: {
+                        html: 'You are still legally allowed to apply, even though you may not be eligible.'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

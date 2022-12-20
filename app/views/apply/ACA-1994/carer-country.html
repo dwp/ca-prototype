@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Carer's Allowance prototype
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="dp-name">
+
+                {{ govukRadios({
+                    idPrefix: 'carer-country',
+                    name: 'carer-country',
+                    fieldset: {
+                        legend: {
+                            text: 'What country do you live in?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    
+                    items: [
+                        {
+                            text: 'England, Scotland or Wales',
+                            value: 'England'
+                        },
+                      
+                         {
+                            text: 'Northern Ireland',
+                            value: 'Northern Ireland'
+                        },
+                         {
+                            text: 'Another country',
+                            value: 'Another country~/apply/ACA-1994/country-not-eligible'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

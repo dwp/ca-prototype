@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Identity failed
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ super() }}
+
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="education-course-details">
+
+      
+<h1 class="govuk-heading-l">We have been unable to verify your identity
+
+</h1>
+<p>If you think you may have entered your details incorrectly, you can <a href="..">start again</a>.<br><br>
+
+    You can continue your Carer's Allowance application without verifying your identity online. It will not affect your claim, as we can verify your identity after you send your application.
+</p>
+
+
+
+        {{ govukButton ({
+          html: 'Continue application'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Have you lived with a partner at any time since your claim date?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {# Can only be eligible if nin receipt of benefit, over 16, and caring more than 35 hours #}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="disclaimer">
+
+          <h1 class="govuk-heading-l">You cannot get Carer's Allowance if John Smith is not getting a qualifying benefit</h1>
+
+         
+          <p>
+              You can only get Carer's Allowance if John Smith is getting one of the listed qualifying benefits. If they have applied for one, you must wait until they get a decision before applying for Carer's Allowance.
+           <br><br>You can now <a href="dropout"> end your application and close this window</a>.</p>
+          </p>
+
+        <h1 class="govuk-heading-m">If you still want to continue your application</h1>
+                    <p>You are still legally allowed to <a href="35hours">continue applying for Carer's Allowance</a>, even though you are not eligible for it.</p>
+
+       
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

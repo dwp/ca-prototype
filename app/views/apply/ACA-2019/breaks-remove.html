@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    We need to know about any breaks in care
+{% endblock %}
+{% block beforeContent %} 
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" action="check-answers4">
+           
+                   <h1 class="govuk-heading-l">This will remove all the breaks in care information you entered</h1>
+
+<table class="govuk-table">
+  
+  
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header">Stop date</th>
+    
+      <th scope="col" class="govuk-table__header">Start date</th>
+    
+      <th scope="col" class="govuk-table__header">Medical care</th>
+    
+      <th scope="col" class="govuk-table__header"></th>
+    
+      <th scope="col" class="govuk-table__header"></th>
+    
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">8 Oct 2022</td>
+          <td class="govuk-table__cell">14 Oct 2022</td>
+        
+          <td class="govuk-table__cell">No</td>
+                   <td class="govuk-table__cell"></td>
+
+        </tr>
+  </tbody>
+</table>
+       
+                
+                {{ govukButton ({
+                    html: 'Remove',
+                    classes: 'govuk-button--warning'
+                }) }}
+                                                <p><a href="check-answers" class="govuk-link">Cancel and go back</a>
+
+            </form>
+        </div>
+</div>
+{% endblock %}
