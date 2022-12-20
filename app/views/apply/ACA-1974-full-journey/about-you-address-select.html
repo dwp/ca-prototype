@@ -19,7 +19,7 @@
 
         <h1 class="govuk-heading-l">Select your address</h1>
 
-        <p class="govuk-body">5 addresses found for <b>Southland Street</b> and <b>NE1 4GB</b>. <a href="about-you-postcode-lookup">Search again</a></p>
+        <p class="govuk-body">5 addresses found for <b>Southland Street</b> and <b>NE1 4GB</b>. <a href="about-you-postcode-lookup">Change</a></p>
 
         {{ govukRadios({
           name: "where-do-you-live",
@@ -45,6 +45,10 @@
         {{ govukButton({
           html: 'Continue'
         }) }}
+
+        <p>
+          <a href="about-you-address-manual">Enter your address manually</a>
+        </p>
 
       </form>
     </div>

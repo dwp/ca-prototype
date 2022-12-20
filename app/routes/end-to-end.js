@@ -36,15 +36,15 @@ router.post('/qb-startdate', (req, res, _next) => {
 
   const dateFormat = 'd M yyyy' // e.g. 01 02 2022 or 5 11 2020
 
-  const dateCaringDay = data['thirtyFiveHoursCaringDate-day']
-  const dateCaringMonth = data['thirtyFiveHoursCaringDate-month']
-  const dateCaringYear = data['thirtyFiveHoursCaringDate-year']
+  const dateCaringDay = data['providing-care-day']
+  const dateCaringMonth = data['providing-care-month']
+  const dateCaringYear = data['providing-care-year']
   const dateStartedCaring = DateTime.fromFormat(`${dateCaringDay} ${dateCaringMonth} ${dateCaringYear}`, dateFormat)
 
   // Qualifying benefit start date
-  const qbStartDay = data['qbStart-day']
-  const qbStartMonth = data['qbStart-month']
-  const qbStartYear = data['qbStart-year']
+  const qbStartDay = data['qb-start-day']
+  const qbStartMonth = data['qb-start-month']
+  const qbStartYear = data['qb-start-year']
   const qbStartCaring = DateTime.fromFormat(`${qbStartDay} ${qbStartMonth} ${qbStartYear}`, dateFormat)
 
   // Date three months ago
@@ -89,6 +89,13 @@ router.post('/qb-3months', (req, res, _next) => {
   } else {
     return res.redirect('claimdate-1')
   }
+})
+
+// Custom route for claimdate-1 as gives user the option to accept recommended claim date which then needs to be written to session data
+router.post('/claimdate-1', (req, res, _next) => {
+  const { data } = req.session
+
+  console.log('CLAIM DATE 1', data)
 })
 
 const getNextIncomeRoute = (req, res, _next) => {

@@ -17,7 +17,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="end">
+      <form method="post">
 
         <h1 class="govuk-heading-l">Carer's Allowance claim start date</h1>
 
@@ -63,15 +63,19 @@
           items: [
             {
               text: 'Yes',
-              value: 'Yes~national-insurance-number'
+              value: 'Yes',
+              checked: true if data['backdate-claim'] == 'Yes'
             },
 
             {
               text: 'No, I want to choose a different date',
-              value: 'No~claim-date-custom'
+              value: 'No',
+              checked: true if data['backdate-claim'] == 'No'
             }
           ]
         }) }}
+
+        <input type="hidden" id="recommendedClaimDate" name="recommendedClaimDate" value="{{ recommendedClaimDate }}">
 
         {{ govukButton({
           html: 'Continue'

@@ -18,23 +18,23 @@
       <form action="qb-startdate">
 
         {{ govukDateInput ({
-          namePrefix: 'thirtyFiveHoursCaringDate',
-          idPrefix: 'thirtyFiveHoursCaringDate',
+          namePrefix: 'providing-care',
+          idPrefix: 'providing-care',
           items: [
             {
               classes: 'govuk-input--width-2',
               name: 'day',
-              value: data['thirtyFiveHoursCaringDate-day']
+              value: data['providing-care-day']
             },
             {
               classes: 'govuk-input--width-2',
               name: 'month',
-              value: data['thirtyFiveHoursCaringDate-month']
+              value: data['providing-care-month']
             },
             {
               classes: 'govuk-input--width-4',
               name: 'year',
-              value: data['thirtyFiveHoursCaringDate-year']
+              value: data['providing-care-year']
             }
           ],
           fieldset: {

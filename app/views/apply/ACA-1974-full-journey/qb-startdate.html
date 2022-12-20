@@ -20,23 +20,23 @@
       <form method="post">
         {% set dateHtml %}
           {{ govukDateInput ({
-            namePrefix: 'qbStart',
-            idPrefix: 'qbStart',
+            namePrefix: 'qb-start',
+            idPrefix: 'qb-start',
             items: [
               {
                 classes: 'govuk-input--width-2',
                 name: 'day',
-                value: data['qbStart-day']
+                value: data['qb-start-day']
               },
               {
                 classes: 'govuk-input--width-2',
                 name: 'month',
-                value: data['qbStart-month']
+                value: data['qb-start-month']
               },
               {
                 classes: 'govuk-input--width-4',
                 name: 'year',
-                value: data['qbStart-year']
+                value: data['qb-start-year']
               }
             ],
             fieldset: {

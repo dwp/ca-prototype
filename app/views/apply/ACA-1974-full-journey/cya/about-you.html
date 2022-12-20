@@ -1,0 +1,32 @@
+{% from "govuk/components/summary-list/macro.njk" import "govukSummaryList" with context %}
+
+{% block aboutYou %}
+  <h2 class="govuk-heading-m">About you - the carer</h2>
+
+  {% set aboutYouRows = [] %}
+
+  {# Claim date #}
+  {{ data| dump }}
+  {% set aboutYouRows = (aboutYouRows.push({
+    key: {
+      text: 'Claim date'
+    },
+    value: {
+      text: 'Bob smith'
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }
+      ]
+    }
+  }), aboutYouRows) %}
+
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-9",
+    rows: aboutYouRows
+  }) }}
+{% endblock %}
